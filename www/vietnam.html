@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Vietnam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Category-based coloring with Material Design feel */
+        .visit-card { background-color: #eef2ff; border-left: 5px solid #6366f1; }
+        .accommodation-card { background-color: #fee2e2; border-left: 5px solid #ef4444; }
+        .food-card { background-color: #dcfce7; border-left: 5px solid #22c55e; }
+        .travel-card { background-color: #dbeafe; border-left: 5px solid #3b82f6; }
+        .prep-card { background-color: #f3e8ff; border-left: 5px solid #9333ea; }
+        .flight-card { background-color: #e0f2fe; border-left: 5px solid #0ea5e9; }
+
+        /* Tooltip Styles */
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted #4b5563;
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #1f2937;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1f2937 transparent transparent transparent;
+        }
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Animation for timeline items */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Your Vietnam Expedition</h1>
+            <p class="text-lg text-gray-600 mt-2">A 9-Day Itinerary Through Timeless Landscapes</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 mb-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-6">Pre-Trip Preparation Checklist</h2>
+            <div class="space-y-6">
+                <div class="p-4 rounded-lg prep-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.5h-8.01a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v5.25M12 13.5h-3a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5Z" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">1-2 Months Before (July-August) - Get Your Visa</h3>
+                        <p class="text-sm mt-1">As Indian passport holders, you are required to have a visa to enter Vietnam.
+                            <br><strong>Action:</strong> Apply for an <span class="has-tooltip">e-Visa online via the official portal.<span class="tooltip">The official Vietnam Immigration Department e-Visa website is evisa.xuatnhapcanh.gov.vn. The process is straightforward and takes 3-5 working days.</span></span>
+                            <br><strong>Important:</strong> Apply at least a few weeks in advance. The e-Visa costs $25 USD for a single-entry, 90-day tourist visa. Ensure your passport is valid for at least 6 months from your date of entry.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-lg prep-card flex items-start space-x-4">
+                        <svg class="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">1 Week Before - Pack & Final Prep</h3>
+                        <div class="text-sm grid md:grid-cols-2 gap-x-6 gap-y-4 mt-2">
+                            <div>
+                                <h4 class="font-semibold">Things to Pack:</h4>
+                                <ul class="list-disc list-inside mt-1">
+                                    <li><strong>Clothing:</strong> <span class="has-tooltip">Lightweight and breathable clothes.<span class="tooltip">North Vietnam in Oct will be pleasant (22-28°C) but can have rain. Pack t-shirts, shorts, a light rain jacket, and one warmer layer for evenings or the overnight cruise.</span></span> Modest clothing (covering shoulders/knees) is needed for temples.</li>
+                                    <li><strong>Footwear:</strong> Comfortable walking shoes/sandals are a must.</li>
+                                    <li><strong>Essentials:</strong> Passport, e-Visa printout, insurance, universal adapter, power bank, Vietnamese Dong (VND) cash.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Connectivity (SIM Card):</h4>
+                                <ul class="list-disc list-inside mt-1">
+                                    <li><strong>Local SIM:</strong> Buy at Hanoi's Noi Bai (HAN) airport. Viettel has the best coverage, especially in rural areas like Ninh Binh & Ha Long Bay. A tourist pack costs ~150k-300k VND ($6-12 USD).</li>
+                                    <li><strong>eSIM:</strong> <span class="has-tooltip">Consider an eSIM for convenience.<span class="tooltip">Activate it upon landing without a physical SIM. Check providers like Airalo or Holafly before you travel.</span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 rounded-lg flight-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-sky-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L6 12Zm0 0h7.5" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">Your Flight Details</h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm mt-2">
+                            <div>
+                                <h4 class="font-semibold">Onward: Sat, Sep 27</h4>
+                                <p><strong>BLR → HAN</strong> (e.g., IndiGo, Vietjet via CCU/BOM)</p>
+                                <p class="text-xs text-gray-600 mt-1">Look for flights arriving in Hanoi (HAN) in the morning to maximize your first day.</p>
+                            </div>
+                                <div>
+                                <h4 class="font-semibold">Return: Sun, Oct 5</h4>
+                                <p><strong>HAN → BLR</strong> (e.g., IndiGo, Vietjet via CCU/BOM)</p>
+                                <p class="text-xs text-gray-600 mt-1">Departs from Hanoi in the evening.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="hidden md:block absolute border-l-4 border-gray-300 border-dashed h-full" style="left: 50%; transform: translateX(-2px);"></div>
+            
+            <div class="space-y-12">
+                </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 mt-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-4">Complete Trip Cost Summary</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Category</th>
+                            <th scope="col" class="px-6 py-3 text-right">Cost per Person (VND)</th>
+                            <th scope="col" class="px-6 py-3 text-right">Cost per Person (INR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights (est.)</th><td class="px-6 py-4 text-right">~ 7,500,000</td><td class="px-6 py-4 text-right">~ ₹25,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation (6 nights)</th><td class="px-6 py-4 text-right">~ 3,600,000</td><td class="px-6 py-4 text-right">~ ₹12,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Ha Long Cruise (2D/1N All-in)</th><td class="px-6 py-4 text-right">~ 3,000,000</td><td class="px-6 py-4 text-right">~ ₹10,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food & Drinks</th><td class="px-6 py-4 text-right">~ 3,900,000</td><td class="px-6 py-4 text-right">~ ₹13,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Local & Inter-city Travel</th><td class="px-6 py-4 text-right">~ 1,200,000</td><td class="px-6 py-4 text-right">~ ₹4,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Entrance Fees</th><td class="px-6 py-4 text-right">~ 900,000</td><td class="px-6 py-4 text-right">~ ₹3,000</td></tr>
+                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ 20,100,000</td><td class="px-6 py-4 font-bold text-right">~ ₹67,000</td></tr>
+                    </tbody>
+                </table>
+                 <p class="text-center text-xs text-gray-500 mt-4">Note: Costs converted at approx. 1 INR = 300 VND. Total is an estimate and does not include visa fees, personal shopping, or a contingency fund. This is a mid-range budget.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for the itinerary
+        const itineraryData = [
+            { day: 1, title: 'Arrival in Hanoi (Sat, Sep 27)', dailyCost: '850k VND', items: [
+                { type: 'travel', icon: 'bus', text: 'Arrive at Noi Bai Airport (HAN). Take a Grab or pre-booked taxi to the Old Quarter (45 mins, ~300k VND).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in the Old Quarter (from 600k VND/night).' },
+                { type: 'food', icon: 'food', text: 'Evening <span class="has-tooltip">street food tour!<span class="tooltip">Explore the Old Quarter’s alleys, trying classics like Phở, Bún Chả, and Egg Coffee. A must-do experience!</span></span> Est. cost: 500k VND.' }
+            ]},
+            { day: 2, title: 'Hanoi: History & Culture (Sun, Sep 28)', dailyCost: '900k VND', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Old Quarter (600k VND).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the Ho Chi Minh Mausoleum complex (from outside), Temple of Literature, and Hoa Lo Prison.' },
+                { type: 'visit', icon: 'camera', text: 'Walk around Hoan Kiem Lake, cross the red bridge to Ngoc Son Temple.'},
+                { type: 'food', icon: 'food', text: 'Lunch at a local eatery. In the evening, watch a traditional Water Puppet Show. Est. food/show cost: 300k VND.' }
+            ]},
+            { day: 3, title: 'Journey to Ha Long Bay (Mon, Sep 29)', dailyCost: '3.1M VND (incl. cruise)', items: [
+                { type: 'travel', icon: 'bus', text: 'Take a pre-booked limousine bus to Ha Long Bay (2.5 hours, ~300k VND). Most cruises offer this service.'},
+                { type: 'accommodation', icon: 'ferry', text: 'Board your <span class="has-tooltip">overnight cruise.<span class="tooltip">Choose a mid-range cruise for the best experience. The price usually includes lunch, dinner, and activities.</span></span> Check in around 12:30 PM.' },
+                { type: 'visit', icon: 'camera', text: 'Activities: Lunch on board, visit a cave, go kayaking or swim in an emerald lagoon.'},
+                { type: 'food', icon: 'food', text: 'Enjoy sunset and dinner on the cruise deck. All meals included in cruise price.' }
+            ]},
+            { day: 4, title: 'Ha Long Bay & Ninh Binh (Tue, Sep 30)', dailyCost: '1.2M VND', items: [
+                { type: 'visit', icon: 'camera', text: 'Morning Tai Chi on the sundeck. Enjoy breakfast while cruising through stunning karst formations.' },
+                { type: 'travel', icon: 'bus', text: 'Disembark around noon. Take a pre-booked bus/private car directly to Ninh Binh (3.5-4 hours, ~400k VND).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into a homestay in Tam Coc, Ninh Binh (from 500k VND/night).' },
+                { type: 'food', icon: 'food', text: 'Relax and have dinner at your homestay or a local restaurant. Est. food cost: 300k VND.' }
+            ]},
+            { day: 5, title: 'Ninh Binh\'s Landscapes (Wed, Oct 1)', dailyCost: '1.1M VND', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Homestay in Tam Coc (500k VND).' },
+                { type: 'visit', icon: 'ferry', text: 'Take a <span class="has-tooltip">sampan boat tour in Trang An.<span class="tooltip">A 2-3 hour boat ride through a stunning landscape of limestone karsts and caves. It’s a UNESCO World Heritage site.</span></span> (Entrance/boat fee ~250k VND).' },
+                { type: 'visit', icon: 'camera', text: 'In the afternoon, climb the 500 steps at Mua Caves for a breathtaking panoramic view of the Tam Coc valley.'},
+                { type: 'food', icon: 'food', text: 'Explore the local food scene, try the goat meat specialty. Est. food cost: 350k VND.' }
+            ]},
+            { day: 6, title: 'Ancient Capital & Return to Hanoi (Thu, Oct 2)', dailyCost: '1.2M VND', items: [
+                { type: 'visit', icon: 'camera', text: 'Rent a bicycle or scooter and visit Hoa Lu, the ancient capital of Vietnam. Explore the historic temples.'},
+                { type: 'travel', icon: 'bus', text: 'Take a late afternoon limousine bus or train back to Hanoi (2 hours, ~200k VND).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check back into your hotel in Hanoi (from 600k VND/night).' },
+                { type: 'food', icon: 'food', text: 'Dinner in the Old Quarter. Maybe try the famous Chả Cá Lã Vọng. Est. food cost: 400k VND.' }
+            ]},
+            { day: 7, title: 'Hanoi\'s Hidden Gems (Fri, Oct 3)', dailyCost: '1.1M VND', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Old Quarter (600k VND).' },
+                { type: 'visit', icon: 'camera', text: 'Explore the vibrant murals on Phung Hung Street or visit the Women\'s Museum to gain a deeper cultural insight.' },
+                { type: 'visit', icon: 'food', text: 'Take a <span class="has-tooltip">Vietnamese cooking class.<span class="tooltip">A fun, hands-on way to learn about the local cuisine and enjoy a delicious meal that you prepared yourself.</span></span>' },
+                { type: 'food', icon: 'food', text: 'Enjoy the fruits of your labor for lunch. Relaxed evening. Est. food cost: 500k VND (incl. class).' }
+            ]},
+            { day: 8, title: 'Coffee, Shopping & Farewell (Sat, Oct 4)', dailyCost: '1.3M VND', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Old Quarter (600k VND).' },
+                { type: 'food', icon: 'food', text: 'Go café hopping! Try the unique Egg Coffee, Coconut Coffee, and enjoy the relaxed cafe culture.'},
+                { type: 'visit', icon: 'camera', text: 'Last minute souvenir shopping in the Old Quarter or at Dong Xuan Market.' },
+                { type: 'food', icon: 'food', text: 'Enjoy a final farewell dinner at a nice restaurant in the French Quarter. Est. food cost: 700k VND.' }
+            ]},
+            { day: 9, title: 'Departure (Sun, Oct 5)', dailyCost: '450k VND', items: [
+                { type: 'food', icon: 'food', text: 'Enjoy a final Vietnamese breakfast or Banh Mi. Est. food cost: 150k VND.' },
+                { type: 'travel', icon: 'bus', text: 'Take a Grab or taxi to Noi Bai Airport (HAN) for your evening flight home (~300k VND).' }
+            ]}
+        ];
+
+        // Icons SVG Paths
+        const icons = {
+            bed: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8.25 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5a1.5 1.5 0 0 0 1.5-1.5v-6.75a1.5 1.5 0 0 0-1.5-1.5h-1.5V6.75A2.25 2.25 0 0 0 16.5 4.5h-9A2.25 2.25 0 0 0 5.25 6.75v5.25H3.75a1.5 1.5 0 0 0-1.5 1.5v6.75A1.5 1.5 0 0 0 3.75 21Z" /></svg>',
+            food: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-500"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.618a8.287 8.287 0 0 0 3-2.571 8.252 8.252 0 0 1 3.362-1.833Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 4.006 4.006 0 0 0-3.662-1.138 8.252 8.252 0 0 0-9.67 9.67 4.006 4.006 0 0 0 1.138 3.662 4.006 4.006 0 0 0 3.7 3.7 8.252 8.252 0 0 0 9.67-9.67Z" /></svg>',
+            camera: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg>',
+            train: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-500"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V11.25m17.25 0a1.125 1.125 0 0 1-1.125 1.125H12m5.25 0V8.25a2.25 2.25 0 0 0-2.25-2.25H9a2.25 2.25 0 0 0-2.25 2.25v3.75m10.5 0h-9" /></svg>',
+            bus: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V5.25a2.25 2.25 0 0 1 2.25-2.25h3a2.25 2.25 0 0 1 2.25 2.25v1.5m3 0V21a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 21V6.75m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6.75m18 0h-2.25m-13.5 0H3M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>',
+            ferry: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-500"><path stroke-linecap="round" d="M6 12h12M6 12a2 2 0 1 0-4 0 2 2 0 0 0 4 0Zm12 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2 12h1.5a1 1 0 0 0 1-1V6.5a1.5 1.5 0 0 1 3 0V11m11 1h-1.5a1 1 0 0 1-1-1V6.5a1.5 1.5 0 0 0-3 0V11" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 18a2.5 2.5 0 0 0 4 2 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4 0 2.5 2.5 0 0 0 4-2H3.5Z" /></svg>',
+        };
+        const cardColors = {
+            visit: 'visit-card', accommodation: 'accommodation-card', food: 'food-card', travel: 'travel-card'
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.space-y-12');
+            itineraryData.forEach((day, index) => {
+                const isReversed = index % 2 !== 0; // For desktop layout
+                
+                const itemsHtml = day.items.map(item => `
+                    <div class="flex items-start space-x-3 ${cardColors[item.type] || 'travel-card'} p-3 rounded-lg transition-all duration-300 hover:shadow-md hover:ring-2 hover:ring-offset-2 hover:ring-gray-300">
+                        <div class="flex-shrink-0 pt-0.5">${icons[item.icon] || icons.train}</div>
+                        <p class="text-sm">${item.text}</p>
+                    </div>
+                `).join('');
+
+                const dayHtml = `
+                    <div class="timeline-item transform transition-all duration-500 md:flex items-center ${isReversed ? 'md:flex-row-reverse' : ''}">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        
+                        <div class="relative z-10 flex items-center justify-center bg-gray-800 text-white w-10 h-10 rounded-full shadow-lg mx-auto md:mx-4 flex-shrink-0">
+                            ${day.day}
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-xl w-full md:w-5/12 mt-4 md:mt-0 transform transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+                            <div class="p-4 border-b">
+                                <h3 class="font-bold text-gray-800 text-lg">${day.title}</h3>
+                            </div>
+                            <div class="p-4 space-y-3">${itemsHtml}</div>
+                            <div class="p-3 bg-gray-50 rounded-b-lg text-right">
+                                <p class="text-sm font-bold">Approx. Daily Cost: ${day.dailyCost}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += dayHtml;
+            });
+
+            // Intersection Observer to fade in items as they scroll into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+    </script>
+</body>
+</html>
