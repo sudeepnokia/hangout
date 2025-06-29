@@ -164,11 +164,11 @@
                     </thead>
                     <tbody>
                         <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights (est.)</th><td class="px-6 py-4 text-right">~ ฿25,000</td><td class="px-6 py-4 text-right">~ ₹57,500</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Domestic Flights (2)</th><td class="px-6 py-4 text-right">~ ฿5,000</td><td class="px-6 py-4 text-right">~ ₹11,500</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation (8 nights)</th><td class="px-6 py-4 text-right">~ ฿14,000</td><td class="px-6 py-4 text-right">~ ₹32,200</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food & Drinks</th><td class="px-6 py-4 text-right">~ ฿10,000</td><td class="px-6 py-4 text-right">~ ₹23,000</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Local Transport</th><td class="px-6 py-4 text-right">~ ฿8,000</td><td class="px-6 py-4 text-right">~ ₹18,400</td></tr>
-                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ ฿62,000</td><td class="px-6 py-4 font-bold text-right">~ ₹1,42,600</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Domestic Flights (1)</th><td class="px-6 py-4 text-right">~ ฿3,000</td><td class="px-6 py-4 text-right">~ ₹6,900</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation (8 nights)</th><td class="px-6 py-4 text-right">~ ฿16,000</td><td class="px-6 py-4 text-right">~ ₹36,800</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food & Drinks</th><td class="px-6 py-4 text-right">~ ฿12,000</td><td class="px-6 py-4 text-right">~ ₹27,600</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Local Transport</th><td class="px-6 py-4 text-right">~ ฿10,000</td><td class="px-6 py-4 text-right">~ ₹23,000</td></tr>
+                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ ฿66,000</td><td class="px-6 py-4 font-bold text-right">~ ₹151,800</td></tr>
                     </tbody>
                 </table>
                  <p class="text-center text-xs text-gray-500 mt-4">Note: Costs converted at approx. 1 THB = 2.3 INR. Total is an estimate for a mid-range budget and does not include visa fees, shopping, or contingency. Booking flights in advance saves money.</p>
@@ -181,51 +181,50 @@
         const itineraryData = [
             { day: 1, title: 'Arrival in Bangkok (Sat, Sep 27)', dailyCost: '฿3,000', items: [
                 { type: 'travel', icon: 'bus', text: 'Arrive at Suvarnabhumi Airport (BKK). Take the Airport Rail Link to the city center (~฿45).' },
-                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Sukhumvit or near the Chao Phraya River (from ฿1,500/night).' },
-                { type: 'visit', icon: 'camera', text: 'Evening exploration: Visit a rooftop bar for stunning city views or explore the vibrant Asiatique The Riverfront.'},
-                { type: 'food', icon: 'food', text: 'Welcome dinner at a local restaurant. Try some classic Pad Thai or Green Curry. Est. cost: ฿500.' }
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Sukhumvit or near the Chao Phraya River (from ฿1,800/night).' },
+                { type: 'visit', icon: 'camera', text: 'Evening exploration: Visit a rooftop bar or Asiatique The Riverfront. (🛺 by Tuk-Tuk/Taxi)'},
+                { type: 'food', icon: 'food', text: 'Welcome dinner at a local restaurant. Try some classic Pad Thai or Green Curry. Est. cost: ฿700.' }
             ]},
             { day: 2, title: 'Bangkok Temples & River (Sun, Sep 28)', dailyCost: '฿3,500', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Bangkok (฿1,500).' },
-                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Grand Palace & Wat Phra Kaew<span class="tooltip">Thailand\'s most sacred temple. Dress respectfully (shoulders and knees covered). Go early to avoid crowds and heat.</span></span>.' },
-                { type: 'visit', icon: 'camera', text: 'See the Reclining Buddha at Wat Pho and take a ferry across the river to the beautiful Wat Arun (Temple of Dawn).' },
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Bangkok (฿1,800).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Grand Palace & Wat Phra Kaew<span class="tooltip">Thailand\'s most sacred temple. Dress respectfully (shoulders and knees covered). Go early to avoid crowds and heat.</span></span>. (⛴️ via River Boat/Taxi)' },
+                { type: 'visit', icon: 'camera', text: 'See the Reclining Buddha at Wat Pho and take a ferry to Wat Arun (Temple of Dawn). (⛴️ by cross-river ferry)' },
                 { type: 'food', icon: 'food', text: 'Lunch near the temples. Explore the street food scene at Wang Lang Market. Est. food cost: ฿800.' }
             ]},
-            { day: 3, title: 'Markets & Journey to Chiang Mai (Mon, Sep 29)', dailyCost: '฿4,000', items: [
-                { type: 'visit', icon: 'camera', text: 'Morning visit to a floating market like <span class="has-tooltip">Damnoen Saduak<span class="tooltip">This is a very touristy but classic experience. For a more local feel, consider Amphawa or Khlong Lat Mayom.</span></span> or a train market like Maeklong.' },
-                { type: 'food', icon: 'food', text: 'Lunch at the market, trying fresh coconut ice cream and boat noodles.' },
-                { type: 'travel', icon: 'train', text: 'Take an afternoon flight from Don Mueang (DMK) or Suvarnabhumi (BKK) to Chiang Mai (CNX). (~1.5 hours, ~฿2,000).' },
-                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in the Old City of Chiang Mai (from ฿1,800/night).' }
+            { day: 3, title: 'Bangkok Markets & Shopping (Mon, Sep 29)', dailyCost: '฿3,000', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Bangkok (฿1,800).' },
+                { type: 'visit', icon: 'camera', text: 'Morning at <span class="has-tooltip">Chatuchak Weekend Market<span class="tooltip">One of the world\'s largest outdoor markets. It\'s vast, so grab a map and wear comfy shoes. Only open on weekends.</span></span> or a floating market. (🚆 by Skytrain/Taxi)' },
+                { type: 'visit', icon: 'camera', text: 'Afternoon shopping at modern malls like Siam Paragon or MBK Center. (🚆 by Skytrain)' },
+                { type: 'food', icon: 'food', text: 'Dinner at a food court or a trendy restaurant in the Siam area. Est. food cost: ฿900.' }
             ]},
-            { day: 4, title: 'Chiang Mai Old City & Culture (Tue, Sep 30)', dailyCost: '฿3,000', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Chiang Mai (฿1,800).' },
-                { type: 'visit', icon: 'camera', text: 'Explore the ancient temples within the Old City walls, such as Wat Chedi Luang and Wat Phra Singh.' },
-                { type: 'visit', icon: 'camera', text: 'In the evening, visit the famous <span class="has-tooltip">Night Bazaar<span class="tooltip">A great place for souvenir shopping and trying northern Thai street food. Don\'t be afraid to bargain politely!</span></span>.' },
-                { type: 'food', icon: 'food', text: 'Try a traditional northern "Khao Soi" curry noodle soup for dinner. Est. food cost: ฿700.' }
+            { day: 4, title: 'Journey to Phuket (Tue, Sep 30)', dailyCost: '฿5,500', items: [
+                { type: 'travel', icon: 'train', text: 'Take a morning flight from Don Mueang (DMK) or Suvarnabhumi (BKK) to Phuket (HKT). (~1.5 hours, ~฿3,000).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel near a beach like Kata or Karon for a balance of fun and relaxation (from ฿2,200/night).' },
+                { type: 'visit', icon: 'camera', text: 'Settle in, relax on the beach, and take a dip in the Andaman Sea. (🚶‍♂️ on foot)' },
+                { type: 'food', icon: 'food', text: 'Enjoy a fresh seafood dinner at a restaurant along the beach. Est. food cost: ฿1,300.' }
             ]},
-            { day: 5, title: 'Elephants & Nature (Wed, Oct 1)', dailyCost: '฿4,500', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Chiang Mai (฿1,800).' },
-                { type: 'visit', icon: 'camera', text: 'Visit an <span class="has-tooltip">ethical elephant sanctuary<span class="tooltip">Choose a sanctuary like Elephant Nature Park or Elephant Jungle Sanctuary that focuses on rescue and rehabilitation, with no riding. Book weeks in advance!</span></span> for a half-day or full-day experience.' },
-                { type: 'visit', icon: 'camera', text: 'Afternoon trip up the mountain to Wat Phra That Doi Suthep for panoramic views of Chiang Mai.'},
-                { type: 'food', icon: 'food', text: 'Dinner in the Nimman area, known for its trendy cafes and restaurants. Est. food cost: ฿900.' }
-            ]},
-            { day: 6, title: 'Journey to the Islands (Thu, Oct 2)', dailyCost: '฿4,800', items: [
-                { type: 'travel', icon: 'train', text: 'Take a morning flight from Chiang Mai (CNX) to Phuket (HKT) or Krabi (KBV). (~2 hours, ~฿2,500).'},
-                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel near a beach like Patong (for nightlife) or Kata/Karon (for relaxing) in Phuket (from ฿2,000/night).' },
-                { type: 'visit', icon: 'camera', text: 'Relax on the beach, take a dip in the Andaman Sea, and settle in.'},
-                { type: 'food', icon: 'food', text: 'Enjoy a fresh seafood dinner right on the beach. Est. food cost: ฿1,200.' }
-            ]},
-            { day: 7, title: 'Island Hopping Adventure (Fri, Oct 3)', dailyCost: '฿4,500', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,000).' },
+            { day: 5, title: 'Phi Phi Islands Hopping (Wed, Oct 1)', dailyCost: '฿4,800', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,200).' },
                 { type: 'travel', icon: 'ferry', text: 'Take a <span class="has-tooltip">full-day boat tour<span class="tooltip">Book a speedboat tour to the Phi Phi Islands. It will include Maya Bay (from "The Beach"), snorkeling, and lunch. This is a must-do activity.</span></span> to the famous Phi Phi Islands.' },
-                { type: 'visit', icon: 'camera', text: 'Snorkel in crystal-clear waters, see Viking Cave, and relax on pristine white sand beaches.' },
-                { type: 'food', icon: 'food', text: 'Lunch is usually included in the tour. Enjoy a relaxed dinner back in Phuket. Est. food cost: ฿800.' }
+                { type: 'visit', icon: 'camera', text: 'Snorkel in crystal-clear waters, see Viking Cave, and relax on pristine white sand beaches. (🚤 via speedboat)' },
+                { type: 'food', icon: 'food', text: 'Lunch is usually included in the tour. Enjoy a relaxed dinner back in Phuket. Est. food cost: ฿900.' }
             ]},
-            { day: 8, title: 'Phuket Exploration (Sat, Oct 4)', dailyCost: '฿3,800', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,000).' },
-                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Big Buddha of Phuket<span class="tooltip">Sitting atop Nakkerd Hill, it offers 360-degree views of the island. Remember to dress modestly.</span></span> and explore Phuket Old Town with its colourful Sino-Portuguese architecture.' },
-                { type: 'visit', icon: 'camera', text: 'Watch the sunset from the famous Laem Phromthep viewpoint.' },
-                { type: 'food', icon: 'food', text: 'Enjoy a final Thai dinner. Try some Massaman curry or Tom Yum Goong. Est. food cost: ฿1,000.' }
+            { day: 6, title: 'Phang Nga Bay & James Bond Island (Thu, Oct 2)', dailyCost: '฿4,800', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,200).' },
+                { type: 'travel', icon: 'ferry', text: 'Explore <span class="has-tooltip">Phang Nga Bay<span class="tooltip">Famous for its limestone karsts jutting out of the emerald-green water. Many tours include sea canoeing through caves (hongs).</span></span> on a boat tour.'},
+                { type: 'visit', icon: 'camera', text: 'Visit Khao Phing Kan (James Bond Island) and the floating village of Koh Panyee. (🚤 via tour boat)'},
+                { type: 'food', icon: 'food', text: 'Lunch is typically included in the tour. For dinner, explore the local food scene in Patong. Est. food cost: ฿900.' }
+            ]},
+            { day: 7, title: 'Phuket Exploration (Fri, Oct 3)', dailyCost: '฿4,000', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,200).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Big Buddha of Phuket<span class="tooltip">Sitting atop Nakkerd Hill, it offers 360-degree views of the island. Remember to dress modestly.</span></span> and explore Phuket Old Town. (🚕 by Taxi/Private Car)' },
+                { type: 'visit', icon: 'camera', text: 'Watch the sunset from the famous Laem Phromthep viewpoint. (🚕 by Taxi)' },
+                { type: 'food', icon: 'food', text: 'Enjoy dinner in the charming Phuket Old Town. Est. food cost: ฿1,000.' }
+            ]},
+            { day: 8, title: 'Beach Relaxation & Leisure (Sat, Oct 4)', dailyCost: '฿3,500', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Phuket (฿2,200).' },
+                { type: 'visit', icon: 'camera', text: 'Enjoy a full day of leisure. Relax on Freedom Beach or try water sports at Patong. (🚤 to Freedom Beach by long-tail boat)' },
+                { type: 'food', icon: 'food', text: 'Explore different beaches and their unique dining options. Enjoy a final farewell dinner. Est. food cost: ฿1,300.' }
             ]},
             { day: 9, title: 'Departure (Sun, Oct 5)', dailyCost: '฿500', items: [
                 { type: 'food', icon: 'food', text: 'Enjoy a final breakfast and maybe some last-minute souvenir shopping. Est. cost: ฿300.' },

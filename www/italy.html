@@ -126,17 +126,17 @@
                 <div class="p-4 rounded-lg flight-card flex items-start space-x-4">
                     <svg class="w-8 h-8 text-sky-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L6 12Zm0 0h7.5" /></svg>
                     <div>
-                        <h3 class="font-bold text-lg">Your Flight Details</h3>
+                        <h3 class="font-bold text-lg">Your Flight Details (₹50,577)</h3>
                         <div class="grid md:grid-cols-2 gap-4 text-sm mt-2">
                             <div>
-                                <h4 class="font-semibold">Onward: Sat, Sep 27</h4>
-                                <p><strong>BLR → FCO</strong> (e.g., Emirates, Qatar Airways, etc.)</p>
-                                <p class="text-xs text-gray-600 mt-1">Fly into Rome's Fiumicino Airport (FCO). An overnight flight arriving in the morning is ideal.</p>
+                                <h4 class="font-semibold">Departing: Fri, Sep 26</h4>
+                                <p><strong>BLR → FCO</strong> (Oman Air)</p>
+                                <p class="text-xs text-gray-600 mt-1">8:45 AM (BLR) → 8:10 PM (FCO)<br>Layover: 4hr in Muscat (MCT)</p>
                             </div>
                                 <div>
-                                <h4 class="font-semibold">Return: Sun, Oct 5</h4>
-                                <p><strong>VCE → BLR</strong> (e.g., Emirates, Qatar Airways, etc.)</p>
-                                <p class="text-xs text-gray-600 mt-1">Fly out of Venice's Marco Polo Airport (VCE) to avoid backtracking. This is called an "open-jaw" ticket.</p>
+                                <h4 class="font-semibold">Returning: Sat, Oct 4</h4>
+                                <p><strong>FCO → BLR</strong> (Gulf Air)</p>
+                                <p class="text-xs text-gray-600 mt-1">12:45 PM (FCO) → 4:55 AM (BLR, Oct 5)<br>Layover: 2hr 5min in Bahrain (BAH)</p>
                             </div>
                         </div>
                     </div>
@@ -163,12 +163,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights (est.)</th><td class="px-6 py-4 text-right">~ €850</td><td class="px-6 py-4 text-right">~ ₹76,500</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights</th><td class="px-6 py-4 text-right">€562</td><td class="px-6 py-4 text-right">₹50,577</td></tr>
                         <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation (8 nights)</th><td class="px-6 py-4 text-right">~ €520</td><td class="px-6 py-4 text-right">~ ₹46,800</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Inter-city Trains & Transport</th><td class="px-6 py-4 text-right">~ €150</td><td class="px-6 py-4 text-right">~ ₹13,500</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Inter-city Trains & Transport</th><td class="px-6 py-4 text-right">~ €110</td><td class="px-6 py-4 text-right">~ ₹9,900</td></tr>
                         <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food & Drinks</th><td class="px-6 py-4 text-right">~ €450</td><td class="px-6 py-4 text-right">~ ₹40,500</td></tr>
-                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Entrance Fees</th><td class="px-6 py-4 text-right">~ €180</td><td class="px-6 py-4 text-right">~ ₹16,200</td></tr>
-                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ €2,150</td><td class="px-6 py-4 font-bold text-right">~ ₹1,93,500</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Entrance Fees</th><td class="px-6 py-4 text-right">~ €120</td><td class="px-6 py-4 text-right">~ ₹10,800</td></tr>
+                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ €1,762</td><td class="px-6 py-4 font-bold text-right">~ ₹158,577</td></tr>
                     </tbody>
                 </table>
                  <p class="text-center text-xs text-gray-500 mt-4">Note: Costs converted at approx. 1 EUR = 90 INR. Total is an estimate for a mid-range budget and does not include visa fees, shopping, or contingency. Booking trains/attractions in advance saves money.</p>
@@ -179,57 +179,55 @@
     <script>
         // Data for the itinerary
         const itineraryData = [
-            { day: 1, title: 'Arrival in Rome (Sat, Sep 27)', dailyCost: '€100', items: [
-                { type: 'travel', icon: 'bus', text: 'Arrive at Fiumicino Airport (FCO). Take the Leonardo Express train to Termini station (~€14).' },
+            { day: 1, title: 'Arrival in Rome (Fri, Sep 26)', dailyCost: '€60', items: [
+                { type: 'travel', icon: 'bus', text: 'Arrive at Fiumicino Airport (FCO) at 8:10 PM. Take the Leonardo Express train to Termini station (~€14).' },
                 { type: 'accommodation', icon: 'bed', text: 'Check into your hotel near Termini or Trastevere (from €130/night).' },
-                { type: 'visit', icon: 'camera', text: 'Evening stroll: Toss a coin in the <span class="has-tooltip">Trevi Fountain<span class="tooltip">Legend says this ensures your return to Rome! It gets very crowded, so an evening visit is magical.</span></span>, see the Pantheon (from outside), and climb the Spanish Steps.'},
-                { type: 'food', icon: 'food', text: 'Welcome dinner in Trastevere, a charming neighbourhood known for its authentic trattorias. Est. cost: €40.' }
+                { type: 'food', icon: 'food', text: 'Late dinner near your hotel. Est. cost: €25.' }
             ]},
-            { day: 2, title: 'Ancient Rome (Sun, Sep 28)', dailyCost: '€185', items: [
+            { day: 2, title: 'Ancient Rome (Sat, Sep 27)', dailyCost: '€185', items: [
                 { type: 'accommodation', icon: 'bed', text: 'Hotel in Rome (€130).' },
-                { type: 'visit', icon: 'camera', text: '<span class="has-tooltip">Pre-booked tour<span class="tooltip">Booking tickets for the Colosseum, Roman Forum & Palatine Hill online in advance is essential to avoid massive queues.</span></span> of the Colosseum, Roman Forum, and Palatine Hill.' },
+                { type: 'visit', icon: 'camera', text: '<span class="has-tooltip">Pre-booked tour<span class="tooltip">Booking tickets for the Colosseum, Roman Forum & Palatine Hill online in advance is essential to avoid massive queues.</span></span> of the Colosseum, Roman Forum, and Palatine Hill. (🚇 by Metro/walk)' },
                 { type: 'food', icon: 'food', text: 'Lunch near the Forum. Try "Cacio e Pepe", a classic Roman pasta dish. Est. cost: €25.' },
-                { type: 'food', icon: 'food', text: 'Relaxed evening with an "aperitivo" - a pre-dinner drink with snacks.' }
+                { type: 'visit', icon: 'camera', text: 'Evening stroll: Toss a coin in the Trevi Fountain, see the Pantheon, and climb the Spanish Steps. (🚶‍♂️ on foot)'}
             ]},
-            { day: 3, title: 'Vatican City & Art (Mon, Sep 29)', dailyCost: '€185', items: [
+            { day: 3, title: 'Vatican City & Art (Sun, Sep 28)', dailyCost: '€185', items: [
                 { type: 'accommodation', icon: 'bed', text: 'Hotel in Rome (€130).' },
-                { type: 'visit', icon: 'camera', text: 'Explore Vatican City. Visit St. Peter\'s Basilica and climb the dome for incredible views.' },
-                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Vatican Museums<span class="tooltip">Book tickets online months ahead! Your ticket includes the Sistine Chapel. Allot at least 4 hours.</span></span> to see masterpieces and the awe-inspiring Sistine Chapel.' },
+                { type: 'visit', icon: 'camera', text: 'Explore Vatican City. Visit St. Peter\'s Basilica and climb the dome for incredible views. (🚇 by Metro)' },
+                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Vatican Museums<span class="tooltip">Book tickets online months ahead! Your ticket includes the Sistine Chapel. Allot at least 4 hours.</span></span> to see masterpieces and the awe-inspiring Sistine Chapel. (🚶‍♂️ on foot from St. Peter\'s)' },
                 { type: 'food', icon: 'food', text: 'Dinner near Prati, the district bordering the Vatican. Est. food cost: €35.' }
             ]},
-            { day: 4, title: 'Journey to Florence (Tue, Sep 30)', dailyCost: '€205', items: [
+            { day: 4, title: 'Journey to Florence (Mon, Sep 29)', dailyCost: '€205', items: [
                 { type: 'travel', icon: 'train', text: 'Take a high-speed train from Roma Termini to Firenze S.M. Novella (1.5 hours, ~€40-70). <span class="has-tooltip">Book early!<span class="tooltip">Booking via Trenitalia or Italo websites 1-2 months in advance offers the best prices.</span></span>' },
                 { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Florence (from €140/night).' },
-                { type: 'visit', icon: 'camera', text: 'Afternoon walk to Ponte Vecchio, the famous medieval bridge. Explore the Oltrarno artisan district.' },
-                { type: 'visit', icon: 'camera', text: 'Climb Giotto\'s Bell Tower or Brunelleschi\'s Dome for a sunset view over the city. Book this climb well in advance!' }
+                { type: 'visit', icon: 'camera', text: 'Afternoon walk to Ponte Vecchio, the famous medieval bridge. Explore the Oltrarno artisan district. (🚶‍♂️ on foot)' },
+                { type: 'visit', icon: 'camera', text: 'Climb Giotto\'s Bell Tower or Brunelleschi\'s Dome for a sunset view over the city. Book this climb well in advance! (🚶‍♂️ on foot)' }
             ]},
-            { day: 5, title: 'Renaissance Art in Florence (Wed, Oct 1)', dailyCost: '€195', items: [
+            { day: 5, title: 'Renaissance Art in Florence (Tue, Sep 30)', dailyCost: '€195', items: [
                 { type: 'accommodation', icon: 'bed', text: 'Hotel in Florence (€140).' },
-                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Accademia Gallery<span class="tooltip">Pre-booking is essential to see Michelangelo\'s original "David" without waiting for hours.</span></span> in the morning.' },
-                { type: 'visit', icon: 'camera', text: 'Explore the vast Uffizi Gallery (or Pitti Palace for a different vibe). Book tickets in advance.'},
+                { type: 'visit', icon: 'camera', text: 'Visit the <span class="has-tooltip">Accademia Gallery<span class="tooltip">Pre-booking is essential to see Michelangelo\'s original "David" without waiting for hours.</span></span> in the morning. (🚶‍♂️ on foot)' },
+                { type: 'visit', icon: 'camera', text: 'Explore the vast Uffizi Gallery (or Pitti Palace for a different vibe). Book tickets in advance. (🚶‍♂️ on foot)'},
                 { type: 'food', icon: 'food', text: 'Try a "lampredotto" (tripe sandwich) from a stall for an authentic local lunch. Enjoy a Bistecca alla Fiorentina for dinner. Est. food cost: €55.' }
             ]},
-            { day: 6, title: 'Tuscan Countryside (Thu, Oct 2)', dailyCost: '€150', items: [
+            { day: 6, title: 'Tuscan Countryside (Wed, Oct 1)', dailyCost: '€150', items: [
                 { type: 'travel', icon: 'bus', text: 'Take a <span class="has-tooltip">full-day bus tour<span class="tooltip">Many operators offer tours from Florence that include Siena, San Gimignano, and a winery lunch. It\'s the most efficient way to see the countryside without a car.</span></span> through the Chianti region of Tuscany.'},
-                { type: 'visit', icon: 'camera', text: 'Explore the medieval towns of Siena (famous for its Palio horse race) and the tower-filled San Gimignano.'},
+                { type: 'visit', icon: 'camera', text: 'Explore the medieval towns of Siena (famous for its Palio horse race) and the tower-filled San Gimignano. (🚌 by Bus Tour)'},
                 { type: 'food', icon: 'food', text: 'Enjoy a traditional Tuscan lunch and wine tasting at a local vineyard, usually included in the tour price.' },
                 { type: 'accommodation', icon: 'bed', text: 'Return to your hotel in Florence in the evening.' }
             ]},
-            { day: 7, title: 'Arrival in Venice (Fri, Oct 3)', dailyCost: '€210', items: [
-                { type: 'travel', icon: 'train', text: 'High-speed train from Florence to Venezia S. Lucia (2 hours, ~€35-60). The view as you pull into the station is unforgettable.' },
-                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Venice (from €150/night). <span class="has-tooltip">Pack light!<span class="tooltip">You\'ll be carrying your luggage over bridges and through narrow alleys. A backpack is easier than a roller bag.</span></span>' },
-                { type: 'visit', icon: 'camera', text: 'Get lost in the canals. Visit St. Mark\'s Square, St. Mark\'s Basilica, and the Doge\'s Palace.' },
-                { type: 'food', icon: 'food', text: 'Enjoy "cicchetti" (Venetian tapas) and a glass of wine at a traditional bacaro. Est. food cost: €40.' }
+            { day: 7, title: 'Return to Rome (Thu, Oct 2)', dailyCost: '€180', items: [
+                { type: 'travel', icon: 'train', text: 'Morning train from Florence back to Rome (~2 hours, ~€35-60).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into a hotel for your last two nights (€130).' },
+                { type: 'visit', icon: 'camera', text: 'Explore a different neighborhood like Monti, known for its bohemian vibe and unique shops. (🚶‍♂️ on foot)' },
+                { type: 'food', icon: 'food', text: 'Enjoy a relaxed dinner in Monti. Est. food cost: €40.' }
             ]},
-            { day: 8, title: 'Venetian Wonders (Sat, Oct 4)', dailyCost: '€210', items: [
-                { type: 'accommodation', icon: 'bed', text: 'Hotel in Venice (€150).' },
-                { type: 'visit', icon: 'ferry', text: 'Take the quintessential <span class="has-tooltip">gondola ride<span class="tooltip">It\'s touristy but magical. The official price is €80 for a 30-minute ride (for the gondola, not per person).</span></span> through the quiet back canals.' },
-                { type: 'visit', icon: 'camera', text: 'Walk across the Rialto Bridge and explore the bustling Rialto Market (best in the morning).' },
-                { type: 'food', icon: 'food', text: 'Enjoy a final farewell dinner. Try squid ink pasta for a local delicacy. Est. food cost: €60.' }
+            { day: 8, title: 'Leisurely Rome & Departure Prep (Fri, Oct 3)', dailyCost: '€180', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Rome (€130).' },
+                { type: 'visit', icon: 'camera', text: 'Revisit a favorite spot, do some last-minute souvenir shopping, or explore the Borghese Gallery and Gardens (must book tickets weeks in advance). (🚌 by bus/walk)' },
+                { type: 'food', icon: 'food', text: 'Enjoy a final farewell dinner. Est. food cost: €50.' }
             ]},
-            { day: 9, title: 'Departure (Sun, Oct 5)', dailyCost: '€30', items: [
+            { day: 9, title: 'Departure (Sat, Oct 4)', dailyCost: '€25', items: [
                 { type: 'food', icon: 'food', text: 'Enjoy one last Italian coffee and pastry. Est. cost: €10.' },
-                { type: 'travel', icon: 'bus', text: 'Take a Vaporetto (water bus) or a land bus from Piazzale Roma to Venice Marco Polo Airport (VCE) for your flight home (~€15-20).' }
+                { type: 'travel', icon: 'bus', text: 'Head to Fiumicino Airport (FCO) for your 12:45 PM flight home (~€15).' }
             ]}
         ];
 
