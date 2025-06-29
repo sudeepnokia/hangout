@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Italy and Greece</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .timeline-item {
+            opacity: 0;
+        }
+
+        /* Category-based coloring */
+        .visit-card { background-color: #eef2ff; border-left: 4px solid #6366f1; }
+        .accommodation-card { background-color: #fee2e2; border-left: 4px solid #ef4444; }
+        .food-card { background-color: #dcfce7; border-left: 4px solid #22c55e; }
+        .travel-card-train { background-color: #dbeafe; border-left: 4px solid #3b82f6; }
+        .travel-card-ferry { background-color: #bfdbfe; border-left: 4px solid #2563eb; }
+        .travel-card-bus { background-color: #93c5fd; border-left: 4px solid #1d4ed8; }
+        .prep-card { background-color: #f3e8ff; border-left: 4px solid #9333ea; }
+        .flight-card { background-color: #e0f2fe; border-left: 4px solid #0ea5e9; }
+
+        /* Tooltip Styles */
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted #4b5563; /* gray-600 */
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #1f2937; /* gray-800 */
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px; /* Use half of the width to center */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1f2937 transparent transparent transparent;
+        }
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-4 text-gray-900">Your Italy & Greece Adventure</h1>
+        <p class="text-center text-lg text-gray-600 mb-12">A 9-Day Itinerary from Rome to Athens</p>
+
+        <!-- Pre-Trip Preparation Section -->
+        <div class="bg-white rounded-lg shadow-xl p-8 mb-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-6">Pre-Trip Preparation Checklist</h2>
+            <div class="space-y-6">
+                <!-- Visa -->
+                <div class="p-4 rounded-lg prep-card">
+                    <h3 class="font-bold text-lg mb-2">3 Months Before (Late June) - Apply for Schengen Visa</h3>
+                    <p class="text-sm">As Indian passport holders, you need a Schengen visa. Since your first port of entry is Italy, you'll apply through them.
+                        <br><strong>Action:</strong> Book an appointment at <a href="https://www.vfsglobal.com/en/individuals/index.html" target="_blank" class="text-blue-600 hover:underline">VFS Global in Bangalore</a>.
+                        <br><strong>Timeline:</strong> <span class="has-tooltip">Processing takes 15-45 days,<span class="tooltip">It's highly recommended to apply at least 2-3 months in advance to avoid any last-minute stress.</span></span> so start early! You'll need flight bookings, hotel reservations, and travel insurance for your application.
+                    </p>
+                </div>
+                <!-- Packing -->
+                <div class="p-4 rounded-lg prep-card">
+                    <h3 class="font-bold text-lg mb-2">1 Week Before - Pack & Final Prep</h3>
+                    <div class="text-sm grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold">Things to Pack:</h4>
+                            <ul class="list-disc list-inside mt-1">
+                                <li><strong>Clothing:</strong> <span class="has-tooltip">Light layers are key.<span class="tooltip">Weather in late Sep/early Oct is pleasant but can be unpredictable. Expect days around 18-24°C and cooler evenings.</span></span> Pack t-shirts, a light jacket/cardigan, a warmer sweater, and comfortable trousers/jeans. Include a scarf for visiting religious sites.</li>
+                                <li><strong>Footwear:</strong> Very comfortable walking shoes are essential.</li>
+                                <li><strong>Essentials:</strong> Passport, visa, travel insurance, universal travel adapter, reusable water bottle, portable power bank.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Connectivity (SIM Card):</h4>
+                            <ul class="list-disc list-inside mt-1">
+                                <li><strong>Local SIM:</strong> Upon arrival in Rome, you can buy a tourist SIM from providers like TIM or Vodafone (~€25-€30 for a month with ample data).</li>
+                                <li><strong>eSIM:</strong> <span class="has-tooltip">For convenience, consider an eSIM.<span class="tooltip">Activate it upon landing without needing a physical SIM. Check providers like Airalo or Holafly before you travel.</span></span> Purchase and install it before you leave India.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Flight Details -->
+                <div class="p-4 rounded-lg flight-card">
+                    <h3 class="font-bold text-lg mb-2">Your Flight Details</h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold">Onward Journey: Sat, Sep 27</h4>
+                            <p><strong>BLR → FRA:</strong> 3:00 AM - 9:05 AM (Lufthansa LH 755)</p>
+                            <p><strong>FRA → FCO:</strong> 10:40 AM - 12:30 PM (Lufthansa LH 232)</p>
+                            <p class="text-xs text-gray-600 mt-1">Arrive at Rome FCO at 12:30 PM local time.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Return Journey: Sun, Oct 5</h4>
+                            <p><strong>ATH → MUC:</strong> 6:00 AM - 7:35 AM (Lufthansa LH 1757)</p>
+                            <p><strong>MUC → BLR:</strong> 12:10 PM - 12:30 AM (Oct 6) (Lufthansa LH 764)</p>
+                             <p class="text-xs text-gray-600 mt-1">Arrive at Bengaluru BLR at 12:30 AM on Monday, Oct 6.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Itinerary Timeline -->
+        <div class="relative wrap overflow-hidden p-10 h-full">
+            <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
+
+            <!-- Day 1: Arrival in Rome -->
+            <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">1</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 1: Arrival in Rome (Sat, Sep 27)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg travel-card-train">
+                            <p class="text-sm font-semibold">Travel: Airport to City</p>
+                            <p class="text-sm">Arrive at FCO at 12:30 PM. Take the Leonardo Express train to Roma Termini (approx. €14).</p>
+                        </div>
+                        <div class="p-4 rounded-lg accommodation-card">
+                            <p class="text-sm font-semibold">Accommodation</p>
+                            <p class="text-sm">Check into your budget hotel (from €85/night).</p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card">
+                            <p class="text-sm font-semibold">Evening Meal</p>
+                            <p class="text-sm">Explore a trattoria in the Monti district. Est. food cost: €25-35.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €134</p></div>
+                </div>
+            </div>
+
+            <!-- Day 2: Ancient Rome -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto text-white font-semibold text-lg">2</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 2: Ancient Rome (Sun, Sep 28)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Budget hotel stay (€85).</p></div>
+                        <div class="p-4 rounded-lg visit-card">
+                            <p class="text-sm font-semibold">Colosseum, Roman Forum & Palatine Hill</p>
+                            <p class="text-sm">Visit these iconic sites. <span class="has-tooltip">Combined ticket is €18.<span class="tooltip">Book your timed-entry ticket online from the official website to skip the very long queues!</span></span></p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card">
+                            <p class="text-sm font-semibold">Evening Meal</p>
+                            <p class="text-sm">Wander Trastevere for an authentic pizzeria dinner. Est. food cost: €30-40.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €138</p></div>
+                </div>
+            </div>
+
+            <!-- Day 3: Vatican City -->
+            <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">3</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 3: Vatican City (Mon, Sep 29)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Budget hotel stay (€85).</p></div>
+                        <div class="p-4 rounded-lg travel-card-bus"><p class="text-sm font-semibold">Travel: To Vatican City</p><p class="text-sm">Take the metro to Ottaviano (€1.50).</p></div>
+                        <div class="p-4 rounded-lg visit-card">
+                            <p class="text-sm font-semibold">St. Peter's Basilica & Vatican Museums</p>
+                            <p class="text-sm"><span class="has-tooltip">Book museum tickets (€20-40) online in advance.<span class="tooltip">Basilica entry is free, but queues can be long. Remember the strict dress code: shoulders and knees must be covered.</span></span></p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Food</p><p class="text-sm">Estimated food cost: €25-35.</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €141.50</p></div>
+                </div>
+            </div>
+
+            <!-- Day 4: Rome & Travel to Bari -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto text-white font-semibold text-lg">4</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 4: Rome & Travel to Bari (Tue, Sep 30)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg visit-card">
+                            <p class="text-sm font-semibold">Pantheon, Trevi Fountain & Spanish Steps</p>
+                            <p class="text-sm">Visit these landmarks. <span class="has-tooltip">Pantheon now costs €5 to enter.<span class="tooltip">The Pantheon fee is a recent change. The Trevi Fountain and Spanish Steps remain free to visit.</span></span></p>
+                        </div>
+                        <div class="p-4 rounded-lg travel-card-train">
+                            <p class="text-sm font-semibold">Travel: Rome to Bari</p>
+                            <p class="text-sm">Take a high-speed train from Roma Termini. <a href="https://www.trenitalia.com/en.html" target="_blank" class="text-blue-600 hover:underline"><span class="has-tooltip">Book on Trenitalia.<span class="tooltip">Fares are €50-€80 for standard tickets. Book weeks/months ahead for cheaper 'Super Economy' fares.</span></span></a> (4-5 hrs).</p>
+                        </div>
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Check into accommodation in Bari (from €72/night).</p></div>
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Food</p><p class="text-sm">Estimated food cost: €30-40.</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €162</p></div>
+                </div>
+            </div>
+
+            <!-- Day 5: Bari & Ferry to Patras -->
+            <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">5</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 5: Bari & Ferry to Patras (Wed, Oct 1)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg visit-card"><p class="text-sm font-semibold">Bari Vecchia</p><p class="text-sm">Explore the charming old town and see the Basilica di San Nicola.</p></div>
+                        <div class="p-4 rounded-lg travel-card-ferry">
+                            <p class="text-sm font-semibold">Travel: Bari to Patras (Overnight)</p>
+                            <p class="text-sm">Board the ferry to Patras. <a href="https://www.superfast.com/" target="_blank" class="text-blue-600 hover:underline"><span class="has-tooltip">3-bed cabin from ~€180.<span class="tooltip">Price is per person. Booking a cabin is highly recommended for comfort on this 16.5-hour journey. Book well in advance!</span></span></a></p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Food</p><p class="text-sm">Pack snacks for the journey. Est. food cost: €20-30.</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €210</p></div>
+                </div>
+            </div>
+
+            <!-- Day 6: Arrival in Athens -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto text-white font-semibold text-lg">6</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 6: Arrival in Athens (Thu, Oct 2)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg travel-card-bus"><p class="text-sm font-semibold">Travel: Patras to Athens</p><p class="text-sm">Arrive in Patras and take a bus to Athens (€18-23, approx. 3-4 hours).</p></div>
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Check into your hotel (from €57/night).</p></div>
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Evening Meal</p><p class="text-sm">Explore the historic Plaka district. Est. food cost: €25-35.</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €115</p></div>
+                </div>
+            </div>
+
+            <!-- Day 7: The Acropolis -->
+            <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">7</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 7: The Acropolis (Fri, Oct 3)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Budget hotel stay (€57).</p></div>
+                        <div class="p-4 rounded-lg visit-card">
+                           <p class="text-sm font-semibold">Acropolis & Museum</p>
+                           <p class="text-sm"><a href="https://hhticket.gr/" target="_blank" class="text-blue-600 hover:underline"><span class="has-tooltip">Visit the iconic sites (€45).<span class="tooltip">This includes the €30 multi-site pass (Acropolis, Agora, etc.) and the separate €15 Acropolis Museum ticket. Great value!</span></span></a></p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card">
+                            <p class="text-sm font-semibold">Evening Meal</p>
+                            <p class="text-sm">Rooftop bar with Acropolis views. Est. food cost: €30-40.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €137</p></div>
+                </div>
+            </div>
+
+            <!-- Day 8: Ancient Agora & Exploration -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-item">
+                 <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto text-white font-semibold text-lg">8</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 8: Ancient Agora & Exploration (Sat, Oct 4)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg accommodation-card"><p class="text-sm font-semibold">Accommodation</p><p class="text-sm">Budget hotel stay (€57).</p></div>
+                        <div class="p-4 rounded-lg visit-card">
+                            <p class="text-sm font-semibold">Ancient Agora & Lycabettus Hill</p>
+                            <p class="text-sm"><span class="has-tooltip">Explore the marketplace & hike for views.<span class="tooltip">Entry to the Ancient Agora is included in your €30 multi-site ticket from the Acropolis.</span></span></p>
+                        </div>
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Evening Meal</p><p class="text-sm">Farewell dinner at a traditional taverna. Est. food cost: €35-45.</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €97</p></div>
+                </div>
+            </div>
+
+            <!-- Day 9: Departure -->
+            <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-item">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">9</h1></div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="font-bold text-gray-800 text-xl mb-4">Day 9: Departure (Sun, Oct 5)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg food-card"><p class="text-sm font-semibold">Morning Meal</p><p class="text-sm">Enjoy a final Greek breakfast. Est. food cost: €15.</p></div>
+                        <div class="p-4 rounded-lg travel-card-bus"><p class="text-sm font-semibold">Travel: To Airport</p><p class="text-sm">Take the metro or bus to Athens Int'l Airport (ATH) (€10).</p></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t"><p class="text-sm font-bold text-right">Approx. Daily Cost: €25</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Cost Summary -->
+        <div class="bg-white rounded-lg shadow-xl p-8 mt-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-4">Complete Trip Cost Summary</h2>
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Category</th>
+                        <th scope="col" class="px-6 py-3">Cost per Person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights (₹82,000)</th><td class="px-6 py-4">~ €911</td></tr>
+                    <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation</th><td class="px-6 py-4">€498</td></tr>
+                    <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food</th><td class="px-6 py-4">€275</td></tr>
+                    <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Local & Inter-country Travel</th><td class="px-6 py-4">€276</td></tr>
+                    <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Entrance Fees</th><td class="px-6 py-4">€98</td></tr>
+                    <tr class="bg-white"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold">~ €2,058</td></tr>
+                </tbody>
+            </table>
+             <p class="text-center text-xs text-gray-500 mt-4">Note: Flight cost converted from INR to EUR at an approximate rate. Total cost is an estimate and does not include visa fees, personal shopping, or a contingency fund.</p>
+        </div>
+    </div>
+
+    <script>
+        // This script fades in the timeline items one by one for a nice visual effect.
+        document.addEventListener("DOMContentLoaded", function() {
+            const items = document.querySelectorAll('.timeline-item, .fade-in');
+            let delay = 0;
+            items.forEach(item => {
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.classList.add('fade-in');
+                }, delay);
+                delay += 150; // Stagger the animation
+            });
+        });
+    </script>
+</body>
+</html>
