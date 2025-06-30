@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "The \"Concierge\" Actor System",
+  "subtitle": "A Resilient, Massively Concurrent Architecture for Personalized Planning",
+  "layers": [
+    { "title": "CLIENT & SUPERVISION", "x": 125, "dividerX": 250 },
+    { "title": "USER & SESSION ACTORS", "x": 320, "dividerX": 475 },
+    { "title": "KNOWLEDGE & CONTEXT PROVIDERS", "x": 650, "dividerX": 900 },
+    { "title": "EXTERNAL WORLD INTERFACE", "x": 1000, "dividerX": 1175 },
+    { "title": "PERSISTENCE", "x": 1325, "dividerX": null }
+  ],
+  "components": {
+    "clientGateway": {
+      "name": "Client Gateway", "description": "Translates HTTP to Actor Messages.", "details": "The entry point that receives client requests and sends messages to the appropriate top-level actors.",
+      "x": 50, "y": 375, "width": 150, "height": 125, "fill": "#3949ab"
+    },
+    "guardianActor": {
+      "name": "Guardian Actor (Supervisor)", "description": "The root of the system.", "details": "The top-level actor that creates, supervises, and manages the lifecycle of all other actors, providing fault tolerance.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#5e35b1"
+    },
+    "userActor": {
+      "name": "User Actor", "description": "Represents a single user.", "details": "A long-lived, persistent actor holding a user's core preferences, history, and state. It spawns Trip Planner actors on request.",
+      "x": 290, "y": 375, "width": 150, "height": 125, "fill": "#5e35b1"
+    },
+    "tripPlannerActor": {
+      "name": "Trip Planner Actor", "description": "Manages one trip plan.", "details": "An ephemeral actor that exists for the duration of a planning session. It holds the trip's state and orchestrates the planning process.",
+      "x": 290, "y": 550, "width": 150, "height": 100, "fill": "#5e35b1"
+    },
+    "knowledgeGraphProvider": {
+      "name": "Knowledge Graph Provider", "description": "Interfaces with the graph DB.", "details": "A specialized actor (or a pool of them) that handles queries to the graph database, providing information about locations, activities, etc.",
+      "x": 525, "y": 200, "width": 160, "height": 125, "fill": "#00838f"
+    },
+    "ragContextProvider": {
+      "name": "RAG Context Provider", "description": "Interfaces with the vector DB.", "details": "An actor that performs semantic searches on the vector database to retrieve relevant context for the LLM-based proposal generation.",
+      "x": 525, "y": 375, "width": 160, "height": 125, "fill": "#00838f"
+    },
+    "proposalGenerator": {
+      "name": "Proposal Generator (LLM Actor)", "description": "Generates trip ideas.", "details": "An actor that encapsulates the LLM. It receives a request with context and returns a set of creative itinerary proposals.",
+      "x": 525, "y": 550, "width": 160, "height": 125, "fill": "#00838f"
+    },
+    "bookingAgentActor": {
+      "name": "Booking Agent Actor", "description": "Handles booking transactions.", "details": "A stateful actor that manages the saga or workflow of a booking, interacting with external APIs and handling retries or failures.",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#ad1457"
+    },
+    "notificationAgentActor": {
+      "name": "Notification Agent Actor", "description": "Sends notifications.", "details": "An actor that receives requests to send notifications and interfaces with services like Twilio or SendGrid.",
+      "x": 960, "y": 375, "width": 170, "height": 125, "fill": "#ad1457"
+    },
+    "ingestionActor": {
+      "name": "Data Ingestion Actor", "description": "Syncs external data.", "details": "A scheduled actor that periodically fetches data from third-party APIs and sends messages to update the knowledge providers.",
+      "x": 960, "y": 550, "width": 170, "height": 125, "fill": "#ad1457"
+    },
+    "eventStore": {
+      "name": "Event Store", "description": "Logs all actor messages.", "details": "A durable log (like Kafka or a dedicated event store DB) where all messages/events are persisted for debugging, replay, and analytics.",
+      "x": 1270, "y": 200, "width": 180, "height": 125, "fill": "#424242"
+    },
+    "stateStore": {
+      "name": "Actor State Store", "description": "Saves actor snapshots.", "details": "A key-value store (like Redis or Cassandra) used to persist snapshots of actor states, allowing them to be recovered after a crash.",
+      "x": 1270, "y": 375, "width": 180, "height": 125, "fill": "#424242"
+    },
+    "knowledgeDBs": {
+      "name": "Knowledge DBs", "description": "Graph & Vector DBs.", "details": "The underlying databases (Neo4j, Milvus, etc.) that store the system's long-term knowledge.",
+      "x": 1270, "y": 550, "width": 180, "height": 125, "fill": "#424242"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. Request to User Actor", "path": "M 200 437.5 L 290 437.5", "label_cx": 245, "label_cy": 425 },
+    { "id": 2, "description": "2. Spawns Trip Planner", "path": "M 365 500 L 365 550", "label_cx": 385, "label_cy": 525 },
+    { "id": 3, "description": "3. Planner asks for Context", "path": "M 440 600 C 480 437.5, 525 437.5, 525 437.5", "label_cx": 480, "label_cy": 515 },
+    { "id": 4, "description": "4. Context Providers query DBs", "path": "M 685 437.5 L 1270 575", "label_cx": 975, "label_cy": 500, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 5, "description": "5. Planner asks for Proposals", "path": "M 440 575 L 525 575", "label_cx": 480, "label_cy": 590 },
+    { "id": 6, "description": "6. Proposals returned to User Actor", "path": "M 290 550 C 290 550, 290 500, 290 500", "label_cx": 270, "label_cy": 525 },
+    { "id": 7, "description": "7. User accepts, tells Booking Agent", "path": "M 440 400 C 600 250, 900 250, 960 250", "label_cx": 700, "label_cy": 290, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 8, "description": "8. Agent tells Notification Agent", "path": "M 1045 325 L 1045 375", "label_cx": 1065, "label_cy": 350, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 9, "description": "9. All messages logged to Event Store", "path": "M 685 250 C 850 250, 1200 250, 1270 250", "label_cx": 975, "label_cy": 265, "options": { "stroke-dasharray": "3, 3" } },
+    { "id": 10, "description": "10. State is snapshotted to State Store", "path": "M 440 400 L 1270 400", "label_cx": 855, "label_cy": 385, "options": { "stroke-dasharray": "3, 3" } }
+  ]
+}
