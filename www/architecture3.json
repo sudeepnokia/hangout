@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vacation Planner Architecture: The Digital Twin",
+  "subtitle": "A Proactive, Self-Learning Travel Companion",
+  "layers": [
+    { "title": "AURA INTERFACE", "x": 125, "dividerX": 250 },
+    { "title": "COGNITION & ORCHESTRATION", "x": 310, "dividerX": 475 },
+    { "title": "DIGITAL TWIN ECOSYSTEM", "x": 685, "dividerX": 900 },
+    { "title": "KNOWLEDGE & PERCEPTION FABRIC", "x": 1025, "dividerX": 1175 },
+    { "title": "EXTERNAL REALITY SYNC", "x": 1300, "dividerX": null }
+  ],
+  "components": {
+    "voiceUI": {
+      "name": "Ambient Voice UI", "description": "Conversational interface.", "details": "Always-on voice assistant within the app that captures commands and conversational cues.",
+      "x": 50, "y": 300, "width": 150, "height": 75, "fill": "#6a1b9a"
+    },
+    "smartApp": {
+      "name": "Sentient App", "description": "The app is the UI.", "details": "A dynamic, context-aware mobile and web application that anticipates user needs and surfaces proactive suggestions.",
+      "x": 50, "y": 450, "width": 150, "height": 75, "fill": "#6a1b9a"
+    },
+    "intentEngine": {
+      "name": "Intent & Signal Engine", "description": "Deciphers user needs.", "details": "Goes beyond basic NLP to understand complex intent, context, and even unstated signals from user behavior.",
+      "x": 290, "y": 375, "width": 150, "height": 100, "fill": "#4a148c"
+    },
+    "securityCore": {
+      "name": "Biometric Security Core", "description": "Zero-trust identity.", "details": "Handles continuous authentication based on biometrics and usage patterns. Manages the data access rights for each Digital Twin pod.",
+      "x": 290, "y": 550, "width": 150, "height": 75, "fill": "#4a148c"
+    },
+    "twinOrchestrator": {
+      "name": "Twin Orchestrator", "description": "Activates and manages Twins.", "details": "The master controller. It receives signals from the Intent Engine, spins up the relevant Digital Twin, and tasks it with a goal (e.g., 'plan a surprise weekend').",
+      "x": 525, "y": 375, "width": 150, "height": 100, "fill": "#311b92"
+    },
+    "digitalTwin": {
+      "name": "User Digital Twin [Pod]", "description": "Your personal travel AI.", "details": "A containerized, isolated model of the user. Contains their unique preferences, memories, learned behaviors, and a simulation engine. This is the core of the architecture.",
+      "x": 715, "y": 350, "width": 150, "height": 150, "fill": "#d500f9"
+    },
+    "evolutionEngine": {
+      "name": "Twin Evolution Engine", "description": "Enables Twins to learn.", "details": "A continuous online learning system. It refines each Digital Twin based on every interaction, feedback, and new piece of data, ensuring they become more accurate over time.",
+      "x": 715, "y": 550, "width": 150, "height": 100, "fill": "#aa00ff"
+    },
+    "simulationEngine": {
+      "name": "Simulation Engine", "description": "Runs 'what-if' scenarios.", "details": "A component within each Twin that can run hypothetical travel scenarios, allowing users to explore alternatives for budget, style, or companions.",
+      "x": 715, "y": 175, "width": 150, "height": 100, "fill": "#aa00ff"
+    },
+    "knowledgeGraph": {
+      "name": "Knowledge Graph (Memory)", "description": "The world model.", "details": "A massive graph database connecting places, events, people, and concepts. It provides the contextual 'world knowledge' that the Twins use for planning.",
+      "x": 960, "y": 375, "width": 170, "height": 100, "fill": "#0091ea"
+    },
+    "dataIngestor": {
+      "name": "Real-Time Data Ingestor", "description": "The system's senses.", "details": "A high-throughput pipeline (e.g., Kafka) that streams in data from external APIs, social media, and user devices, feeding the Knowledge Fabric.",
+      "x": 960, "y": 550, "width": 170, "height": 75, "fill": "#00b8d4"
+    },
+    "unstructuredStore": {
+      "name": "Unstructured Data Lake", "description": "Raw information.", "details": "Stores all raw, unstructured data like photos, social posts, and reviews before they are processed and integrated into the Knowledge Graph.",
+      "x": 960, "y": 210, "width": 170, "height": 75, "fill": "#00b8d4"
+    },
+    "partnerAPIs": {
+      "name": "Partner APIs", "description": "Booking, Social, Comms.", "details": "A unified interface to all third-party services for travel, social media, calendars, and communications.",
+      "x": 1220, "y": 375, "width": 180, "height": 75, "fill": "#263238"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. User Signal", "path": "M 200 412.5 C 250 412.5, 250 412.5, 290 412.5", "label_cx": 245, "label_cy": 400 },
+    { "id": 2, "description": "2. Continuous Auth", "path": "M 365 475 L 365 550", "label_cx": 385, "label_cy": 515 },
+    { "id": 3, "description": "3. Decoded Intent", "path": "M 440 425 L 525 425", "label_cx": 480, "label_cy": 415 },
+    { "id": 4, "description": "4. Activate Twin", "path": "M 675 425 L 715 425", "label_cx": 695, "label_cy": 415 },
+    { "id": 5, "description": "5. Run Simulation", "path": "M 790 350 L 790 275", "label_cx": 810, "label_cy": 310 },
+    { "id": 6, "description": "6. Perceive World State", "path": "M 865 425 L 960 425", "label_cx": 910, "label_cy": 415 },
+    { "id": 7, "description": "7. Generate Plan", "path": "M 960 425 C 900 425, 880 425, 865 425", "label_cx": 910, "label_cy": 440 },
+    { "id": 8, "description": "8. Sync with Reality", "path": "M 1130 412.5 L 1220 412.5", "label_cx": 1175, "label_cy": 400 },
+    { "id": 9, "description": "9. Present Plan", "path": "M 715 425 C 500 425, 475 425, 440 425", "label_cx": 580, "label_cy": 440 },
+    { "id": 10, "description": "10. User Feedback", "path": "M 440 400 C 500 500, 650 590, 715 590", "label_cx": 580, "label_cy": 530, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 11, "description": "11. Evolve Twin", "path": "M 790 550 L 790 500", "label_cx": 810, "label_cy": 525, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 12, "description": "12. Ingest Real-Time Data", "path": "M 1220 450 C 1200 587.5, 1130 587.5, 1130 587.5", "label_cx": 1175, "label_cy": 525, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 13, "description": "13. Update Knowledge Fabric", "path": "M 960 550 L 960 475", "label_cx": 980, "label_cy": 510, "options": { "stroke-dasharray": "2, 3" } }
+  ]
+}
