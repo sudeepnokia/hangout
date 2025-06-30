@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pragmatic Event-Driven Architecture",
+  "subtitle": "A Scalable & Modular System for Intelligent Trip Planning",
+  "layers": [
+    { "title": "INTERFACE & SECURITY", "x": 125, "dividerX": 250 },
+    { "title": "CORE SERVICES", "x": 360, "dividerX": 475 },
+    { "title": "EVENT BUS", "x": 685, "dividerX": 900 },
+    { "title": "DATA & INTELLIGENCE", "x": 980, "dividerX": 1175 },
+    { "title": "EXECUTION & INTEGRATION", "x": 1275, "dividerX": null }
+  ],
+  "components": {
+    "apiGateway": {
+      "name": "API Gateway", "description": "Single, secure entry point.", "details": "Handles client requests, routing, rate limiting, and authentication. The front door to the system.",
+      "x": 50, "y": 375, "width": 150, "height": 125, "fill": "#263238"
+    },
+    "identityService": {
+      "name": "Identity Service", "description": "Manages users & auth.", "details": "Handles user registration, login, and issues JWTs for secure service-to-service communication.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#37474f"
+    },
+    "profileService": {
+      "name": "User Profile Service", "description": "Manages user preferences.", "details": "Stores and serves all user-specific data: travel history, preferences, social connections, etc.",
+      "x": 290, "y": 350, "width": 150, "height": 125, "fill": "#37474f"
+    },
+    "requestService": {
+      "name": "Trip Request Service", "description": "Initiates a planning request.", "details": "A simple service that accepts a user's initial query and publishes a `trip_requested` event to the bus.",
+      "x": 290, "y": 525, "width": 150, "height": 100, "fill": "#37474f"
+    },
+    "eventBus": {
+      "name": "Event Bus (Kafka)", "description": "The system's central nervous system.", "details": "A high-throughput, durable message bus that decouples all services, allowing for asynchronous communication and resilience.",
+      "x": 525, "y": 375, "width": 160, "height": 150, "fill": "#00695c"
+    },
+    "proposalEngine": {
+      "name": "Proposal Engine", "description": "The intelligent planning core.", "details": "Consumes `trip_requested` events. Uses RAG and user data to generate multiple, distinct itinerary proposals (e.g., 'The Adventurer', 'The Foodie').",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#d84315"
+    },
+    "vectorDB": {
+      "name": "Vector DB (RAG Context)", "description": "Stores semantic context.", "details": "A vector database containing embeddings of user preferences, reviews, and location data to provide relevant context for the Proposal Engine.",
+      "x": 960, "y": 375, "width": 170, "height": 125, "fill": "#004d40"
+    },
+    "relationalDB": {
+      "name": "Relational DB (Postgres)", "description": "The source of truth.", "details": "Stores all structured, transactional data: user accounts, booking details, payment records.",
+      "x": 960, "y": 550, "width": 170, "height": 100, "fill": "#004d40"
+    },
+    "ingestionService": {
+      "name": "Data Ingestion Service", "description": "Syncs with the outside world.", "details": "Periodically fetches data from external APIs (flights, hotels) and publishes updates to the event bus for other services to consume.",
+      "x": 1220, "y": 200, "width": 180, "height": 125, "fill": "#455a64"
+    },
+    "bookingService": {
+      "name": "Booking Service", "description": "Executes transactions.", "details": "Consumes `proposal_accepted` events. Manages the state machine for booking flights and hotels, interacting with external APIs.",
+      "x": 1220, "y": 375, "width": 180, "height": 125, "fill": "#455a64"
+    },
+    "notificationService": {
+      "name": "Notification Service", "description": "Keeps the user informed.", "details": "Listens for events like `booking_confirmed` or `flight_reminder` and sends notifications via email, push, or SMS.",
+      "x": 1220, "y": 550, "width": 180, "height": 100, "fill": "#455a64"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. User initiates request", "path": "M 200 437.5 L 290 550", "label_cx": 245, "label_cy": 500 },
+    { "id": 2, "description": "2. Publishes `trip_requested` event", "path": "M 440 575 L 525 450", "label_cx": 480, "label_cy": 510 },
+    { "id": 3, "description": "3. Proposal Engine consumes event", "path": "M 685 400 L 960 250", "label_cx": 820, "label_cy": 320 },
+    { "id": 4, "description": "4. Engine fetches context from DBs", "path": "M 960 325 L 960 375", "label_cx": 980, "label_cy": 350, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 5, "description": "5. Publishes `proposals_ready` event", "path": "M 960 250 C 800 250, 700 375, 685 375", "label_cx": 820, "label_cy": 300 },
+    { "id": 6, "description": "6. Client receives proposals (via Gateway)", "path": "M 525 400 C 300 400, 250 425, 200 425", "label_cx": 360, "label_cy": 435 },
+    { "id": 7, "description": "7. User accepts, publishes `proposal_accepted`", "path": "M 200 425 C 300 425, 500 425, 525 425", "label_cx": 360, "label_cy": 410, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 8, "description": "8. Booking Service consumes event", "path": "M 685 425 L 1220 425", "label_cx": 950, "label_cy": 410, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 9, "description": "9. Publishes `booking_confirmed`", "path": "M 1220 450 C 1000 450, 700 450, 685 450", "label_cx": 950, "label_cy": 465, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 10, "description": "10. Notification Service consumes & acts", "path": "M 685 475 L 1220 575", "label_cx": 950, "label_cy": 530, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 11, "description": "11. Ingestion Service publishes data updates", "path": "M 1220 250 C 1000 250, 700 350, 685 350", "label_cx": 950, "label_cy": 290, "options": { "stroke-dasharray": "3, 4" } }
+  ]
+}
