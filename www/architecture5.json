@@ -1,58 +1,67 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Theory of Experiential Relativity",
-  "subtitle": "Calculating the Geodesic of a Journey Through Spacetime",
+  "title": "The Human Experience (HX) Flywheel",
+  "subtitle": "An Ecosystem Architecture for Compounding Value",
   "layers": [
-    { "title": "OBSERVATION & INITIAL CONDITIONS", "x": 125, "dividerX": 250 },
-    { "title": "SPACETIME MANIFOLD", "x": 335, "dividerX": 475 },
-    { "title": "GEODESIC CALCULATION", "x": 650, "dividerX": 900 },
-    { "title": "WAVE FUNCTION COLLAPSE", "x": 980, "dividerX": 1175 },
-    { "title": "CLASSICAL REALITY", "x": 1300, "dividerX": null }
+    { "title": "PERSONAL CORE", "x": 125, "dividerX": 250 },
+    { "title": "EXPERIENCE ENGINE", "x": 335, "dividerX": 475 },
+    { "title": "MARKETPLACE & ECOSYSTEM", "x": 650, "dividerX": 900 },
+    { "title": "INTELLIGENCE & FORESIGHT", "x": 980, "dividerX": 1175 },
+    { "title": "TRUST & GOVERNANCE FABRIC", "x": 1275, "dividerX": null }
   ],
   "components": {
-    "observerInterface": {
-      "name": "The Observer Interface", "description": "Where a question is posed.", "details": "The user (the observer) introduces a query into the system, setting the boundary conditions for the problem (e.g., 'A week in the Alps').",
-      "x": 50, "y": 375, "width": 150, "height": 100, "fill": "#1a237e"
+    "personalDataVault": {
+      "name": "Personal Data Vault", "description": "User-owned, user-controlled.", "details": "An encrypted, sovereign data store for each user. All personal data, preferences, and social connections reside here. The user grants explicit, revocable access.",
+      "x": 50, "y": 375, "width": 150, "height": 125, "fill": "#37474f"
     },
-    "massEnergyDistribution": {
-      "name": "Mass-Energy Distribution", "description": "The user's personal gravity.", "details": "This is not a 'profile'. It is the total sum of a user's preferences, history, and latent desires, represented as a tensor field that dictates how their personal spacetime is curved.",
-      "x": 290, "y": 200, "width": 150, "height": 125, "fill": "#283593"
+    "intentService": {
+      "name": "Intent Distiller", "description": "Understands the 'why'.", "details": "A practical NLP service that translates a user's request ('I need a break') into a structured goal with core parameters and constraints.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#455a64"
     },
-    "fieldStateTensor": {
-      "name": "Field State Tensor", "description": "The state of the universe.", "details": "A tensor representing the external constraints of reality: flight costs, hotel availability, weather, political stability. This defines the immutable geometry of the world.",
-      "x": 290, "y": 550, "width": 150, "height": 125, "fill": "#283593"
+    "compositionEngine": {
+      "name": "Experience Composition Engine", "description": "Assembles the plan.", "details": "The workhorse. It queries the marketplace for components (flights, hotels, activities) and assembles them into coherent, compelling itinerary options.",
+      "x": 290, "y": 375, "width": 150, "height": 125, "fill": "#455a64"
     },
-    "unifiedFieldEquation": {
-      "name": "Unified Field Equation Solver", "description": "The single, elegant formula.", "details": "The core intelligence. It takes the user's mass-energy and the world's field state to solve for the curvature of a personalized spacetime manifold. All possibilities exist here.",
-      "x": 525, "y": 375, "width": 160, "height": 150, "fill": "#0d47a1"
+    "storytellingService": {
+      "name": "Storytelling Service", "description": "Presents the 'what'.", "details": "Instead of a list, this service presents the proposed itinerary as an engaging narrative or visual story, making it emotionally resonant.",
+      "x": 290, "y": 550, "width": 150, "height": 100, "fill": "#455a64"
     },
-    "worldLineGenerator": {
-      "name": "Probabilistic World Line Generator", "description": "All possible paths.", "details": "It calculates an infinite set of possible paths (world lines) that the user could take through their curved spacetime, each with a certain probability.",
-      "x": 715, "y": 375, "width": 160, "height": 150, "fill": "#0d47a1"
+    "partnerGateway": {
+      "name": "Partner & API Gateway", "description": "The front door for business.", "details": "A secure, well-documented gateway for all third-party providers (hotels, airlines, local guides) to plug into the marketplace.",
+      "x": 525, "y": 200, "width": 160, "height": 100, "fill": "#78909c"
     },
-    "geodesicFinder": {
-      "name": "Geodesic Finder", "description": "The shortest path.", "details": "This component examines all probabilistic world lines and identifies the geodesic—the path of least action, representing the most efficient and satisfying journey.",
-      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#311b92"
+    "inventorySystem": {
+      "name": "Real-Time Inventory System", "description": "The shelf space.", "details": "A high-performance, distributed cache that holds real-time availability and pricing data from all partners in the marketplace.",
+      "x": 525, "y": 375, "width": 160, "height": 125, "fill": "#78909c"
     },
-    "eventProjector": {
-      "name": "Event Projector", "description": "From probability to certainty.", "details": "This is the moment of collapse. The chosen geodesic is converted into a set of deterministic, classical events: a flight booking, a hotel reservation, a dinner time.",
-      "x": 960, "y": 500, "width": 170, "height": 125, "fill": "#311b92"
+    "settlementEngine": {
+      "name": "Settlement & Clearing Engine", "description": "Ensures everyone gets paid.", "details": "A robust financial system that handles all transactions, multi-party settlements, and currency conversions within the ecosystem.",
+      "x": 525, "y": 550, "width": 160, "height": 100, "fill": "#78909c"
     },
-    "classicalItinerary": {
-      "name": "Classical Itinerary", "description": "The journey, realized.", "details": "The final, observable output. A simple, elegant presentation of the determined path, stripped of all underlying complexity.",
-      "x": 1220, "y": 375, "width": 180, "height": 100, "fill": "#212121"
+    "behavioralAnalytics": {
+      "name": "Behavioral Analytics Engine", "description": "Learns from actions.", "details": "Analyzes anonymized, aggregate data on which itineraries are chosen, which are modified, and which are ignored. Feeds insights back to the Foresight Engine.",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#1c313a"
+    },
+    "foresightEngine": {
+      "name": "Foresight Engine (Demand Prediction)", "description": "Sees what's next.", "details": "A predictive model that anticipates future travel trends, demand surges, and pricing shifts. Provides strategic intelligence to the marketplace and users.",
+      "x": 960, "y": 500, "width": 170, "height": 125, "fill": "#1c313a"
+    },
+    "complianceCore": {
+      "name": "Compliance & Governance Core", "description": "The foundation of trust.", "details": "An immutable ledger (e.g., a private blockchain) that logs all data access requests, user consents, and transactions, ensuring auditable compliance.",
+      "x": 1220, "y": 375, "width": 180, "height": 125, "fill": "#263238"
     }
   },
   "flows": [
-    { "id": 1, "description": "1. An observation is made.", "path": "M 200 425 L 290 425", "label_cx": 245, "label_cy": 415 },
-    { "id": 2, "description": "2. The observer's mass is determined.", "path": "M 365 325 L 365 200", "label_cx": 385, "label_cy": 260, "options": { "stroke-dasharray": "2, 2" } },
-    { "id": 3, "description": "3. The state of the universe is measured.", "path": "M 365 550 L 365 450", "label_cx": 385, "label_cy": 500, "options": { "stroke-dasharray": "2, 2" } },
-    { "id": 4, "description": "4. Spacetime is curved by mass.", "path": "M 440 425 C 480 425, 480 425, 525 425", "label_cx": 480, "label_cy": 440 },
-    { "id": 5, "description": "5. All possible world lines are calculated.", "path": "M 685 425 L 715 425", "label_cx": 700, "label_cy": 415 },
-    { "id": 6, "description": "6. The geodesic is identified.", "path": "M 875 425 C 900 300, 950 250, 960 250", "label_cx": 920, "label_cy": 330 },
-    { "id": 7, "description": "7. The wave function collapses.", "path": "M 1045 325 C 1045 400, 1045 500, 1045 500", "label_cx": 1065, "label_cy": 415 },
-    { "id": 8, "description": "8. The event is projected into reality.", "path": "M 1130 550 C 1180 450, 1200 425, 1220 425", "label_cx": 1180, "label_cy": 480 },
-    { "id": 9, "description": "9. The observer perceives the classical result.", "path": "M 1220 425 C 1000 425, 250 425, 200 425", "label_cx": 710, "label_cy": 440 },
-    { "id": 10, "description": "10. Reality provides feedback, altering mass for the next observation.", "path": "M 1220 400 C 800 200, 475 250, 440 250", "label_cx": 830, "label_cy": 240, "options": { "stroke-dasharray": "5, 5" } }
+    { "id": 1, "description": "1. User grants access & states intent", "path": "M 200 437.5 L 290 250", "label_cx": 245, "label_cy": 340 },
+    { "id": 2, "description": "2. Intent sent to Composition Engine", "path": "M 365 300 L 365 375", "label_cx": 385, "label_cy": 340 },
+    { "id": 3, "description": "3. Engine queries Marketplace Inventory", "path": "M 440 437.5 L 525 437.5", "label_cx": 480, "label_cy": 450 },
+    { "id": 4, "description": "4. Composed plan sent for Storytelling", "path": "M 365 500 L 365 550", "label_cx": 385, "label_cy": 525 },
+    { "id": 5, "description": "5. Story presented to user", "path": "M 290 600 C 200 600, 125 500, 125 500", "label_cx": 210, "label_cy": 550 },
+    { "id": 6, "description": "6. User confirms, triggering Settlement", "path": "M 125 450 C 250 600, 450 600, 525 600", "label_cx": 350, "label_cy": 610, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 7, "description": "7. All interactions generate anonymous data", "path": "M 370 437.5 C 500 300, 800 250, 960 250", "label_cx": 665, "label_cy": 290, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 8, "description": "8. Behavioral insights feed Foresight Engine", "path": "M 1045 325 L 1045 500", "label_cx": 1065, "label_cy": 415, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 9, "description": "9. Foresight optimizes the Marketplace", "path": "M 960 550 C 850 550, 750 500, 685 450", "label_cx": 820, "label_cy": 510, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 10, "description": "10. A better marketplace leads to better options", "path": "M 525 400 C 475 400, 440 400, 440 400", "label_cx": 480, "label_cy": 385, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 11, "description": "11. All data access is logged on the Trust Fabric", "path": "M 125 400 C 500 200, 1000 200, 1220 375", "label_cx": 700, "label_cy": 250, "options": { "stroke-dasharray": "3, 3" } }
   ]
 }
