@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vacation Planner Architecture Schema",
+  "description": "Schema for the vacation planner architecture visualization data.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The main title of the architecture diagram.",
+      "type": "string"
+    },
+    "subtitle": {
+      "description": "The subtitle of the architecture diagram.",
+      "type": "string"
+    },
+    "layers": {
+      "description": "Defines the vertical layers or columns of the architecture diagram.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "The name of the layer (e.g., CLIENT, GATEWAY).",
+            "type": "string"
+          },
+          "x": {
+            "description": "The starting x-coordinate for the layer title.",
+            "type": "number"
+          },
+          "dividerX": {
+            "description": "The x-coordinate for the vertical divider line after the layer. Can be null for the last layer.",
+            "type": ["number", "null"]
+          }
+        },
+        "required": ["title", "x", "dividerX"]
+      }
+    },
+    "components": {
+      "description": "A map of all the components in the architecture.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The display name of the component.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A short description of the component.",
+            "type": "string"
+          },
+          "details": {
+            "description": "Detailed information about the component, potentially including HTML.",
+            "type": "string"
+          },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "width": { "type": "number" },
+          "height": { "type": "number" },
+          "fill": {
+            "description": "The background color of the component block.",
+            "type": "string"
+          }
+        },
+        "required": ["name", "description", "details", "x", "y", "width", "height", "fill"]
+      }
+    },
+    "flows": {
+      "description": "Defines the data flows and interactions between components.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "A unique identifier for the flow.",
+            "type": "integer"
+          },
+          "description": {
+            "description": "A text description of what the flow represents.",
+            "type": "string"
+          },
+          "path": {
+            "description": "An SVG path string defining the line for the flow.",
+            "type": "string"
+          },
+          "label_cx": {
+            "description": "The center x-coordinate for the flow's label.",
+            "type": "number"
+          },
+          "label_cy": {
+            "description": "The center y-coordinate for the flow's label.",
+            "type": "number"
+          },
+          "options": {
+            "description": "Optional styling for the flow path.",
+            "type": "object",
+            "properties": {
+              "stroke-dasharray": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": ["id", "description", "path", "label_cx", "label_cy"]
+      }
+    }
+  },
+  "required": ["title", "subtitle", "layers", "components", "flows"]
+}
