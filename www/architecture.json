@@ -1,0 +1,100 @@
+{
+  "title": "Vacation Planner - Detailed Architecture & Data Flow",
+  "subtitle": "An interactive guide to the Vacation Planner system. Hover over elements for details.",
+  "layers": [
+    { "title": "CLIENT", "x": 125, "dividerX": 250 },
+    { "title": "GATEWAY", "x": 325, "dividerX": 400 },
+    { "title": "MICROSERVICES", "x": 650, "dividerX": 900 },
+    { "title": "DATA STORES", "x": 1000, "dividerX": 1100 },
+    { "title": "EXTERNAL APIs", "x": 1275, "dividerX": null }
+  ],
+  "components": {
+    "WebApp": {
+      "name": "Web/Mobile App",
+      "description": "React / React Native",
+      "details": "<strong>Purpose:</strong> User interface for trip planning.<br><strong>Technology:</strong> React & React Native.<br><br>The single entry point for users to interact with the Vacation Planner. It communicates with the backend via the API Gateway.",
+      "x": 50, "y": 425, "width": 150, "height": 100, "fill": "#3b82f6"
+    },
+    "APIGateway": {
+      "name": "API Gateway",
+      "description": "",
+      "details": "<strong>Purpose:</strong> Route requests, handle auth, and apply rate limiting.<br><strong>Technology:</strong> Amazon API Gateway.<br><br>Acts as the front door for all incoming requests, directing them to the appropriate microservice and ensuring security.",
+      "x": 275, "y": 425, "width": 100, "height": 100, "fill": "#6366f1"
+    },
+    "PlannerEngine": {
+      "name": "Planner Engine",
+      "description": "Orchestrator",
+      "details": "<strong>Purpose:</strong> The core orchestrator for trip generation.<br><strong>Technology:</strong> FastAPI (Python).<br><br>Manages the multi-stage AI pipeline, from understanding intent to generating the final, optimized itinerary.",
+      "x": 450, "y": 425, "width": 150, "height": 100, "fill": "#10b981"
+    },
+    "TripIntentService": {
+      "name": "Trip Intent Service",
+      "description": "Parses Query",
+      "details": "<strong>Purpose:</strong> Translates natural language queries into structured data.<br><strong>Technology:</strong> FastAPI, spaCy.<br><br>Parses user input like '5 days in Paris' into a machine-readable format for the planner.",
+      "x": 650, "y": 100, "width": 150, "height": 100, "fill": "#10b981"
+    },
+    "UserProfileService": {
+      "name": "User Profile Service",
+      "description": "Handles User Data",
+      "details": "<strong>Purpose:</strong> Manages all user data and preferences.<br><strong>Technology:</strong> FastAPI, PostgreSQL.<br><br>The single source of truth for user information and responsible for updating AI 'memory' embeddings.",
+      "x": 650, "y": 250, "width": 150, "height": 100, "fill": "#10b981"
+    },
+    "RecommendationEngine": {
+      "name": "Recommendation Engine",
+      "description": "Finds Hotels/Flights",
+      "details": "<strong>Purpose:</strong> Fetches real-time travel options like flights and hotels.<br><strong>Technology:</strong> FastAPI, httpx.<br><br>Interfaces with external booking APIs to find geographically optimized and preference-matched options.",
+      "x": 650, "y": 600, "width": 150, "height": 100, "fill": "#10b981"
+    },
+    "PostgreSQL": {
+      "name": "PostgreSQL",
+      "description": "Preferences & Trips",
+      "details": "<strong>Purpose:</strong> The 'System of Record' for structured data.<br><strong>Technology:</strong> PostgreSQL.<br><br>Stores critical transactional data like user accounts, trip details, preferences (JSONB), and reservations.",
+      "x": 925, "y": 250, "width": 150, "height": 100, "fill": "#8b5cf6"
+    },
+    "Pinecone": {
+      "name": "Pinecone DB",
+      "description": "AI Conceptual Memory",
+      "details": "<strong>Purpose:</strong> Stores AI's conceptual 'memory'.<br><strong>Technology:</strong> Pinecone.<br><br>Stores vector embeddings of user preferences, enabling fast similarity searches for the RAG personalization process.",
+      "x": 925, "y": 425, "width": 150, "height": 100, "fill": "#8b5cf6"
+    },
+    "OpenAI_Activity": {
+      "name": "OpenAI API",
+      "description": "Activity Selection",
+      "details": "<strong>Purpose:</strong> Provides Large Language Model capabilities for creative ideation.<br><strong>Technology:</strong> OpenAI (GPT-4+).<br><br>This first LLM call generates a high-quality list of potential activities based on the user's augmented context.",
+      "x": 1200, "y": 175, "width": 150, "height": 100, "fill": "#f59e0b"
+    },
+    "BookingAPIs": {
+      "name": "Booking APIs",
+      "description": "Skyscanner, etc.",
+      "details": "<strong>Purpose:</strong> Provides real-world travel and location data.<br><strong>Technology:</strong> Skyscanner, Booking.com, etc.<br><br>The source of live flight/hotel prices and critical location details.",
+      "x": 1200, "y": 600, "width": 150, "height": 100, "fill": "#f59e0b"
+    },
+    "GooglePlaces": {
+      "name": "Google Places API",
+      "description": "Opening Hours",
+      "details": "<strong>Purpose:</strong> Provides real-world location details.<br><strong>Technology:</strong> Google Places API.<br><br>Used to fetch crucial constraints like exact coordinates and opening hours for the schedule optimization phase.",
+      "x": 1200, "y": 750, "width": 150, "height": 100, "fill": "#f59e0b"
+    },
+    "OpenAI_Optimize": {
+      "name": "OpenAI API",
+      "description": "Schedule Optimization",
+      "details": "<strong>Purpose:</strong> Provides LLM capabilities for logistical reasoning.<br><strong>Technology:</strong> OpenAI (GPT-4+).<br><br>This second LLM call takes a list of activities with hard constraints (location, hours) and solves the complex scheduling problem to create an efficient, timed itinerary.",
+      "x": 1200, "y": 425, "width": 150, "height": 100, "fill": "#f59e0b"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "User submits trip query (e.g. '5 days in Italy').", "path": "M 200 475 H 275", "label_cx": 237.5, "label_cy": 475 },
+    { "id": 2, "description": "API Gateway authenticates and forwards the request to the Planner Engine.", "path": "M 375 475 H 450", "label_cx": 412.5, "label_cy": 475 },
+    { "id": 3, "description": "Planner Engine asks Trip Intent Service to parse the query.", "path": "M 525 425 Q 525 150, 650 150", "label_cx": 580, "label_cy": 240 },
+    { "id": 4, "description": "Planner Engine asks User Profile Service for preferences.", "path": "M 560 425 Q 600 300, 650 300", "label_cx": 600, "label_cy": 350 },
+    { "id": 5, "description": "User Profile Service retrieves stored preferences from PostgreSQL.", "path": "M 800 300 H 925", "label_cx": 862.5, "label_cy": 300 },
+    { "id": 6, "description": "Planner Engine queries Pinecone DB for contextual user 'memory'.", "path": "M 600 475 H 925", "label_cx": 762.5, "label_cy": 475 },
+    { "id": 7, "description": "Planner sends augmented prompt to OpenAI to select activities.", "path": "M 600 450 Q 900 225, 1200 225", "label_cx": 880, "label_cy": 300 },
+    { "id": 8, "description": "Planner asks Reco Engine to find hotels based on activity locations.", "path": "M 525 525 Q 525 650, 650 650", "label_cx": 580, "label_cy": 580 },
+    { "id": 9, "description": "Reco Engine calls external Booking APIs for real-time hotel data.", "path": "M 800 650 H 1200", "label_cx": 1000, "label_cy": 650 },
+    { "id": 10, "description": "Planner asks Google Places API for opening hours of selected activities.", "path": "M 600 500 Q 900 800, 1200 800", "label_cx": 880, "label_cy": 670 },
+    { "id": 11, "description": "Planner sends final prompt to OpenAI to optimize the daily schedule.", "path": "M 600 475 H 1200", "label_cx": 900, "label_cy": 475 },
+    { "id": 12, "description": "Planner saves the completed, optimized itinerary to PostgreSQL.", "path": "M 600 460 Q 800 325, 925 325", "label_cx": 760, "label_cy": 375 },
+    { "id": 13, "description": "Client polls an endpoint that reads from PostgreSQL for the final result.", "path": "M 200 450 Q 550 850, 925 350", "options": { "stroke-dasharray": "5, 5" }, "label_cx": 600, "label_cy": 550 }
+  ]
+}
