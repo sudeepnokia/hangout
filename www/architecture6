@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Graph-Based Travel Optimization Engine",
+  "subtitle": "A Scalable Architecture for Multi-Objective Constraint Satisfaction",
+  "layers": [
+    { "title": "CLIENT & GATEWAY", "x": 125, "dividerX": 250 },
+    { "title": "STATELESS SERVICES", "x": 335, "dividerX": 475 },
+    { "title": "DATA & KNOWLEDGE FABRIC", "x": 650, "dividerX": 900 },
+    { "title": "OPTIMIZATION CORE", "x": 1000, "dividerX": 1175 },
+    { "title": "EXECUTION & EXTERNAL APIs", "x": 1275, "dividerX": null }
+  ],
+  "components": {
+    "clientApps": {
+      "name": "Client Applications", "description": "Web & Mobile (React/Swift/Kotlin)", "details": "Stateless client interfaces that communicate via a secure API Gateway.",
+      "x": 50, "y": 375, "width": 150, "height": 100, "fill": "#004d40"
+    },
+    "apiGateway": {
+      "name": "API Gateway & BFF", "description": "Routes requests, authenticates.", "details": "Manages traffic, provides Backend-for-Frontend patterns, and enforces security policies.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#00695c"
+    },
+    "userService": {
+      "name": "User Profile Service", "description": "Manages user state.", "details": "Handles user accounts, preferences, and authentication tokens. Communicates state changes via the event bus.",
+      "x": 290, "y": 350, "width": 150, "height": 100, "fill": "#00695c"
+    },
+    "socialService": {
+      "name": "Social Graph Service", "description": "Manages social connections.", "details": "Interfaces with social APIs and maintains the user's social connection graph.",
+      "x": 290, "y": 500, "width": 150, "height": 100, "fill": "#00695c"
+    },
+    "eventBus": {
+      "name": "Event Bus (Kafka/Pulsar)", "description": "The system's nervous system.", "details": "A durable, high-throughput message bus for asynchronous communication between all services.",
+      "x": 525, "y": 375, "width": 160, "height": 125, "fill": "#4db6ac"
+    },
+    "knowledgeGraph": {
+      "name": "Knowledge Graph (Neo4j)", "description": "The world model.", "details": "A graph database connecting all entities: (User)-[PREFERS]->(Activity), (Hotel)-[LOCATED_IN]->(City), etc. This is the system's long-term memory.",
+      "x": 715, "y": 200, "width": 160, "height": 125, "fill": "#00796b"
+    },
+    "dataIngestionService": {
+      "name": "Data Ingestion Service", "description": "Populates the graph.", "details": "Consumes events from the bus and external APIs to continuously update the Knowledge Graph in near real-time.",
+      "x": 715, "y": 500, "width": 160, "height": 125, "fill": "#00796b"
+    },
+    "constraintSolver": {
+      "name": "Constraint Solver", "description": "Defines the problem space.", "details": "Takes a user query, queries the Knowledge Graph to fetch relevant sub-graphs, and formulates a precise mathematical constraint satisfaction problem.",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#1a237e"
+    },
+    "optimizationEngine": {
+      "name": "Multi-Objective Optimizer", "description": "Finds the best solutions.", "details": "Uses heuristic algorithms (e.g., Genetic Algorithms, Simulated Annealing) to find a set of Pareto optimal itineraries for the given constraint problem.",
+      "x": 960, "y": 500, "width": 170, "height": 125, "fill": "#1a237e"
+    },
+    "executionService": {
+      "name": "Execution Service (Actuators)", "description": "Makes bookings.", "details": "Takes a user-selected itinerary and executes the necessary bookings via external APIs. Publishes results to the event bus.",
+      "x": 1220, "y": 375, "width": 180, "height": 100, "fill": "#424242"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. User Query", "path": "M 200 425 L 290 250", "label_cx": 245, "label_cy": 330 },
+    { "id": 2, "description": "2. Request to Services", "path": "M 290 300 L 290 350", "label_cx": 270, "label_cy": 325 },
+    { "id": 3, "description": "3. Services publish events", "path": "M 440 400 L 525 400", "label_cx": 480, "label_cy": 385 },
+    { "id": 4, "description": "4. Ingestion service consumes events", "path": "M 685 437.5 L 715 500", "label_cx": 700, "label_cy": 470 },
+    { "id": 5, "description": "5. Updates Knowledge Graph", "path": "M 795 500 L 795 325", "label_cx": 815, "label_cy": 415, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 6, "description": "6. Planning request triggers solver", "path": "M 605 375 C 650 250, 900 250, 960 250", "label_cx": 780, "label_cy": 240 },
+    { "id": 7, "description": "7. Solver queries graph for constraints", "path": "M 960 262.5 L 875 262.5", "label_cx": 915, "label_cy": 275, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 8, "description": "8. Problem passed to optimizer", "path": "M 1045 325 L 1045 500", "label_cx": 1065, "label_cy": 415 },
+    { "id": 9, "description": "9. Pareto optimal solutions returned", "path": "M 960 500 C 800 500, 475 250, 440 250", "label_cx": 700, "label_cy": 350 },
+    { "id": 10, "description": "10. User selects one solution", "path": "M 440 250 C 600 250, 1000 375, 1220 375", "label_cx": 830, "label_cy": 300, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 11, "description": "11. Execution service makes bookings", "path": "M 1220 425 C 1220 425, 1220 425, 1220 425", "label_cx": 1220, "label_cy": 425 },
+    { "id": 12, "description": "12. Booking events published", "path": "M 1220 400 C 1000 400, 700 425, 685 425", "label_cx": 950, "label_cy": 435, "options": { "stroke-dasharray": "5, 5" } }
+  ]
+}
