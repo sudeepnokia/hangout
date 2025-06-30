@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture Diagram Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .svg-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1rem;
+            min-height: 500px; /* Ensure container has a height while loading */
+        }
+        svg .layer-title {
+            font-size: 14px;
+            font-weight: 700;
+            fill: #475569;
+            text-anchor: middle;
+        }
+        svg .component-box {
+            stroke-width: 1;
+            stroke: #e2e8f0;
+            transition: all 0.2s ease-in-out;
+        }
+        svg .component-box:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+        svg .component-title {
+            font-size: 13px;
+            font-weight: 600;
+            fill: white;
+            text-anchor: middle;
+        }
+        svg .component-desc {
+            font-size: 10px;
+            fill: white;
+            opacity: 0.8;
+            text-anchor: middle;
+        }
+        svg .flow-path {
+            fill: none;
+            stroke: #cbd5e1;
+            stroke-width: 2;
+            transition: all 0.3s ease-in-out;
+        }
+        svg .flow-circle {
+            fill: #94a3b8;
+            stroke: white;
+            stroke-width: 2;
+            transition: all 0.3s ease-in-out;
+        }
+        svg .flow-number {
+            font-size: 10px;
+            font-weight: 700;
+            fill: white;
+            text-anchor: middle;
+            alignment-baseline: central;
+            pointer-events: none;
+        }
+        .legend-item:hover, .highlight-legend {
+            background-color: #eef2ff;
+        }
+        .highlight-flow .flow-path {
+            stroke: #4f46e5;
+            stroke-width: 3.5;
+        }
+        .highlight-flow .flow-circle {
+            fill: #4f46e5;
+            transform: scale(1.2);
+        }
+        #tooltip {
+            position: absolute;
+            display: none;
+            background-color: rgba(15, 23, 42, 0.9);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            max-width: 300px;
+            pointer-events: none;
+            z-index: 100;
+            transition: opacity 0.2s;
+        }
+        #loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 4rem;
+            font-size: 1.25rem;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <header class="text-center mb-4">
+        <h1 id="main-title" class="text-3xl md:text-5xl font-extrabold text-slate-800 mb-2">System Architecture</h1>
+        <p id="main-subtitle" class="text-lg text-slate-500">Loading architecture diagram...</p>
+    </header>
+
+    <div class="max-w-xs mx-auto mb-8">
+        <label for="architecture-selector" class="block text-sm font-medium text-slate-700 mb-1">Select Architecture:</label>
+        <select id="architecture-selector" class="w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <!-- Options will be populated by JS -->
+        </select>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+        <div id="diagram-container" class="svg-container flex-grow">
+            <div id="loader">Loading...</div>
+            <svg id="architecture-svg" width="100%" viewBox="0 0 1400 950" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#cbd5e1" />
+                    </marker>
+                    <marker id="arrowhead-highlight" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#4f46e5" />
+                    </marker>
+                </defs>
+                <g id="layers-group"></g>
+                <g id="components-group"></g>
+                <g id="flows-group"></g>
+            </svg>
+        </div>
+        <aside class="flex-shrink-0 lg:w-96 mt-8 lg:mt-0">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4">Legend: Data Flow Sequence</h3>
+            <div id="legend" class="space-y-1">
+                <!-- Legend items will be populated by JS -->
+            </div>
+        </aside>
+    </div>
+    <div id="tooltip"></div>
+
+    <script>
+        const SVG_NS = "http://www.w3.org/2000/svg";
+
+        // --- DOM Elements ---
+        const svg = document.getElementById('architecture-svg');
+        const tooltip = document.getElementById('tooltip');
+        const legendContainer = document.getElementById('legend');
+        const layersGroup = document.getElementById('layers-group');
+        const componentsGroup = document.getElementById('components-group');
+        const flowsGroup = document.getElementById('flows-group');
+        const loader = document.getElementById('loader');
+        const mainTitle = document.getElementById('main-title');
+        const mainSubtitle = document.getElementById('main-subtitle');
+        const selector = document.getElementById('architecture-selector');
+
+        /**
+         * Clears all dynamic content from the diagram and legend.
+         */
+        function clearDiagram() {
+            layersGroup.innerHTML = '';
+            componentsGroup.innerHTML = '';
+            flowsGroup.innerHTML = '';
+            legendContainer.innerHTML = '';
+        }
+        
+        /**
+         * Creates an SVG element with specified attributes.
+         */
+        function createSvgElement(tag, attrs) {
+            const el = document.createElementNS(SVG_NS, tag);
+            for (const key in attrs) {
+                el.setAttribute(key, attrs[key]);
+            }
+            return el;
+        }
+        
+        /**
+         * Renders all visual elements from the loaded architecture data.
+         */
+        function renderDiagram(data) {
+            // Render Layers
+            data.layers.forEach(layer => {
+                const title = createSvgElement('text', { x: layer.x, y: 30, class: 'layer-title' });
+                title.textContent = layer.title;
+                layersGroup.appendChild(title);
+                if (layer.dividerX) {
+                    const line = createSvgElement('line', {
+                        x1: layer.dividerX, y1: 10, x2: layer.dividerX, y2: 940,
+                        stroke: "#e2e8f0", 'stroke-width': 1, 'stroke-dasharray': "4"
+                    });
+                    layersGroup.appendChild(line);
+                }
+            });
+
+            // Render Components
+            for (const key in data.components) {
+                const comp = data.components[key];
+                const group = createSvgElement('g', { class: 'component', 'data-key': key });
+                group.appendChild(createSvgElement('rect', { x: comp.x, y: comp.y, width: comp.width, height: comp.height, rx: 10, fill: comp.fill, class: 'component-box' }));
+                const title = createSvgElement('text', { x: comp.x + comp.width / 2, y: comp.y + 40, class: 'component-title' });
+                title.textContent = comp.name;
+                group.appendChild(title);
+                if(comp.description) {
+                    const desc = createSvgElement('text', { x: comp.x + comp.width / 2, y: comp.y + 60, class: 'component-desc' });
+                    desc.textContent = comp.description;
+                    group.appendChild(desc);
+                }
+                componentsGroup.appendChild(group);
+            }
+            
+            // Render Flows and populate Legend
+            data.flows.sort((a, b) => a.id - b.id).forEach(flow => {
+                 const group = createSvgElement('g', { id: `flow-group-${flow.id}`, class: 'flow' });
+                 const pathAttrs = { d: flow.path, class: 'flow-path', 'marker-end': 'url(#arrowhead)', ...(flow.options || {}) };
+                 group.appendChild(createSvgElement('path', pathAttrs));
+                 group.appendChild(createSvgElement('circle', { cx: flow.label_cx, cy: flow.label_cy, r: 10, class: 'flow-circle' }));
+                 const number = createSvgElement('text', { x: flow.label_cx, y: flow.label_cy, class: 'flow-number' });
+                 number.textContent = flow.id;
+                 group.appendChild(number);
+                 flowsGroup.appendChild(group);
+                 
+                 const legendItem = document.createElement('div');
+                 legendItem.id = `legend-${flow.id}`;
+                 legendItem.className = 'legend-item p-3 rounded-lg cursor-pointer transition flex items-start gap-3';
+                 legendItem.innerHTML = `<div class="font-bold text-indigo-600 w-6 text-center flex-shrink-0">${flow.id}.</div><div>${flow.description}</div>`;
+                 legendContainer.appendChild(legendItem);
+            });
+            
+            setupInteractions(data);
+        }
+
+        /**
+         * Sets up all the interactive event listeners.
+         */
+        const setupInteractions = (data) => {
+            document.querySelectorAll('.component').forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    const key = e.currentTarget.dataset.key;
+                    const componentData = data.components[key];
+                    if (componentData) {
+                         tooltip.innerHTML = `<strong>${componentData.name}</strong><p class="mt-2 text-slate-300">${componentData.details}</p>`;
+                         tooltip.style.display = 'block';
+                    }
+                });
+                el.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+            });
+
+            document.querySelectorAll('.legend-item').forEach(el => {
+                const flowId = el.id.split('-')[1];
+                const flowGroup = document.getElementById(`flow-group-${flowId}`);
+                if (!flowGroup) return;
+                el.addEventListener('mouseenter', () => {
+                    flowGroup.classList.add('highlight-flow');
+                    flowGroup.querySelector('.flow-path').setAttribute('marker-end', 'url(#arrowhead-highlight)');
+                });
+                el.addEventListener('mouseleave', () => {
+                    flowGroup.classList.remove('highlight-flow');
+                    flowGroup.querySelector('.flow-path').setAttribute('marker-end', 'url(#arrowhead)');
+                });
+            });
+        };
+
+        /**
+         * Fetches and renders the specified architecture file.
+         * @param {string} fileName - The name of the JSON file to load.
+         */
+        async function loadAndRenderArchitecture(fileName) {
+            clearDiagram();
+            loader.style.display = 'flex';
+            svg.style.display = 'none';
+            mainSubtitle.textContent = "Loading diagram...";
+            
+            try {
+                const response = await fetch(fileName);
+                if (!response.ok) {
+                    throw new Error(`Could not find ${fileName} (HTTP ${response.status})`);
+                }
+                const data = await response.json();
+
+                mainTitle.textContent = data.title;
+                mainSubtitle.textContent = data.subtitle;
+                document.title = data.title;
+
+                renderDiagram(data);
+                loader.style.display = 'none';
+                svg.style.display = 'block';
+            } catch (error) {
+                console.error("Failed to load or render architecture diagram:", error);
+                loader.innerHTML = `<strong>Error:</strong> ${error.message}.<br>Please make sure the file exists and is accessible.`;
+                mainTitle.textContent = "Error";
+                mainSubtitle.textContent = "Could not load diagram.";
+            }
+        }
+
+        // --- Main Execution ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate dropdown
+            const architectures = ["architecture", ...Array.from({length: 10}, (_, i) => `architecture${i + 1}`)];
+            architectures.forEach(name => {
+                const option = document.createElement('option');
+                option.value = `${name}.json`;
+                option.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+                selector.appendChild(option);
+            });
+
+            // Add event listener for selection changes
+            selector.addEventListener('change', (e) => {
+                loadAndRenderArchitecture(e.target.value);
+            });
+            
+            // Initial load
+            loadAndRenderArchitecture('architecture.json');
+        });
+
+        // Tooltip positioning
+        document.addEventListener('mousemove', (e) => {
+            if (tooltip.style.display === 'block') {
+                 tooltip.style.left = `${e.pageX + 15}px`;
+                 tooltip.style.top = `${e.pageY + 15}px`;
+            }
+        });
+    </script>
+</body>
+</html>
