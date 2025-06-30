@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Theory of Experiential Relativity",
+  "subtitle": "Calculating the Geodesic of a Journey Through Spacetime",
+  "layers": [
+    { "title": "OBSERVATION & INITIAL CONDITIONS", "x": 125, "dividerX": 250 },
+    { "title": "SPACETIME MANIFOLD", "x": 335, "dividerX": 475 },
+    { "title": "GEODESIC CALCULATION", "x": 650, "dividerX": 900 },
+    { "title": "WAVE FUNCTION COLLAPSE", "x": 980, "dividerX": 1175 },
+    { "title": "CLASSICAL REALITY", "x": 1300, "dividerX": null }
+  ],
+  "components": {
+    "observerInterface": {
+      "name": "The Observer Interface", "description": "Where a question is posed.", "details": "The user (the observer) introduces a query into the system, setting the boundary conditions for the problem (e.g., 'A week in the Alps').",
+      "x": 50, "y": 375, "width": 150, "height": 100, "fill": "#1a237e"
+    },
+    "massEnergyDistribution": {
+      "name": "Mass-Energy Distribution", "description": "The user's personal gravity.", "details": "This is not a 'profile'. It is the total sum of a user's preferences, history, and latent desires, represented as a tensor field that dictates how their personal spacetime is curved.",
+      "x": 290, "y": 200, "width": 150, "height": 125, "fill": "#283593"
+    },
+    "fieldStateTensor": {
+      "name": "Field State Tensor", "description": "The state of the universe.", "details": "A tensor representing the external constraints of reality: flight costs, hotel availability, weather, political stability. This defines the immutable geometry of the world.",
+      "x": 290, "y": 550, "width": 150, "height": 125, "fill": "#283593"
+    },
+    "unifiedFieldEquation": {
+      "name": "Unified Field Equation Solver", "description": "The single, elegant formula.", "details": "The core intelligence. It takes the user's mass-energy and the world's field state to solve for the curvature of a personalized spacetime manifold. All possibilities exist here.",
+      "x": 525, "y": 375, "width": 160, "height": 150, "fill": "#0d47a1"
+    },
+    "worldLineGenerator": {
+      "name": "Probabilistic World Line Generator", "description": "All possible paths.", "details": "It calculates an infinite set of possible paths (world lines) that the user could take through their curved spacetime, each with a certain probability.",
+      "x": 715, "y": 375, "width": 160, "height": 150, "fill": "#0d47a1"
+    },
+    "geodesicFinder": {
+      "name": "Geodesic Finder", "description": "The shortest path.", "details": "This component examines all probabilistic world lines and identifies the geodesic—the path of least action, representing the most efficient and satisfying journey.",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#311b92"
+    },
+    "eventProjector": {
+      "name": "Event Projector", "description": "From probability to certainty.", "details": "This is the moment of collapse. The chosen geodesic is converted into a set of deterministic, classical events: a flight booking, a hotel reservation, a dinner time.",
+      "x": 960, "y": 500, "width": 170, "height": 125, "fill": "#311b92"
+    },
+    "classicalItinerary": {
+      "name": "Classical Itinerary", "description": "The journey, realized.", "details": "The final, observable output. A simple, elegant presentation of the determined path, stripped of all underlying complexity.",
+      "x": 1220, "y": 375, "width": 180, "height": 100, "fill": "#212121"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. An observation is made.", "path": "M 200 425 L 290 425", "label_cx": 245, "label_cy": 415 },
+    { "id": 2, "description": "2. The observer's mass is determined.", "path": "M 365 325 L 365 200", "label_cx": 385, "label_cy": 260, "options": { "stroke-dasharray": "2, 2" } },
+    { "id": 3, "description": "3. The state of the universe is measured.", "path": "M 365 550 L 365 450", "label_cx": 385, "label_cy": 500, "options": { "stroke-dasharray": "2, 2" } },
+    { "id": 4, "description": "4. Spacetime is curved by mass.", "path": "M 440 425 C 480 425, 480 425, 525 425", "label_cx": 480, "label_cy": 440 },
+    { "id": 5, "description": "5. All possible world lines are calculated.", "path": "M 685 425 L 715 425", "label_cx": 700, "label_cy": 415 },
+    { "id": 6, "description": "6. The geodesic is identified.", "path": "M 875 425 C 900 300, 950 250, 960 250", "label_cx": 920, "label_cy": 330 },
+    { "id": 7, "description": "7. The wave function collapses.", "path": "M 1045 325 C 1045 400, 1045 500, 1045 500", "label_cx": 1065, "label_cy": 415 },
+    { "id": 8, "description": "8. The event is projected into reality.", "path": "M 1130 550 C 1180 450, 1200 425, 1220 425", "label_cx": 1180, "label_cy": 480 },
+    { "id": 9, "description": "9. The observer perceives the classical result.", "path": "M 1220 425 C 1000 425, 250 425, 200 425", "label_cx": 710, "label_cy": 440 },
+    { "id": 10, "description": "10. Reality provides feedback, altering mass for the next observation.", "path": "M 1220 400 C 800 200, 475 250, 440 250", "label_cx": 830, "label_cy": 240, "options": { "stroke-dasharray": "5, 5" } }
+  ]
+}
