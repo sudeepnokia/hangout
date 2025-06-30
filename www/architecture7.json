@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "The Main Character Engine",
+  "subtitle": "Your Life, The Movie. We Write the Script.",
+  "layers": [
+    { "title": "VIBE CHECK", "x": 125, "dividerX": 250 },
+    { "title": "THE WRITERS' ROOM", "x": 335, "dividerX": 475 },
+    { "title": "SCENE & LOCATION SCOUTING", "x": 650, "dividerX": 900 },
+    { "title": "THE HYPE MACHINE", "x": 980, "dividerX": 1175 },
+    { "title": "CONTENT & BRAND DEALS", "x": 1275, "dividerX": null }
+  ],
+  "components": {
+    "moodboardAI": {
+      "name": "Moodboard AI", "description": "Catches your vibe.", "details": "The user drops in images, TikTok links, or keywords. This AI analyzes the aesthetic and defines the core 'vibe' for the trip.",
+      "x": 50, "y": 375, "width": 150, "height": 125, "fill": "#7b1fa2"
+    },
+    "trendTracker": {
+      "name": "The TrendTracker", "description": "What's hot, right now.", "details": "A real-time engine scraping social media for viral sounds, locations, challenges, and aesthetics. It knows what will get views.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#ad1457"
+    },
+    "narrativeScripter": {
+      "name": "Narrative Scripter (LLM)", "description": "Writes your story.", "details": "The core creative AI. It takes the user's vibe and the latest trends to write a travel 'script'—a story-driven itinerary.",
+      "x": 290, "y": 375, "width": 150, "height": 125, "fill": "#ad1457"
+    },
+    "collabFinder": {
+      "name": "Collab Finder", "description": "Connects the creators.", "details": "Matches users with similar vibes who are traveling to the same place for potential collaborations and meetups.",
+      "x": 290, "y": 550, "width": 150, "height": 100, "fill": "#ad1457"
+    },
+    "locationScout": {
+      "name": "Location Scout AI", "description": "Finds the shot.", "details": "Queries a database of geotagged social media posts to find the most photogenic cafes, views, and 'secret' spots.",
+      "x": 525, "y": 200, "width": 160, "height": 100, "fill": "#00838f"
+    },
+    "bookingAgent": {
+      "name": "The Booking Agent", "description": "Makes it happen.", "details": "A practical service that interfaces with legacy booking APIs to reserve the spots identified by the Location Scout.",
+      "x": 525, "y": 375, "width": 160, "height": 125, "fill": "#00838f"
+    },
+    "gearAndFitService": {
+      "name": "Gear & Fit Service", "description": "Gets you the look.", "details": "Suggests and provides affiliate links for outfits, camera gear, and props that match the trip's scripted vibe.",
+      "x": 525, "y": 550, "width": 160, "height": 100, "fill": "#00838f"
+    },
+    "hypeLoop": {
+      "name": "The Hype-Loop", "description": "The community feed.", "details": "The in-app social feed where users post their content. Features challenges, trending audio, and gamified engagement metrics.",
+      "x": 960, "y": 200, "width": 170, "height": 125, "fill": "#c2185b"
+    },
+    "viralBoostEngine": {
+      "name": "Viral Boost Engine", "description": "Picks the winners.", "details": "An algorithm that identifies content with high viral potential within the Hype-Loop and cross-posts it to external platforms like TikTok and Instagram.",
+      "x": 960, "y": 500, "width": 170, "height": 125, "fill": "#c2185b"
+    },
+    "affiliateBridge": {
+      "name": "Affiliate & Brand Bridge", "description": "Get that bread.", "details": "Manages all monetization: affiliate links for gear/hotels, and a platform for brands to sponsor challenges or trips.",
+      "x": 1220, "y": 375, "width": 180, "height": 125, "fill": "#283593"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. User drops a vibe", "path": "M 200 437.5 C 250 437.5, 250 250, 290 250", "label_cx": 245, "label_cy": 340 },
+    { "id": 2, "description": "2. Script is written using trends", "path": "M 290 300 L 290 375", "label_cx": 310, "label_cy": 340 },
+    { "id": 3, "description": "3. Script sent to Location Scout", "path": "M 440 437.5 C 480 300, 525 250, 525 250", "label_cx": 480, "label_cy": 340 },
+    { "id": 4, "description": "4. Booking Agent confirms scenes", "path": "M 525 300 L 525 375", "label_cx": 545, "label_cy": 340 },
+    { "id": 5, "description": "5. Final 'Shooting Script' sent to user", "path": "M 525 437.5 C 400 600, 250 500, 200 500", "label_cx": 360, "label_cy": 530 },
+    { "id": 6, "description": "6. User creates content, posts to Hype-Loop", "path": "M 125 450 C 400 200, 800 200, 960 250", "label_cx": 540, "label_cy": 215, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 7, "description": "7. Viral Boost Engine analyzes Hype-Loop", "path": "M 1045 325 L 1045 500", "label_cx": 1065, "label_cy": 415, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 8, "description": "8. Top content is cross-posted", "path": "M 960 550 C 850 550, 750 500, 685 450", "label_cx": 820, "label_cy": 510, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 9, "description": "9. New trends are identified from top content", "path": "M 960 250 C 800 250, 475 250, 440 250", "label_cx": 700, "label_cy": 265, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 10, "description": "10. Monetization via Affiliate Bridge", "path": "M 685 437.5 C 850 437.5, 1100 437.5, 1220 437.5", "label_cx": 950, "label_cy": 450, "options": { "stroke-dasharray": "3, 3" } }
+  ]
+}
