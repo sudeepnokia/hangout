@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ambient Experience Orchestrator",
+  "subtitle": "An Architecture for Post-Interface Interaction",
+  "layers": [
+    { "title": "AMBIENT SENSORY INPUT", "x": 125, "dividerX": 250 },
+    { "title": "THE DREAMWEAVER CORE", "x": 335, "dividerX": 475 },
+    { "title": "REALITY ABSTRACTION MESH", "x": 650, "dividerX": 900 },
+    { "title": "EXPERIENCE SYNTHESIS", "x": 980, "dividerX": 1175 },
+    { "title": "EXECUTION & SENTIENCE LOOP", "x": 1275, "dividerX": null }
+  ],
+  "components": {
+    "sensoryMesh": {
+      "name": "Sensory Mesh", "description": "Captures ambient intent.", "details": "Passively gathers intent from any source: voice, text, biometrics, BCI, or even contextual cues from other devices. The input is pure signal.",
+      "x": 50, "y": 375, "width": 150, "height": 125, "fill": "#3d1b5a"
+    },
+    "zeitgeistEngine": {
+      "name": "The Zeitgeist Engine", "description": "Distills the cultural moment.", "details": "Moves beyond trends to understand the deeper cultural currents, narratives, and aesthetics shaping collective consciousness.",
+      "x": 290, "y": 200, "width": 150, "height": 100, "fill": "#5d1049"
+    },
+    "narrativeConstructor": {
+      "name": "Narrative Constructor", "description": "Builds the experience data.", "details": "The core AI. It weaves the user's intent and the Zeitgeist into a structured, presentation-agnostic 'Experience Datapack'—the raw code of the story.",
+      "x": 290, "y": 375, "width": 150, "height": 125, "fill": "#5d1049"
+    },
+    "synchronicityEngine": {
+      "name": "Synchronicity Engine", "description": "Engineers serendipity.", "details": "Orchestrates meaningful encounters by analyzing overlapping narrative paths between users.",
+      "x": 290, "y": 550, "width": 150, "height": 100, "fill": "#5d1049"
+    },
+    "realityQueryInterface": {
+      "name": "Reality Query Interface", "description": "Asks 'is this possible?'.", "details": "A unified API that queries the state of the real world—availability, physics, cost—and provides raw data back to the Dreamweaver.",
+      "x": 525, "y": 375, "width": 160, "height": 125, "fill": "#004c5a"
+    },
+    "aestheticEngine": {
+      "name": "Aesthetic Engine", "description": "Defines the sensory palette.", "details": "Generates a palette of colors, sounds, and styles that align with the narrative, ready to be used by any renderer.",
+      "x": 525, "y": 550, "width": 160, "height": 100, "fill": "#004c5a"
+    },
+    "experienceRenderer": {
+      "name": "Experience Renderer", "description": "Synthesizes for the medium.", "details": "The dynamic presentation layer. It takes the Datapack and renders it for the user's current context: as a visual app, an AR overlay, an audio guide, etc.",
+      "x": 960, "y": 375, "width": 170, "height": 125, "fill": "#821f51"
+    },
+    "actuatorFleet": {
+      "name": "Actuator Fleet", "description": "Interacts with the world.", "details": "A swarm of autonomous agents that execute real-world actions like bookings, purchases, and API calls.",
+      "x": 1220, "y": 200, "width": 180, "height": 125, "fill": "#4a4a4a"
+    },
+    "sentienceEngine": {
+      "name": "The Sentience Engine", "description": "The collective consciousness.", "details": "Analyzes the aggregated, anonymized feedback from all rendered experiences to learn and evolve. It understands what resonates on a deep, multi-sensory level.",
+      "x": 1220, "y": 500, "width": 180, "height": 125, "fill": "#4a4a4a"
+    }
+  },
+  "flows": [
+    { "id": 1, "description": "1. Ambient signal captured", "path": "M 200 437.5 C 250 437.5, 250 250, 290 250", "label_cx": 245, "label_cy": 340 },
+    { "id": 2, "description": "2. Narrative constructed from signal & Zeitgeist", "path": "M 290 300 L 290 375", "label_cx": 310, "label_cy": 340 },
+    { "id": 3, "description": "3. Narrative queries Reality Mesh", "path": "M 440 437.5 L 650 437.5", "label_cx": 545, "label_cy": 450 },
+    { "id": 4, "description": "4. Grounded 'Experience Datapack' created", "path": "M 650 437.5 L 440 437.5", "label_cx": 545, "label_cy": 420, "options": { "stroke-dasharray": "5, 5" } },
+    { "id": 5, "description": "5. Datapack sent to be synthesized", "path": "M 440 400 L 960 400", "label_cx": 700, "label_cy": 385 },
+    { "id": 6, "description": "6. Experience rendered on user's current interface", "path": "M 960 437.5 C 800 600, 250 500, 200 500", "label_cx": 580, "label_cy": 530 },
+    { "id": 7, "description": "7. User confirmation triggers Actuators", "path": "M 200 450 C 500 200, 1000 200, 1220 250", "label_cx": 710, "label_cy": 240, "options": { "stroke-dasharray": "10, 2" } },
+    { "id": 8, "description": "8. All interactions & feedback feed the Sentience Engine", "path": "M 200 480 C 600 650, 1000 650, 1220 550", "label_cx": 710, "label_cy": 660, "options": { "stroke-dasharray": "2, 3" } },
+    { "id": 9, "description": "9. Collective sentience refines the Zeitgeist", "path": "M 1220 500 C 1000 300, 475 250, 440 250", "label_cx": 830, "label_cy": 265, "options": { "stroke-dasharray": "5, 5" } }
+  ]
+}
