@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Bhutan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        /* Category-based coloring */
+        .visit-card { background-color: #eef2ff; border-left: 5px solid #6366f1; }
+        .accommodation-card { background-color: #fee2e2; border-left: 5px solid #ef4444; }
+        .food-card { background-color: #dcfce7; border-left: 5px solid #22c55e; }
+        .travel-card { background-color: #dbeafe; border-left: 5px solid #3b82f6; }
+        .prep-card { background-color: #f3e8ff; border-left: 5px solid #9333ea; }
+        .flight-card { background-color: #e0f2fe; border-left: 5px solid #0ea5e9; }
+        .weather-card { background-color: #fffbeb; border-left: 5px solid #f59e0b; }
+
+        /* Tooltip Styles */
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted #4b5563;
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #1f2937;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1f2937 transparent transparent transparent;
+        }
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* Animation for timeline items */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Journey to the Land of the Thunder Dragon</h1>
+            <p class="text-lg text-gray-600 mt-2">A 9-Day Himalayan Adventure in Bhutan</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 mb-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-6">Pre-Trip Preparation Checklist</h2>
+            <div class="space-y-6">
+                <div class="p-4 rounded-lg prep-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.5h-8.01a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h12a1.5 1.5 0 0 1 1.5 1.5v5.25M12 13.5h-3a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5Z" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">1-2 Months Before - Permits & SDF</h3>
+                        <p class="text-sm mt-1">As Indian passport holders, you don't need a visa, but an entry permit is mandatory.
+                            <br><strong>Action:</strong> You can get the permit at the Paro Airport arrival hall or at the Immigration Office in Phuentsholing if entering by road. You'll need your passport or Voter ID card.
+                            <br><strong>Sustainable Development Fee (SDF):</strong> Indian tourists must pay an SDF of <span class="has-tooltip">₹1,200 per person per night.<span class="tooltip">This fee goes towards funding social welfare, developmental activities, and environmental conservation in Bhutan. It must be paid in advance.</span></span>
+                            <br><strong>Important:</strong> Book your hotels and have a confirmed itinerary before applying for the permit online or on arrival.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-lg prep-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">2 Weeks Before - Pack & Final Prep</h3>
+                        <div class="text-sm grid md:grid-cols-2 gap-x-6 gap-y-4 mt-2">
+                            <div>
+                                <h4 class="font-semibold">Things to Pack:</h4>
+                                <ul class="list-disc list-inside mt-1">
+                                    <li><strong>Clothing:</strong> <span class="has-tooltip">Layers are essential.<span class="tooltip">Autumn in Bhutan (Sep-Oct) has pleasant days (15-20°C) but cold nights (5-10°C). Pack warm jackets, thermals, sweaters, and comfortable trousers.</span></span> Modest attire is required for visiting monasteries (Dzongs).</li>
+                                    <li><strong>Footwear:</strong> Sturdy, comfortable hiking/walking shoes are a must, especially for the Tiger's Nest trek.</li>
+                                    <li><strong>Essentials:</strong> Passport/Voter ID, permit confirmation, power bank, universal adapter (Types D, F, G), and sufficient Indian Rupees (INR), which is widely accepted.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Connectivity (SIM Card):</h4>
+                                <ul class="list-disc list-inside mt-1">
+                                    <li><strong>Local SIM:</strong> Easily available at Paro airport. Bhutan Telecom and TashiCell are the main providers. A tourist SIM with data costs around ₹700-1000.</li>
+                                    <li><strong>Indian SIMs:</strong> May work on international roaming, but can be very expensive. A local SIM is recommended.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="p-4 rounded-lg weather-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-amber-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Z" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">Weather Prediction (Late Sep - Early Oct)</h3>
+                        <p class="text-sm mt-1">This is one of the best times to visit Bhutan. The monsoon has just ended, leaving the landscape lush and green.
+                            <br><strong>Paro & Thimphu:</strong> Expect clear blue skies and pleasant daytime temperatures of <strong>15-20°C</strong>. Nights will be chilly, dropping to <strong>5-10°C</strong>.
+                            <br><strong>Punakha:</strong> Being at a lower altitude, it will be warmer, with daytime temperatures around <strong>20-25°C</strong>.
+                            <br><strong>Rainfall:</strong> Minimal chance of rain, perfect for trekking and sightseeing.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-lg flight-card flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-sky-600 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L6 12Zm0 0h7.5" /></svg>
+                    <div>
+                        <h3 class="font-bold text-lg">Your Flight Details (Approx. ₹25,000)</h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm mt-2">
+                            <div>
+                                <h4 class="font-semibold">Departing: Fri, Sep 26</h4>
+                                <p><strong>DEL → PBH</strong> (Drukair / Bhutan Airlines)</p>
+                                <p class="text-xs text-gray-600 mt-1">~7:00 AM (DEL) → ~9:30 AM (PBH)<br>Direct Flight (2hr 30min)</p>
+                            </div>
+                                <div>
+                                <h4 class="font-semibold">Returning: Sat, Oct 4</h4>
+                                <p><strong>PBH → DEL</strong> (Drukair / Bhutan Airlines)</p>
+                                <p class="text-xs text-gray-600 mt-1">~10:30 AM (PBH) → ~12:30 PM (DEL)<br>Direct Flight (3hr)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="hidden md:block absolute border-l-4 border-gray-300 border-dashed h-full" style="left: 50%; transform: translateX(-2px);"></div>
+            <div class="space-y-12">
+                <!-- Itinerary items will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 mt-12 fade-in">
+            <h2 class="text-2xl font-bold text-center mb-4">Complete Trip Cost Summary (Per Person)</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Category</th>
+                            <th scope="col" class="px-6 py-3 text-right">Cost per Person (INR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">International Flights (DEL-PBH)</th><td class="px-6 py-4 text-right">~ ₹25,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Sustainable Development Fee (SDF)</th><td class="px-6 py-4 text-right">₹9,600 (₹1200 x 8 nights)</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Accommodation (8 nights)</th><td class="px-6 py-4 text-right">~ ₹24,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Local Transport & Guide</th><td class="px-6 py-4 text-right">~ ₹15,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Food & Drinks</th><td class="px-6 py-4 text-right">~ ₹18,000</td></tr>
+                        <tr class="bg-white border-b"><th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Activities & Entrance Fees</th><td class="px-6 py-4 text-right">~ ₹4,000</td></tr>
+                        <tr class="bg-gray-50"><th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">Total Estimated Cost</th><td class="px-6 py-4 font-bold text-right">~ ₹95,600</td></tr>
+                    </tbody>
+                </table>
+                 <p class="text-center text-xs text-gray-500 mt-4">Note: Costs are estimates for a mid-range budget. Hiring a car with a driver/guide for the entire trip is common and cost-effective for transport. Booking in advance is recommended.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for the itinerary
+        const itineraryData = [
+            { day: 1, title: 'Arrival in Paro & Thimphu Transfer (Fri, Sep 26)', dailyCost: '₹4,500', items: [
+                { type: 'travel', icon: 'bus', text: 'Arrive at Paro Airport (PBH) at 9:30 AM. The landing amidst the mountains is breathtaking! Complete immigration and permit formalities.' },
+                { type: 'travel', icon: 'bus', text: 'Meet your driver/guide and drive to Thimphu, the capital city (1.5 hours).' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Thimphu (from ₹3,000/night).' },
+                { type: 'visit', icon: 'camera', text: 'Evening stroll to the Thimphu Chorten (Memorial Stupa), a hub of local life.' }
+            ]},
+            { day: 2, title: 'Thimphu Sightseeing (Sat, Sep 27)', dailyCost: '₹5,500', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Thimphu (₹3,000).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the gigantic Buddha Dordenma statue for panoramic views of Thimphu valley.' },
+                { type: 'visit', icon: 'camera', text: 'Explore the <span class="has-tooltip">Takin Preserve<span class="tooltip">See Bhutan\'s unique national animal, the Takin, which looks like a mix between a goat and a cow.</span></span> and the Folk Heritage Museum.' },
+                { type: 'food', icon: 'food', text: 'Lunch at a local restaurant. Try "Ema Datshi" (Chilies and Cheese), the national dish. Est. food cost: ₹1,000.' },
+                { type: 'visit', icon: 'camera', text: 'Visit the Tashichho Dzong, the impressive fortress that houses the King\'s office.' }
+            ]},
+            { day: 3, title: 'Thimphu to Punakha (Sun, Sep 28)', dailyCost: '₹6,000', items: [
+                { type: 'travel', icon: 'bus', text: 'Drive to Punakha over the <span class="has-tooltip">Dochu La Pass (3,100m)<span class="tooltip">On a clear day, you can see a stunning panorama of the Himalayan peaks from here. The 108 stupas are a beautiful sight.</span></span>. (3 hours)' },
+                { type: 'visit', icon: 'camera', text: 'Visit Chimi Lhakhang, the famous "Fertility Temple," after a short walk through rice fields.' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Punakha, which has beautiful valley views (from ₹3,500/night).' },
+                { type: 'food', icon: 'food', text: 'Dinner at the hotel. Est. food cost: ₹1,500.' }
+            ]},
+            { day: 4, title: 'Punakha Exploration (Mon, Sep 29)', dailyCost: '₹5,500', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Punakha (₹3,500).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the magnificent <span class="has-tooltip">Punakha Dzong<span class="tooltip">Arguably the most beautiful dzong in Bhutan, located at the confluence of two rivers. Allow at least 2 hours to explore.</span></span>, the former capital of Bhutan.' },
+                { type: 'visit', icon: 'camera', text: 'Walk across the Punakha Suspension Bridge, one of the longest in Bhutan, offering thrilling views.' },
+                { type: 'food', icon: 'food', text: 'Enjoy lunch with a view of the river. Est. food cost: ₹1,000.' }
+            ]},
+            { day: 5, title: 'Punakha to Paro (Tue, Sep 30)', dailyCost: '₹6,000', items: [
+                { type: 'travel', icon: 'bus', text: 'Drive back to Paro (approx. 4-5 hours), stopping again at Dochula Pass if the weather is clear.' },
+                { type: 'accommodation', icon: 'bed', text: 'Check into your hotel in Paro (from ₹3,000/night).' },
+                { type: 'visit', icon: 'camera', text: 'Visit the National Museum of Bhutan (Ta Dzong), housed in an old watchtower.'},
+                { type: 'food', icon: 'food', text: 'Explore Paro town in the evening and have dinner at a local cafe. Est. food cost: ₹1,500.' }
+            ]},
+            { day: 6, title: 'The Tiger\'s Nest Hike (Wed, Oct 1)', dailyCost: '₹5,000', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Paro (₹3,000).' },
+                { type: 'visit', icon: 'camera', text: 'The highlight of the trip! Hike to <span class="has-tooltip">Paro Taktsang (Tiger\'s Nest Monastery)<span class="tooltip">This 4-5 hour round-trip hike is challenging but incredibly rewarding. Start early. You can hire a pony for the first half of the climb.</span></span>. The monastery clings to a cliff 900m above the valley floor.' },
+                { type: 'food', icon: 'food', text: 'Lunch at the cafeteria on the way down from the hike, which offers great views of the monastery.' },
+                { type: 'visit', icon: 'camera', text: 'Relax in the evening. You can opt for a traditional hot stone bath to soothe your muscles (extra cost).' }
+            ]},
+            { day: 7, title: 'Haa Valley Day Trip (Thu, Oct 2)', dailyCost: '₹5,500', items: [
+                { type: 'travel', icon: 'bus', text: 'Take a day trip to the pristine Haa Valley via the Chele La Pass (3,988m), Bhutan\'s highest motorable pass.' },
+                { type: 'visit', icon: 'camera', text: 'Enjoy stunning views of Mt. Jomolhari and Jichu Drake from the pass. Explore the remote and beautiful Haa town.'},
+                { type: 'food', icon: 'food', text: 'Enjoy a picnic lunch or eat at a local restaurant in Haa. Est. food cost: ₹1,000.' },
+                { type: 'accommodation', icon: 'bed', text: 'Return to your hotel in Paro in the evening.' }
+            ]},
+            { day: 8, title: 'Leisurely Paro (Fri, Oct 3)', dailyCost: '₹4,500', items: [
+                { type: 'accommodation', icon: 'bed', text: 'Hotel in Paro (₹3,000).' },
+                { type: 'visit', icon: 'camera', text: 'Visit Kyichu Lhakhang, one of the oldest and most sacred temples in Bhutan.' },
+                { type: 'visit', icon: 'camera', text: 'Do some last-minute souvenir shopping in Paro town. Look for textiles, prayer wheels, and local crafts.' },
+                { type: 'food', icon: 'food', text: 'Enjoy a final farewell dinner. Est. food cost: ₹1,500.' }
+            ]},
+            { day: 9, title: 'Departure (Sat, Oct 4)', dailyCost: '₹500', items: [
+                { type: 'food', icon: 'food', text: 'Enjoy one last Bhutanese breakfast. Est. cost: ₹500.' },
+                { type: 'travel', icon: 'bus', text: 'Head to Paro Airport (PBH) for your 10:30 AM flight home.' }
+            ]}
+        ];
+
+        // Icons SVG Paths
+        const icons = {
+            bed: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8.25 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5a1.5 1.5 0 0 0 1.5-1.5v-6.75a1.5 1.5 0 0 0-1.5-1.5h-1.5V6.75A2.25 2.25 0 0 0 16.5 4.5h-9A2.25 2.25 0 0 0 5.25 6.75v5.25H3.75a1.5 1.5 0 0 0-1.5 1.5v6.75A1.5 1.5 0 0 0 3.75 21Z" /></svg>',
+            food: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-500"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.618a8.287 8.287 0 0 0 3-2.571 8.252 8.252 0 0 1 3.362-1.833Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 4.006 4.006 0 0 0-3.662-1.138 8.252 8.252 0 0 0-9.67 9.67 4.006 4.006 0 0 0 1.138 3.662 4.006 4.006 0 0 0 3.7 3.7 8.252 8.252 0 0 0 9.67-9.67Z" /></svg>',
+            camera: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg>',
+            train: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-500"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V11.25m17.25 0a1.125 1.125 0 0 1-1.125 1.125H12m5.25 0V8.25a2.25 2.25 0 0 0-2.25-2.25H9a2.25 2.25 0 0 0-2.25 2.25v3.75m10.5 0h-9" /></svg>',
+            bus: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V5.25a2.25 2.25 0 0 1 2.25-2.25h3a2.25 2.25 0 0 1 2.25 2.25v1.5m3 0V21a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 21V6.75m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6.75m18 0h-2.25m-13.5 0H3M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>',
+        };
+        const cardColors = {
+            visit: 'visit-card', accommodation: 'accommodation-card', food: 'food-card', travel: 'travel-card'
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.space-y-12');
+            itineraryData.forEach((day, index) => {
+                const isReversed = index % 2 !== 0; // For desktop layout
+
+                const itemsHtml = day.items.map(item => `
+                    <div class="flex items-start space-x-3 ${cardColors[item.type] || 'travel-card'} p-3 rounded-lg transition-all duration-300 hover:shadow-md hover:ring-2 hover:ring-offset-2 hover:ring-gray-300">
+                        <div class="flex-shrink-0 pt-0.5">${icons[item.icon] || icons.bus}</div>
+                        <p class="text-sm">${item.text}</p>
+                    </div>
+                `).join('');
+
+                const dayHtml = `
+                    <div class="timeline-item transform transition-all duration-500 md:flex items-center ${isReversed ? 'md:flex-row-reverse' : ''}">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        
+                        <div class="relative z-10 flex items-center justify-center bg-gray-800 text-white w-10 h-10 rounded-full shadow-lg mx-auto md:mx-4 flex-shrink-0">
+                            ${day.day}
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-xl w-full md:w-5/12 mt-4 md:mt-0 transform transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+                            <div class="p-4 border-b">
+                                <h3 class="font-bold text-gray-800 text-lg">${day.title}</h3>
+                            </div>
+                            <div class="p-4 space-y-3">${itemsHtml}</div>
+                            <div class="p-3 bg-gray-50 rounded-b-lg text-right">
+                                <p class="text-sm font-bold">Approx. Daily Cost: ${day.dailyCost}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += dayHtml;
+            });
+
+            // Intersection Observer to fade in items as they scroll into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
