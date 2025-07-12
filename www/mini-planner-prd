@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRD: AI Travel Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-3 border-l-4 border-indigo-500 pl-4;
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold text-gray-700 mt-8 mb-4;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden;
+        }
+        .prose {
+            @apply text-gray-600 leading-relaxed;
+        }
+        .user-story {
+            @apply bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4 transition-shadow duration-300 hover:shadow-md;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold tracking-tight">PRD: AI Travel Planner</h1>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#introduction" class="hover:text-indigo-200 transition">Introduction</a>
+                <a href="#personas" class="hover:text-indigo-200 transition">Personas</a>
+                <a href="#user-stories" class="hover:text-indigo-200 transition">User Stories</a>
+                <a href="#requirements" class="hover:text-indigo-200 transition">Requirements</a>
+                <a href="#metrics" class="hover:text-indigo-200 transition">Metrics</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#introduction" class="block py-2 hover:text-indigo-200 transition">Introduction</a>
+            <a href="#personas" class="block py-2 hover:text-indigo-200 transition">Personas</a>
+            <a href="#user-stories" class="block py-2 hover:text-indigo-200 transition">User Stories</a>
+            <a href="#requirements" class="block py-2 hover:text-indigo-200 transition">Requirements</a>
+            <a href="#metrics" class="block py-2 hover:text-indigo-200 transition">Metrics</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-10">
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="mb-16" data-aos="fade-up">
+            <h2 class="section-title">1. Introduction</h2>
+            <div class="prose mt-4 space-y-4">
+                <p><strong>Problem:</strong> Planning a trip is often a time-consuming and fragmented process. Travelers spend hours searching multiple websites for flights, hotels, and activities, struggling to piece together a coherent and feasible itinerary. They lack a centralized, intelligent tool that can understand their unique preferences and generate a personalized plan instantly.</p>
+                <p><strong>Solution:</strong> The AI Travel Planner is a web-based application that acts as a smart travel assistant. By using a powerful generative AI model, it transforms simple, natural language requests into detailed, structured, and enriched travel itineraries. The goal is to drastically reduce planning time, eliminate friction, and inspire users with creative and personalized travel ideas.</p>
+                <p><strong>Goals:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>To provide a seamless, conversational interface for trip planning.</li>
+                    <li>To generate high-quality, personalized itineraries in seconds.</li>
+                    <li>To enrich travel plans with real-world data, making them more actionable.</li>
+                    <li>To become the go-to starting point for any traveler's planning journey.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- User Personas Section -->
+        <section id="personas" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">2. User Personas</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-6">
+                <!-- Persona 1 -->
+                <div class="card" data-aos="fade-up">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-graduate text-4xl text-indigo-500 mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-800">Priya, the Budget Backpacker</h3>
+                                <p class="text-sm text-gray-500">22, recent graduate</p>
+                            </div>
+                        </div>
+                        <div class="prose text-sm mt-4">
+                            <p><strong>Bio:</strong> Priya loves to explore new places but is on a tight budget. She looks for cost-effective travel options and unique cultural experiences over luxury. She is tech-savvy and comfortable using apps to plan her trips.</p>
+                            <p><strong>Needs:</strong></p>
+                            <ul class="list-disc list-inside">
+                                <li>Clear cost estimates for activities.</li>
+                                <li>Suggestions for budget-friendly accommodation and food.</li>
+                                <li>An easy way to see if her plan is too rushed.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Persona 2 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                         <div class="flex items-center">
+                            <i class="fas fa-user-tie text-4xl text-indigo-500 mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-800">Raj, the Busy Professional</h3>
+                                <p class="text-sm text-gray-500">35, software engineer</p>
+                            </div>
+                        </div>
+                        <div class="prose text-sm mt-4">
+                            <p><strong>Bio:</strong> Raj works long hours and has limited time for trip planning. He values convenience and efficiency above all. He's looking for a tool that can quickly generate a solid plan which he can then fine-tune.</p>
+                            <p><strong>Needs:</strong></p>
+                            <ul class="list-disc list-inside">
+                                <li>A fast way to get a complete, well-structured itinerary.</li>
+                                <li>Integration with maps to visualize the plan.</li>
+                                <li>Ability to make quick modifications without starting over.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Stories Section -->
+        <section id="user-stories" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">3. User Stories</h2>
+            
+            <div data-aos="fade-up">
+                <h3 class="subsection-title">Epic: Initial Itinerary Planning</h3>
+                <div class="user-story">
+                    <p><strong>As a</strong> new user, <strong>I want to</strong> enter a simple text prompt describing my trip (e.g., "5 days in Goa for a beach vacation"), <strong>so that</strong> I can get a basic itinerary to start with.</p>
+                </div>
+                <div class="user-story">
+                    <p><strong>As a</strong> traveler with specific interests, <strong>I want to</strong> use preference sliders (for budget, history, food, etc.), <strong>so that</strong> the generated itinerary is tailored to my tastes.</p>
+                </div>
+                 <div class="user-story">
+                    <p><strong>As a</strong> planner, <strong>I want to</strong> see a creative title and a summary of my trip, <strong>so that</strong> I can quickly understand the theme of the generated plan.</p>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" class="mt-10">
+                <h3 class="subsection-title">Epic: Itinerary Management & Refinement</h3>
+                <div class="user-story">
+                    <p><strong>As a</strong> user, <strong>I want to</strong> modify my itinerary with another text prompt (e.g., "add more shopping"), <strong>so that</strong> I can refine my plan without restarting.</p>
+                </div>
+                <div class="user-story">
+                    <p><strong>As a</strong> meticulous planner, <strong>I want to</strong> drag and drop days or locations, <strong>so that</strong> I can manually reorder the schedule to my liking.</p>
+                </div>
+                <div class="user-story">
+                    <p><strong>As a</strong> user, <strong>I want to</strong> remove a location I'm not interested in, <strong>so that</strong> I can customize my plan.</p>
+                </div>
+                 <div class="user-story">
+                    <p><strong>As a</strong> visual planner, <strong>I want to</strong> see all my locations on a map, <strong>so that</strong> I can understand the geography of my trip.</p>
+                </div>
+            </div>
+            
+            <div data-aos="fade-up" class="mt-10">
+                <h3 class="subsection-title">Epic: Advanced Features & Export</h3>
+                 <div class="user-story">
+                    <p><strong>As a</strong> cautious traveler, <strong>I want to</strong> run a feasibility check on my itinerary, <strong>so that</strong> I know if my daily plan is realistic in terms of travel time.</p>
+                </div>
+                <div class="user-story">
+                    <p><strong>As a</strong> user preparing for my trip, <strong>I want to</strong> download my itinerary as a PDF, <strong>so that</strong> I can have an offline copy.</p>
+                </div>
+                <div class="user-story">
+                    <p><strong>As a</strong> first-time visitor, <strong>I want to</strong> get essential travel information (like visa and currency) for my destination, <strong>so that</strong> I can be well-prepared.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements Section -->
+        <section id="requirements" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">4. Requirements</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-6">
+                <div data-aos="fade-right">
+                    <h3 class="subsection-title !mt-0">Functional Requirements</h3>
+                    <ul class="list-disc list-inside prose space-y-2">
+                        <li>The system must accept natural language text input.</li>
+                        <li>The system must generate itineraries in a structured JSON format.</li>
+                        <li>The system must integrate with Google Places API to fetch location details.</li>
+                        <li>The UI must dynamically render the itinerary from the JSON response.</li>
+                        <li>Users must be able to modify, reorder, and delete items from the itinerary.</li>
+                        <li>The system must provide an option to view all locations on a Google Map.</li>
+                        <li>The system must allow exporting the itinerary to PDF and TXT formats.</li>
+                        <li>The system must provide a feasibility check using a directions API.</li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="subsection-title !mt-0">Non-Functional Requirements</h3>
+                    <ul class="list-disc list-inside prose space-y-2">
+                        <li><strong>Performance:</strong> Initial itinerary generation should complete within 15 seconds.</li>
+                        <li><strong>Usability:</strong> The interface must be intuitive and require no training. The application must be fully responsive and mobile-friendly.</li>
+                        <li><strong>Reliability:</strong> The application should have an uptime of 99.5% and handle API errors gracefully.</li>
+                        <li><strong>Scalability:</strong> The backend should be able to handle at least 100 concurrent users (as per App Engine config).</li>
+                        <li><strong>Security:</strong> All API keys and sensitive credentials must be stored securely as environment variables and not exposed on the client-side.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics Section -->
+        <section id="metrics" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">5. Success Metrics</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="card p-6" data-aos="zoom-in">
+                    <i class="fas fa-users text-3xl text-indigo-500 mb-3"></i>
+                    <h4 class="font-bold text-lg">User Engagement</h4>
+                    <p class="prose text-sm mt-1">Number of itineraries generated per day. Average number of modification requests per session.</p>
+                </div>
+                <div class="card p-6" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-check-circle text-3xl text-indigo-500 mb-3"></i>
+                    <h4 class="font-bold text-lg">Task Completion Rate</h4>
+                    <p class="prose text-sm mt-1">Percentage of users who successfully generate and then export or view their plan on the map.</p>
+                </div>
+                <div class="card p-6" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-rocket text-3xl text-indigo-500 mb-3"></i>
+                    <h4 class="font-bold text-lg">Adoption & Retention</h4>
+                    <p class="prose text-sm mt-1">Number of new users per week. Percentage of users who return for a second session.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Future Considerations Section -->
+        <section id="future" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">6. Future Considerations (Post-MVP)</h2>
+            <ul class="list-disc list-inside prose mt-4 space-y-3">
+                <li data-aos="fade-left"><strong>User Accounts & Saved Itineraries:</strong> Allow users to create accounts to save, name, and manage their travel plans.</li>
+                <li data-aos="fade-left" data-aos-delay="50"><strong>Collaboration:</strong> Enable sharing an itinerary with friends or family, allowing them to view or suggest edits.</li>
+                <li data-aos="fade-left" data-aos-delay="100"><strong>Real-time Booking Integration:</strong> Partner with booking affiliates to allow users to book flights and hotels directly from the itinerary.</li>
+                <li data-aos="fade-left" data-aos-delay="150"><strong>Multi-destination Trips:</strong> Enhance the AI prompt to handle complex trips spanning multiple cities or countries.</li>
+                <li data-aos="fade-left" data-aos-delay="200"><strong>Mobile App:</strong> Develop native iOS and Android applications for a better mobile experience.</li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-4 text-center text-sm">
+            <p>&copy; 2024 AI Travel Planner. Product Requirements Document generated by Gemini.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
