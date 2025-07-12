@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -28,7 +29,10 @@
             @apply bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm;
         }
         .mermaid {
-            @apply bg-white p-6 rounded-lg shadow-md flex justify-center items-center;
+            @apply bg-white p-6 rounded-lg shadow-md flex justify-center items-center w-full;
+        }
+        .chart-container {
+            @apply bg-white p-6 rounded-xl shadow-lg;
         }
     </style>
 </head>
@@ -42,8 +46,8 @@
                 <a href="#overview" class="hover:text-teal-200 transition">Overview</a>
                 <a href="#architecture" class="hover:text-teal-200 transition">Architecture</a>
                 <a href="#features" class="hover:text-teal-200 transition">Features</a>
-                <a href="#tech-stack" class="hover:text-teal-200 transition">Tech Stack</a>
                 <a href="#api" class="hover:text-teal-200 transition">API</a>
+                <a href="#visualizations" class="hover:text-teal-200 transition">Visualizations</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -53,8 +57,8 @@
             <a href="#overview" class="block py-2 hover:text-teal-200 transition">Overview</a>
             <a href="#architecture" class="block py-2 hover:text-teal-200 transition">Architecture</a>
             <a href="#features" class="block py-2 hover:text-teal-200 transition">Features</a>
-            <a href="#tech-stack" class="block py-2 hover:text-teal-200 transition">Tech Stack</a>
             <a href="#api" class="block py-2 hover:text-teal-200 transition">API</a>
+            <a href="#visualizations" class="block py-2 hover:text-teal-200 transition">Visualizations</a>
         </div>
     </header>
 
@@ -62,7 +66,7 @@
 
         <!-- Overview Section -->
         <section id="overview" class="mb-16" data-aos="fade-up">
-            <h2 class="section-title">Project Overview</h2>
+            <h2 class="section-title">1. Project Overview</h2>
             <p class="prose mt-4">
                 The AI Travel Planner is a web application designed to simplify trip planning by leveraging the power of generative AI. Users can input natural language queries describing their desired trip, and the application generates a detailed, structured itinerary. The system integrates with Google Places API to enrich the itinerary with real-world data like photos, ratings, and addresses. The application is built with a Flask backend and a dynamic, responsive frontend using vanilla JavaScript and Tailwind CSS.
             </p>
@@ -73,7 +77,7 @@
 
         <!-- Architecture Section -->
         <section id="architecture" class="mb-16">
-            <h2 class="section-title" data-aos="fade-up">System Architecture</h2>
+            <h2 class="section-title" data-aos="fade-up">2. System Architecture</h2>
             
             <div class="subsection-title" data-aos="fade-up">High-Level Diagram</div>
             <div class="mermaid" data-aos="zoom-in">
@@ -141,7 +145,7 @@
 
         <!-- Features Section -->
         <section id="features" class="mb-16">
-            <h2 class="section-title" data-aos="fade-up">Core Features</h2>
+            <h2 class="section-title" data-aos="fade-up">3. Core Features</h2>
             <ul class="list-disc list-inside prose mt-4 space-y-4">
                 <li data-aos="fade-left"><strong class="text-gray-800">AI-Powered Itinerary Generation:</strong> The core feature. Users can describe their desired trip in plain English (e.g., "A romantic 3-day weekend in Paris focusing on art and food"), and the AI generates a complete, day-by-day plan.</li>
                 <li data-aos="fade-left" data-aos-delay="50"><strong class="text-gray-800">Itinerary Modification:</strong> Users can iteratively refine their plan. Existing plans can be modified with further natural language commands (e.g., "add more museums" or "make day 2 more relaxed"), and the AI will adjust the plan accordingly.</li>
@@ -157,7 +161,7 @@
 
         <!-- Tech Stack Section -->
         <section id="tech-stack" class="mb-16">
-            <h2 class="section-title" data-aos="fade-up">Technology Stack & Libraries</h2>
+            <h2 class="section-title" data-aos="fade-up">4. Technology Stack</h2>
             <div class="grid md:grid-cols-2 gap-8 mt-6">
                 <div data-aos="fade-right">
                     <h3 class="subsection-title !mt-0">Backend</h3>
@@ -186,7 +190,7 @@
 
         <!-- API Endpoints Section -->
         <section id="api" class="mb-16">
-            <h2 class="section-title" data-aos="fade-up">API Endpoints</h2>
+            <h2 class="section-title" data-aos="fade-up">5. API Endpoints</h2>
             <div class="space-y-8 mt-6">
                 <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
                     <div class="p-6">
@@ -229,6 +233,20 @@
   "trip_title": "Tokyo & Hakone: City and Nature",
   ...
 }</code></pre>
+                            <h4 class="font-semibold text-gray-700 mt-4 mb-2">Sequence Diagram:</h4>
+                            <div class="mermaid">
+                                sequenceDiagram
+                                    participant User
+                                    participant Frontend
+                                    participant Backend
+                                    participant Gemini API
+                                    User->>Frontend: Enters "add more museums"
+                                    Frontend->>Backend: POST /modify (itinerary, prompt)
+                                    Backend->>Gemini API: send_message(current_itinerary, prompt="add more museums")
+                                    Gemini API-->>Backend: Returns updated JSON
+                                    Backend-->>Frontend: 200 OK (updated itinerary)
+                                    Frontend->>User: Renders modified plan
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,6 +303,22 @@
             </div>
         </section>
 
+        <!-- Visualizations Section -->
+        <section id="visualizations" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">6. Visualizations & Projections</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-6">
+                <div class="chart-container" data-aos="fade-right">
+                    <h3 class="font-bold text-center mb-4">Technology Stack Distribution</h3>
+                    <canvas id="techStackChart"></canvas>
+                </div>
+                <div class="chart-container" data-aos="fade-left">
+                     <h3 class="font-bold text-center mb-4">Projected API Endpoint Usage</h3>
+                    <canvas id="apiUsageChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <footer class="bg-gray-800 text-white mt-16">
@@ -303,10 +337,13 @@
                 primaryColor: '#14b8a6',
                 primaryTextColor: '#fff',
                 lineColor: '#4b5563',
-                textColor: '#374151'
+                textColor: '#374151',
             },
             fontFamily: '"Inter", sans-serif',
-            fontSize: 14,
+            sequence: {
+                fontSize: 12,
+                actorFontSize: 13,
+            }
         });
     </script>
     <script>
@@ -325,6 +362,82 @@
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Chart.js Initializations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tech Stack Chart
+            const techCtx = document.getElementById('techStackChart').getContext('2d');
+            new Chart(techCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Frontend (JS, CSS, HTML)', 'Backend (Python/Flask)', 'External APIs'],
+                    datasets: [{
+                        label: 'Tech Distribution',
+                        data: [40, 45, 15],
+                        backgroundColor: [
+                            'rgba(20, 184, 166, 0.7)',
+                            'rgba(15, 118, 110, 0.7)',
+                            'rgba(13, 148, 136, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(20, 184, 166)',
+                            'rgb(15, 118, 110)',
+                            'rgb(13, 148, 136)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+
+            // API Usage Chart
+            const apiCtx = document.getElementById('apiUsageChart').getContext('2d');
+            new Chart(apiCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['/plan', '/modify', '/info', '/validate', '/download'],
+                    datasets: [{
+                        label: 'Projected Calls per 100 Sessions',
+                        data: [100, 150, 40, 25, 15],
+                         backgroundColor: [
+                            'rgba(59, 130, 246, 0.6)',
+                            'rgba(249, 115, 22, 0.6)',
+                            'rgba(22, 163, 74, 0.6)',
+                            'rgba(239, 68, 68, 0.6)',
+                            'rgba(139, 92, 246, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgb(59, 130, 246)',
+                            'rgb(249, 115, 22)',
+                            'rgb(22, 163, 74)',
+                            'rgb(239, 68, 68)',
+                            'rgb(139, 92, 246)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
             });
         });
     </script>
