@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Document: AI Travel Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-3 border-l-4 border-teal-500 pl-4;
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold text-gray-700 mt-8 mb-4;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105;
+        }
+        .prose {
+            @apply text-gray-600 leading-relaxed;
+        }
+        .code-block {
+            @apply bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm;
+        }
+        .mermaid {
+            @apply bg-white p-6 rounded-lg shadow-md flex justify-center items-center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header -->
+    <header class="bg-teal-600 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold tracking-tight">AI Travel Planner: Design Document</h1>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#overview" class="hover:text-teal-200 transition">Overview</a>
+                <a href="#architecture" class="hover:text-teal-200 transition">Architecture</a>
+                <a href="#features" class="hover:text-teal-200 transition">Features</a>
+                <a href="#tech-stack" class="hover:text-teal-200 transition">Tech Stack</a>
+                <a href="#api" class="hover:text-teal-200 transition">API</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#overview" class="block py-2 hover:text-teal-200 transition">Overview</a>
+            <a href="#architecture" class="block py-2 hover:text-teal-200 transition">Architecture</a>
+            <a href="#features" class="block py-2 hover:text-teal-200 transition">Features</a>
+            <a href="#tech-stack" class="block py-2 hover:text-teal-200 transition">Tech Stack</a>
+            <a href="#api" class="block py-2 hover:text-teal-200 transition">API</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-10">
+
+        <!-- Overview Section -->
+        <section id="overview" class="mb-16" data-aos="fade-up">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="prose mt-4">
+                The AI Travel Planner is a web application designed to simplify trip planning by leveraging the power of generative AI. Users can input natural language queries describing their desired trip, and the application generates a detailed, structured itinerary. The system integrates with Google Places API to enrich the itinerary with real-world data like photos, ratings, and addresses. The application is built with a Flask backend and a dynamic, responsive frontend using vanilla JavaScript and Tailwind CSS.
+            </p>
+            <p class="prose mt-4">
+                The primary value proposition is to transform a traditionally fragmented and time-consuming research process into a delightful, interactive, and efficient experience. It targets a wide range of travelers, from budget-conscious backpackers to busy professionals seeking a quick and well-organized plan.
+            </p>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">System Architecture</h2>
+            
+            <div class="subsection-title" data-aos="fade-up">High-Level Diagram</div>
+            <div class="mermaid" data-aos="zoom-in">
+                graph TD
+                    A[User] -->|1. Enters Prompt & Preferences| B(Frontend - HTML/JS/Tailwind);
+                    B -->|2. API Request /plan or /modify| C{Backend - Flask};
+                    C -->|3. Constructs Detailed Prompt| D(Gemini AI API);
+                    D -->|4. Returns Structured JSON Itinerary| C;
+                    C -->|5. Enriches Location Data| E(Google Places API);
+                    E -->|6. Returns Place Photos, Ratings, etc.| C;
+                    C -->|7. Sends Final Enriched JSON to Frontend| B;
+                    B -->|8. Renders Interactive Itinerary| A;
+            </div>
+
+            <div class="subsection-title" data-aos="fade-up">Component Breakdown</div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                <div class="card" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-teal-600">Frontend</h3>
+                        <p class="prose mt-2 text-sm">A single-page application built with HTML, Tailwind CSS, and vanilla JavaScript. It is responsible for all client-side logic, including capturing user input, managing UI state (e.g., modals, loaders), and dynamically rendering the itinerary from JSON data. It's fully responsive for mobile and desktop use.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-teal-600">Backend (Flask)</h3>
+                        <p class="prose mt-2 text-sm">A Python-based server using the Flask framework. It acts as the application's brain, exposing a RESTful API. Its core responsibilities include request validation, prompt engineering (constructing the precise instructions for the AI), orchestrating calls to external services (Gemini and Google Places), and shaping the final JSON response.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-teal-600">Gemini AI API</h3>
+                        <p class="prose mt-2 text-sm">The core AI engine from Google. It receives carefully crafted prompts from the backend that include the user's request, preferences, and the required JSON schema. Its task is to understand the user's intent and generate a creative, logical, and correctly formatted travel plan.</p>
+                    </div>
+                </div>
+                 <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-teal-600">Google Places API</h3>
+                        <p class="prose mt-2 text-sm">Used to enrich the AI-generated itinerary with real-world data. For each location name provided by the AI, the backend queries this API to fetch crucial details like photos, addresses, user ratings, and geographic coordinates, making the plan more tangible and useful.</p>
+                    </div>
+                </div>
+                 <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-teal-600">Deployment (App Engine)</h3>
+                        <p class="prose mt-2 text-sm">The application is configured for deployment on Google App Engine using a `gunicorn` server. The `app.yaml` file specifies a flexible environment that can scale automatically based on traffic, ensuring reliability and performance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection-title" data-aos="fade-up">Data Flow</div>
+             <p class="prose mt-4">
+                The data flow is unidirectional and initiated by the user.
+                <ol class="list-decimal list-inside mt-2">
+                    <li>The user enters a prompt on the frontend.</li>
+                    <li>The frontend sends a structured HTTP request to the Flask backend.</li>
+                    <li>The backend validates the request and constructs a detailed prompt for the Gemini API, including the user's query and preferences.</li>
+                    <li>Gemini processes the prompt and returns a JSON object containing the itinerary.</li>
+                    <li>The backend parses this JSON and iterates through the locations, making individual calls to the Google Places API for each one.</li>
+                    <li>The Places API returns rich data (photos, ratings, etc.), which the backend merges into the itinerary JSON.</li>
+                    <li>The final, enriched JSON is sent back to the frontend.</li>
+                    <li>The frontend JavaScript parses the JSON and dynamically builds the HTML to display the interactive itinerary to the user.</li>
+                </ol>
+            </p>
+
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">Core Features</h2>
+            <ul class="list-disc list-inside prose mt-4 space-y-4">
+                <li data-aos="fade-left"><strong class="text-gray-800">AI-Powered Itinerary Generation:</strong> The core feature. Users can describe their desired trip in plain English (e.g., "A romantic 3-day weekend in Paris focusing on art and food"), and the AI generates a complete, day-by-day plan.</li>
+                <li data-aos="fade-left" data-aos-delay="50"><strong class="text-gray-800">Itinerary Modification:</strong> Users can iteratively refine their plan. Existing plans can be modified with further natural language commands (e.g., "add more museums" or "make day 2 more relaxed"), and the AI will adjust the plan accordingly.</li>
+                <li data-aos="fade-left" data-aos-delay="100"><strong class="text-gray-800">Google Places Integration:</strong> To bridge the gap between suggestion and reality, locations are automatically enhanced with photos, addresses, and ratings from Google Maps, giving users a better sense of each place.</li>
+                <li data-aos="fade-left" data-aos-delay="150"><strong class="text-gray-800">Interactive UI:</strong> A drag-and-drop interface (using SortableJS) allows users to reorder days and locations within the itinerary, providing full manual control over the final schedule.</li>
+                <li data-aos="fade-left" data-aos-delay="200"><strong class="text-gray-800">Preference-Based Planning:</strong> A dedicated modal allows users to set detailed preferences for budget, interests (history, food, etc.), and special needs (pace, accessibility) to tailor the AI's output to their specific travel style.</li>
+                <li data-aos="fade-left" data-aos-delay="250"><strong class="text-gray-800">Map View:</strong> A modal displays all itinerary locations on an interactive Google Map with custom, day-coded markers, helping users visualize the geography of their trip.</li>
+                <li data-aos="fade-left" data-aos-delay="300"><strong class="text-gray-800">Travel Information:</strong> Provides essential travel info (visa requirements for Indian citizens, local SIM cards, weather, and general tips) for the destination.</li>
+                 <li data-aos="fade-left" data-aos-delay="350"><strong class="text-gray-800">Feasibility Check:</strong> A validation feature uses the Google Directions API to estimate travel times between a day's locations and assess if the plan is realistic or too rushed.</li>
+                <li data-aos="fade-left" data-aos-delay="400"><strong class="text-gray-800">Export Options:</strong> The final itinerary can be downloaded as a professionally formatted PDF or a simple plain text file for offline use.</li>
+            </ul>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech-stack" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">Technology Stack & Libraries</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-6">
+                <div data-aos="fade-right">
+                    <h3 class="subsection-title !mt-0">Backend</h3>
+                    <ul class="list-disc list-inside prose space-y-2">
+                        <li><strong>Framework:</strong> Flask</li>
+                        <li><strong>Language:</strong> Python 3.9</li>
+                        <li><strong>AI Integration:</strong> `google-generativeai`</li>
+                        <li><strong>Maps Integration:</strong> `googlemaps`</li>
+                        <li><strong>PDF Generation:</strong> `fpdf`</li>
+                        <li><strong>Web Server:</strong> Gunicorn</li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="subsection-title !mt-0">Frontend</h3>
+                    <ul class="list-disc list-inside prose space-y-2">
+                        <li><strong>Styling:</strong> Tailwind CSS</li>
+                        <li><strong>Core Logic:</strong> Vanilla JavaScript (ES6)</li>
+                        <li><strong>Drag & Drop:</strong> SortableJS</li>
+                        <li><strong>Animations:</strong> AOS (Animate On Scroll)</li>
+                        <li><strong>Icons:</strong> Material Symbols</li>
+                        <li><strong>Mapping:</strong> Google Maps JavaScript API</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Endpoints Section -->
+        <section id="api" class="mb-16">
+            <h2 class="section-title" data-aos="fade-up">API Endpoints</h2>
+            <div class="space-y-8 mt-6">
+                <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-mono font-bold text-lg"><span class="bg-blue-100 text-blue-800 rounded-md px-2 py-1 text-sm mr-2">POST</span> /plan</h3>
+                        <p class="prose mt-2">Generates a new travel itinerary from scratch based on a user prompt and preferences.</p>
+                        <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Request Body:</h4>
+                            <pre class="code-block"><code>{
+  "prompt": "A 5-day trip to Tokyo...",
+  "model": "gemini-2.0-flash",
+  "preferences": { "budget": 3, "food": 5, ... }
+}</code></pre>
+                            <h4 class="font-semibold text-gray-700 mt-4 mb-2">Success Response (200 OK):</h4>
+                             <pre class="code-block"><code>{
+  "response": "Here is your 5-day cultural and culinary trip to Tokyo!",
+  "trip_title": "Tokyo Delights: Culture & Cuisine",
+  "destination": "Tokyo, Japan",
+  "itinerary": [ ...array of day objects... ],
+  "suggested_modifications": [ "Add a day trip to Mount Fuji", "Find some anime-related activities" ]
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-mono font-bold text-lg"><span class="bg-orange-100 text-orange-800 rounded-md px-2 py-1 text-sm mr-2">POST</span> /modify</h3>
+                        <p class="prose mt-2">Modifies an existing itinerary based on a new prompt and the current plan.</p>
+                         <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Request Body:</h4>
+                            <pre class="code-block"><code>{
+  "itinerary": { ...current itinerary object... },
+  "prompt": "Add a day trip to Hakone",
+  "history": [ ...user command history... ],
+  "model": "gemini-2.0-flash",
+  "preferences": { ... }
+}</code></pre>
+                            <h4 class="font-semibold text-gray-700 mt-4 mb-2">Success Response (200 OK):</h4>
+                             <pre class="code-block"><code>{
+  "response": "I've updated your plan to include a day trip to Hakone.",
+  "trip_title": "Tokyo & Hakone: City and Nature",
+  ...
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-mono font-bold text-lg"><span class="bg-green-100 text-green-800 rounded-md px-2 py-1 text-sm mr-2">POST</span> /info</h3>
+                        <p class="prose mt-2">Fetches general travel information for a given destination.</p>
+                         <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Request Body:</h4>
+                            <pre class="code-block"><code>{
+  "destination": "Paris, France"
+}</code></pre>
+                            <h4 class="font-semibold text-gray-700 mt-4 mb-2">Success Response (200 OK):</h4>
+                             <pre class="code-block"><code>{
+  "info": "### Visa Requirements\n- For Indian citizens, a Schengen visa is required..."
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-mono font-bold text-lg"><span class="bg-purple-100 text-purple-800 rounded-md px-2 py-1 text-sm mr-2">POST</span> /download</h3>
+                        <p class="prose mt-2">Downloads the current itinerary as a PDF or TXT file.</p>
+                         <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Request Body:</h4>
+                            <pre class="code-block"><code>{
+  "itinerary": { ...current itinerary object... },
+  "format": "pdf"
+}</code></pre>
+                            <h4 class="font-semibold text-gray-700 mt-4 mb-2">Success Response (200 OK):</h4>
+                             <p class="prose text-sm">Returns a file stream with `Content-Type: application/pdf` or `Content-Type: text/plain`.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card !shadow-none !rounded-lg border border-gray-200" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="font-mono font-bold text-lg"><span class="bg-red-100 text-red-800 rounded-md px-2 py-1 text-sm mr-2">POST</span> /validate</h3>
+                        <p class="prose mt-2">Validates the feasibility of an itinerary by checking travel times.</p>
+                         <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Request Body:</h4>
+                            <pre class="code-block"><code>{
+  "places": ["Eiffel Tower", "Louvre Museum", "Notre Dame"]
+}</code></pre>
+                             <h4 class="font-semibold text-gray-700 mt-4 mb-2">Success Response (200 OK):</h4>
+                             <pre class="code-block"><code>{
+    "feasible": false,
+    "total_hours": 11.5,
+    "day_limit_hours": 10,
+    "details": { ... }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-4 text-center text-sm">
+            <p>&copy; 2024 AI Travel Planner. Design Document generated by Gemini.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#14b8a6',
+                primaryTextColor: '#fff',
+                lineColor: '#4b5563',
+                textColor: '#374151'
+            },
+            fontFamily: '"Inter", sans-serif',
+            fontSize: 14,
+        });
+    </script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
