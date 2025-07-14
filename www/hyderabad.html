@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +88,8 @@
         <!-- Trip Planning Section -->
         <section id="planning" class="mb-12">
             <div class="card p-6 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Trip Planning</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4">Trip Planning</h2>
+                <p class="text-center text-sm text-indigo-600 mb-8">Click the options with the <i data-feather="external-link" class="inline-block w-4 h-4"></i> icon for more details.</p>
                 
                 <!-- Travel Options -->
                 <div class="mb-10">
@@ -97,7 +97,7 @@
                     <div class="grid md:grid-cols-3 gap-6 text-center">
                         <a href="https://www.google.com/travel/flights?q=Flights%20from%20Bangalore%20to%20HYD%20on%202025-08-15" target="_blank" class="travel-option-card block">
                             <div class="flex justify-center mb-2"><i data-feather="send" class="icon-style text-blue-500"></i></div>
-                            <h4 class="font-bold">By Flight</h4>
+                            <h4 class="font-bold flex items-center justify-center">By Flight <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
                             <p class="text-sm text-gray-600">Quickest option. Departs Aug 15.</p>
                         </a>
                         <div class="travel-option-card">
@@ -107,11 +107,10 @@
                         </div>
                         <a href="https://maps.app.goo.gl/83bUjpCekhWmvHmQA?g_st=ac" target="_blank" class="travel-option-card block">
                             <div class="flex justify-center mb-2"><i data-feather="truck" class="icon-style text-purple-500"></i></div>
-                            <h4 class="font-bold">By Car</h4>
+                            <h4 class="font-bold flex items-center justify-center">By Car <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
                             <p class="text-sm text-gray-600">Scenic route. Depart on Aug 15 morning.</p>
                         </a>
                     </div>
-                     <p class="text-center text-sm text-gray-500 mt-4">Click the options above for more details.</p>
                 </div>
 
                 <!-- Pre-trip Checklist -->
@@ -178,6 +177,44 @@
             </div>
         </section>
 
+        <!-- Other Places to Explore -->
+        <section id="not-included">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Other Places to Explore</h2>
+                <p class="text-center text-gray-600 mb-8">This itinerary is packed, but if you have extra time or want to swap an activity, here are other great options in Hyderabad:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="https://www.google.com/maps/place/Ramoji+Film+City/@17.254892,78.680939,15z/data=!4m6!3m5!1s0x3bcba44f50621cb5:0x455533b0347f846f!8m2!3d17.254892!4d78.680939!16zL20vMDZtZ3Bf?entry=ttu" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="film" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Ramoji Film City <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">A sprawling film studio complex with tours, shows, and amusement park rides. Requires a full day.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chowmahalla+Palace" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="key" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Chowmahalla Palace <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">A magnificent palace of the Nizams, showcasing their opulent lifestyle and vintage car collection.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/maps/place/Salar+Jung+Museum/@17.371389,78.480278,17z/data=!4m6!3m5!1s0x3bcb978de5345a99:0x135409921e324525!8m2!3d17.3713889!4d78.4802778!16zL20vMDVnM3h0?entry=ttu" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="archive" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Salar Jung Museum <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">Features one of the world's largest one-man collections of antiques, art, and artifacts.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/maps/place/Hussain+Sagar/@17.42477,78.47332,15z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9753462a3479:0x2956f9592d33a64!8m2!3d17.42389!4d78.47389!16zL20vMDV4M2w?entry=ttu" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="anchor" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Hussain Sagar Lake <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">A large, heart-shaped lake with a famous Buddha statue. Great for an evening stroll or boat ride.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="text-center py-8 text-gray-500">
@@ -189,19 +226,19 @@
             { day: 1, title: 'Arrival & Old City Charm', dailyCost: '₹2,500', items: [
                 { type: 'travel', icon: 'log-in', text: 'Arrive in Hyderabad and check into your hotel.' },
                 { type: 'accommodation', icon: 'home', text: 'Settle in at your hotel in Banjara Hills or Jubilee Hills.' },
-                { type: 'visit', icon: 'camera', text: 'Visit the iconic Charminar and the nearby Mecca Masjid.'},
-                { type: 'visit', icon: 'shopping-bag', text: 'Stroll through the vibrant Laad Bazaar for bangles and pearls.'},
+                { type: 'visit', icon: 'camera', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Charminar/@17.3615636,78.4746645,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb978a6e70520b:0x49d66e4251758ba!8m2!3d17.3615636!4d78.4746645!16zL20vMDVoM3M?entry=ttu" target="_blank">Visit the iconic Charminar and the nearby Mecca Masjid <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
+                { type: 'visit', icon: 'shopping-bag', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/Laad+Bazaar+Hyderabad" target="_blank">Stroll through the vibrant Laad Bazaar for bangles and pearls <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
                 { type: 'food', icon: 'coffee', text: 'Savor authentic Hyderabadi Biryani at a legendary spot.' }
             ]},
             { day: 2, title: 'Forts, Science & Ananthagiri', dailyCost: '₹4,500', items: [
-                { type: 'visit', icon: 'shield', text: 'Morning exploration of the majestic Golconda Fort.' },
-                { type: 'visit', icon: 'box', text: 'Afternoon visit to the Birla Science Centre.'},
-                { type: 'travel', icon: 'truck', text: 'Evening drive to Ananthagiri Hills (approx. 2-3 hours).' },
+                { type: 'visit', icon: 'shield', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Golconda+Fort/@17.3833312,78.401119,15z/data=!4m2!3m1!1s0x0:0x1312f8706542418d?sa=X&ved=2ahUKEwiAreD-sJ2HAxU-nFYBHZ5UCkIQ_BJ6BAgNEAA" target="_blank">Morning exploration of the majestic Golconda Fort <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
+                { type: 'visit', icon: 'box', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/B.+M.+Birla+Science+Centre/@17.4082,78.465,15z/data=!4m2!3m1!1s0x0:0x58c6a341d55363c1?sa=X&ved=2ahUKEwj9g9G84ouAAxX-9DgGHZ_cCQ8Q_BJ6BAg_EAA&ved=2ahUKEwj9g9G84ouAAxX-9DgGHZ_cCQ8Q_BJ6BAhNEAg" target="_blank">Afternoon visit to the Birla Science Centre <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
+                { type: 'travel', icon: 'truck', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Ananthagiri+Hills,+Telangana" target="_blank">Evening drive to Ananthagiri Hills (approx. 2-3 hours) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
                 { type: 'accommodation', icon: 'home', text: 'Check into a resort for an overnight stay in Ananthagiri.' }
             ]},
             { day: 3, title: 'Ananthagiri & Departure', dailyCost: '₹1,500', items: [
                 { type: 'visit', icon: 'sun', text: 'Enjoy the sunrise and explore the lush forests of Ananthagiri.' },
-                { type: 'visit', icon: 'home', text: 'Visit the Anantha Padmanabha Swamy Temple.' },
+                { type: 'visit', icon: 'home', text: '<a class="text-indigo-600 hover:underline" href="https://goo.gl/maps/JLedSZQSgpS2" target="_blank">Visit the Anantha Padmanabha Swamy Temple <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
                 { type: 'food', icon: 'coffee', text: 'Lunch in Ananthagiri before heading to the station.' },
                 { type: 'travel', icon: 'train', text: 'Return train from Vikarabad (VKB): 16584 LUR YPR EXPRESS, departs 7:40 PM, arrives YPR 7:40 AM.' }
             ]}
@@ -287,6 +324,9 @@
                     }
                 });
             });
+
+            // Final feather replacement after dynamic content is added
+            feather.replace();
         });
     </script>
 </body>
