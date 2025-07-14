@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Travel Itinerary",
+  "description": "A schema for generating a travel itinerary HTML page.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The main title of the itinerary."
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "A brief subtitle for the itinerary."
+    },
+    "itinerary": {
+      "type": "array",
+      "description": "The daily itinerary.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "description": "The day number."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title for the day's activities."
+          },
+          "dailyCost": {
+            "type": "string",
+            "description": "The estimated cost for the day."
+          },
+          "items": {
+            "type": "array",
+            "description": "A list of activities for the day.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "The type of activity (e.g., travel, food, visit)."
+                },
+                "icon": {
+                  "type": "string",
+                  "description": "The feather icon name for the activity."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "The description of the activity, can contain HTML."
+                }
+              },
+              "required": ["type", "icon", "text"]
+            }
+          }
+        },
+        "required": ["day", "title", "dailyCost", "items"]
+      }
+    },
+    "planning": {
+      "type": "object",
+      "description": "Information for planning the trip.",
+      "properties": {
+        "travelOptions": {
+          "type": "array",
+          "description": "Options for travel.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The mode of travel (e.g., By Flight, By Train)."
+              },
+              "icon": {
+                "type": "string",
+                "description": "The feather icon name for the travel mode."
+              },
+              "details": {
+                "type": "string",
+                "description": "Details about the travel option."
+              },
+              "link": {
+                "type": "string",
+                "format": "uri",
+                "description": "A link for more information."
+              }
+            },
+            "required": ["type", "icon", "details"]
+          }
+        },
+        "checklist": {
+          "type": "object",
+          "description": "A pre-trip checklist.",
+          "properties": {
+            "packing": {
+              "type": "array",
+              "description": "A list of items to pack.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "connectivity": {
+              "type": "array",
+              "description": "Information about connectivity.",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": ["packing", "connectivity"]
+        }
+      },
+      "required": ["travelOptions", "checklist"]
+    },
+    "costs": {
+      "type": "object",
+      "description": "A summary of the trip costs.",
+      "properties": {
+        "summary": {
+          "type": "array",
+          "description": "A list of cost items.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "item": {
+                "type": "string",
+                "description": "The name of the cost item (e.g., Flights/Train)."
+              },
+              "amount": {
+                "type": "string",
+                "description": "The estimated cost for the item."
+              }
+            },
+            "required": ["item", "amount"]
+          }
+        },
+        "total": {
+          "type": "string",
+          "description": "The total estimated cost for the trip."
+        }
+      },
+      "required": ["summary", "total"]
+    },
+    "otherPlaces": {
+      "type": "array",
+      "description": "A list of other places to explore.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the place."
+          },
+          "icon": {
+            "type": "string",
+            "description": "The feather icon name for the place."
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the place."
+          },
+          "link": {
+            "type": "string",
+            "format": "uri",
+            "description": "A link for more information."
+          }
+        },
+        "required": ["name", "icon", "description", "link"]
+      }
+    }
+  },
+  "required": ["title", "subtitle", "itinerary", "planning", "costs", "otherPlaces"]
+}

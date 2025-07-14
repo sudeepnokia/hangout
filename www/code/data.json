@@ -1,0 +1,79 @@
+{
+  "title": "Hyderabad Getaway - Option 1",
+  "subtitle": "A 3-Day Heritage & Nature Journey",
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival, Old City & Modern Marvels",
+      "dailyCost": "₹3,000",
+      "items": [
+        { "type": "travel", "icon": "log-in", "text": "Arrive in Hyderabad and check into your hotel." },
+        { "type": "food", "icon": "coffee", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad\" target=\"_blank\">Lunch at a famous biryani spot in RTC X Roads/Ashok Nagar <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>" },
+        { "type": "visit", "icon": "camera", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Charminar/@17.361534,78.474665,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb978a6e70520b:0x19689252d4927a2c!8m2!3d17.361534!4d78.474665!16zL20vMDJtXzVz?entry=ttu\" target=\"_blank\">Visit the iconic Charminar <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A historic monument and mosque, built in 1591, famous for its four minarets.</p>"},
+        { "type": "visit", "icon": "camera", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/x3p8gfjgpRAEnieEA\" target=\"_blank\">Visit the nearby Mecca Masjid <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">One of the oldest and largest mosques in India, built with soil from Mecca.</p>"},
+        { "type": "visit", "icon": "anchor", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Tank+Bund+Rd,+Domalguda,+Kavadiguda,+Hyderabad,+Telangana+500029,+India/@17.420634,78.47596,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb996123456789:0x1234567890abcdef!8m2!3d17.420634!4d78.47596!16s%2Fg%2F11c5q4_z0_?entry=ttu\" target=\"_blank\">Stroll along Tank Bund <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A popular boulevard with statues of famous personalities, offering a great view of Hussain Sagar lake.</p>" },
+        { "type": "food", "icon": "coffee", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.google.com/?cid=7876124088418144061\" target=\"_blank\">Dinner at Shadab for mutton delicacies <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>" },
+        { "type": "visit", "icon": "truck", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Durgam+Cheruvu+Bridge/@17.4317,78.39,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb9145aaaaaaab:0x2448ebb5b3921e2b!8m2!3d17.4317!4d78.3922\" target=\"_blank\">Night visit to Durgam Cheruvu Bridge <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A modern cable-stayed bridge with beautiful lighting, offering stunning views of the lake.</p>" }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Forts, Science & Ananthagiri",
+      "dailyCost": "₹4,500",
+      "items": [
+        { "type": "visit", "icon": "shield", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/zczwXa3JHQt8jJH77\" target=\"_blank\">Morning exploration of the majestic Golconda Fort <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A historic fortress known for its acoustics and a former diamond trading center.</p>" },
+        { "type": "food", "icon": "coffee", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/opt7oV5k6sNqZ6cj8\" target=\"_blank\">Lunch at Kamat Hotel near Birla Science Centre <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>" },
+        { "type": "visit", "icon": "box", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/oZraDrrJZsS2sMp88\" target=\"_blank\">Afternoon visit to the B.M. Birla Science Centre <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A complex including a science museum, planetarium, and art gallery.</p>"},
+        { "type": "travel", "icon": "truck", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Ananthagiri+Hills,+Vikarabad,+Telangana\" target=\"_blank\">Evening drive to Ananthagiri Hills (approx. 2-3 hours) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A dense forest region with beautiful hills, and the birthplace of the Musi river.</p>" },
+        { "type": "accommodation", "icon": "home", "text": "Check into a resort for an overnight stay in Ananthagiri." }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Ananthagiri & Departure",
+      "dailyCost": "₹2,000",
+      "items": [
+        { "type": "visit", "icon": "sun", "text": "Enjoy the sunrise and explore the lush forests of Ananthagiri." },
+        { "type": "visit", "icon": "anchor", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/htH3uRMgh2y9CwsV7\" target=\"_blank\">Kayaking at Kotepally Reservoir <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A serene reservoir perfect for kayaking and boating amidst nature.</p>" },
+        { "type": "visit", "icon": "home", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/fMfPEnuFLsHbhvPK6\" target=\"_blank\">Visit the Anantha Padmanabha Swamy Temple <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">An ancient Hindu temple dedicated to Lord Vishnu, located in the scenic Ananthagiri hills.</p>" },
+        { "type": "food", "icon": "coffee", "text": "Lunch in Ananthagiri before heading to the station." },
+        { "type": "travel", "icon": "train", "text": "Return train from Vikarabad (VKB): 16584 LUR YPR EXPRESS, departs 7:40 PM, arrives YPR 7:40 AM." }
+      ]
+    }
+  ],
+  "planning": {
+    "travelOptions": [
+      { "type": "By Flight", "icon": "send", "details": "Quickest option. Departs Aug 15.", "link": "https://www.google.com/travel/flights?q=Flights%20from%20Bangalore%20to%20HYD%20on%202025-08-15" },
+      { "type": "By Train", "icon": "train", "details": "Rajdhani Express. Departs BLR Aug 14, 8 PM, Arrives HYD 7 AM." },
+      { "type": "By Car", "icon": "truck", "details": "Scenic route. Depart on Aug 15 morning.", "link": "https://maps.app.goo.gl/83bUjpCekhWmvHmQA?g_st=ac" }
+    ],
+    "checklist": {
+      "packing": [
+        "Comfortable cottons for warm, humid weather.",
+        "Walking shoes and sandals.",
+        "Umbrella and a light jacket.",
+        "Sunscreen, sunglasses, and a hat."
+      ],
+      "connectivity": [
+        "Major providers like Jio, Airtel, Vi have good coverage.",
+        "Consider an eSIM for instant connectivity (e.g., Airalo)."
+      ]
+    }
+  },
+  "costs": {
+    "summary": [
+      { "item": "Flights/Train", "amount": "~₹6,000" },
+      { "item": "Accommodation", "amount": "~₹5,000" },
+      { "item": "Transport", "amount": "~₹3,500" },
+      { "item": "Food", "amount": "~₹3,000" },
+      { "item": "Activities", "amount": "~₹1,500" }
+    ],
+    "total": "~₹19,000"
+  },
+  "otherPlaces": [
+    { "name": "Ramoji Film City", "icon": "film", "description": "The world's largest film studio complex, offering tours, shows, and an amusement park. Requires a full day to explore.", "link": "https://maps.app.goo.gl/x7TMKqWQneuceAP68" },
+    { "name": "Chowmahalla Palace", "icon": "key", "description": "The magnificent palace of the Nizams, showcasing their opulent lifestyle, vintage car collection, and stunning architecture.", "link": "https://www.google.com/maps/search/?api=1&query=17.3578233,78.4716897" },
+    { "name": "Salar Jung Museum", "icon": "archive", "description": "Features one of the world's largest one-man collections of antiques, art, and artifacts from across the globe.", "link": "https://maps.app.goo.gl/k3C1E3sZNN2ffGdT6" },
+    { "name": "Hussain Sagar Lake", "icon": "anchor", "description": "A large, heart-shaped lake with a famous Buddha statue in the middle. Great for an evening stroll, boat ride, and enjoying the city lights.", "link": "https://www.google.com/maps/place/Hussain+Sagar/@17.42388,78.473824,15z/data=!3m1!4b1!4m6!3m5!1s0x3bcb975f5c4c1c3f:0x99ba83e5c555e35e!8m2!3d17.42477!4d78.47332!16zL20vMDV4M2w2?entry=ttu" }
+  ]
+}
