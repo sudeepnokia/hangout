@@ -1,16 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyderabad Itinerary Redesigned</title>
+    <title>Hyderabad Trip Options</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -20,21 +19,13 @@
         .header-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .tab-button {
-            transition: all 0.3s ease;
-        }
-        .tab-button.active {
-            background-color: #667eea;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .card {
+        .option-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.07);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover {
+        .option-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
@@ -43,178 +34,30 @@
             height: 24px;
             stroke-width: 2;
         }
-        .cost-summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-        .travel-option-card {
-             background-color: #fafafa;
-             border-radius: 10px;
-             padding: 1rem;
-             transition: all 0.3s ease;
-             border: 1px solid #e5e7eb;
-        }
-        .travel-option-card:hover {
-            border-color: #667eea;
-            background-color: #fff;
-        }
     </style>
 </head>
 <body class="antialiased">
 
     <header class="header-bg text-white text-center py-12 sm:py-20">
         <div class="container mx-auto px-4">
-            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hyderabad Getaway</h1>
-            <p class="mt-4 text-lg sm:text-xl opacity-90">A 3-Day Heritage & Culinary Journey</p>
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hyderabad Trip Options</h1>
+            <p class="mt-4 text-lg sm:text-xl opacity-90">Choose Your Perfect 3-Day Itinerary</p>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8 sm:py-12">
-        
-        <!-- Itinerary Section -->
-        <section id="itinerary" class="mb-12">
-            <div class="card p-6 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
-                <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6">
-                    <!-- Tabs will be inserted here -->
-                </div>
-                <div id="tab-content">
-                    <!-- Content for tabs will be inserted here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Trip Planning Section -->
-        <section id="planning" class="mb-12">
-            <div class="card p-6 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4">Trip Planning</h2>
-                <p class="text-center text-sm text-indigo-600 mb-8">Click the options with the <i data-feather="external-link" class="inline-block w-4 h-4"></i> icon for more details.</p>
-                
-                <!-- Travel Options -->
-                <div class="mb-10">
-                    <h3 class="text-xl font-bold mb-4 text-gray-700">Travel Options</h3>
-                    <div class="grid md:grid-cols-3 gap-6 text-center">
-                        <a href="https://www.google.com/travel/flights?q=Flights%20from%20Bangalore%20to%20HYD%20on%202025-08-15" target="_blank" class="travel-option-card block">
-                            <div class="flex justify-center mb-2"><i data-feather="send" class="icon-style text-blue-500"></i></div>
-                            <h4 class="font-bold flex items-center justify-center">By Flight <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">Quickest option. Departs Aug 15.</p>
-                        </a>
-                        <div class="travel-option-card">
-                            <div class="flex justify-center mb-2"><i data-feather="train" class="icon-style text-green-500"></i></div>
-                            <h4 class="font-bold">By Train</h4>
-                            <p class="text-sm text-gray-600">Rajdhani Express. Departs BLR Aug 14, 8 PM, Arrives HYD 7 AM.</p>
-                        </div>
-                        <a href="https://maps.app.goo.gl/83bUjpCekhWmvHmQA?g_st=ac" target="_blank" class="travel-option-card block">
-                            <div class="flex justify-center mb-2"><i data-feather="truck" class="icon-style text-purple-500"></i></div>
-                            <h4 class="font-bold flex items-center justify-center">By Car <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">Scenic route. Depart on Aug 15 morning.</p>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Pre-trip Checklist -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-700">Pre-Trip Checklist</h3>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full"><i data-feather="briefcase" class="icon-style"></i></div>
-                            <div>
-                                <h3 class="font-bold text-lg">Things to Pack</h3>
-                                <ul class="mt-2 list-disc list-inside text-gray-600">
-                                    <li>Comfortable cottons for warm, humid weather.</li>
-                                    <li>Walking shoes and sandals.</li>
-                                    <li>Umbrella and a light jacket.</li>
-                                    <li>Sunscreen, sunglasses, and a hat.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-green-100 text-green-600 p-3 rounded-full"><i data-feather="wifi" class="icon-style"></i></div>
-                            <div>
-                                <h3 class="font-bold text-lg">Connectivity</h3>
-                                <ul class="mt-2 list-disc list-inside text-gray-600">
-                                    <li>Major providers like Jio, Airtel, Vi have good coverage.</li>
-                                    <li>Consider an eSIM for instant connectivity (e.g., Airalo).</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cost Summary -->
-        <section id="costs">
-            <div class="card p-6 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Trip Cost Summary</h2>
-                <div class="cost-summary-grid text-center">
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h4 class="font-semibold text-gray-500 text-sm">Flights/Train</h4>
-                        <p class="font-bold text-2xl text-indigo-600">~₹6,000</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h4 class="font-semibold text-gray-500 text-sm">Accommodation</h4>
-                        <p class="font-bold text-2xl text-indigo-600">~₹5,000</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h4 class="font-semibold text-gray-500 text-sm">Transport</h4>
-                        <p class="font-bold text-2xl text-indigo-600">~₹3,500</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h4 class="font-semibold text-gray-500 text-sm">Food</h4>
-                        <p class="font-bold text-2xl text-indigo-600">~₹3,000</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h4 class="font-semibold text-gray-500 text-sm">Activities</h4>
-                        <p class="font-bold text-2xl text-indigo-600">~₹1,500</p>
-                    </div>
-                </div>
-                <div class="mt-8 text-center bg-indigo-600 text-white p-4 rounded-lg">
-                    <h4 class="font-semibold text-lg">Total Estimated Cost Per Person</h4>
-                    <p class="font-bold text-3xl tracking-tight">~₹19,000</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Other Places to Explore -->
-        <section id="not-included">
-            <div class="card p-6 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Other Places to Explore</h2>
-                <p class="text-center text-gray-600 mb-8">This itinerary is packed, but if you have extra time or want to swap an activity, here are other great options in Hyderabad:</p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <a href="https://maps.app.goo.gl/x7TMKqWQneuceAP68" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                        <div class="text-purple-500 pt-1"><i data-feather="film" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Ramoji Film City <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">A sprawling film studio complex with tours, shows, and amusement park rides. Requires a full day.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=17.3578233,78.4716897" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                        <div class="text-purple-500 pt-1"><i data-feather="key" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Chowmahalla Palace <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">A magnificent palace of the Nizams, showcasing their opulent lifestyle and vintage car collection.</p>
-                        </div>
-                    </a>
-                    <a href="https://maps.app.goo.gl/k3C1E3sZNN2ffGdT6" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                        <div class="text-purple-500 pt-1"><i data-feather="archive" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Salar Jung Museum <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">Features one of the world's largest one-man collections of antiques, art, and artifacts.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.google.com/maps/place/Hussain+Sagar/@17.42388,78.473824,15z/data=!3m1!4b1!4m6!3m5!1s0x3bcb975f5c4c1c3f:0x99ba83e5c555e35e!8m2!3d17.42477!4d78.47332!16zL20vMDV4M2w2?entry=ttu" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                        <div class="text-purple-500 pt-1"><i data-feather="anchor" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Hussain Sagar Lake <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                            <p class="text-sm text-gray-600">A large, heart-shaped lake with a famous Buddha statue. Great for an evening stroll or boat ride.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
+        <div class="grid md:grid-cols-2 gap-8">
+            <a href="hyderabad_option_1.html" class="option-card block p-8 text-center">
+                <div class="flex justify-center mb-4"><i data-feather="sun" class="icon-style text-yellow-500"></i></div>
+                <h2 class="text-2xl font-bold mb-2">Option 1: Heritage & Nature</h2>
+                <p class="text-gray-600">Explore the city's rich history and enjoy a refreshing escape to the serene Ananthagiri Hills.</p>
+            </a>
+            <a href="hyderabad_option_2.html" class="option-card block p-8 text-center">
+                <div class="flex justify-center mb-4"><i data-feather="film" class="icon-style text-red-500"></i></div>
+                <h2 class="text-2xl font-bold mb-2">Option 2: Heritage & Film City</h2>
+                <p class="text-gray-600">Immerse yourself in the grandeur of Hyderabad's palaces and experience the magic of cinema at Ramoji Film City.</p>
+            </a>
+        </div>
     </main>
 
     <footer class="text-center py-8 text-gray-500">
@@ -222,116 +65,8 @@
     </footer>
 
     <script>
-        const itineraryData = [
-            { day: 1, title: 'Arrival, Old City & Modern Marvels', dailyCost: '₹3,000', items: [
-                { type: 'travel', icon: 'log-in', text: 'Arrive in Hyderabad and check into your hotel.' },
-                { type: 'food', icon: 'coffee', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/?api=1&query=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad" target="_blank">Lunch at a famous biryani spot in RTC X Roads/Ashok Nagar <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'visit', icon: 'camera', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Charminar/@17.361534,78.474665,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb978a6e70520b:0x19689252d4927a2c!8m2!3d17.361534!4d78.474665!16zL20vMDJtXzVz?entry=ttu" target="_blank">Visit the iconic Charminar <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
-                { type: 'visit', icon: 'camera', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/x3p8gfjgpRAEnieEA" target="_blank">Visit the nearby Mecca Masjid <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
-                { type: 'visit', icon: 'anchor', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Tank+Bund+Rd,+Domalguda,+Kavadiguda,+Hyderabad,+Telangana+500029,+India/@17.420634,78.47596,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb996123456789:0x1234567890abcdef!8m2!3d17.420634!4d78.47596!16s%2Fg%2F11c5q4_z0_?entry=ttu" target="_blank">Stroll along Tank Bund <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'food', icon: 'coffee', text: '<a class="text-indigo-600 hover:underline" href="https://maps.google.com/?cid=7876124088418144061" target="_blank">Dinner at Shadab for mutton delicacies <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'visit', icon: 'truck', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Durgam+Cheruvu+Bridge/@17.4317,78.39,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb9145aaaaaaab:0x2448ebb5b3921e2b!8m2!3d17.4317!4d78.3922" target="_blank">Night visit to Durgam Cheruvu Bridge <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' }
-            ]},
-            { day: 2, title: 'Forts, Science & Ananthagiri', dailyCost: '₹4,500', items: [
-                { type: 'visit', icon: 'shield', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/zczwXa3JHQt8jJH77" target="_blank">Morning exploration of the majestic Golconda Fort <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'food', icon: 'coffee', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/opt7oV5k6sNqZ6cj8" target="_blank">Lunch at Kamat Hotel near Birla Science Centre <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'visit', icon: 'box', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/oZraDrrJZsS2sMp88" target="_blank">Afternoon visit to the B.M. Birla Science Centre <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>'},
-                { type: 'travel', icon: 'truck', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Ananthagiri+Hills,+Vikarabad,+Telangana" target="_blank">Evening drive to Ananthagiri Hills (approx. 2-3 hours) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'accommodation', icon: 'home', text: 'Check into a resort for an overnight stay in Ananthagiri.' }
-            ]},
-            { day: 3, title: 'Ananthagiri & Departure', dailyCost: '₹2,000', items: [
-                { type: 'visit', icon: 'sun', text: 'Enjoy the sunrise and explore the lush forests of Ananthagiri.' },
-                { type: 'visit', icon: 'anchor', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/htH3uRMgh2y9CwsV7" target="_blank">Kayaking at Kotepally Reservoir <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'visit', icon: 'home', text: '<a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/fMfPEnuFLsHbhvPK6" target="_blank">Visit the Anantha Padmanabha Swamy Temple <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
-                { type: 'food', icon: 'coffee', text: 'Lunch in Ananthagiri before heading to the station.' },
-                { type: 'travel', icon: 'train', text: 'Return train from Vikarabad (VKB): 16584 LUR YPR EXPRESS, departs 7:40 PM, arrives YPR 7:40 AM.' }
-            ]}
-        ];
-
-        document.addEventListener('DOMContentLoaded', () => {
-            feather.replace();
-
-            const tabsContainer = document.getElementById('tabs-container');
-            const tabContentContainer = document.getElementById('tab-content');
-
-            itineraryData.forEach((day, index) => {
-                // Create Tab Button
-                const tabButton = document.createElement('button');
-                tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
-                tabButton.textContent = `Day ${day.day}`;
-                tabButton.dataset.day = day.day;
-                tabsContainer.appendChild(tabButton);
-
-                // Create Tab Content
-                const contentDiv = document.createElement('div');
-                contentDiv.id = `day-${day.day}-content`;
-                contentDiv.className = `day-content ${index > 0 ? 'hidden' : ''}`;
-                
-                let itemsHtml = `<h3 class="text-xl font-bold text-center mb-4">${day.title}</h3><div class="space-y-4">`;
-                day.items.forEach(item => {
-                    itemsHtml += `
-                        <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
-                            <div class="text-indigo-500"><i data-feather="${item.icon}" class="icon-style"></i></div>
-                            <p class="text-gray-700">${item.text}</p>
-                        </div>
-                    `;
-                });
-                itemsHtml += `</div><div class="text-right mt-4 font-bold text-lg text-indigo-600">Approx. Daily Cost: ${day.dailyCost}</div>`;
-                contentDiv.innerHTML = itemsHtml;
-                tabContentContainer.appendChild(contentDiv);
-            });
-            
-            feather.replace(); // Re-run feather to render new icons
-
-            // Tab switching logic
-            tabsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('tab-button')) {
-                    const day = e.target.dataset.day;
-                    
-                    // Update button styles
-                    tabsContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active');
-
-                    // Show/hide content
-                    tabContentContainer.querySelectorAll('.day-content').forEach(content => {
-                        gsap.to(content, {
-                            autoAlpha: 0,
-                            y: 10,
-                            duration: 0.3,
-                            onComplete: () => {
-                                content.classList.add('hidden');
-                                if (content.id === `day-${day}-content`) {
-                                    content.classList.remove('hidden');
-                                    gsap.fromTo(content, {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.3});
-                                }
-                            }
-                        });
-                    });
-                }
-            });
-
-            // GSAP Animations
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.from('header', { opacity: 0, y: -50, duration: 1, ease: 'power3.out' });
-            
-            const cards = gsap.utils.toArray('.card, .cost-summary-grid > div, .travel-option-card');
-            cards.forEach(card => {
-                gsap.from(card, {
-                    opacity: 0,
-                    y: 50,
-                    duration: 0.8,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-            });
-
-            // Final feather replacement after dynamic content is added
-            feather.replace();
-        });
+        feather.replace();
     </script>
+
 </body>
 </html>
