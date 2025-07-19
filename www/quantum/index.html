@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum VLSI Ideas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .link-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .link-card a {
+            text-decoration: none;
+            color: #1f2937;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .link-card .description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800">Quantum VLSI Exploration</h1>
+            <p class="text-lg text-gray-600 mt-2">A collection of ideas at the intersection of quantum computing and semiconductor design.</p>
+        </header>
+        <div class="link-card">
+            <a href="cryogenic_cmos.html">Cryogenic CMOS for Quantum Computing</a>
+            <p class="description">Exploring the integration of classical control electronics with qubits at cryogenic temperatures.</p>
+        </div>
+        <div class="link-card">
+            <a href="photonic_interconnects.html">Photonic Interconnects for Quantum Systems</a>
+            <p class="description">Using light to connect modular quantum processors for enhanced scalability.</p>
+        </div>
+        <div class="link-card">
+            <a href="photonic_interconnects_design.html">Design Doc: Photonic Interconnects</a>
+            <p class="description">A detailed technical design for a modular quantum computing architecture using photonic links.</p>
+        </div>
+        <div class="link-card">
+            <a href="qubit_fabrication.html">Qubit Fabrication with Advanced VLSI Techniques</a>
+            <p class="description">Leveraging semiconductor manufacturing processes to build high-quality, scalable qubit arrays.</p>
+        </div>
+    </div>
+</body>
+</html>
