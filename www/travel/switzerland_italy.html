@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switzerland & Italy - Budget Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #1d4ed8 0%, #60a5fa 100%);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .icon-style {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+        .cost-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="header-bg text-white text-center py-12 sm:py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Alpine Peaks & Roman Streets</h1>
+            <p class="mt-4 text-lg sm:text-xl opacity-90">A 9-Day Budget Adventure in Switzerland & Italy</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 sm:py-12">
+        
+        <!-- Itinerary Section -->
+        <section id="itinerary" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
+                <div id="tabs-container" class="flex flex-wrap justify-center gap-2 bg-gray-100 p-2 rounded-full mb-6">
+                    <!-- Tabs will be inserted here -->
+                </div>
+                <div id="tab-content">
+                    <!-- Content for tabs will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Summary -->
+        <section id="costs" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Budget Trip Cost Summary</h2>
+                <div class="cost-summary-grid text-center">
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-500 text-sm">Flights</h4>
+                        <p class="font-bold text-2xl text-blue-600">~₹55,000</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-500 text-sm">Stays (Hostels)</h4>
+                        <p class="font-bold text-2xl text-blue-600">~₹43,200</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-500 text-sm">Transport</h4>
+                        <p class="font-bold text-2xl text-blue-600">~₹13,500</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-500 text-sm">Food (Budget)</h4>
+                        <p class="font-bold text-2xl text-blue-600">~₹32,400</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-500 text-sm">Activities</h4>
+                        <p class="font-bold text-2xl text-blue-600">~₹7,200</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center bg-blue-600 text-white p-4 rounded-lg">
+                    <h4 class="font-semibold text-lg">Total Estimated Cost Per Person</h4>
+                    <p class="font-bold text-3xl tracking-tight">~₹151,300</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Travel Tips -->
+        <section id="tips">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Budget Travel Tips</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-green-500 pt-1"><i data-feather="shopping-cart" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-blue-600">Cook Your Meals</h4>
+                            <p class="text-sm text-gray-600">Eating out in Switzerland is very expensive. Use hostel kitchens and shop at supermarkets like Coop and Migros to save a significant amount of money.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-green-500 pt-1"><i data-feather="trending-up" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-blue-600">Hike for Views</h4>
+                            <p class="text-sm text-gray-600">Cable cars and mountain railways in the Alps are costly. Many of the best viewpoints can be reached by hiking for free. Choose trails that match your fitness level.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-green-500 pt-1"><i data-feather="truck" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-blue-600">Use Public Transport</h4>
+                            <p class="text-sm text-gray-600">Both countries have excellent public transport. In Italy, use budget-friendly buses like FlixBus for inter-city travel. In Switzerland, consider a Swiss Half Fare Card if you plan many train journeys.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-green-500 pt-1"><i data-feather="droplet" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-blue-600">Free Attractions & Water</h4>
+                            <p class="text-sm text-gray-600">Focus on free attractions like exploring old towns, visiting parks, and enjoying the architecture. Tap water is safe and delicious in both countries, so carry a reusable bottle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="preparation" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Pre-Trip Preparation Checklist</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="book-open" class="icon-style"></i></div>
+                        <div>
+                            <h3 class="font-bold text-lg">2-3 Months Before - Get Your Visa</h3>
+                            <p class="text-sm text-gray-600 mt-1">As Indian passport holders, you need a Schengen Visa. Since your first entry is Switzerland, apply through the Swiss embassy via VFS Global. Book refundable flights and hotels for your application. Ensure your passport is valid for at least 3 months beyond your return date.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="briefcase" class="icon-style"></i></div>
+                        <div>
+                            <h3 class="font-bold text-lg">2 Weeks Before - Pack Smart</h3>
+                            <p class="text-sm text-gray-600 mt-1"><strong>Clothing:</strong> Layers are crucial. Pack thermal wear, a fleece, and a waterproof jacket for the colder Swiss climate (5-15°C), plus lighter clothes for Italy (15-25°C).<br>
+                            <strong>Footwear:</strong> Waterproof hiking shoes or sturdy sneakers are essential for walking and light trails.<br>
+                            <strong>Essentials:</strong> Reusable water bottle, travel snacks, a small backpack, passport, visa, insurance, and a universal adapter (Type J for Switzerland, Type L for Italy).</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="wifi" class="icon-style"></i></div>
+                        <div>
+                            <h3 class="font-bold text-lg">Connectivity</h3>
+                            <p class="text-sm text-gray-600 mt-1">Consider buying a SIM card in Switzerland (e.g., Swisscom, Salt) that includes EU roaming to cover you in Italy. Alternatively, purchase a regional eSIM from providers like Airalo or Holafly before you travel for instant connectivity upon arrival.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 text-gray-500">
+        <p>Itinerary generated by Gemini</p>
+    </footer>
+
+    <script>
+        const itineraryData = [
+            { day: 1, title: 'Arrival in Zurich', dailyCost: '€70', items: [
+                { icon: 'send', text: 'Arrive at Zurich Airport (ZRH) and take a train to the city center.' },
+                { icon: 'home', text: 'Check into a budget hostel near the main station.' },
+                { icon: 'coffee', text: 'Grab dinner from a supermarket (Coop or Migros) to save money.' }
+            ]},
+            { day: 2, title: 'Lucerne & Alpine Views', dailyCost: '€90', items: [
+                { icon: 'train', text: 'Day trip to Lucerne by train. Explore the historic Chapel Bridge.' },
+                { icon: 'camera', text: 'Hike a lower trail on Mount Pilatus or Rigi for free, stunning Alpine views.' },
+                { icon: 'coffee', text: 'Enjoy a packed lunch and cook dinner at your hostel in Zurich.' }
+            ]},
+            { day: 3, title: 'Interlaken & Lakes', dailyCost: '€100', items: [
+                { icon: 'train', text: 'Travel to Interlaken, the adventure capital. Store luggage at the station.' },
+                { icon: 'camera', text: 'Walk around town and hike up Harder Kulm for a free panoramic view of the two lakes.' },
+                { icon: 'home', text: 'Check into your hostel in Interlaken.' }
+            ]},
+            { day: 4, title: 'Scenic Journey to Italy', dailyCost: '€120', items: [
+                { icon: 'train', text: 'Take a long, scenic train from Interlaken to Florence via Milan. Book tickets far in advance.' },
+                { icon: 'home', text: 'Check into a hostel or budget hotel in Florence.' },
+                { icon: 'coffee', text: 'Have an affordable and authentic dinner at a local trattoria away from the main tourist spots.' }
+            ]},
+            { day: 5, title: 'Florence on a Budget', dailyCost: '€60', items: [
+                { icon: 'camera', text: 'Enjoy free sights: Ponte Vecchio, Piazza della Signoria, and the exterior of the Duomo.' },
+                { icon: 'camera', text: 'Climb to Piazzale Michelangelo for the best free sunset view over Florence.' },
+                { icon: 'coffee', text: 'Have a delicious, cheap lunch at the Mercato Centrale (Central Market).' }
+            ]},
+            { day: 6, title: 'Travel to Rome', dailyCost: '€70', items: [
+                { icon: 'truck', text: 'Take a budget-friendly bus (e.g., FlixBus) from Florence to Rome.' },
+                { icon: 'home', text: 'Check into a hostel near Termini station for convenience.' },
+                { icon: 'camera', text: 'Take an evening stroll to see the beautifully lit Trevi Fountain and Spanish Steps for free.' }
+            ]},
+            { day: 7, title: 'Ancient Rome for Free', dailyCost: '€65', items: [
+                { icon: 'camera', text: 'Explore the Roman Forum and Palatine Hill from the outside. The view from Capitoline Hill is fantastic and free.' },
+                { icon: 'camera', text: 'Visit the Pantheon (free entry) and marvel at its architectural genius.' },
+                { icon: 'coffee', text: 'Enjoy a classic and affordable "cacio e pepe" pasta lunch in the charming Trastevere district.' }
+            ]},
+            { day: 8, title: 'Vatican City', dailyCost: '€60', items: [
+                { icon: 'camera', text: 'Visit St. Peter\'s Basilica. Entry is free, but be prepared for long queues. Arrive early!' },
+                { icon: 'camera', text: 'Skip the expensive Vatican Museums and instead wander the streets of the nearby Prati neighborhood.' },
+                { icon: 'coffee', text: 'Have a final farewell dinner with a simple, delicious pizza.' }
+            ]},
+            { day: 9, title: 'Departure', dailyCost: '€15', items: [
+                { icon: 'coffee', text: 'Grab one last Italian cappuccino and a cornetto for breakfast.' },
+                { icon: 'send', text: 'Take an affordable shuttle bus to Fiumicino Airport (FCO) for your flight home.' }
+            ]}
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+
+            const tabsContainer = document.getElementById('tabs-container');
+            const tabContentContainer = document.getElementById('tab-content');
+
+            itineraryData.forEach((day, index) => {
+                const tabButton = document.createElement('button');
+                tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
+                tabButton.textContent = `Day ${day.day}`;
+                tabButton.dataset.day = day.day;
+                tabsContainer.appendChild(tabButton);
+
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `day-${day.day}-content`;
+                contentDiv.className = `day-content ${index > 0 ? 'hidden' : ''}`;
+                
+                let itemsHtml = `<h3 class="text-xl font-bold text-center mb-4">${day.title}</h3><div class="space-y-4">`;
+                day.items.forEach(item => {
+                    itemsHtml += `
+                        <div class="flex items-start space-x-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="text-blue-500 pt-1"><i data-feather="${item.icon}" class="icon-style"></i></div>
+                            <p class="text-gray-700">${item.text}</p>
+                        </div>
+                    `;
+                });
+                itemsHtml += `</div><div class="text-right mt-4 font-bold text-lg text-blue-600">Approx. Daily Cost: ${day.dailyCost}</div>`;
+                contentDiv.innerHTML = itemsHtml;
+                tabContentContainer.appendChild(contentDiv);
+            });
+            
+            feather.replace();
+
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tab-button')) {
+                    const day = e.target.dataset.day;
+                    
+                    tabsContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    tabContentContainer.querySelectorAll('.day-content').forEach(content => {
+                        if (content.id === `day-${day}-content`) {
+                            content.classList.remove('hidden');
+                            gsap.fromTo(content, {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.4});
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from('header', { opacity: 0, y: -50, duration: 1, ease: 'power3.out' });
+            
+            const cards = gsap.utils.toArray('.card');
+            cards.forEach(card => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
