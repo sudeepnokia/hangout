@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Faraday's Laws</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Faraday's Laws of Electrolysis</h1>
+    <p>This guide explains how to calculate the amount of substance deposited during electrolysis using Faraday's laws.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Total Charge Passed</h2>
+        <div class="concept">
+            <p>When a constant electric current (I) flows for a certain amount of time (t), the total electric charge (Q) that has passed is given by a very simple formula.</p>
+            <p><strong>Charge Formula:</strong> <code>Q = I &times; t</code></p>
+            <ul>
+                <li><code>Q</code> is the charge in Coulombs (C).</li>
+                <li><code>I</code> is the current in Amperes (A).</li>
+                <li><code>t</code> is the time in seconds (s).</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A current of 2 A is passed through a solution for 30 minutes. What is the total charge passed in Coulombs?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>First, we must convert the time to seconds.</p>
+            <p><code>t = 30 minutes * 60 seconds/minute = 1800 s</code></p>
+            <p>Now, use the formula:</p>
+            <p><code>Q = 2 A * 1800 s = 3600 C</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Charge of a Mole of Electrons -->
+    <div class="phase">
+        <h2>Phase 2: The Faraday Constant</h2>
+        <div class="concept">
+            <p>A single electron has a tiny charge. It's more convenient to talk about the charge of a <span class="highlight">mole</span> of electrons (6.022 x 10²³ electrons). This amount of charge is called the <span class="highlight">Faraday constant (F)</span>.</p>
+            <p><strong>Faraday Constant:</strong> <code>F &asymp; 96500 Coulombs per mole of electrons</code></p>
+            <p>This constant is the bridge between the macroscopic charge (Q) we measure in our circuit and the number of moles of electrons that are actually doing the work in the chemical reaction.</p>
+            <p><strong>Moles of electrons (n_e):</strong> <code>n_e = Q / F</code></p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> For the 3600 C of charge calculated in Phase 1, how many moles of electrons were passed?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><code>n_e = Q / F = 3600 C / 96500 C/mol</code></p>
+            <p><code>n_e &asymp; 0.0373 moles of electrons</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Stoichiometry of Deposition -->
+    <div class="phase">
+        <h2>Phase 3: From Electrons to Metal</h2>
+        <div class="concept">
+            <p>The final step is to relate the moles of electrons to the moles of metal being deposited. This requires looking at the half-reaction for the reduction of the metal ion.</p>
+            <p>For the electrolysis of aluminium chloride (AlCl₃), the aluminium is deposited at the cathode. The ion is Al³⁺.</p>
+            <p><strong>Cathode Half-Reaction:</strong> <code>Al³⁺ + 3e⁻ &rarr; Al(s)</code></p>
+            <p>This equation tells us the crucial stoichiometric ratio: <span class="highlight">3 moles of electrons</span> are required to deposit <span class="highlight">1 mole of solid aluminium</span>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A solution of aluminium chloride is electrolysed for 30 minutes using a current of 2 A. The amount of the aluminium deposited at the cathode is [Given: molar mass of aluminium is 27 g mol⁻¹. Faraday constant = 96500 C mol⁻¹]</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's combine all the steps into one calculation. This is Faraday's First Law of Electrolysis.</p>
+            <p><strong>Step 1: Calculate the total charge (Q).</strong></p>
+            <p>As in Phase 1, <code>Q = I * t = 2 A * (30 * 60 s) = 3600 C</code>.</p>
+            <p><strong>Step 2: Calculate the moles of electrons (n_e).</strong></p>
+            <p>As in Phase 2, <code>n_e = Q / F = 3600 / 96500 mol</code>.</p>
+            <p><strong>Step 3: Calculate the moles of Aluminium deposited (n_Al).</strong></p>
+            <p>From the stoichiometry in Phase 3 (<code>Al³⁺ + 3e⁻ &rarr; Al</code>), we know that moles of Al = (moles of e⁻) / 3.</p>
+            <p><code>n_Al = n_e / 3 = (3600 / 96500) / 3 = 1200 / 96500 mol</code>.</p>
+            <p><strong>Step 4: Calculate the mass of Aluminium deposited.</strong></p>
+            <p>Mass = Moles &times; Molar Mass</p>
+            <p><code>Mass_Al = n_Al * MolarMass_Al</code></p>
+            <p><code>Mass_Al = (1200 / 96500) * 27 g</code></p>
+            <p><code>Mass_Al = 32400 / 96500 g</code></p>
+            <p><code>Mass_Al &asymp; 0.3357 g</code></p>
+            <p>Let's check the options. 0.336 g is one of the options.</p>
+
+            <p><strong>A more compact way to write this (Faraday's Law):</strong></p>
+            <p><code>Mass = (I * t / F) * (Molar Mass / n-factor)</code></p>
+            <p>Where the n-factor is the number of electrons in the half-reaction (n=3 for Al³⁺).</p>
+            <p><code>Mass = (2 * 1800 / 96500) * (27 / 3)</code></p>
+            <p><code>Mass = (3600 / 96500) * 9 = 32400 / 96500 &asymp; 0.336 g</code></p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The amount of aluminium deposited is approximately <strong>0.336 g</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 66 is (2), which corresponds to <strong>0.336 g</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

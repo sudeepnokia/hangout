@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Capacitors and Dielectrics</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Capacitors, Energy, and Dielectrics</h1>
+    <p>This guide explains how capacitors store charge and energy, and what happens when you insert a special material called a dielectric between their plates.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Basics of a Capacitor</h2>
+        <div class="concept">
+            <p>A capacitor is a device that stores electrical energy. The simplest version is a "parallel-plate capacitor," made of two metal plates separated by a gap (usually filled with air or another insulator).</p>
+            <p><strong>Capacitance (C):</strong> This is a measure of how much charge a capacitor can store for a given voltage. A bigger capacitance means it can store more charge. The unit of capacitance is the Farad (F).</p>
+            <p><strong>The Holy Trinity of Capacitor Equations:</strong></p>
+            <ol>
+                <li>Charge: <code>Q = C * V</code> (The charge stored is capacitance times voltage)</li>
+                <li>Energy: <code>U = (1/2) * C * V²</code> (The energy stored in the capacitor)</li>
+                <li>Energy (alternative): <code>U = Q² / (2C)</code></li>
+            </ol>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A capacitor with capacitance <code>C = 40 &mu;F</code> is connected to a 100 V power supply. How much charge (Q) and energy (U) does it store?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>First, let's make sure our units are standard. <code>1 &mu;F = 10⁻⁶ F</code>.</p>
+            <p><code>C = 40 * 10⁻⁶ F</code></p>
+            <p><code>V = 100 V</code></p>
+            <p><strong>Charge:</strong></p>
+            <p><code>Q = C * V = (40 * 10⁻⁶ F) * (100 V) = 4000 * 10⁻⁶ C</code></p>
+            <p>This is <code>4 * 10⁻³ C</code>, which is also known as 4 milliCoulombs (4 mC).</p>
+            <p><strong>Energy:</strong></p>
+            <p><code>U = (1/2) * C * V² = (1/2) * (40 * 10⁻⁶ F) * (100 V)²</code></p>
+            <p><code>U = (20 * 10⁻⁶) * (10000) = 200000 * 10⁻⁶ J = 0.2 J</code></p>
+            <p>So, initially, the capacitor stores 4 mC of charge and 0.2 J of energy.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Dielectric Boost -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - Introducing a Dielectric</h2>
+        <div class="concept">
+            <p>A dielectric is a special insulating material that can be inserted between the capacitor plates. When you do this, it has a remarkable effect: it <span class="highlight">increases the capacitance</span>.</p>
+            <p>The <span class="highlight">dielectric constant (K)</span> tells you how much the capacitance is boosted. K is always greater than 1 (for air or a vacuum, K=1).</p>
+            <p><strong>New Capacitance Formula:</strong> <code>C_new = K * C_original</code></p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> Our 40 &mu;F capacitor is filled with a dielectric material with a dielectric constant K = 2. What is its new capacitance?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><code>C_original = 40 &mu;F</code></p>
+            <p><code>K = 2</code></p>
+            <p><code>C_new = K * C_original = 2 * 40 &mu;F = 80 &mu;F</code></p>
+            <p>The capacitance has doubled.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Key Scenario -->
+    <div class="phase">
+        <h2>Phase 3: What Happens Next? The Crucial Detail</h2>
+        <div class="concept">
+            <p>When you insert a dielectric, what happens to the charge and energy depends on one critical thing: <span class="highlight">is the capacitor still connected to the battery, or has it been disconnected?</span></p>
+            <p><strong>Scenario in this problem:</strong> The capacitor is connected to the power supply *while* the dielectric is inserted.</p>
+            <p>This means the <span class="highlight">Voltage (V) is held constant</span> by the battery at 100 V. The capacitor is now able to store more charge, so the battery will supply extra charge to fill it up to its new, larger capacity.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A parallel-plate capacitor of capacitance 40&mu;F is connected to a 100 V power supply. Now the intermediate space between the plates is filled with a dielectric material of dielectric constant K = 2. Due to the introduction of dielectric material, the extra charge and the change in the electrostatic energy in the capacitor, respectively, are:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's calculate the final state and compare it to the initial state from Phase 1.</p>
+            <p><strong>Initial State (from Phase 1):</strong></p>
+            <ul>
+                <li><code>C_initial = 40 &mu;F</code></li>
+                <li><code>Q_initial = 4 mC</code></li>
+                <li><code>U_initial = 0.2 J</code></li>
+            </ul>
+            <p><strong>Final State (with dielectric, battery connected):</strong></p>
+            <ul>
+                <li>Voltage is constant: <code>V_final = 100 V</code></li>
+                <li>New capacitance (from Phase 2): <code>C_final = 80 &mu;F</code></li>
+            </ul>
+            <p><strong>Step 1: Calculate the final charge (Q_final).</strong></p>
+            <p><code>Q_final = C_final * V_final = (80 * 10⁻⁶ F) * (100 V) = 8000 * 10⁻⁶ C = 8 mC</code></p>
+            <p><strong>Step 2: Calculate the extra charge supplied.</strong></p>
+            <p><code>Extra Charge = Q_final - Q_initial = 8 mC - 4 mC = 4 mC</code></p>
+            <p><strong>Step 3: Calculate the final energy (U_final).</strong></p>
+            <p><code>U_final = (1/2) * C_final * V_final² = (1/2) * (80 * 10⁻⁶ F) * (100 V)²</code></p>
+            <p><code>U_final = (40 * 10⁻⁶) * (10000) = 400000 * 10⁻⁶ J = 0.4 J</code></p>
+            <p><strong>Step 4: Calculate the change in energy.</strong></p>
+            <p><code>Change in Energy = U_final - U_initial = 0.4 J - 0.2 J = 0.2 J</code></p>
+            <p>So, the extra charge is 4 mC and the change in energy is 0.2 J.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Extra charge = <strong>4 mC</strong>, Change in energy = <strong>0.2 J</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 44 is (1), which corresponds to <strong>4 mC and 0.2 J</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

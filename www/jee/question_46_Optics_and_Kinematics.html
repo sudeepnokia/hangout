@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Optics and Kinematics</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: The Mirror Equation and Velocity</h1>
+    <p>This guide explains how to find the location, speed, and acceleration of an image formed by a curved mirror.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Mirror Equation</h2>
+        <div class="concept">
+            <p>The mirror equation relates the position of an object (the object distance, u), the position of its image (the image distance, v), and the focal length of the mirror (f).</p>
+            <p><strong>Formula:</strong> <code>1/v + 1/u = 1/f</code></p>
+            <p><strong>Sign Convention is CRITICAL:</strong></p>
+            <ul>
+                <li>The mirror is at the origin (x=0).</li>
+                <li>Light travels from left to right.</li>
+                <li>Distances measured in the direction of light are positive.</li>
+                <li>Distances measured against the direction of light are negative.</li>
+                <li>For a convex mirror, the focal point (F) is behind the mirror, so <code>f</code> is positive. <code>f = R/2</code>.</li>
+                <li>For a concave mirror, the focal point is in front of the mirror, so <code>f</code> is negative. <code>f = -R/2</code>.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A convex mirror has a radius of curvature R = 2 m. An object (a car) is 24 m in front of the mirror. Where is the image formed?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Find the focal length.</strong></p>
+            <p>It's a convex mirror, so f is positive. <code>f = R/2 = 2 m / 2 = +1 m</code>.</p>
+            <p><strong>Step 2: Determine the object distance.</strong></p>
+            <p>The object is in front of the mirror. Light from the object travels towards the mirror. We measure u from the mirror to the object, which is against the light direction. So, <code>u = -24 m</code>.</p>
+            <p><strong>Step 3: Use the mirror equation to find v.</strong></p>
+            <p><code>1/v + 1/u = 1/f</code></p>
+            <p><code>1/v + 1/(-24) = 1/1</code></p>
+            <p><code>1/v = 1 + 1/24 = 24/24 + 1/24 = 25/24</code></p>
+            <p><code>v = 24/25 m</code>. The positive sign means the image is formed behind the mirror, as expected for a convex mirror.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Finding the Velocity -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - Velocity of the Image</h2>
+        <div class="concept">
+            <p>What if the object is moving? The image will move too! To find the velocity of the image, we can take our mirror equation and differentiate it with respect to time (t). This is a bit of calculus.</p>
+            <p>Starting with <code>v⁻¹ + u⁻¹ = f⁻¹</code>.</p>
+            <p>Differentiating with respect to time (and using the chain rule):</p>
+            <p><code>-1v⁻² (dv/dt) - 1u⁻² (du/dt) = 0</code> (since f is constant)</p>
+            <p>Here, <code>dv/dt</code> is the velocity of the image (V_i) and <code>du/dt</code> is the velocity of the object (V_o).</p>
+            <p><code>-V_i / v² = V_o / u²</code></p>
+            <p><strong>Image Velocity Formula:</strong> <code>V_i = - (v²/u²) * V_o</code></p>
+            <p>The term <code>m = -v/u</code> is the magnification. So, <code>V_i = -m² * V_o</code>.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> Using the data from Phase 1 (u=-24, v=24/25), if the object car is moving towards the mirror at 90 km/hr, what is the velocity of its image?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Convert units.</strong></p>
+            <p>The distances are in meters, so let's convert the speed to m/s.</p>
+            <p><code>90 km/hr = 90 * (1000 m) / (3600 s) = 90000 / 3600 = 25 m/s</code>.</p>
+            <p>The object is moving towards the mirror. This is in the positive direction according to our convention (towards x=0 from the negative side). So, <code>V_o = +25 m/s</code>.</p>
+            <p><strong>Step 2: Use the velocity formula.</strong></p>
+            <p><code>V_i = - (v²/u²) * V_o</code></p>
+            <p><code>V_i = - ((24/25)² / (-24)²) * 25</code></p>
+            <p><code>V_i = - ( (24² / 25²) / 24² ) * 25</code></p>
+            <p><code>V_i = - (1 / 25²) * 25 = - (1 / 625) * 25 = -1/25 m/s</code>.</p>
+            <p>The negative sign means the image is moving away from the mirror (in the negative direction), which makes sense as the object gets closer.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the Acceleration -->
+    <div class="phase">
+        <h2>Phase 3: The Final Step - Acceleration of the Image</h2>
+        <div class="concept">
+            <p>To find the acceleration, we differentiate the velocity relation with respect to time. This requires the product rule and chain rule.</p>
+            <p>Starting from <code>-V_i / v² = V_o / u²</code> or <code>V_i u² + V_o v² = 0</code>.</p>
+            <p>Differentiating: <code>(A_i u² + V_i * 2u * V_o) + (A_o v² + V_o * 2v * V_i) = 0</code></p>
+            <p>Where A_i and A_o are the accelerations of the image and object.</p>
+            <p><strong>Image Acceleration Formula:</strong> If the object moves at a constant speed (<code>A_o = 0</code>), the formula simplifies greatly:</p>
+            <p><code>A_i u² + 2u V_i V_o + 2v V_o V_i = 0</code></p>
+            <p><code>A_i = - (2V_i V_o (u+v)) / u²</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The driver sitting inside a parked car is watching vehicles approaching from behind with the help of his side view mirror, which is a convex mirror with radius of curvature R = 2 m. Another car approaches him from behind with a uniform speed of 90 km/hr. When the car is at a distance of 24 m from him, the magnitude of the acceleration of the image of the car in the side view mirror is 'a'. The value of 100 a is ___ m/s².</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We have all the pieces from the previous phases.</p>
+            <p><strong>Known values:</strong></p>
+            <ul>
+                <li><code>u = -24 m</code></li>
+                <li><code>v = +24/25 m</code></li>
+                <li><code>V_o = +25 m/s</code> (Object moving towards mirror)</li>
+                <li><code>V_i = -1/25 m/s</code> (Image moving away from mirror)</li>
+                <li>The approaching car has uniform speed, so its acceleration <code>A_o = 0</code>.</li>
+            </ul>
+            <p>We need to find the image acceleration, <code>A_i</code>.</p>
+            <p>Let's use the differentiated velocity equation from Phase 3:</p>
+            <p><code>- (A_i/v² - 2V_i²/v³) = (A_o/u² - 2V_o²/u³)</code></p>
+            <p>Since <code>A_o = 0</code>:</p>
+            <p><code>-A_i/v² + 2V_i²/v³ = -2V_o²/u³</code></p>
+            <p><code>A_i/v² = 2V_i²/v³ + 2V_o²/u³</code></p>
+            <p><code>A_i = 2V_i²/v + 2V_o²v²/u³</code></p>
+            <p>Let's plug in the values:</p>
+            <p><code>A_i = 2(-1/25)² / (24/25) + 2(25)²(24/25)² / (-24)³</code></p>
+            <p><code>A_i = 2(1/625) * (25/24) + 2(25²)(24²/25²) / (-24³)</code></p>
+            <p><code>A_i = 2 / (25 * 24) + 2(24²) / (-24³)</code></p>
+            <p><code>A_i = 1 / (25 * 12) - 2/24</code></p>
+            <p><code>A_i = 1/300 - 1/12 = (1 - 25)/300 = -24/300 = -2/25 m/s²</code></p>
+            <p>The magnitude of the acceleration is <code>a = |A_i| = 2/25 m/s²</code>.</p>
+            <p>The question asks for the value of <code>100 * a</code>.</p>
+            <p><code>100 * a = 100 * (2/25) = 200 / 25 = 8</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The value of 100a is <strong>8</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 46 is <strong>8</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

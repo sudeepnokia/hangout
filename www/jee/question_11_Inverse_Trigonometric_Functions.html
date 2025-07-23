@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Inverse Trigonometric Functions</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Inverse Trigonometric Functions</h1>
+    <p>This guide will build your understanding from basic algebraic identities to finding the range of a complex inverse trigonometric function expression.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: A Key Identity</h2>
+        <p>For inverse trigonometric functions, there are a few key identities. One of the most important is: <code>sec⁻¹x + cosec⁻¹x = π/2</code>. This is true for all valid values of x (where |x| ≥ 1).</p>
+        <p>This identity is our starting point. It simplifies the problem greatly.</p>
+    </div>
+
+    <!-- Phase 2: An Algebraic Trick -->
+    <div class="phase">
+        <h2>Phase 2: Finding a² + b²</h2>
+        <p>This problem uses a common algebraic pattern. If you know the sum of two numbers (a+b), how can you find the sum of their squares (a² + b²)?</p>
+        <p>We start with the expansion of <code>(a+b)² = a² + b² + 2ab</code>. Rearranging this gives us the tool we need: <code>a² + b² = (a+b)² - 2ab</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Let <code>a = sec⁻¹x</code> and <code>b = cosec⁻¹x</code>. Use the identity from Phase 1 and the algebraic trick to rewrite the expression <code>(sec⁻¹x)² + (cosec⁻¹x)²</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>We have <code>a + b = π/2</code>.</p>
+            <p>The expression is <code>a² + b²</code>.</p>
+            <p>Using our trick: <code>a² + b² = (π/2)² - 2ab = π²/4 - 2(sec⁻¹x)(cosec⁻¹x)</code>.</p>
+            <p>To make it easier to work with, we can substitute <code>cosec⁻¹x = π/2 - sec⁻¹x</code>:</p>
+            <p><code>(sec⁻¹x)² + (π/2 - sec⁻¹x)²</code>. Let's call <code>y = sec⁻¹x</code>. The expression is <code>y² + (π/2 - y)²</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the Range of a Quadratic -->
+    <div class="phase">
+        <h2>Phase 3: Finding Minimum and Maximum Values</h2>
+        <p>Let's expand the expression from Phase 2: <code>S = y² + (π²/4 - πy + y²) = 2y² - πy + π²/4</code>. This is a quadratic function of y (where y = sec⁻¹x). An upward-opening parabola's minimum value is at its vertex.</p>
+        <p>The vertex of a parabola <code>ax²+bx+c</code> is at <code>x = -b/(2a)</code>.</p>
+        <p>To find the maximum value, we need to check the endpoints of the domain of y = sec⁻¹x. The range (which is the domain for our quadratic S) of sec⁻¹x is <code>[0, π]</code>, excluding <code>π/2</code>.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Find the minimum value of <code>S = 2y² - πy + π²/4</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The vertex is at <code>y = -(-π) / (2*2) = π/4</code>.</p>
+            <p>The minimum value is <code>S(π/4) = 2(π/4)² - π(π/4) + π²/4 = 2(π²/16) - π²/4 + π²/4 = π²/8</code>.</p>
+        </div>
+        <div class="question">
+            <strong>Question 3.2:</strong> Find the maximum value of S by checking the endpoints of the domain [0, π].
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_2')">Show Solution</span>
+        <div class="solution" id="sol3_2">
+            <p>The vertex is at π/4. The endpoints are 0 and π. The furthest point from the vertex will give the maximum value.</p>
+            <p>At y=0: <code>S(0) = 2(0)² - π(0) + π²/4 = π²/4</code>.</p>
+            <p>At y=π: <code>S(π) = 2(π)² - π(π) + π²/4 = 2π² - π² + π²/4 = π² + π²/4 = 5π²/4</code>.</p>
+            <p>The maximum value is <code>5π²/4</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now you have all the pieces to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 11:</strong> Using the principal values of the inverse trigonometric functions, the sum of the maximum and the minimum values of 16((sec⁻¹x)² + (cosec⁻¹x)²) is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the min and max of the inner expression.</strong></p>
+            <p>From Phase 3, we found that the minimum value of <code>(sec⁻¹x)² + (cosec⁻¹x)²</code> is <strong>π²/8</strong> and the maximum value is <strong>5π²/4</strong>.</p>
+            <p><strong>Step 2: Multiply by the constant factor.</strong></p>
+            <p>Minimum value of the full expression = <code>16 * (π²/8) = 2π²</code>.</p>
+            <p>Maximum value of the full expression = <code>16 * (5π²/4) = 20π²</code>.</p>
+            <p><strong>Step 3: Find the sum.</strong></p>
+            <p>Sum = Minimum Value + Maximum Value = <code>2π² + 20π² = 22π²</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the sum as <strong>22π²</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 11 is (2).</p>
+        <p><strong>Result:</strong> The derived answer <strong>22π²</strong> matches option (2). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

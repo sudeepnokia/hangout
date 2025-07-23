@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Geometrical Isomerism</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .statement { border: 1px solid #bdc3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Geometrical Isomerism (Cis/Trans)</h1>
+    <p>This guide explains what geometrical isomers are, the conditions required for them to exist, and their properties.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Key Condition for Geometrical Isomerism</h2>
+        <div class="concept">
+            <p>Geometrical isomerism (also known as cis-trans isomerism) is a type of stereoisomerism. It occurs when there is <span class="highlight">restricted rotation</span> around a bond, usually a carbon-carbon double bond (C=C).</p>
+            <p>Because the atoms can't freely rotate around the double bond, the spatial arrangement of the groups attached to the carbons becomes fixed.</p>
+            <p><strong>The Golden Rule:</strong> For a molecule with a C=C double bond to show geometrical isomerism, <span class="highlight">each</span> of the two carbon atoms in the double bond must be attached to <span class="highlight">two different groups</span>.</p>
+            <p>Let's look at a double bond: C₁=C₂. If C₁ is attached to groups A and B, and C₂ is attached to groups D and E, then for isomerism to exist:</p>
+            <ul>
+                <li>A must be different from B.</li>
+                <li>D must be different from E.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (A):</strong> Propene shows geometrical isomerism.</p>
+                <p><strong>Statement (D):</strong> 2-methylbut-2-ene shows two geometrical isomers.</p>
+            </div>
+            <strong>Question:</strong> Are statements (A) and (D) correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Analysis of Propene (CH₃-CH=CH₂):</strong></p>
+            <p>Let's look at the carbons in the double bond (CH=CH₂).</p>
+            <ul>
+                <li>The first carbon (CH) is attached to a methyl group (-CH₃) and a hydrogen (-H). These are different. So far, so good.</li>
+                <li>The second carbon (CH₂) is attached to two hydrogen atoms (-H and -H). These are identical!</li>
+            </ul>
+            <p>Since the second carbon has two identical groups, propene <span class="highlight">fails the golden rule</span>. It cannot show geometrical isomerism. <strong>Statement (A) is incorrect.</strong></p>
+            <p><strong>Analysis of 2-methylbut-2-ene (CH₃-C(CH₃)=CH-CH₃):</strong></p>
+            <p>Let's look at the carbons in the double bond.</p>
+            <ul>
+                <li>The first carbon is attached to two methyl groups (-CH₃ and -CH₃). These are identical!</li>
+            </ul>
+            <p>It fails the rule immediately. 2-methylbut-2-ene cannot show geometrical isomerism. <strong>Statement (D) is incorrect.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Cis vs. Trans -->
+    <div class="phase">
+        <h2>Phase 2: Defining Cis and Trans</h2>
+        <div class="concept">
+            <p>When a molecule *does* show geometrical isomerism, we can label the isomers as cis or trans.</p>
+            <p>Consider but-2-ene (CH₃-CH=CH-CH₃). Each carbon in the double bond is attached to a -H and a -CH₃ group. It meets the condition.</p>
+            <ul>
+                <li><strong>Cis isomer:</strong> The identical groups (e.g., the two -CH₃ groups) are on the <span class="highlight">same side</span> of the double bond.</li>
+                <li><strong>Trans isomer:</strong> The identical groups are on <span class="highlight">opposite sides</span> (diagonally across) the double bond.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (B):</strong> Trans isomer has identical atoms/groups on the opposite sides of the double bond.</p>
+            </div>
+            <strong>Question:</strong> Is statement (B) correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>This is the definition of a trans isomer. The prefix "trans-" means "across" or "on the other side of".</p>
+            <p>Therefore, <strong>Statement (B) is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Properties of Isomers -->
+    <div class="phase">
+        <h2>Phase 3: Dipole Moments and Melting Points</h2>
+        <div class="concept">
+            <p>Because their shapes are different, cis and trans isomers have different physical properties.</p>
+            <p><strong>Dipole Moment:</strong> A dipole moment arises from a separation of charge. In C-H and C-C bonds, there are small bond dipoles. We can treat them as vectors.</p>
+            <ul>
+                <li>In <span class="highlight">trans-but-2-ene</span>, the two C-CH₃ bond dipoles are opposite to each other and <span class="highlight">cancel out</span>. The net dipole moment is zero (or very close to it).</li>
+                <li>In <span class="highlight">cis-but-2-ene</span>, the two C-CH₃ bond dipoles point in roughly the same direction. They <span class="highlight">add up</span>, resulting in a net dipole moment.</li>
+            </ul>
+            <p><strong>Melting Point:</strong> This is related to how well the molecules can pack into a solid crystal lattice.</p>
+            <ul>
+                <li>The <span class="highlight">trans</span> isomer is generally more symmetrical (straighter shape). It can pack more neatly and tightly into a crystal lattice. This leads to stronger intermolecular forces.</li>
+                <li>The <span class="highlight">cis</span> isomer has a "kinked" shape and packs less efficiently.</li>
+            </ul>
+            <p>Because of the better packing, it takes more energy to break the lattice of the trans isomer. Therefore, the <span class="highlight">trans isomer usually has a higher melting point</span> than the cis isomer.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (C):</strong> Cis-but-2-ene has higher dipole moment than trans-but-2-ene.</p>
+                <p><strong>Statement (E):</strong> Trans-isomer has lower melting point than cis isomer.</p>
+            </div>
+            <strong>Question:</strong> Are statements (C) and (E) correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Analysis of Statement (C):</strong> As explained, in cis-but-2-ene the bond dipoles add up, while in the trans isomer they cancel. So, the cis isomer has a significant dipole moment while the trans isomer has none. <strong>Statement (C) is correct.</strong></p>
+            <p><strong>Analysis of Statement (E):</strong> As explained, the more symmetrical trans isomer packs better in a crystal, leading to stronger forces and a higher melting point. The statement says the trans isomer has a *lower* melting point. <strong>Statement (E) is incorrect.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The incorrect statements regarding geometrical isomerism are:</p>
+            <p>(A) Propene shows geometrical isomerism.</p>
+            <p>(B) Trans isomer has identical atoms/groups on the opposite sides of the double bond.</p>
+            <p>(C) Cis-but-2-ene has higher dipole moment than trans-but-2-ene.</p>
+            <p>(D) 2-methylbut-2-ene shows two geometrical isomers.</p>
+            <p>(E) Trans-isomer has lower melting point than cis isomer.</p>
+            <p>Choose the correct answer from the options given below.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's summarize our findings from the previous phases:</p>
+            <ul>
+                <li><strong>(A) Propene...:</strong> Incorrect. (Fails the rule).</li>
+                <li><strong>(B) Trans isomer has...:</strong> Correct. (Definition).</li>
+                <li><strong>(C) Cis-but-2-ene has...:</strong> Correct. (Dipole moments add).</li>
+                <li><strong>(D) 2-methylbut-2-ene...:</strong> Incorrect. (Fails the rule).</li>
+                <li><strong>(E) Trans-isomer has lower...:</strong> Incorrect. (Trans packs better, higher MP).</li>
+            </ul>
+            <p>The question asks for the set of <span class="highlight">incorrect</span> statements.</p>
+            <p>The incorrect statements are (A), (D), and (E).</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The incorrect statements are <strong>(A), (D), and (E)</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 52 is (2), which corresponds to <strong>(A), (D) and (E) Only</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

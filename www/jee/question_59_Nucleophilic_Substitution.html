@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Nucleophilic Substitution</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .statement { border: 1px solid #bdc3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Sₙ1 and Sₙ2 Reactions</h1>
+    <p>This guide explains the two main types of nucleophilic substitution reactions and the factors that determine which pathway a reaction will take.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is Nucleophilic Substitution?</h2>
+        <div class="concept">
+            <p>In a nucleophilic substitution reaction, a <span class="highlight">nucleophile</span> (an electron-rich species, often with a negative charge or lone pair) attacks an electron-deficient carbon atom and replaces a <span class="highlight">leaving group</span> (a group that can detach from the carbon, taking the bonding electrons with it).</p>
+            <p>The general form is: <code>Nu:⁻ + R-LG &rarr; R-Nu + LG:⁻</code></p>
+            <p>There are two main mechanisms for how this happens: Sₙ1 and Sₙ2.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Sₙ1 Reaction -->
+    <div class="phase">
+        <h2>Phase 2: The Sₙ1 Pathway - Carbocation Stability</h2>
+        <div class="concept">
+            <p>The Sₙ1 reaction is a <span class="highlight">two-step</span> process:</p>
+            <ol>
+                <li><strong>Step 1 (Slow):</strong> The leaving group leaves on its own, forming a <span class="highlight">carbocation</span> intermediate. This is the rate-determining step.</li>
+                <li><strong>Step 2 (Fast):</strong> The nucleophile attacks the flat, electron-deficient carbocation.</li>
+            </ol>
+            <p>The most important factor for an Sₙ1 reaction is the <span class="highlight">stability of the carbocation</span> that is formed. More stable carbocations form faster, making the Sₙ1 reaction more likely.</p>
+            <p><strong>Carbocation Stability Order:</strong> Tertiary (3&deg;) > Secondary (2&deg;) > Primary (1&deg;) > Methyl.</p>
+            <p>Carbocations can also be stabilized by <span class="highlight">resonance</span>. A carbocation next to a double bond or a lone pair on an oxygen or nitrogen is significantly stabilized.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement I:</strong> CH₃-O-CH₂-Cl will undergo Sₙ1 reaction though it is a primary halide.</p>
+            </div>
+            <strong>Question:</strong> Analyze the carbocation formed from this molecule. Is Statement I correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The molecule is an &alpha;-chloro ether. It is a primary halide because the carbon bonded to the chlorine is only bonded to one other carbon (via the oxygen).</p>
+            <p>If it undergoes an Sₙ1 reaction, the leaving group (Cl⁻) leaves first, forming a carbocation:</p>
+            <p><code>CH₃-O-CH₂-Cl &rarr; CH₃-O-CH₂⁺ + Cl⁻</code></p>
+            <p>Now, let's look at this carbocation: <code>CH₃-O-CH₂⁺</code>. The positive charge is on a carbon that is adjacent to an oxygen atom with lone pairs.</p>
+            <p>This oxygen can donate one of its lone pairs to form a double bond with the carbon, delocalizing the positive charge onto the oxygen atom. This is a very powerful form of <span class="highlight">resonance stabilization</span>.</p>
+            <p><code>CH₃-O-CH₂⁺ &harr; CH₃-O⁺=CH₂</code></p>
+            <p>Because this carbocation is <span class="highlight">exceptionally stable</span> due to resonance with the adjacent oxygen, it will form very readily. This makes the Sₙ1 pathway highly favorable, even though it's a primary halide.</p>
+            <p>Therefore, <strong>Statement I is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Sₙ2 Reaction -->
+    <div class="phase">
+        <h2>Phase 3: The Sₙ2 Pathway - Steric Hindrance</h2>
+        <div class="concept">
+            <p>The Sₙ2 reaction is a <span class="highlight">one-step</span> process. The nucleophile attacks the carbon atom from the backside at the exact same time as the leaving group leaves from the front side. It's a coordinated, single-step dance.</p>
+            <p>The most important factor for an Sₙ2 reaction is <span class="highlight">steric hindrance</span> (crowding).</p>
+            <p>The nucleophile needs a clear path to attack the backside of the carbon. If there are large, bulky groups attached to that carbon, they will block the nucleophile's approach and slow down or prevent the Sₙ2 reaction.</p>
+            <p><strong>Sₙ2 Reactivity Order:</strong> Methyl > Primary (1&deg;) > Secondary (2&deg;) >> Tertiary (3&deg;) (Tertiary halides do not undergo Sₙ2).</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement II:</strong> Neopentyl chloride (CH₃)₃C-CH₂-Cl will not undergo Sₙ2 reaction very easily though it is a primary halide.</p>
+            </div>
+            <strong>Question:</strong> Analyze the steric hindrance around the reaction center. Is Statement II correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The molecule is neopentyl chloride. Let's look at the carbon being attacked by the nucleophile. It's the <code>-CH₂-Cl</code> carbon.</p>
+            <p>This carbon is a primary halide, which normally would be good for Sₙ2.</p>
+            <p>However, let's look at what that carbon is attached to. It's attached to a <span class="highlight">t-butyl group</span>, <code>-C(CH₃)₃</code>. This group is extremely large and bulky. It has three methyl groups branching off the very next carbon atom.</p>
+            <p>This massive t-butyl group acts like a giant shield, completely blocking the backside of the <code>-CH₂-Cl</code> carbon. A nucleophile cannot get anywhere near it to perform the backside attack required for an Sₙ2 reaction.</p>
+            <p>This is a classic example of extreme <span class="highlight">steric hindrance</span> preventing an Sₙ2 reaction, even on a primary halide.</p>
+            <p>Therefore, <strong>Statement II is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Statement I is correct because the carbocation is resonance-stabilized. Statement II is correct because the primary halide is sterically hindered by a bulky t-butyl group. Therefore, <strong>Both Statement I and Statement II are correct</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 59 is (2), which states "Both Statement I and Statement II are correct".</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

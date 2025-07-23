@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Surface Tension</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Pressure Inside Bubbles</h1>
+    <p>This guide explains why the pressure inside a soap bubble is greater than the pressure outside, and what happens when two bubbles meet.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Excess Pressure in a Soap Bubble</h2>
+        <div class="concept">
+            <p>Surface tension is the tendency of liquid surfaces to shrink into the minimum surface area possible. It acts like a thin, stretched membrane.</p>
+            <p>For a soap bubble, this tension creates an inward pull. To keep the bubble from collapsing, the pressure of the air trapped inside must be greater than the pressure of the air outside.</p>
+            <p>A soap bubble has <span class="highlight">two</span> surfaces (an inner one and an outer one) contributing to this tension.</p>
+            <p><strong>Excess Pressure Formula (Soap Bubble):</strong> <code>&Delta;P = P_inside - P_outside = 4S / r</code></p>
+            <ul>
+                <li><code>&Delta;P</code>: The excess pressure inside the bubble.</li>
+                <li><code>S</code>: The surface tension of the soap solution.</li>
+                <li><code>r</code>: The radius of the bubble.</li>
+            </ul>
+            <p><em>(For a simple liquid drop in air, which has only one surface, the formula is <code>&Delta;P = 2S / r</code>).</em></p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> There are two soap bubbles, one with a radius of 2 cm and another with a radius of 4 cm. Which one has a higher pressure inside?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The excess pressure is <code>&Delta;P = 4S / r</code>. This means pressure is <span class="highlight">inversely proportional</span> to the radius.</p>
+            <p>The smaller the radius (r), the larger the excess pressure (&Delta;P).</p>
+            <p>Therefore, the <span class="highlight">smaller bubble (r = 2 cm)</span> has a higher internal pressure than the larger bubble (r = 4 cm).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Combining Bubbles -->
+    <div class="phase">
+        <h2>Phase 2: When Bubbles Meet</h2>
+        <div class="concept">
+            <p>When two soap bubbles of different sizes come into contact, they form a common interface wall between them.</p>
+            <p>Since the smaller bubble has higher pressure (P₁) and the larger bubble has lower pressure (P₂), air will tend to flow from the smaller bubble into the larger one.</p>
+            <p>This pressure difference across the common wall (P₁ - P₂) is what supports the curvature of that wall. The common wall is itself like a piece of a bubble, so it must also obey the pressure formula.</p>
+            <p>The pressure difference across this interface is given by: <code>P₁ - P₂ = 4S / R</code>, where <code>R</code> is the radius of curvature of this common interface.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Two soap bubbles of radius 2 cm and 4 cm, respectively, are in contact with each other. The radius of curvature of the common surface, in cm, is ___.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's apply the concepts from the previous phases.</p>
+            <p>Let the smaller bubble be bubble 1 and the larger bubble be bubble 2.</p>
+            <ul>
+                <li><code>r₁ = 2 cm</code></li>
+                <li><code>r₂ = 4 cm</code></li>
+            </ul>
+            <p>Let <code>P_atm</code> be the atmospheric pressure outside both bubbles.</p>
+            <p><strong>Step 1: Write the pressure inside each bubble.</strong></p>
+            <p>Using the formula from Phase 1:</p>
+            <p><code>P₁ = P_atm + 4S / r₁</code></p>
+            <p><code>P₂ = P_atm + 4S / r₂</code></p>
+            <p><strong>Step 2: Write the pressure difference across the common interface.</strong></p>
+            <p>From Phase 2, the pressure difference across the common wall (with radius of curvature R) is:</p>
+            <p><code>P₁ - P₂ = 4S / R</code></p>
+            <p><strong>Step 3: Combine the equations and solve for R.</strong></p>
+            <p>Let's substitute the expressions for P₁ and P₂ into the interface equation:</p>
+            <p><code>(P_atm + 4S / r₁) - (P_atm + 4S / r₂) = 4S / R</code></p>
+            <p>The <code>P_atm</code> terms cancel out:</p>
+            <p><code>4S / r₁ - 4S / r₂ = 4S / R</code></p>
+            <p>The term <code>4S</code> appears in every term, so we can divide the entire equation by it:</p>
+            <p><code>1/r₁ - 1/r₂ = 1/R</code></p>
+            <p>This is our final, simple formula!</p>
+            <p><strong>Step 4: Plug in the numbers.</strong></p>
+            <p><code>1/2 - 1/4 = 1/R</code></p>
+            <p>Find a common denominator for the left side:</p>
+            <p><code>2/4 - 1/4 = 1/R</code></p>
+            <p><code>1/4 = 1/R</code></p>
+            <p>Therefore, <code>R = 4 cm</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The radius of curvature of the common surface is <strong>4 cm</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 47 is <strong>4</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

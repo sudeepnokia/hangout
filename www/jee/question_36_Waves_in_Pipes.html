@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Waves in Pipes</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Sound Waves in Organ Pipes</h1>
+    <p>This guide will teach you how sound behaves in different types of tubes, building up all the knowledge needed to solve a complex JEE problem.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: How Fast is Sound?</h2>
+        <div class="concept">
+            <p>The speed of sound isn't constant. It changes depending on the medium it's traveling through. For gases, two properties are very important:</p>
+            <ol>
+                <li><strong>Bulk Modulus (B):</strong> Think of this as the gas's "stiffness". A stiffer gas snaps back into place faster, letting sound travel faster.</li>
+                <li><strong>Density (ρ):</strong> This is the "heaviness" of the gas. A denser, heavier gas is harder to move, so sound travels slower.</li>
+            </ol>
+            <p>The formula that connects them is: <code>v = &radic;(B / &rho;)</code>, where <code>v</code> is the speed of sound.</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> Gas 1 has a density <code>&rho;₁</code>. Gas 2 is much lighter, with a density <code>&rho;₂</code> that is 1/16th of &rho;₁. If they both have the same stiffness (Bulk Modulus B), how much faster is the speed of sound in Gas 2 (v₂) compared to Gas 1 (v₁)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's write down the ratio of the speeds:</p>
+            <p><code>v₂ / v₁ = &radic;(B / &rho;₂) / &radic;(B / &rho;₁)</code></p>
+            <p>The B's cancel out, and we get: <code>v₂ / v₁ = &radic;(&rho;₁ / &rho;₂)</code></p>
+            <p>We are given <code>&rho;₁ / &rho;₂ = 16 / 1</code> (since &rho;₂ is 1/16 of &rho;₁).</p>
+            <p><code>v₂ / v₁ = &radic;(16) = 4</code></p>
+            <p>So, sound travels <span class="highlight">4 times faster</span> in the lighter gas (Gas 2).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Open Pipes -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - Harmonics in an Open Pipe</h2>
+        <div class="concept">
+            <p>An "open pipe" is a tube that is open at both ends. When you make a sound in it, special "standing waves" can form. These are called harmonics.</p>
+            <p>The frequency (pitch) of these harmonics depends on the pipe's length (L) and the speed of sound (v) in the gas inside.</p>
+            <p>The formula for the frequency of the <span class="highlight">n-th harmonic</span> in an open pipe is:</p>
+            <p><code>f_n = n * (v / 2L)</code>, where n can be any whole number (1, 2, 3, ...).</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> An open pipe of length <code>L_o</code> is filled with a gas where the speed of sound is <code>v₂</code>. What is the frequency of its 4th harmonic?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We use the formula with n = 4.</p>
+            <p><code>f_open = 4 * (v₂ / 2L_o) = 2 * v₂ / L_o</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Closed Pipes -->
+    <div class="phase">
+        <h2>Phase 3: A Different Tune - Harmonics in a Closed Pipe</h2>
+        <div class="concept">
+            <p>A "closed pipe" is open at one end and sealed at the other. This changes which standing waves can fit inside.</p>
+            <p>A closed pipe is pickier! It only allows <span class="highlight">odd-numbered</span> harmonics.</p>
+            <p>The formula for the frequency of the <span class="highlight">n-th harmonic</span> in a closed pipe is:</p>
+            <p><code>f_n = n * (v / 4L)</code>, where n MUST be an odd number (1, 3, 5, 7, ...).</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> A closed pipe is 10 cm long and is filled with a gas where the speed of sound is <code>v₁</code>. What is the frequency of its 9th harmonic?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>First, convert the length to meters: <code>L_c = 10 cm = 0.1 m</code>.</p>
+            <p>We use the formula with n = 9 (which is an odd number, so it's allowed).</p>
+            <p><code>f_closed = 9 * (v₁ / (4 * L_c)) = 9 * v₁ / (4 * 0.1) = 9 * v₁ / 0.4</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A closed organ and an open organ tube are filled by two different gases having same bulk modulus but different densities &rho;₁ and &rho;₂, respectively. The frequency of 9th harmonic of closed tube is identical with 4th harmonic of open tube. If the length of the closed tube is 10 cm and the density ratio of the gases is &rho;₁ : &rho;₂ = 1 : 16, then the length of the open tube is:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We have all the concepts. Let's put them together.</p>
+            <p><strong>Step 1: Set the frequencies equal.</strong></p>
+            <p>The problem states that the frequency of the 9th harmonic of the closed pipe is identical to the 4th harmonic of the open pipe.</p>
+            <p><code>f_closed = f_open</code></p>
+            <p>From our work in Phase 2 and 3:</p>
+            <p><code>9 * v₁ / 0.4 = 2 * v₂ / L_o</code></p>
+            <p><strong>Step 2: Relate the speeds v₁ and v₂.</strong></p>
+            <p>The gases are different. Gas 1 (in the closed pipe) has density &rho;₁. Gas 2 (in the open pipe) has density &rho;₂.</p>
+            <p>We are given <code>&rho;₁ / &rho;₂ = 1 / 16</code>.</p>
+            <p>From Phase 1, we know the relationship between speed and density. Let's find the ratio v₁/v₂:</p>
+            <p><code>v₁ / v₂ = &radic;(B / &rho;₁) / &radic;(B / &rho;₂) = &radic;(&rho;₂ / &rho;₁)</code></p>
+            <p><code>v₁ / v₂ = &radic;(16 / 1) = 4</code></p>
+            <p>This means <code>v₁ = 4v₂</code>. Sound is 4 times faster in the denser gas (Gas 1) than the lighter one (Gas 2). Wait, that's backwards! Let's re-read Phase 1. Denser gas = slower sound. Let's re-check the ratio.</p>
+            <p><code>&rho;₁ / &rho;₂ = 1 / 16</code> means <code>&rho;₂ = 16&rho;₁</code>. Gas 2 is 16 times denser.</p>
+            <p><code>v₁ / v₂ = &radic;(&rho;₂ / &rho;₁) = &radic;(16&rho;₁ / &rho;₁) = &radic;(16) = 4</code>. So <code>v₁ = 4v₂</code>. Correct. The sound is faster in the less dense gas (Gas 1).</p>
+            <p><strong>Step 3: Substitute and solve for the unknown length (L_o).</strong></p>
+            <p>Take our equation from Step 1 and replace <code>v₁</code> with <code>4v₂</code>:</p>
+            <p><code>9 * (4v₂) / 0.4 = 2 * v₂ / L_o</code></p>
+            <p>The speed <code>v₂</code> appears on both sides, so we can cancel it out!</p>
+            <p><code>36 / 0.4 = 2 / L_o</code></p>
+            <p>Let's simplify the left side: <code>36 / 0.4 = 360 / 4 = 90</code>.</p>
+            <p><code>90 = 2 / L_o</code></p>
+            <p>Now, rearrange to solve for <code>L_o</code>:</p>
+            <p><code>L_o = 2 / 90 = 1 / 45</code> meters.</p>
+            <p><strong>Step 4: Convert the answer to centimeters.</strong></p>
+            <p>The question asks for the length, and the options are in cm. There are 100 cm in a meter.</p>
+            <p><code>L_o = (1 / 45) * 100 cm = 100 / 45 cm</code></p>
+            <p>Simplify the fraction by dividing the top and bottom by 5:</p>
+            <p><code>L_o = 20 / 9</code> cm.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The length of the open tube is <strong>20/9 cm</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 36 is (4), which corresponds to <strong>20/9 cm</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

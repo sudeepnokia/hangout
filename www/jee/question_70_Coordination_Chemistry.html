@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Coordination Chemistry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Magnetism, Geometry, and Oxidation State</h1>
+    <p>This guide explains how to determine the properties of coordination complexes based on their magnetic behavior.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Magnetism and Unpaired Electrons</h2>
+        <div class="concept">
+            <p>The magnetic properties of a coordination complex are determined by its electrons.</p>
+            <ul>
+                <li><strong>Paramagnetism:</strong> The substance is weakly attracted to a magnetic field. This occurs when the complex has <span class="highlight">one or more unpaired electrons</span>.</li>
+                <li><strong>Diamagnetism:</strong> The substance is weakly repelled by a magnetic field. This occurs when <span class="highlight">all electrons in the complex are paired</span>.</li>
+            </ul>
+            <p>The question gives us the magnetic behavior, which provides a huge clue about the electron configuration of the central metal ion.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Valence Bond Theory and Hybridization -->
+    <div class="phase">
+        <h2>Phase 2: Geometry and Hybridization</h2>
+        <div class="concept">
+            <p>Valence Bond Theory explains the geometry of complexes by proposing that the metal ion's atomic orbitals hybridize (mix) to form a new set of degenerate orbitals that are ready to accept electron pairs from the ligands.</p>
+            <p>The type of hybridization depends on the coordination number and the ligands:</p>
+            <ul>
+                <li><strong>Coordination Number 4:</strong>
+                    <ul>
+                        <li><span class="highlight">sp³ hybridization:</span> Leads to a <span class="highlight">tetrahedral</span> geometry. This usually happens with weak-field ligands.</li>
+                        <li><span class="highlight">dsp² hybridization:</span> Leads to a <span class="highlight">square planar</span> geometry. This usually happens with strong-field ligands that can force d-electrons to pair up, freeing an inner d-orbital.</li>
+                    </ul>
+                </li>
+                <li><strong>Coordination Number 6:</strong>
+                    <ul>
+                        <li><span class="highlight">sp³d² hybridization:</span> Octahedral geometry.</li>
+                        <li><span class="highlight">d²sp³ hybridization:</span> Octahedral geometry.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> From the magnetic behaviour of [NiCl₄]²⁻ (paramagnetic) and [Ni(CO)₄] (diamagnetic), choose the correct geometry and oxidation state.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze each complex individually.</p>
+
+            <p><strong>Analysis of [Ni(CO)₄]</strong></p>
+            <ul>
+                <li><strong>Oxidation State:</strong> The carbonyl ligand (CO) is neutral. Therefore, the overall charge of the complex (0) is the oxidation state of the Nickel. <span class="highlight">Ni is in the 0 oxidation state</span>.</li>
+                <li><strong>Electron Configuration:</strong> A neutral Ni atom (Z=28) has the configuration [Ar] 3d⁸ 4s².</li>
+                <li><strong>Ligand Field:</strong> CO is a very <span class="highlight">strong-field ligand</span>. It will cause the electrons to rearrange and pair up. The 4s electrons will be pushed into the 3d orbitals.</li>
+                <li><strong>Final Configuration:</strong> The 10 valence electrons (8 from 3d, 2 from 4s) will completely fill the 3d orbitals. The configuration becomes [Ar] <span class="highlight">3d¹⁰</span> 4s⁰.</li>
+                <li><strong>Magnetism:</strong> Since all 10 d-electrons are paired up in the 3d¹⁰ configuration, the complex has no unpaired electrons. This makes it <span class="highlight">diamagnetic</span>, which matches the information given in the question.</li>
+                <li><strong>Hybridization and Geometry:</strong> To accommodate the 4 CO ligands, the empty 4s and three 4p orbitals will hybridize. This results in <span class="highlight">sp³ hybridization</span> and a <span class="highlight">tetrahedral</span> geometry.</li>
+            </ul>
+
+            <p><strong>Analysis of [NiCl₄]²⁻</strong></p>
+            <ul>
+                <li><strong>Oxidation State:</strong> The chloride ligand (Cl⁻) has a -1 charge. Let the oxidation state of Ni be x. Then x + 4(-1) = -2. This gives x = +2. <span class="highlight">Ni is in the +2 oxidation state</span>.</li>
+                <li><strong>Electron Configuration:</strong> A Ni²⁺ ion has lost its two 4s electrons. The configuration is [Ar] <span class="highlight">3d⁸</span>.</li>
+                <li><strong>Magnetism:</strong> The question states the complex is <span class="highlight">paramagnetic</span>. This means it must have unpaired electrons.</li>
+                <li><strong>Ligand Field and Geometry:</strong> Cl⁻ is a <span class="highlight">weak-field ligand</span>. It does not have enough strength to force the d-electrons to pair up. To accommodate the 4 Cl⁻ ligands, the Ni²⁺ ion will use its outer 4s and 4p orbitals for bonding. This leads to <span class="highlight">sp³ hybridization</span> and a <span class="highlight">tetrahedral</span> geometry. In this tetrahedral field, the 3d⁸ configuration will have two unpaired electrons, which explains its paramagnetism.</li>
+                <li><em>(What if it were square planar? A square planar geometry (dsp²) would require one d-orbital to be empty. To achieve this, the 8 d-electrons would have to pair up, leaving no unpaired electrons. This would make the complex diamagnetic, which contradicts the question.)</em></li>
+            </ul>
+
+            <p><strong>Summary of Findings:</strong></p>
+            <ul>
+                <li><strong>[NiCl₄]²⁻:</strong> Ni(II), d⁸, paramagnetic, sp³, tetrahedral.</li>
+                <li><strong>[Ni(CO)₄]:</strong> Ni(0), d¹⁰, diamagnetic, sp³, tetrahedral.</li>
+            </ul>
+            <p>Now we check the options provided in the exam to find the one that matches our conclusions.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> [NiCl₄]²⁻ is Ni(II) and tetrahedral. [Ni(CO)₄] is Ni(0) and tetrahedral.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 70 is (3), which states: [NiCl₄]²⁻: Ni(II), tetrahedral; [Ni(CO)₄]: Ni(0), tetrahedral.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

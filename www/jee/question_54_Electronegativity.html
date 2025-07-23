@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Electronegativity</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .periodic-table { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+        .element { background-color: #fff; border: 2px solid #3498db; padding: 10px; text-align: center; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Periodic Trends in Electronegativity</h1>
+    <p>This guide explains what electronegativity is and how it changes as you move across and down the periodic table.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is Electronegativity?</h2>
+        <div class="concept">
+            <p>Electronegativity is a measure of the ability of an atom to <span class="highlight">attract a shared pair of electrons</span> towards itself when it is part of a chemical bond.</p>
+            <p>Think of it as an atom's "pulling power" on electrons in a bond. A higher electronegativity value means a stronger pull.</p>
+            <p>The most electronegative element is <span class="highlight">Fluorine (F)</span>. It is given a value of approximately 4.0 on the Pauling scale. All other elements are ranked relative to Fluorine.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Periodic Trends -->
+    <div class="phase">
+        <h2>Phase 2: How Electronegativity Changes</h2>
+        <div class="concept">
+            <p>Electronegativity follows two simple, predictable trends in the periodic table:</p>
+            <ol>
+                <li><strong>Across a Period (Left to Right):</strong> As you move from left to right across a period, the number of protons in the nucleus increases. This stronger positive charge pulls the bonding electrons more tightly. Therefore, electronegativity <span class="highlight">increases</span>.</li>
+                <li><strong>Down a Group (Top to Bottom):</strong> As you move down a group, new electron shells are added. The outermost (bonding) electrons are further from the nucleus and are "shielded" by the inner electron shells. This weakens the nucleus's pull on them. Therefore, electronegativity <span class="highlight">decreases</span>.</li>
+            </ol>
+            <p><strong>Summary:</strong> Electronegativity is highest at the top-right of the periodic table (near Fluorine) and lowest at the bottom-left (near Francium).</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Analyzing the Options -->
+    <div class="phase">
+        <h2>Phase 3: Applying the Trends</h2>
+        <div class="problem">
+            <strong>Question:</strong> Which of the following electronegativity orders is incorrect?
+            <ol>
+                <li>Mg < Be < B < N</li>
+                <li>S < Cl < O < F</li>
+                <li>Al < Si < C < N</li>
+                <li>Al < Mg < B < N</li>
+            </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze each option by locating the elements on a mini periodic table and applying the trends.</p>
+            
+            <p><strong>Option 1: Mg < Be < B < N</strong></p>
+            <ul>
+                <li>Be is above Mg (in the same group), so Be > Mg. Correct so far.</li>
+                <li>B is to the right of Be (in the same period), so B > Be. Correct so far.</li>
+                <li>N is to the right of B, so N > B. Correct.</li>
+                <li>The overall order Mg < Be < B < N is consistent with the trends. This statement is likely <span class="highlight">correct</span>.</li>
+            </ul>
+
+            <p><strong>Option 2: S < Cl < O < F</strong></p>
+            <ul>
+                <li>Cl is to the right of S, so Cl > S. Correct so far.</li>
+                <li>O is above S (same group), so O > S. F is above Cl (same group), so F > Cl.</li>
+                <li>F is to the right of O, so F > O.</li>
+                <li>The top-right elements (O, F) are more electronegative than the ones below them (S, Cl). F is the most electronegative of all. O is second. Cl is third, and S is last.</li>
+                <li>The order S < Cl < O < F is perfectly consistent with the trends. This statement is <span class="highlight">correct</span>.</li>
+            </ul>
+
+            <p><strong>Option 3: Al < Si < C < N</strong></p>
+            <ul>
+                <li>Si is to the right of Al, so Si > Al. Correct so far.</li>
+                <li>C is above Si (same group), so C > Si. Correct so far.</li>
+                <li>N is to the right of C, so N > C. Correct.</li>
+                <li>The overall order Al < Si < C < N is consistent with the trends. This statement is <span class="highlight">correct</span>.</li>
+            </ul>
+
+            <p><strong>Option 4: Al < Mg < B < N</strong></p>
+            <ul>
+                <li>Here we have a problem. Mg is in Group 2 and Al is in Group 13. They are in the same period (Period 3).</li>
+                <li>The trend says that as we go from left to right, electronegativity increases. So, Al should be <span class="highlight">more</span> electronegative than Mg.</li>
+                <li>The statement claims <code>Al < Mg</code>. This contradicts the general periodic trend.</li>
+                <li>Let's check the rest of the order: B is above Al, so B > Al. N is to the right of B, so N > B. The second half of the order is fine, but the first part (Al < Mg) is wrong.</li>
+                <li>Therefore, this entire statement represents an <span class="highlight">incorrect</span> order.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The order <strong>Al < Mg < B < N</strong> is incorrect because the electronegativity of Al is greater than that of Mg.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 54 is (4), which corresponds to the incorrect order <strong>Al < Mg < B < N</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

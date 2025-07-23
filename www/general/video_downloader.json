@@ -1,0 +1,14 @@
+
+{
+  "name": "videoDownloader",
+  "description": "Downloads a video from a given URL to the local 'downloads' directory.",
+  "parameters": [
+    {
+      "name": "url",
+      "type": "string",
+      "description": "The URL of the video to download.",
+      "required": true
+    }
+  ],
+  "command": "python /storage/emulated/0/www/download_video.py --url {{url}}"
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Thermodynamics</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Thermodynamics</h1>
+    <p>This guide will build your understanding from basic heat calculations to solving a multi-step JEE-level thermodynamics problem.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Heat Required for Temperature Change (Sensible Heat)</h2>
+        <p>The amount of heat (Q) required to change the temperature of a substance is given by the formula <code>Q = mcΔT</code>, where m is the mass, c is the specific heat capacity, and ΔT is the change in temperature.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Calculate the heat required to raise the temperature of 10⁻³ kg of ice from -10°C to 0°C. (Specific heat of ice = 2100 J/kgK)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p><code>Q₁ = (10⁻³ kg) * (2100 J/kgK) * (0 - (-10))K = 10⁻³ * 2100 * 10 = 21 J</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Heat Required for Phase Change (Latent Heat) -->
+    <div class="phase">
+        <h2>Phase 2: The Heat of Transformation</h2>
+        <p>When a substance changes phase (e.g., solid to liquid or liquid to gas), it absorbs or releases heat without changing its temperature. This is called latent heat. The formula is <code>Q = mL</code>, where L is the specific latent heat.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Calculate the heat required to melt 10⁻³ kg of ice at 0°C into water at 0°C. (Latent heat of ice = 3.35 x 10⁵ J/kg)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>Q₂ = (10⁻³ kg) * (3.35 * 10⁵ J/kg) = 335 J</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: A Multi-Step Process -->
+    <div class="phase">
+        <h2>Phase 3: Chaining the Calculations</h2>
+        <p>The total heat required for the entire process is the sum of the heat required for each individual step.</p>
+        <p>The steps are:</p>
+        <ol>
+            <li>Heat ice from -10°C to 0°C (Q₁)</li>
+            <li>Melt ice to water at 0°C (Q₂)</li>
+            <li>Heat water from 0°C to 100°C (Q₃)</li>
+            <li>Boil water to steam at 100°C (Q₄)</li>
+            <li>Heat steam from 100°C to 110°C (Q₅)</li>
+        </ol>
+        <div class="question">
+            <strong>Question 3.1:</strong> Calculate Q₃, Q₄, and Q₅.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>Q₃ (Heat water): <code>(10⁻³ kg) * (4180 J/kgK) * (100 - 0)K = 418 J</code>.</p>
+            <p>Q₄ (Boil water): <code>(10⁻³ kg) * (2.25 * 10⁶ J/kg) = 2250 J</code>.</p>
+            <p>Q₅ (Heat steam): <code>(10⁻³ kg) * (1920 J/kgK) * (110 - 100)K = 19.2 J</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we can solve the full problem by summing the heat from all the steps.</p>
+        <div class="question">
+            <strong>Question 29:</strong> An amount of ice of mass 10⁻³ kg and temperature -10°C is transformed to vapour of temperature 110°C by applying heat. The total amount of work required for this conversion is, (Take, specific heat of ice = 2100Jkg⁻¹K⁻¹, specific heat of water = 4180Jkg⁻¹K⁻¹, specific heat of steam = 1920Jkg⁻¹K⁻¹, Latent heat of ice = 3.35 × 10⁵Jkg⁻¹ and Latent heat of steam = 2.25 x 10⁶ Jkg⁻¹)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Sum the heat required for each step.</strong></p>
+            <p>Total Heat = Q₁ + Q₂ + Q₃ + Q₄ + Q₅</p>
+            <p>Total Heat = 21 J + 335 J + 418 J + 2250 J + 19.2 J = 3043.2 J.</p>
+            <p>The question asks for the total work required, which in this context is the total heat energy supplied.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the total heat required as <strong>3043.2 J</strong>. This is closest to option (1) 3043 J.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 29 is (1).</p>
+        <p><strong>Result:</strong> The derived answer <strong>3043.2 J</strong> matches the closest option (1). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

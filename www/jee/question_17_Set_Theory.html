@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Set Theory</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Set Theory</h1>
+    <p>This guide will build your understanding from basic set partitions to counting the number of equivalence relations on a set.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is an Equivalence Relation?</h2>
+        <p>An equivalence relation is a way of grouping elements in a set that are similar in some way. It must satisfy three properties: reflexive (a~a), symmetric (if a~b then b~a), and transitive (if a~b and b~c then a~c).</p>
+        <p>A key idea is that every equivalence relation corresponds to a <strong>partition</strong> of the set. A partition is a way of breaking the set into non-empty, non-overlapping subsets that cover the whole set.</p>
+        <p>For the set {1, 2, 3}, we need to find all the ways to partition it.</p>
+    </div>
+
+    <!-- Phase 2: Finding the Partitions -->
+    <div class="phase">
+        <h2>Phase 2: Listing all Partitions</h2>
+        <p>Let's list all the ways to partition the set S = {1, 2, 3}.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> How many ways can we partition S into one subset?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>There is only one way: <code>{{1, 2, 3}}</code>. This corresponds to the equivalence relation where everything is related to everything else.</p>
+        </div>
+        <div class="question">
+            <strong>Question 2.2:</strong> How many ways can we partition S into two subsets?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_2')">Show Solution</span>
+        <div class="solution" id="sol2_2">
+            <p>The subsets must have sizes that add up to 3, so we need one subset of size 2 and one of size 1.</p>
+            <p>We can choose the element for the subset of size 1 in 3 ways (either 1, 2, or 3). The other two elements form the other subset.</p>
+            <p>The partitions are: <code>{{1, 2}, {3}}</code>, <code>{{1, 3}, {2}}</code>, and <code>{{2, 3}, {1}}</code>. There are 3 ways.</p>
+        </div>
+        <div class="question">
+            <strong>Question 2.3:</strong> How many ways can we partition S into three subsets?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_3')">Show Solution</span>
+        <div class="solution" id="sol2_3">
+            <p>Each subset must have size 1.</p>
+            <p>There is only one way: <code>{{1}, {2}, {3}}</code>. This corresponds to the equivalence relation where each element is only related to itself.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 3: The JEE Main Question</h2>
+        <p>The number of non-empty equivalence relations is the total number of partitions of the set. This is also known as the Bell number B(n).</p>
+        <div class="question">
+            <strong>Question 17:</strong> The number of non-empty equivalence relations on the set {1, 2, 3} is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><strong>Step 1: Count the number of partitions of each possible size.</strong></p>
+            <p>From Phase 2, we found:</p>
+            <p>- Partitions into 1 subset: 1 way</p>
+            <p>- Partitions into 2 subsets: 3 ways</p>
+            <p>- Partitions into 3 subsets: 1 way</p>
+            <p><strong>Step 2: Sum the counts.</strong></p>
+            <p>Total number of partitions = 1 + 3 + 1 = 5.</p>
+            <p>Each of these partitions corresponds to a unique non-empty equivalence relation.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the number of equivalence relations as <strong>5</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 17 is (2).</p>
+        <p><strong>Result:</strong> The derived answer <strong>5</strong> matches option (2). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

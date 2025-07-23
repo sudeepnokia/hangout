@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Bohr Model</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: The Bohr Model of the Atom</h1>
+    <p>This guide explains Niels Bohr's model for the atom, which successfully predicted the size of electron orbits in hydrogen-like atoms.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Bohr's Postulates</h2>
+        <div class="concept">
+            <p>Niels Bohr proposed a model for the hydrogen atom that explained why electrons don't just spiral into the nucleus. He made a few key assumptions (postulates):</p>
+            <ol>
+                <li>Electrons can only exist in specific, stable orbits (or "stationary states") without radiating energy.</li>
+                <li>The angular momentum of an electron in one of these orbits is quantized, meaning it can only take on discrete values: <code>L = n(h/2&pi;)</code>, where n is a positive integer (1, 2, 3, ...) called the <span class="highlight">principal quantum number</span>.</li>
+                <li>Electrons can jump between these orbits by absorbing or emitting a photon of a specific energy.</li>
+            </ol>
+            <p>The integer 'n' defines the energy level or shell. <code>n=1</code> is the ground state, <code>n=2</code> is the first excited state, and so on.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Radius Formula -->
+    <div class="phase">
+        <h2>Phase 2: The Radius of Bohr Orbits</h2>
+        <div class="concept">
+            <p>By combining the ideas of quantized angular momentum with classical mechanics (balancing electrostatic force with centripetal force), we can derive a formula for the radius of the n-th orbit.</p>
+            <p><strong>Bohr Radius Formula:</strong> <code>r_n = n² * a₀ / Z</code></p>
+            <ul>
+                <li><code>r_n</code>: The radius of the n-th orbit.</li>
+                <li><code>n</code>: The principal quantum number (1, 2, 3, ...).</li>
+                <li><code>Z</code>: The atomic number (the number of protons in the nucleus). For hydrogen, Z=1. For helium, Z=2.</li>
+                <li><code>a₀</code>: The Bohr radius. This is the radius of the very first orbit (n=1) in a hydrogen atom (Z=1). Its value is approximately 5.29 x 10⁻¹¹ m. It serves as a fundamental unit of distance in this model.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> What is the radius of the ground state (n=1) of a hydrogen atom (Z=1)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Using the formula:</p>
+            <p><code>r₁ = 1² * a₀ / 1 = a₀</code></p>
+            <p>This is the definition of the Bohr radius, <code>a₀</code>, which the question refers to as the "radius of first stationary state of hydrogen atom".</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Radius of the first excited state of Helium ion is given as r. a₀ &rarr; radius of first stationary state of hydrogen atom. Then r is:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's break down the question and identify the variables for the Bohr radius formula: <code>r_n = n² * a₀ / Z</code>.</p>
+            <p><strong>1. Identify the atom/ion:</strong></p>
+            <p>The question asks about a "Helium ion" (He⁺). A neutral Helium atom has 2 electrons and 2 protons. A Helium ion, He⁺, has lost one electron, leaving it with just one electron orbiting the nucleus. This makes it a "hydrogen-like" ion, and the Bohr model can be applied to it.</p>
+            <p>For Helium, the atomic number (number of protons) is <code>Z = 2</code>.</p>
+            <p><strong>2. Identify the energy state:</strong></p>
+            <p>The question asks for the radius of the "first excited state".</p>
+            <ul>
+                <li>The ground state corresponds to <code>n = 1</code>.</li>
+                <li>The <span class="highlight">first excited state</span> corresponds to <code>n = 2</code>.</li>
+            </ul>
+            <p><strong>3. Apply the formula:</strong></p>
+            <p>We need to find the radius <code>r</code> for the He⁺ ion where n=2 and Z=2.</p>
+            <p><code>r = r_n = n² * a₀ / Z</code></p>
+            <p><code>r = 2² * a₀ / 2</code></p>
+            <p><code>r = 4 * a₀ / 2</code></p>
+            <p><code>r = 2a₀</code></p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The radius of the first excited state of a He⁺ ion is <strong>2a₀</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 51 is (2), which corresponds to <strong>r = 2a₀</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

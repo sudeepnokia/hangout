@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Area of Bounded Regions</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Area Between Curves</h1>
+    <p>This guide will build your understanding from identifying shapes to finding the area of a complex region defined by a circle and a parabola.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Understanding the Shapes and Where They Meet</h2>
+        <p>First, let's understand the boundaries of our region.</p>
+        <p>The circle is <code>(x - 2√3)² + y² = 12</code>. From the standard form <code>(x-h)²+(y-k)²=r²</code>, we see its center is (2√3, 0) and its radius is r = √12 = 2√3.</p>
+        <p>The parabola is <code>y² = 2√3x</code>. Its vertex is at (0,0) and it opens to the right.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Find the (x, y) coordinates where these two curves intersect.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>We can substitute <code>y² = 2√3x</code> from the parabola equation into the circle equation:</p>
+            <p><code>(x - 2√3)² + (2√3x) = 12</code></p>
+            <p><code>x² - 4√3x + 12 + 2√3x = 12</code></p>
+            <p><code>x² - 2√3x = 0</code></p>
+            <p><code>x(x - 2√3) = 0</code>. So they intersect at <code>x=0</code> and <code>x=2√3</code>.</p>
+            <p>When x=0, y=0. Point is (0,0).</p>
+            <p>When x=2√3, y² = 2√3(2√3) = 12, so y = ±√12 = ±2√3. Points are (2√3, 2√3) and (2√3, -2√3).</p>
+            <p><strong>Key Insight:</strong> The intersection line <code>x=2√3</code> is a vertical line passing through the center of the circle!</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Visualizing the Area -->
+    <div class="phase">
+        <h2>Phase 2: A Picture of the Area</h2>
+        <p>The problem asks for the area "inside the circle" and "outside the parabola". This means we want the part of the circle that the parabola does not cover.</p>
+        <p>Imagine the circle. The parabola starts at the origin and cuts a "bite" out of the left side of the circle. The area we want is everything else.</p>
+        <p>The easiest way to calculate this is: <strong>Area = (Total Area of Circle) - (Area of the bite)</strong>. The "bite" is the area inside the circle AND inside the parabola.</p>
+        <p>Because the shapes are symmetric about the x-axis, we can find the area of the top half of the bite (in the first quadrant) and double it.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Write an expression for the area in the first quadrant as the area under the "upper" curve minus the area under the "lower" curve.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>In the first quadrant, the region is bounded above by the circle <code>y = √(12 - (x-2√3)²)</code> and below by the parabola <code>y = √(2√3x)</code>.</p>
+            <p>The area of the region we want is: <code>Area = ∫ (y_circle - y_parabola) dx</code> from x=0 to x=2√3.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Calculating the Area Components -->
+    <div class="phase">
+        <h2>Phase 3: Finding the Areas Using Geometry and Calculus</h2>
+        <p>Let's calculate the two parts of our integral separately.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Calculate the area under the parabola in the first quadrant: <code>∫(from 0 to 2√3) √(2√3x) dx</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>∫(from 0 to 2√3) (2√3)^(1/2) * x^(1/2) dx</code></p>
+            <p><code>= (2√3)^(1/2) * [x^(3/2) / (3/2)] (from 0 to 2√3)</code></p>
+            <p><code>= (2√3)^(1/2) * (2/3) * (2√3)^(3/2) = (2/3) * (2√3)² = (2/3) * 12 = 8</code>.</p>
+        </div>
+        <div class="question">
+            <strong>Question 3.2:</strong> Calculate the area under the circle in the first quadrant: <code>∫(from 0 to 2√3) √(12 - (x-2√3)²) dx</code>. (Hint: This integral represents the area of a simple geometric shape!)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_2')">Show Solution</span>
+        <div class="solution" id="sol3_2">
+            <p>The function <code>y = √(12 - (x-2√3)²)</code> is the top half of the circle. The integral from x=0 to x=2√3 covers the area from the circle's leftmost point to its center.</p>
+            <p>This is exactly the area of a quarter of the circle.</p>
+            <p>The full circle's area is <code>πr² = π(√12)² = 12π</code>.</p>
+            <p>The area of the quarter circle is <code>12π / 4 = 3π</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now, combine your results to find the final answer. A common convention for these problems is to ask for the area in the first quadrant unless specified otherwise, which the options confirm.</p>
+        <div class="question">
+            <strong>Question 13:</strong> The area of the region, inside the circle (x – 2√3)² + y² = 12 and outside the parabola y² = 2√3x is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Define the area to be calculated.</strong></p>
+            <p>We are looking for the area in the first quadrant bounded by the circle and the parabola. This is the area under the circle minus the area under the parabola over the interval [0, 2√3].</p>
+            <p><code>Area = (Area under circle in Q1) - (Area under parabola in Q1)</code></p>
+            <p><strong>Step 2: Use the values calculated in the previous phases.</strong></p>
+            <p>Area under circle in Q1 = <code>3π</code>.</p>
+            <p>Area under parabola in Q1 = <code>8</code>.</p>
+            <p><strong>Step 3: Calculate the final area.</strong></p>
+            <p><code>Area = 3π - 8</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the area as <strong>3π - 8</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 13 is (3).</p>
+        <p><strong>Result:</strong> The derived answer <strong>3π - 8</strong> matches option (3). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

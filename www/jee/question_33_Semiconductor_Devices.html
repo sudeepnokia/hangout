@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Semiconductor Devices</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Semiconductor Devices</h1>
+    <p>This guide will build your understanding from the basics of diodes to identifying forward-biased diodes in various circuit configurations.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Forward-Biased Diode?</h2>
+        <p>A diode is an electronic component that allows current to flow easily in one direction but not the other. The arrow in the diode symbol shows the direction of easy current flow.</p>
+        <p>A diode is <strong>forward-biased</strong> when the voltage at the p-side (the flat base of the triangle) is <strong>higher</strong> than the voltage at the n-side (the tip of the triangle). When a diode is forward-biased, it acts like a closed switch and allows current to flow.</p>
+        <p>If the voltage at the p-side is lower than the n-side, it is <strong>reverse-biased</strong> and acts like an open switch, blocking current.</p>
+    </div>
+
+    <!-- Phase 2: Analyzing the Circuits -->
+    <div class="phase">
+        <h2>Phase 2: Applying the Rule to Each Circuit</h2>
+        <p>Let's analyze each circuit one by one to see if the diode is forward-biased.</p>
+        <div class="question">
+            <strong>Circuit (A):</strong> The p-side is at -10V and the n-side is at 0V. Is it forward-biased?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('solA')">Show Solution</span>
+        <div class="solution" id="solA">
+            <p>The p-side voltage (-10V) is <strong>lower</strong> than the n-side voltage (0V). So, this is <strong>reverse-biased</strong>.</p>
+        </div>
+        <div class="question">
+            <strong>Circuit (B):</strong> The p-side is at -10V and the n-side is at -15V. Is it forward-biased?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('solB')">Show Solution</span>
+        <div class="solution" id="solB">
+            <p>The p-side voltage (-10V) is <strong>higher</strong> than the n-side voltage (-15V). So, this is <strong>forward-biased</strong>.</p>
+        </div>
+        <div class="question">
+            <strong>Circuit (C):</strong> The p-side is at 4V and the n-side is at 2V. Is it forward-biased?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('solC')">Show Solution</span>
+        <div class="solution" id="solC">
+            <p>The p-side voltage (4V) is <strong>higher</strong> than the n-side voltage (2V). So, this is <strong>forward-biased</strong>.</p>
+        </div>
+        <div class="question">
+            <strong>Circuit (D):</strong> The p-side is at -5V and the n-side is at -10V. Is it forward-biased?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('solD')">Show Solution</span>
+        <div class="solution" id="solD">
+            <p>The p-side voltage (-5V) is <strong>higher</strong> than the n-side voltage (-10V). So, this is <strong>forward-biased</strong>.</p>
+        </div>
+        <div class="question">
+            <strong>Circuit (E):</strong> The p-side is at 2V and the n-side is at 2V. Is it forward-biased?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('solE')">Show Solution</span>
+        <div class="solution" id="solE">
+            <p>The p-side voltage (2V) is <strong>not higher</strong> than the n-side voltage (2V). There is no potential difference. So, this is <strong>not forward-biased</strong>. (In reality, a small forward voltage, ~0.7V for silicon, is needed to turn it on, but for ideal diodes, we just need Vp > Vn).</p>
+            <p>Let's re-examine the question. The question asks which circuits represent a forward biased diode. Let's assume the question implies a non-zero current flow. Then E is not forward biased. Let's re-examine D. -5V is higher than -10V. So D is forward biased. Let's re-examine B. -10V is higher than -15V. So B is forward biased. Let's re-examine C. 4V is higher than 2V. So C is forward biased. Let's re-examine A. -10V is lower than 0V. So A is reverse biased.</p>
+            <p>So B, C, D are forward biased. Let's check the options. Option (4) is (B), (C) and (E). This implies E is forward biased. This would mean the condition is Vp >= Vn. Let's assume this is the case. Then E is forward biased. So B, C, D, E are forward biased. This is not an option. Let's assume the question meant to ask for reverse biased diodes. Then A is reverse biased. This is not an option.</p>
+            <p>Let's assume there is a typo in circuit D and the voltages are swapped. Then D would be reverse biased. Then B, C, E would be forward biased. This is option (4).</p>
+            <p>Let's assume there is a typo in circuit E and the n-side is at 0V. Then E would be forward biased. Then B, C, D, E are forward biased. Not an option.</p>
+            <p>Let's assume the question is correct and my understanding is wrong. Let's re-read the definition of forward bias. Vp > Vn. So B, C, D are forward biased. This is not an option. Let's assume the question meant Vp > Vn + V_threshold. Let's assume V_threshold = 0.7V. Then B: -10 > -15+0.7. Yes. C: 4 > 2+0.7. Yes. D: -5 > -10+0.7. Yes. E: 2 > 2+0.7. No. So B, C, D are forward biased. Still not an option.</p>
+            <p>Let's reconsider the options. Option (4) is (B), (C) and (E). This implies A and D are reverse biased. A is reverse biased. For D to be reverse biased, -5V should be less than -10V, which is false. So there is a definite error in the question or options.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 3: The JEE Main Question</h2>
+        <p>Due to a likely typo in the question or options, a definitive solution cannot be reached. Based on the standard definition of forward bias (Vp > Vn), circuits B, C, and D are forward biased. This combination is not available in the options.</p>
+        <div class="question">
+            <strong>Question 33:</strong> Which of the following circuits represents a forward biased diode?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>As determined in the previous phases, there appears to be an error in the question or the provided options. The analysis shows that B, C, and D are forward biased, which is not a valid option. Option (4) suggests that E is forward biased, which is incorrect under standard definitions.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> A definitive answer cannot be determined due to inconsistencies in the problem statement. Circuits B, C, and D are forward biased.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 33 is (4), which corresponds to (B), (C) and (E).</p>
+        <p><strong>Result:</strong> The derived answer does not match the official answer key. This is due to a likely error in the question as presented in the PDF.</p>
+    </div>
+
+</body>
+</html>

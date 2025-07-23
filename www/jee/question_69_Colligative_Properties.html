@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Colligative Properties</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Boiling Point Elevation</h1>
+    <p>This guide explains why the boiling point of a solvent increases when you dissolve a solute in it, and how to rank solutions by their boiling points.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What are Colligative Properties?</h2>
+        <div class="concept">
+            <p>Colligative properties are properties of solutions that depend on the <span class="highlight">number of solute particles</span> in a solution, not on the identity of the solute particles.</p>
+            <p>One important colligative property is <span class="highlight">Boiling Point Elevation</span>. When you dissolve a non-volatile solute (like salt or sugar) into a solvent (like water), the boiling point of the resulting solution will be <span class="highlight">higher</span> than the boiling point of the pure solvent.</p>
+            <p>The more particles you dissolve, the greater the increase in the boiling point.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The van't Hoff Factor (i) -->
+    <div class="phase">
+        <h2>Phase 2: Counting Particles in Solution</h2>
+        <div class="concept">
+            <p>To compare colligative properties, we need to know the <span class="highlight">total concentration of all particles</span> in the solution. This is where the van't Hoff factor (i) comes in.</p>
+            <p>The van't Hoff factor tells us how many particles a solute breaks into when it dissolves.</p>
+            <ul>
+                <li>For <span class="highlight">non-electrolytes</span> (covalent compounds like urea or sugar that don't break apart into ions), <strong>i = 1</strong>. One molecule goes in, one particle stays in solution.</li>
+                <li>For <span class="highlight">electrolytes</span> (ionic compounds like NaCl that dissociate into ions), <strong>i</strong> is the number of ions formed per formula unit.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> What is the van't Hoff factor (i) for NaCl and for Urea (NH₂CONH₂)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>NaCl:</strong> This is an ionic compound. When it dissolves, it breaks into two ions: <code>NaCl(s) &rarr; Na⁺(aq) + Cl⁻(aq)</code>. So, for NaCl, <span class="highlight">i = 2</span>.</p>
+            <p><strong>Urea:</strong> This is a covalent molecule. It dissolves in water but does not break apart into smaller particles. So, for Urea, <span class="highlight">i = 1</span>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Arrange the following solutions in order of their increasing boiling points.</p>
+            <p>(i) 10⁻⁴M NaCl</p>
+            <p>(ii) 10⁻⁴M Urea</p>
+            <p>(iii) 10⁻³M NaCl</p>
+            <p>(iv) 10⁻²M NaCl</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The elevation in boiling point is directly proportional to the <span class="highlight">effective particle concentration</span>. We can calculate this by multiplying the molarity (M) by the van't Hoff factor (i).</p>
+            <p><code>Effective Concentration = i &times; M</code></p>
+            <p>A higher effective concentration will lead to a higher boiling point. Let's calculate this value for each solution.</p>
+
+            <p><strong>(i) 10⁻⁴M NaCl:</strong></p>
+            <ul>
+                <li>M = 10⁻⁴</li>
+                <li>i = 2 (since NaCl &rarr; Na⁺ + Cl⁻)</li>
+                <li>Effective Concentration = 2 &times; 10⁻⁴</li>
+            </ul>
+
+            <p><strong>(ii) 10⁻⁴M Urea:</strong></p>
+            <ul>
+                <li>M = 10⁻⁴</li>
+                <li>i = 1 (Urea is a non-electrolyte)</li>
+                <li>Effective Concentration = 1 &times; 10⁻⁴</li>
+            </ul>
+
+            <p><strong>(iii) 10⁻³M NaCl:</strong></p>
+            <ul>
+                <li>M = 10⁻³ = 10 &times; 10⁻⁴</li>
+                <li>i = 2</li>
+                <li>Effective Concentration = 2 &times; 10⁻³ = 20 &times; 10⁻⁴</li>
+            </ul>
+
+            <p><strong>(iv) 10⁻²M NaCl:</strong></p>
+            <ul>
+                <li>M = 10⁻² = 100 &times; 10⁻⁴</li>
+                <li>i = 2</li>
+                <li>Effective Concentration = 2 &times; 10⁻² = 200 &times; 10⁻⁴</li>
+            </ul>
+
+            <p><strong>Step 2: Rank the effective concentrations from lowest to highest.</strong></p>
+            <ul>
+                <li>Lowest: (ii) = 1 &times; 10⁻⁴</li>
+                <li>Next: (i) = 2 &times; 10⁻⁴</li>
+                <li>Next: (iii) = 20 &times; 10⁻⁴</li>
+                <li>Highest: (iv) = 200 &times; 10⁻⁴</li>
+            </ul>
+            <p>The order of increasing effective concentration is: <strong>(ii) < (i) < (iii) < (iv)</strong>.</p>
+            <p>Since boiling point elevation is proportional to this concentration, this is also the order of increasing boiling points.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The correct order of increasing boiling points is <strong>(ii) < (i) < (iii) < (iv)</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The provided answer key for question 69 is (4), which corresponds to the order (ii) < (i) < (iii) < (iv). However, the image shows the answer is (4) which is (ii) < (i) < (iii) < (iv). Let's re-read the options in the image. Option (4) is (ii) < (i) < (iii) < (iv). This matches our result.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

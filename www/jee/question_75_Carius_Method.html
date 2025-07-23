@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Carius Method</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Quantitative Analysis by Carius Method</h1>
+    <p>This guide explains the principle behind the Carius method for halogen estimation and how to calculate the percentage composition from the experimental data.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Principle of the Carius Method</h2>
+        <div class="concept">
+            <p>The Carius method is a technique used in analytical chemistry to determine the quantity of halogens, sulfur, or phosphorus in an organic compound.</p>
+            <p>For halogens (like chlorine), the process is as follows:</p>
+            <ol>
+                <li>A known mass of the organic compound is heated strongly in a sealed tube (a Carius tube) with fuming nitric acid (HNO₃) and a crystal of silver nitrate (AgNO₃).</li>
+                <li>The nitric acid completely oxidizes the organic compound, breaking all the carbon-hydrogen and carbon-halogen bonds. All the carbon becomes CO₂, hydrogen becomes H₂O, and the halogen is converted into a halide ion (e.g., Cl⁻).</li>
+                <li>The silver nitrate present in the tube immediately reacts with the halide ion to form a precipitate of the corresponding silver halide (e.g., AgCl), which is insoluble.</li>
+                <li><code>Cl⁻(aq) + Ag⁺(aq) &rarr; AgCl(s)</code></li>
+                <li>This precipitate is then carefully collected, washed, dried, and weighed.</li>
+            </ol>
+            <p>The key idea is that <span class="highlight">all the chlorine</span> from the original organic compound is now locked up in the silver chloride (AgCl) precipitate.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Calculation -->
+    <div class="phase">
+        <h2>Phase 2: From Precipitate to Percentage</h2>
+        <div class="concept">
+            <p>By measuring the mass of the AgCl precipitate, we can work backwards to find the mass of chlorine in the original sample, and thus its percentage composition.</p>
+            <p><strong>The Logic:</strong></p>
+            <ol>
+                <li>Calculate the molar mass of AgCl.</li>
+                <li>Determine the fraction of this mass that is due to chlorine. (This is just the atomic mass of Cl divided by the molar mass of AgCl).</li>
+                <li>Multiply this fraction by the measured mass of the AgCl precipitate. This gives you the total mass of chlorine in the precipitate.</li>
+                <li>Since all the chlorine came from the original organic compound, this is also the mass of chlorine in the original sample.</li>
+                <li>Calculate the percentage composition: <code>(Mass of Chlorine / Mass of Organic Compound) * 100%</code>.</li>
+            </ol>
+            <p><strong>The All-in-One Formula:</strong></p>
+            <p><code>% Chlorine = [ (Atomic Mass of Cl / Molar Mass of AgCl) * Mass of AgCl formed / Mass of Organic Compound ] * 100</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> In Carius method for estimation of halogens, 180 mg of an organic compound produced 143.5 mg of AgCl. The percentage composition of chlorine in the compound is ___ %. (Given: molar mass in gmol⁻¹ of Ag: 108, Cl: 35.5)</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's apply the formula from Phase 2.</p>
+            <p><strong>Step 1: List the given values.</strong></p>
+            <ul>
+                <li>Mass of Organic Compound = 180 mg</li>
+                <li>Mass of AgCl formed = 143.5 mg</li>
+                <li>Atomic Mass of Ag = 108 g/mol</li>
+                <li>Atomic Mass of Cl = 35.5 g/mol</li>
+            </ul>
+            <p><em>(Note: Since we are calculating a percentage, the units of mass (mg) will cancel out, so we don't need to convert them to grams.)</em></p>
+
+            <p><strong>Step 2: Calculate the Molar Mass of AgCl.</strong></p>
+            <p><code>Molar Mass_AgCl = Mass_Ag + Mass_Cl = 108 + 35.5 = 143.5 g/mol</code>.</p>
+            <p>This is a convenient number!</p>
+
+            <p><strong>Step 3: Apply the percentage composition formula.</strong></p>
+            <p><code>% Chlorine = [ (Atomic Mass of Cl / Molar Mass of AgCl) * Mass of AgCl / Mass of Compound ] * 100</code></p>
+            <p><code>% Chlorine = [ (35.5 / 143.5) * (143.5 / 180) ] * 100</code></p>
+            <p>The <code>143.5</code> terms cancel out beautifully.</p>
+            <p><code>% Chlorine = (35.5 / 180) * 100</code></p>
+            <p><code>% Chlorine = 3550 / 180 = 355 / 18</code></p>
+            <p><code>% Chlorine &asymp; 19.72 %</code></p>
+            <p>The question asks for the answer as a percentage, and the answer key is 20. This suggests we should round to the nearest integer.</p>
+            <p>Rounding 19.72 to the nearest integer gives 20.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The percentage composition is approximately 19.72%, which rounds to <strong>20%</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 75 is <strong>20</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Aldehydes and Ketones</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Identifying Aldehydes with Fehling's Test</h1>
+    <p>This guide explains a classic chemical test used to distinguish between aldehydes and ketones, and explores which types of compounds give a positive result.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Aldehydes vs. Ketones</h2>
+        <div class="concept">
+            <p>Aldehydes and ketones both contain a <span class="highlight">carbonyl group</span>, which is a carbon atom double-bonded to an oxygen atom (C=O).</p>
+            <ul>
+                <li>In an <span class="highlight">aldehyde</span>, the carbonyl carbon is bonded to at least one hydrogen atom. It's found at the end of a carbon chain. (General structure: R-CHO)</li>
+                <li>In a <span class="highlight">ketone</span>, the carbonyl carbon is bonded to two other carbon atoms. It's found in the middle of a carbon chain. (General structure: R-CO-R')</li>
+            </ul>
+            <p>This structural difference is key. The hydrogen atom attached to the carbonyl group in an aldehyde makes it <span class="highlight">easy to oxidize</span>. Ketones, lacking this hydrogen, are much more resistant to oxidation.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Fehling's Test -->
+    <div class="phase">
+        <h2>Phase 2: The Test for Easy Oxidation</h2>
+        <div class="concept">
+            <p>Fehling's test is designed to identify compounds that are easily oxidized. It uses a <span class="highlight">mild oxidizing agent</span>, which is a solution containing Copper(II) ions, Cu²⁺, complexed with tartrate ions. This solution is deep blue.</p>
+            <p><strong>The Reaction:</strong></p>
+            <p>If an aldehyde is present, it gets oxidized to a carboxylate anion. In the process, the blue Cu²⁺ ions are reduced to Copper(I) ions, Cu⁺, which then precipitate out as red <span class="highlight">copper(I) oxide (Cu₂O)</span>.</p>
+            <p><strong>Positive Test:</strong> Formation of a red precipitate. This indicates the presence of an aldehyde.</p>
+            <p><strong>Negative Test:</strong> The solution remains blue. This indicates the absence of an aldehyde (i.e., it's a ketone or another non-oxidizable compound).</p>
+            <p><code>R-CHO (aldehyde) + 2Cu²⁺ (blue) + 5OH⁻ &rarr; R-COO⁻ (carboxylate) + Cu₂O(&darr;) (red) + 3H₂O</code></p>
+            <p>Generally, <span class="highlight">ketones do not give a positive Fehling's test</span>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: An Important Exception -->
+    <div class="phase">
+        <h2>Phase 3: The Exception - &alpha;-Hydroxy Ketones</h2>
+        <div class="concept">
+            <p>There is a very important exception to the rule that ketones don't react.</p>
+            <p>An <span class="highlight">&alpha;-hydroxy ketone</span> is a ketone that has a hydroxyl (-OH) group on the carbon atom immediately adjacent (the "alpha" carbon) to the carbonyl group.</p>
+            <p>Example: <code>R-CO-CH(OH)-R'</code></p>
+            <p>Under the basic conditions of the Fehling's test, &alpha;-hydroxy ketones can undergo a rearrangement (called a tautomerization) to form an <span class="highlight">&alpha;-hydroxy aldehyde</span>. This aldehyde can then be oxidized, giving a <span class="highlight">positive Fehling's test</span>.</p>
+            <p>Carbohydrates like fructose are a famous example of &alpha;-hydroxy ketones that give a positive test.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The compounds which give positive Fehling's test are:</p>
+            <p>(A) Benzaldehyde</p>
+            <p>(B) Acetophenone</p>
+            <p>(C) Fructose (HOCH₂-CO-(CHOH)₃-CH₂OH)</p>
+            <p>(D) Acetaldehyde (CH₃-CHO)</p>
+            <p>(E) Benzophenone</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze each compound:</p>
+            <p><strong>(A) Benzaldehyde:</strong> This is an aromatic aldehyde. A special note about aromatic aldehydes is that while they are aldehydes, they <span class="highlight">do not</span> give a positive Fehling's test. They are not strong enough reducing agents to react with Fehling's solution (though they do react with a similar reagent, Tollens' reagent). So, (A) is negative.</p>
+            <p><strong>(B) Acetophenone:</strong> This is a ketone (C₆H₅-CO-CH₃). It is not an &alpha;-hydroxy ketone. Therefore, it will give a <span class="highlight">negative</span> test.</p>
+            <p><strong>(C) Fructose:</strong> The structure is HOCH₂-CO-(CHOH)₃-CH₂OH. Let's look at the carbonyl group (CO). The carbon next to it (the &alpha;-carbon) is part of a CHOH group. This means fructose is an <span class="highlight">&alpha;-hydroxy ketone</span>. As per our exception rule, it will give a <span class="highlight">positive</span> test.</p>
+            <p><strong>(D) Acetaldehyde:</strong> The structure is CH₃-CHO. This is a simple aliphatic aldehyde. Aliphatic aldehydes are easily oxidized and give a strong <span class="highlight">positive</span> Fehling's test.</p>
+            <p><strong>(E) Benzophenone:</strong> This is another ketone (C₆H₅-CO-C₆H₅). It is not an &alpha;-hydroxy ketone. It will give a <span class="highlight">negative</span> test.</p>
+            <p><strong>Conclusion:</strong> The compounds that give a positive test are Fructose (C) and Acetaldehyde (D).</p>
+            <p>Let's re-check the options. The provided answer key is (2), which is (C), (D), and (E). This implies Benzophenone (E) gives a positive test, which is incorrect. Let's re-examine Benzaldehyde (A). While it's a rule that aromatic aldehydes don't react, sometimes questions simplify this. However, the most definitive positive results are from (C) and (D). Let's check the provided image of the question again. The answer key says 57 is (2), which is (C), (D) and (E) only. This is strange. Let's assume there is a typo in the answer key and that it should be (C) and (D). Let's check the question again. The image shows the answer is (A), (D) and (E). This is even more confusing. Let's assume the question is flawed and proceed with our chemical knowledge.</p>
+            <p>Let's re-evaluate based on the provided answer key being (A), (D), and (E). This would mean Benzaldehyde, Acetaldehyde, and Benzophenone give a positive test. This is chemically incorrect. Benzophenone is a simple ketone. Benzaldehyde is an aromatic aldehyde. Only Acetaldehyde should give a positive test among these three. Fructose (C) should also give a positive test. There seems to be a significant error in the question or the provided answer key.</p>
+            <p>Let's assume the question meant to ask for compounds that react with *some* common oxidizing agent for aldehydes, like Tollens' reagent. In that case, both Benzaldehyde (A) and Acetaldehyde (D) would be positive. But Fructose (C) would also be positive. And the ketones (B, E) would be negative. This doesn't match any option.</p>
+            <p>Given the high likelihood of an error in the question, let's stick to the most reliable chemical principles. Aliphatic aldehydes and &alpha;-hydroxy ketones give a positive Fehling's test. Aromatic aldehydes and other ketones do not.</p>
+            <p>Positive: (C) Fructose, (D) Acetaldehyde.</p>
+            <p>Negative: (A) Benzaldehyde, (B) Acetophenone, (E) Benzophenone.</p>
+            <p>The correct choice based on chemical principles should be (C) and (D) only.</p>
+
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Based on standard chemical principles, the compounds giving a positive Fehling's test are <strong>(C) Fructose and (D) Acetaldehyde</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The provided answer key for question 57 is (2), which corresponds to (C), (D) and (E). This is chemically incorrect as Benzophenone (E) is a simple ketone and does not react. There is a high probability of an error in the question paper or the provided key.</p>
+        <p><strong>Result:</strong> <span style="color: red; font-weight: bold;">Mismatch.</span> The provided answer key contradicts established chemical principles.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Crystal Field Theory</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Crystal Field Splitting Energy (CFSE)</h1>
+    <p>This guide explains how ligands affect the d-orbitals of a central metal ion and how to determine the Crystal Field Splitting Energy (CFSE).</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: d-Orbital Splitting</h2>
+        <div class="concept">
+            <p>In a free metal ion, the five d-orbitals (dxy, dyz, dxz, dx²-y², dz²) are all at the same energy level (they are "degenerate").</p>
+            <p>When ligands approach the metal ion to form an octahedral complex, they repel the electrons in the d-orbitals. This repulsion is not uniform.</p>
+            <ul>
+                <li>The <strong>dx²-y²</strong> and <strong>dz²</strong> orbitals point directly at the incoming ligands, so they experience strong repulsion and their energy level increases significantly. This higher energy set is called the <span class="highlight">e_g</span> set.</li>
+                <li>The <strong>dxy, dyz, and dxz</strong> orbitals point between the ligands, so they experience less repulsion and their energy level decreases. This lower energy set is called the <span class="highlight">t₂g</span> set.</li>
+            </ul>
+            <p>The energy difference between the t₂g and e_g sets is called the <span class="highlight">Crystal Field Splitting Energy (&Delta;₀)</span>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: High Spin vs. Low Spin -->
+    <div class="phase">
+        <h2>Phase 2: Filling the Orbitals</h2>
+        <div class="concept">
+            <p>How electrons fill these split orbitals depends on the strength of the ligands.</p>
+            <p><strong>Strong-field ligands</strong> (like CN⁻, en, NH₃) cause a <span class="highlight">large split (&Delta;₀)</span>. It takes a lot of energy for an electron to jump up to the e_g level. So, electrons will pair up in the lower t₂g orbitals first before occupying the e_g orbitals. This is called a <span class="highlight">low-spin</span> complex.</p>
+            <p><strong>Weak-field ligands</strong> (like SCN⁻, Cl⁻, F⁻) cause a <span class="highlight">small split (&Delta;₀)</span>. It's easier for an electron to jump up to the e_g level than to pair up in a t₂g orbital (which costs pairing energy). So, electrons will occupy all five orbitals singly before any pairing occurs. This is called a <span class="highlight">high-spin</span> complex.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Calculating CFSE -->
+    <div class="phase">
+        <h2>Phase 3: The CFSE Formula</h2>
+        <div class="concept">
+            <p>The t₂g orbitals are stabilized (energy goes down) by -0.4 &Delta;₀ each, and the e_g orbitals are destabilized (energy goes up) by +0.6 &Delta;₀ each.</p>
+            <p><strong>CFSE Formula:</strong> <code>CFSE = (-0.4 * n_t2g + 0.6 * n_eg) * &Delta;₀</code></p>
+            <p>Where <code>n_t2g</code> is the number of electrons in the t₂g orbitals and <code>n_eg</code> is the number of electrons in the e_g orbitals.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> When would the CFSE be equal to zero?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The CFSE would be zero if the stabilization from the t₂g electrons perfectly cancels out the destabilization from the e_g electrons.</p>
+            <p><code>-0.4 * n_t2g + 0.6 * n_eg = 0</code></p>
+            <p>This can happen in two specific, highly symmetrical electron configurations:</p>
+            <ol>
+                <li><strong>d⁰ configuration:</strong> No d-electrons, so n_t2g=0 and n_eg=0. CFSE = 0.</li>
+                <li><strong>d¹⁰ configuration:</strong> All d-orbitals are full. n_t2g=6 and n_eg=4. <br/><code>CFSE = (-0.4 * 6 + 0.6 * 4)&Delta;₀ = (-2.4 + 2.4)&Delta;₀ = 0</code>.</li>
+                <li><strong>d⁵ high-spin configuration:</strong> The ligands are weak, so electrons fill all orbitals singly. n_t2g=3 and n_eg=2. <br/><code>CFSE = (-0.4 * 3 + 0.6 * 2)&Delta;₀ = (-1.2 + 1.2)&Delta;₀ = 0</code>.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> In which of the following complexes the CFSE, &Delta;₀ will be equal to zero?</p>
+            <ol>
+                <li>[Fe(en)₃]Cl₃</li>
+                <li>K₄[Fe(CN)₆]</li>
+                <li>[Fe(NH₃)₆]Br₂</li>
+                <li>K₃[Fe(SCN)₆]</li>
+            </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We need to find the complex that has a d⁰, d¹⁰, or d⁵ high-spin configuration for the central iron (Fe) ion.</p>
+            <p><strong>1. [Fe(en)₃]Cl₃:</strong></p>
+            <ul>
+                <li>The overall charge is 0. Cl has a -1 charge, so 3 Cl⁻ means the complex ion is [Fe(en)₃]³⁺.</li>
+                <li>Ethylenediamine (en) is a neutral ligand. So, the oxidation state of Fe is +3.</li>
+                <li>Fe (Z=26) is [Ar] 3d⁶4s². Fe³⁺ is [Ar] 3d⁵. This is a <span class="highlight">d⁵</span> configuration.</li>
+                <li>'en' is a <span class="highlight">strong-field ligand</span>. This will force pairing, creating a <span class="highlight">low-spin</span> complex (t₂g⁵ e_g⁰). CFSE will not be zero.</li>
+            </ul>
+            <p><strong>2. K₄[Fe(CN)₆]:</strong></p>
+            <ul>
+                <li>4 K⁺ means the complex ion is [Fe(CN)₆]⁴⁻.</li>
+                <li>Cyanide (CN⁻) has a -1 charge. Let Fe be x. x + 6(-1) = -4 &rarr; x = +2.</li>
+                <li>Fe²⁺ is [Ar] 3d⁶. This is a <span class="highlight">d⁶</span> configuration. CFSE cannot be zero.</li>
+            </ul>
+            <p><strong>3. [Fe(NH₃)₆]Br₂:</strong></p>
+            <ul>
+                <li>2 Br⁻ means the complex ion is [Fe(NH₃)₆]²⁺.</li>
+                <li>Ammonia (NH₃) is neutral. So, the oxidation state of Fe is +2.</li>
+                <li>Fe²⁺ is [Ar] 3d⁶. This is a <span class="highlight">d⁶</span> configuration. CFSE cannot be zero.</li>
+            </ul>
+            <p><strong>4. K₃[Fe(SCN)₆]:</strong></p>
+            <ul>
+                <li>3 K⁺ means the complex ion is [Fe(SCN)₆]³⁻.</li>
+                <li>Thiocyanate (SCN⁻) has a -1 charge. Let Fe be x. x + 6(-1) = -3 &rarr; x = +3.</li>
+                <li>Fe³⁺ is [Ar] 3d⁵. This is a <span class="highlight">d⁵</span> configuration.</li>
+                <li>SCN⁻ is a <span class="highlight">weak-field ligand</span>. This will result in a <span class="highlight">high-spin</span> complex.</li>
+                <li>In a d⁵ high-spin complex, electrons fill as t₂g³ e_g².</li>
+                <li>Let's calculate the CFSE: <code>CFSE = (-0.4 * 3 + 0.6 * 2)&Delta;₀ = (-1.2 + 1.2)&Delta;₀ = 0</code>.</li>
+            </ul>
+            <p>This complex has zero CFSE.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The complex <strong>K₃[Fe(SCN)₆]</strong> has a d⁵ high-spin configuration, resulting in a CFSE of zero.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 68 is (4), which corresponds to <strong>K₃[Fe(SCN)₆]</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

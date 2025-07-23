@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Molecular Geometry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Predicting Molecular Geometry with VSEPR</h1>
+    <p>This guide explains how to use the VSEPR model to predict the shape of molecules and identify which ones are linear.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: VSEPR Theory</h2>
+        <div class="concept">
+            <p>The <span class="highlight">Valence Shell Electron Pair Repulsion (VSEPR)</span> theory is a model used to predict the 3D geometry of individual molecules. The main idea is that electron pairs in the valence shell of a central atom will repel each other and arrange themselves to be as far apart as possible.</p>
+            <p>To use VSEPR, we first need to find the <span class="highlight">steric number (SN)</span> of the central atom:</p>
+            <p><code>SN = (Number of atoms bonded to central atom) + (Number of lone pairs on central atom)</code></p>
+            <p>The steric number tells us the basic arrangement of the electron pairs (the "electron geometry"). The final shape of the molecule (the "molecular geometry") also depends on how many of those pairs are bonding pairs vs. lone pairs.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Path to Linearity -->
+    <div class="phase">
+        <h2>Phase 2: How to Get a Linear Shape</h2>
+        <div class="concept">
+            <p>A linear molecule is one where all the atoms lie in a straight line, with a bond angle of 180&deg;.</p>
+            <p>There are two common ways to achieve a linear molecular geometry based on the steric number:</p>
+            <ul>
+                <li><strong>SN = 2:</strong> Two bonding pairs, zero lone pairs (e.g., BeCl₂, CO₂). The two electron pairs get as far apart as possible, resulting in a 180&deg; angle.</li>
+                <li><strong>SN = 5:</strong> The electron geometry is trigonal bipyramidal. If there are 2 bonding pairs and <span class="highlight">3 lone pairs</span>, the lone pairs will occupy the three equatorial positions (a triangle in the middle) to minimize repulsion, forcing the two bonded atoms into the axial positions (top and bottom), resulting in a linear shape (e.g., XeF₂, I₃⁻).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The number of molecules/ions that show linear geometry among the following is:</p>
+            <p>SO₂, BeCl₂, CO₂, N₃⁻, NO₂⁻, F₂O, XeF₂, NO₂⁺, I₃⁻, O₃</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze each molecule/ion to find its steric number and shape.</p>
+            <table>
+                <tr><th>Molecule</th><th>Central Atom</th><th>Valence e⁻</th><th>Bonds</th><th>Lone Pairs</th><th>Steric Number</th><th>Shape</th><th>Linear?</th></tr>
+                <tr>
+                    <td><strong>SO₂</strong></td>
+                    <td>S</td>
+                    <td>6</td>
+                    <td>2 (O)</td>
+                    <td>1</td>
+                    <td>3 (sp²)</td>
+                    <td>Bent</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>BeCl₂</strong></td>
+                    <td>Be</td>
+                    <td>2</td>
+                    <td>2 (Cl)</td>
+                    <td>0</td>
+                    <td>2 (sp)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CO₂</strong></td>
+                    <td>C</td>
+                    <td>4</td>
+                    <td>2 (O)</td>
+                    <td>0</td>
+                    <td>2 (sp)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>N₃⁻</strong> (Azide)</td>
+                    <td>N (central)</td>
+                    <td>5</td>
+                    <td>2 (N)</td>
+                    <td>0</td>
+                    <td>2 (sp)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>NO₂⁻</strong> (Nitrite)</td>
+                    <td>N</td>
+                    <td>5</td>
+                    <td>2 (O)</td>
+                    <td>1</td>
+                    <td>3 (sp²)</td>
+                    <td>Bent</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>F₂O</strong></td>
+                    <td>O</td>
+                    <td>6</td>
+                    <td>2 (F)</td>
+                    <td>2</td>
+                    <td>4 (sp³)</td>
+                    <td>Bent</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><strong>XeF₂</strong></td>
+                    <td>Xe</td>
+                    <td>8</td>
+                    <td>2 (F)</td>
+                    <td>3</td>
+                    <td>5 (sp³d)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>NO₂⁺</strong> (Nitronium)</td>
+                    <td>N</td>
+                    <td>5 - 1 = 4</td>
+                    <td>2 (O)</td>
+                    <td>0</td>
+                    <td>2 (sp)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>I₃⁻</strong> (Triiodide)</td>
+                    <td>I (central)</td>
+                    <td>7 + 1 = 8</td>
+                    <td>2 (I)</td>
+                    <td>3</td>
+                    <td>5 (sp³d)</td>
+                    <td><strong>Linear</strong></td>
+                    <td><strong>Yes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>O₃</strong> (Ozone)</td>
+                    <td>O (central)</td>
+                    <td>6</td>
+                    <td>2 (O)</td>
+                    <td>1</td>
+                    <td>3 (sp²)</td>
+                    <td>Bent</td>
+                    <td>No</td>
+                </tr>
+            </table>
+            <p>Counting the "Yes" entries, we find there are 6 linear species.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The linear molecules/ions are BeCl₂, CO₂, N₃⁻, XeF₂, NO₂⁺, and I₃⁻. The total count is <strong>6</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 71 is <strong>6</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

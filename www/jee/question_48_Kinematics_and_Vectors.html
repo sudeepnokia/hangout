@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Kinematics and Vectors</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Advanced Vector Kinematics</h1>
+    <p>This guide covers how to work with position, velocity, and angular momentum using vectors and calculus.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: From Position to Velocity</h2>
+        <div class="concept">
+            <p>In physics, an object's position can be described by a vector, often changing with time. For example, <code>r(t) = x(t)î + y(t)ĵ + z(t)k̂</code>.</p>
+            <p>To find the velocity vector <code>v(t)</code>, we simply differentiate the position vector with respect to time. This means differentiating each component separately.</p>
+            <p><strong>Velocity Vector:</strong> <code>v(t) = dr/dt = (dx/dt)î + (dy/dt)ĵ + (dz/dt)k̂</code></p>
+            <p>Remember the power rule for differentiation: <code>d/dt (atⁿ) = n*atⁿ⁻¹</code>.</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> The position of a particle A is given by <code>r_A = (t²î + 3ntĵ + 2tk̂) m</code>. What is its velocity vector, <code>v_A(t)</code>?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We differentiate each component of <code>r_A</code> with respect to t:</p>
+            <ul>
+                <li>d/dt (t²) = 2t</li>
+                <li>d/dt (3nt) = 3n</li>
+                <li>d/dt (2t) = 2</li>
+            </ul>
+            <p>So, the velocity vector is: <code>v_A(t) = (2tî + 3nĵ + 2k̂) m/s</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Vector Relationships -->
+    <div class="phase">
+        <h2>Phase 2: Orthogonal Vectors and Magnitudes</h2>
+        <div class="concept">
+            <p>Two vectors are <span class="highlight">orthogonal</span> (perpendicular) if their dot product is zero.</p>
+            <p>If <code>A = A_xî + A_yĵ + A_zk̂</code> and <code>B = B_xî + B_yĵ + B_zk̂</code>, then:</p>
+            <p><strong>Dot Product:</strong> <code>A · B = A_x*B_x + A_y*B_y + A_z*B_z</code></p>
+            <p>The <span class="highlight">magnitude</span> (or length) of a vector A, written as |A|, is found using the Pythagorean theorem in 3D:</p>
+            <p><strong>Magnitude:</strong> <code>|A| = &radic;(A_x² + A_y² + A_z²)</code></p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> The velocities of two particles at t=1s are <code>v_A = (2î + 3nĵ + 2k̂)</code> and <code>v_B = (2î - t²ĵ + 4pk̂)</code>. If their velocities are orthogonal at t=1s, what is the value of p?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>First, find <code>v_B</code> at t=1s: <code>v_B(1) = (2î - 1ĵ + 4pk̂)</code>.</p>
+            <p>The condition for orthogonality is <code>v_A · v_B = 0</code>.</p>
+            <p><code>(2)(2) + (3n)(-1) + (2)(4p) = 0</code></p>
+            <p><code>4 - 3n + 8p = 0</code>. We can't solve this yet, as it has two unknowns. This shows we often need multiple pieces of information.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Angular Momentum -->
+    <div class="phase">
+        <h2>Phase 3: Angular Momentum of a Particle</h2>
+        <div class="concept">
+            <p>Angular momentum (L) is the rotational equivalent of linear momentum. For a single particle, it is defined with respect to a reference point (origin).</p>
+            <p><strong>Angular Momentum Formula:</strong> <code>L = r x p</code></p>
+            <ul>
+                <li><code>L</code> is the angular momentum vector.</li>
+                <li><code>r</code> is the position vector from the reference point to the particle.</li>
+                <li><code>p</code> is the linear momentum vector (<code>p = mv</code>).</li>
+                <li>The 'x' denotes the <span class="highlight">cross product</span>.</li>
+            </ul>
+            <p>The question asks for the angular momentum of particle A with respect to the position of particle B. This means we must use the <span class="highlight">relative position vector</span>: <code>r_relative = r_A - r_B</code>.</p>
+            <p>So, the formula becomes: <code>L = (r_A - r_B) x p_A</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The position vectors of two 1 kg particles, (A) and (B), are given by r_A = (t²î + 3ntĵ + 2tk̂) m and r_B = (2tî + t²ĵ + 4ptk̂) m, respectively; (constants n, p). At t = 1 s, |v_A| = |v_B| and velocities v_A and v_B of the particles are orthogonal to each other. At t = 1 s, the magnitude of angular momentum of particle (A) with respect to the position of particle (B) is &radic;L kgm²/s. The value of L is ___.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Find velocity vectors and evaluate at t=1s.</strong></p>
+            <p><code>v_A(t) = dr_A/dt = 2tî + 3nĵ + 2k̂</code> &rarr; <code>v_A(1) = 2î + 3nĵ + 2k̂</code></p>
+            <p><code>v_B(t) = dr_B/dt = 2î + 2tĵ + 4pk̂</code> &rarr; <code>v_B(1) = 2î + 2ĵ + 4pk̂</code></p>
+
+            <p><strong>Step 2: Use the orthogonality condition to relate n and p.</strong></p>
+            <p><code>v_A(1) · v_B(1) = 0</code></p>
+            <p><code>(2)(2) + (3n)(2) + (2)(4p) = 0</code></p>
+            <p><code>4 + 6n + 8p = 0</code> &rarr; <code>2 + 3n + 4p = 0</code> (Equation 1)</p>
+
+            <p><strong>Step 3: Use the equal magnitude condition to find n.</strong></p>
+            <p><code>|v_A(1)| = |v_B(1)|</code> &rarr; <code>|v_A(1)|² = |v_B(1)|²</code></p>
+            <p><code>2² + (3n)² + 2² = 2² + 2² + (4p)²</code></p>
+            <p><code>4 + 9n² + 4 = 4 + 4 + 16p²</code></p>
+            <p><code>9n² = 16p²</code> &rarr; <code>3n = &plusmn;4p</code>. Let's test both possibilities with Eq 1.</p>
+            <p>Case 1: <code>3n = 4p</code>. Substitute into Eq 1: <code>2 + (4p) + 4p = 0</code> &rarr; <code>8p = -2</code> &rarr; <code>p = -1/4</code>. Then <code>3n = 4(-1/4) = -1</code> &rarr; <code>n = -1/3</code>.</p>
+            <p>Case 2: <code>3n = -4p</code>. Substitute into Eq 1: <code>2 + (-4p) + 4p = 0</code> &rarr; <code>2 = 0</code>. Impossible. So we must use Case 1.</p>
+            <p>We found <code>n = -1/3</code> and <code>p = -1/4</code>.</p>
+
+            <p><strong>Step 4: Find all vectors at t=1s with these values.</strong></p>
+            <p><code>r_A(1) = 1î + 3(-1/3)ĵ + 2k̂ = î - ĵ + 2k̂</code></p>
+            <p><code>r_B(1) = 2î + 1ĵ + 4(-1/4)k̂ = 2î + ĵ - k̂</code></p>
+            <p><code>v_A(1) = 2î + 3(-1/3)ĵ + 2k̂ = 2î - ĵ + 2k̂</code></p>
+            <p>Mass m_A = 1 kg, so momentum <code>p_A(1) = m_A * v_A(1) = 2î - ĵ + 2k̂</code>.</p>
+
+            <p><strong>Step 5: Calculate the relative position vector.</strong></p>
+            <p><code>r_A/B = r_A(1) - r_B(1) = (î - ĵ + 2k̂) - (2î + ĵ - k̂) = -î - 2ĵ + 3k̂</code></p>
+
+            <p><strong>Step 6: Calculate the angular momentum (L) using the cross product.</strong></p>
+            <p><code>L = r_A/B x p_A</code></p>
+            <p><code>L = (-î - 2ĵ + 3k̂) x (2î - ĵ + 2k̂)</code></p>
+            <p>Using the determinant method for cross product:</p>
+            <p><code>L = î((-2)(2) - (3)(-1)) - ĵ((-1)(2) - (3)(2)) + k̂((-1)(-1) - (-2)(2))</code></p>
+            <p><code>L = î(-4 + 3) - ĵ(-2 - 6) + k̂(1 + 4)</code></p>
+            <p><code>L = -î + 8ĵ + 5k̂</code></p>
+
+            <p><strong>Step 7: Find the value of L from the magnitude.</strong></p>
+            <p>The magnitude of angular momentum is <code>|L| = &radic;((-1)² + 8² + 5²) = &radic;(1 + 64 + 25) = &radic;90</code>.</p>
+            <p>The problem states the magnitude is <code>&radic;L</code>.</p>
+            <p>So, <code>&radic;L = &radic;90</code>, which means <code>L = 90</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The value of L is <strong>90</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 48 is <strong>90</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

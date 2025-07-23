@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Rotational Motion</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Rotational Motion</h1>
+    <p>This guide will build your understanding from the basics of moment of inertia to solving a JEE-level problem involving a composite body.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Moment of Inertia and the Parallel Axis Theorem</h2>
+        <p><strong>Moment of Inertia (I)</strong> is the rotational equivalent of mass. For a uniform disc of mass M and radius R, the moment of inertia about an axis through its center and perpendicular to its plane is <code>I_cm = (1/2)MR²</code>.</p>
+        <p>The <strong>Parallel Axis Theorem</strong> helps us find the moment of inertia about an axis parallel to the one through the center of mass. The formula is <code>I = I_cm + md²</code>, where m is the mass and d is the distance between the two parallel axes.</p>
+    </div>
+
+    <!-- Phase 2: The Principle of Superposition -->
+    <div class="phase">
+        <h2>Phase 2: Dealing with Removed Parts</h2>
+        <p>The problem involves removing a smaller disc from a larger one. We can think of the remaining object as the original large disc plus a "negative mass" disc where the part was removed.</p>
+        <p>The moment of inertia of the remaining part is: <code>I_rem = I_total - I_removed</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> The original disc has mass M and radius R. What is its moment of inertia about the given axis (which passes through its center)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>I_total = (1/2)MR²</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Calculating the Moment of Inertia of the Removed Part -->
+    <div class="phase">
+        <h2>Phase 3: Finding the Mass and Moment of Inertia of the Removed Disc</h2>
+        <p>First, we need the mass of the small disc that was removed. We assume the original disc is uniform, so its mass is proportional to its area (σ = M/Area). The area of a disc is πr².</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> The removed disc has a radius of R/2. What is its mass (m_removed) in terms of M?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The surface density is <code>σ = M / (πR²)</code>.</p>
+            <p>The area of the removed disc is <code>π(R/2)² = πR²/4</code>.</p>
+            <p><code>m_removed = σ * Area_removed = (M/πR²) * (πR²/4) = M/4</code>.</p>
+        </div>
+        <div class="question">
+            <strong>Question 3.2:</strong> The center of the removed disc is at a distance of R/2 from the axis of rotation. What is its moment of inertia (I_removed) about the axis of rotation of the large disc?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_2')">Show Solution</span>
+        <div class="solution" id="sol3_2">
+            <p>We need to use the Parallel Axis Theorem.</p>
+            <p>First, the moment of inertia of the small disc about its own center is <code>I_cm_removed = (1/2) * m_removed * (R/2)² = (1/2) * (M/4) * (R²/4) = MR²/32</code>.</p>
+            <p>The distance between the axis of rotation and the center of the removed disc is d = R/2.</p>
+            <p><code>I_removed = I_cm_removed + m_removed * d²</code></p>
+            <p><code>I_removed = MR²/32 + (M/4) * (R/2)² = MR²/32 + MR²/16 = 3MR²/32</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we can find the moment of inertia of the remaining part.</p>
+        <div class="question">
+            <strong>Question 28:</strong> A uniform circular disc of radius 'R' and mass 'M' is rotating about an axis perpendicular to its plane and passing through its centre. A small circular part of radius R/2 is removed from the original disc as shown in the figure. Find the moment of inertia of the remaining part of the original disc about the axis as given above.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Use the principle of superposition.</strong></p>
+            <p><code>I_remaining = I_total - I_removed</code>.</p>
+            <p><strong>Step 2: Substitute the values from the previous phases.</strong></p>
+            <p><code>I_total = (1/2)MR²</code>.</p>
+            <p><code>I_removed = 3MR²/32</code>.</p>
+            <p><strong>Step 3: Calculate the final answer.</strong></p>
+            <p><code>I_remaining = (1/2)MR² - 3MR²/32 = (16/32)MR² - 3MR²/32 = 13MR²/32</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the moment of inertia as <strong>13MR²/32</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 28 is (4).</p>
+        <p><strong>Result:</strong> The derived answer <strong>13MR²/32</strong> matches option (4). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

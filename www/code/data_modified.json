@@ -1,0 +1,77 @@
+{
+  "title": "Hyderabad Getaway - Option 2",
+  "subtitle": "A 3-Day Heritage, Nature & Quirky Finds Journey",
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Old City Heritage Trail",
+      "dailyCost": "₹3,500",
+      "items": [
+        { "type": "travel", "icon": "log-in", "text": "Arrive in Hyderabad and check into your hotel." },
+        { "type": "food", "icon": "coffee", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad\" target=\"_blank\">Lunch at a famous biryani spot in RTC X Roads/Ashok Nagar <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>" },
+        { "type": "visit", "icon": "camera", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Charminar/@17.361534,78.474665,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb978a6e70520b:0x19689252d4927a2c!8m2!3d17.361534!4d78.474665!16zL20vMDJtXzVz?entry=ttu\" target=\"_blank\">Visit the iconic Charminar <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A historic monument and mosque, built in 1591, famous for its four minarets.</p>"},
+        { "type": "visit", "icon": "camera", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/x3p8gfjgpRAEnieEA\" target=\"_blank\">Visit the nearby Mecca Masjid <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">One of the oldest and largest mosques in India, built with soil from Mecca.</p>"},
+        { "type": "visit", "icon": "key", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=17.3578233,78.4716897\" target=\"_blank\">Explore Chowmahalla Palace <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">The magnificent palace of the Nizams, showcasing their opulent lifestyle and stunning architecture.</p>" },
+        { "type": "food", "icon": "coffee", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.google.com/?cid=7876124088418144061\" target=\"_blank\">Dinner at Shadab for mutton delicacies <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>" }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Forts, Tombs & Quirky Cars",
+      "dailyCost": "₹4,000",
+      "items": [
+        { "type": "visit", "icon": "shield", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/zczwXa3JHQt8jJH77\" target=\"_blank\">Morning exploration of the majestic Golconda Fort <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A historic fortress known for its acoustics and a former diamond trading center.</p>" },
+        { "type": "visit", "icon": "key", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/Fokbvhiugozg1NiL6\" target=\"_blank\">Visit the Qutb Shahi Tombs <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">Located near Golconda, these are the tombs of the rulers of the Qutb Shahi dynasty.</p>" },
+        { "type": "food", "icon": "coffee", "text": "Lunch near Golconda/Tolichowki area." },
+        { "type": "visit", "icon": "box", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/CCuZGuSMEzvLpiNh6\" target=\"_blank\">Afternoon visit to Sudha Cars Museum <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A quirky museum showcasing unique cars handmade by K. Sudhakar.</p>"},
+        { "type": "visit", "icon": "truck", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Durgam+Cheruvu+Bridge/@17.4317,78.39,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb9145aaaaaaab:0x2448ebb5b3921e2b!8m2!3d17.4317!4d78.3922\" target=\"_blank\">Night visit to Durgam Cheruvu Bridge <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A modern cable-stayed bridge with beautiful lighting, offering stunning views of the lake.</p>" }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature, Spirituality & Departure",
+      "dailyCost": "₹2,500",
+      "items": [
+        { "type": "visit", "icon": "sun", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/hZYAAKePLbLJqGyC6\" target=\"_blank\">Morning visit to Deer Park (Mahavir Harina Vanasthali) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A serene national park on the outskirts of the city, home to deer and other wildlife.</p>" },
+        { "type": "food", "icon": "coffee", "text": "Lunch near the city center." },
+        { "type": "visit", "icon": "anchor", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/PVEC7rB4KwJ4ATVB9\" target=\"_blank\">Relax at Lumbini Park by Hussain Sagar Lake <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">Enjoy the musical fountain and laser show in the evening.</p>" },
+        { "type": "visit", "icon": "home", "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/Q4fcH5kGNofij1KB7\" target=\"_blank\">Evening visit to the Birla Mandir <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a><p class=\"text-sm text-gray-600\">A stunning white marble temple overlooking the city, offering panoramic views.</p>" },
+        { "type": "travel", "icon": "train", "text": "Depart from Hyderabad." }
+      ]
+    }
+  ],
+  "planning": {
+    "travelOptions": [
+      { "type": "By Flight", "icon": "send", "details": "Quickest option. Departs Aug 15.", "link": "https://www.google.com/travel/flights?q=Flights%20from%20Bangalore%20to%20HYD%20on%202025-08-15" },
+      { "type": "By Train", "icon": "train", "details": "Rajdhani Express. Departs BLR Aug 14, 8 PM, Arrives HYD 7 AM." },
+      { "type": "By Car", "icon": "truck", "details": "Scenic route. Depart on Aug 15 morning.", "link": "https://maps.app.goo.gl/83bUjpCekhWmvHmQA?g_st=ac" }
+    ],
+    "checklist": {
+      "packing": [
+        "Comfortable cottons for warm, humid weather.",
+        "Walking shoes and sandals.",
+        "Umbrella and a light jacket.",
+        "Sunscreen, sunglasses, and a hat."
+      ],
+      "connectivity": [
+        "Major providers like Jio, Airtel, Vi have good coverage.",
+        "Consider an eSIM for instant connectivity (e.g., Airalo)."
+      ]
+    }
+  },
+  "costs": {
+    "summary": [
+      { "item": "Flights/Train", "amount": "~₹6,000" },
+      { "item": "Accommodation", "amount": "~₹5,000" },
+      { "item": "Transport", "amount": "~₹4,000" },
+      { "item": "Food", "amount": "~₹3,500" },
+      { "item": "Activities", "amount": "~₹2,000" }
+    ],
+    "total": "~₹20,500"
+  },
+  "otherPlaces": [
+    { "name": "Ramoji Film City", "icon": "film", "description": "The world's largest film studio complex, offering tours, shows, and an amusement park. Requires a full day to explore.", "link": "https://maps.app.goo.gl/x7TMKqWQneuceAP68" },
+    { "name": "Salar Jung Museum", "icon": "archive", "description": "Features one of the world's largest one-man collections of antiques, art, and artifacts from across the globe. Can be visited on Day 1 if time permits.", "link": "https://maps.app.goo.gl/k3C1E3sZNN2ffGdT6" },
+    { "name": "Hussain Sagar Lake", "icon": "anchor", "description": "A large, heart-shaped lake with a famous Buddha statue in the middle. Great for an evening stroll, boat ride, and enjoying the city lights.", "link": "https://www.google.com/maps/place/Hussain+Sagar/@17.42388,78.473824,15z/data=!3m1!4b1!4m6!3m5!1s0x3bcb975f5c4c1c3f:0x99ba83e5c555e35e!8m2!3d17.42477!4d78.47332!16zL20vMDV4M2w2?entry=ttu" }
+  ]
+}

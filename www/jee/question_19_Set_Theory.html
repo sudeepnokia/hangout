@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Set Theory</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Set Theory</h1>
+    <p>This guide will build your understanding from basic number theory to solving a JEE-level problem involving sets and coprime numbers.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Understanding the Set B</h2>
+        <p>The problem defines a set B based on pairs of numbers (m, n) from the set A = {1, 2, ..., 10}. The conditions are:</p>
+        <ul>
+            <li>m and n are from A.</li>
+            <li>m < n.</li>
+            <li>gcd(m, n) = 1. (gcd means "greatest common divisor". gcd=1 means they are coprime - they share no common factors other than 1).</li>
+        </ul>
+        <p>The question asks for n(B), which is the number of such pairs (m, n).</p>
+    </div>
+
+    <!-- Phase 2: A Systematic Approach -->
+    <div class="phase">
+        <h2>Phase 2: Counting the Pairs Systematically</h2>
+        <p>Instead of trying to find all pairs at once, let's fix the value of n and count how many valid values of m exist for each n.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> For n=2, what are the possible values of m? Remember, m < 2 and gcd(m, 2) = 1.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>The only possible value for m is 1. gcd(1, 2) = 1. So we have one pair: (1, 2).</p>
+        </div>
+        <div class="question">
+            <strong>Question 2.2:</strong> For n=3, what are the possible values of m? (m < 3, gcd(m, 3) = 1)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_2')">Show Solution</span>
+        <div class="solution" id="sol2_2">
+            <p>Possible m are 1, 2. gcd(1, 3) = 1. gcd(2, 3) = 1. So we have two pairs: (1, 3), (2, 3).</p>
+        </div>
+        <div class="question">
+            <strong>Question 2.3:</strong> For n=4, what are the possible values of m? (m < 4, gcd(m, 4) = 1)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_3')">Show Solution</span>
+        <div class="solution" id="sol2_3">
+            <p>Possible m are 1, 2, 3. gcd(1, 4) = 1. gcd(2, 4) = 2 (not coprime). gcd(3, 4) = 1. So we have two pairs: (1, 4), (3, 4).</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Euler's Totient Function -->
+    <div class="phase">
+        <h2>Phase 3: A Shortcut for Counting Coprimes</h2>
+        <p>The number of positive integers less than n that are coprime to n is given by <strong>Euler's Totient Function, φ(n)</strong>.</p>
+        <p>For n=2, φ(2)=1. For n=3, φ(3)=2. For n=4, φ(4)=2. This matches our counts from Phase 2!</p>
+        <p>So, the total number of pairs is the sum of φ(n) for n from 2 to 10.</p>
+        <p>Let's list the values of φ(n) for n=1 to 10:</p>
+        <ul>
+            <li>φ(1) = 1</li>
+            <li>φ(2) = 1</li>
+            <li>φ(3) = 2</li>
+            <li>φ(4) = 2</li>
+            <li>φ(5) = 4</li>
+            <li>φ(6) = 2</li>
+            <li>φ(7) = 6</li>
+            <li>φ(8) = 4</li>
+            <li>φ(9) = 6</li>
+            <li>φ(10) = 4</li>
+        </ul>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we can solve the problem by summing the values of Euler's Totient Function.</p>
+        <div class="question">
+            <strong>Question 19:</strong> Let A = {1, 2, 3, . . ., 10} and B = {m/n : m, n ∈ A, m < n and gcd(m, n) = 1}. Then n(B) is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Understand that n(B) is the number of coprime pairs (m,n) with m < n.</strong></p>
+            <p>This is equivalent to summing the number of valid m for each n from 2 to 10.</p>
+            <p>Number of pairs = φ(2) + φ(3) + φ(4) + φ(5) + φ(6) + φ(7) + φ(8) + φ(9) + φ(10).</p>
+            <p><strong>Step 2: Sum the values from Phase 3.</strong></p>
+            <p>Sum = 1 + 2 + 2 + 4 + 2 + 6 + 4 + 6 + 4 = 31.</p>
+            <p>Alternatively, the sum of φ(k) for k=1 to n is related to the number of pairs. The total number of pairs (m,n) with 1<=m,n<=10 is 100. The number of pairs with m=n is 10. The number of pairs with m!=n is 90. The number of pairs with m<n is 45. The number of pairs with gcd(m,n)>1 needs to be subtracted. This is more complex. The summation of totients is the most direct method.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of n(B) as <strong>31</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 19 is (2).</p>
+        <p><strong>Result:</strong> The derived answer <strong>31</strong> matches option (2). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

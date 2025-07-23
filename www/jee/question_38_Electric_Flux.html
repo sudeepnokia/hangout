@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Electric Flux</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Gauss's Law and Electric Flux</h1>
+    <p>This guide will explain the concept of electric flux and a powerful law that helps us calculate it, even in tricky situations.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is Electric Flux?</h2>
+        <div class="concept">
+            <p>Imagine an electric charge creating an invisible field around it, represented by lines pointing away from it (if it's positive). Electric Flux is a measure of <span class="highlight">how many of these field lines pass through a given surface</span>.</p>
+            <p>Calculating this by counting lines is impossible. Luckily, a genius named Gauss came up with a much easier way.</p>
+            <p><strong>Gauss's Law:</strong> The total electric flux (Φ) coming out of any <span class="highlight">closed surface</span> (like a box, a sphere, or any other shape that encloses a volume) is directly proportional to the <span class="highlight">total electric charge enclosed</span> inside that surface.</p>
+            <p>The formula is incredibly simple: <code>&Phi; = Q_enclosed / &epsilon;₀</code></p>
+            <p>Where <code>Q_enclosed</code> is the net charge inside the surface, and <code>&epsilon;₀</code> (epsilon-naught) is a fundamental constant called the permittivity of free space.</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A charge of +10 Coulombs is placed at the exact center of a hollow cube. What is the total electric flux through the entire surface of the cube?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We don't need to know the size of the cube or anything else. We just use Gauss's Law.</p>
+            <p>The closed surface is the cube.</p>
+            <p>The charge enclosed is <code>Q_enclosed = 10 C</code>.</p>
+            <p>The total flux is <code>&Phi;_total = 10 / &epsilon;₀</code>.</p>
+            <p>It's that simple! The shape doesn't matter, only the charge inside.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Symmetry and Flux Division -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - Splitting the Flux</h2>
+        <div class="concept">
+            <p>What if we want to know the flux through just <span class="highlight">one face</span> of the cube, not the whole thing?</p>
+            <p>If the charge is placed symmetrically inside, the total flux will be shared equally among the identical faces.</p>
+            <p>A cube has 6 identical faces. If a charge is at the very center, the flux is split perfectly into 6 equal parts.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> A charge <code>Q</code> is placed at the exact center of a cube. What is the electric flux through just one of its faces?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Find the total flux.</strong></p>
+            <p>From Gauss's Law, <code>&Phi;_total = Q / &epsilon;₀</code>.</p>
+            <p><strong>Step 2: Divide by the number of faces.</strong></p>
+            <p>Since the charge is at the center, the setup is perfectly symmetrical. The cube has 6 faces.</p>
+            <p><code>&Phi;_one_face = &Phi;_total / 6 = (Q / &epsilon;₀) / 6 = Q / (6&epsilon;₀)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The "Aha!" Moment - The Imaginary Cube -->
+    <div class="phase">
+        <h2>Phase 3: The "Aha!" Moment - Creating Symmetry</h2>
+        <div class="concept">
+            <p>The real power of Gauss's Law is that the surface can be <span class="highlight">imaginary</span>. We can draw any closed shape we want to make the problem easier.</p>
+            <p>What if the charge isn't inside the cube, but on an edge or a corner? We can't directly apply Gauss's Law to the single cube because the charge isn't <span class="highlight">enclosed</span> by it.</p>
+            <p><strong>The Trick:</strong> We build a larger, imaginary shape out of identical cubes that <span class="highlight">does</span> enclose the charge symmetrically at its center.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> A charge <code>Q</code> is placed at the corner of a cube. What is the total flux passing through that one cube?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>A single cube does not enclose the charge. But, we can imagine 8 identical cubes arranged in a 2x2x2 block. This larger block would have the charge <code>Q</code> at its exact center.</p>
+            <p>Now, we can apply Gauss's Law to this large 8-cube system.</p>
+            <p>Total flux through all 8 cubes is <code>&Phi;_total = Q / &epsilon;₀</code>.</p>
+            <p>Since all 8 cubes are identical and the charge is at their common center, the flux is shared equally among them.</p>
+            <p>The flux through our original, single cube is just 1/8th of the total flux.</p>
+            <p><code>&Phi;_one_cube = &Phi;_total / 8 = Q / (8&epsilon;₀)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A line charge of length a/2 is kept at the center of an edge BC of a cube ABCDEFGH having edge length 'a'. If the density of line charge is &lambda; C per unit length, then the total electric flux through all the faces of the cube will be:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>This problem combines the ideas from the previous phases.</p>
+            <p><strong>Step 1: Find the total charge (Q).</strong></p>
+            <p>We have a line of charge, not a point charge. The charge density is &lambda; (charge per unit length). The length of the charge is a/2.</p>
+            <p><code>Q = density &times; length = &lambda; &times; (a/2) = &lambda;a / 2</code>.</p>
+            <p><strong>Step 2: Create a symmetrical Gaussian surface.</strong></p>
+            <p>The line charge is sitting on one edge of our cube. This is not a symmetrical position within the cube.</p>
+            <p>Imagine placing another identical cube right next to the first one, sharing the edge BC. Now, our line charge of length a/2 is still not fully enclosed. It is on the shared face.</p>
+            <p>Let's try again. We need to enclose the charge. Imagine 4 cubes arranged around the line charge in a square. If you look down the line of the charge, you would see 4 cubes meeting at that line. This arrangement makes the line charge run along the central axis of a long 2x2 prism of cubes.</p>
+            <p>This larger shape, made of 4 cubes, now has the line charge running down its central axis. It is perfectly symmetrical.</p>
+            <p><strong>Step 3: Apply Gauss's Law to the larger shape.</strong></p>
+            <p>The total charge enclosed by this 4-cube system is <code>Q_enclosed = &lambda;a / 2</code>.</p>
+            <p>The total flux through all 4 cubes combined is:</p>
+            <p><code>&Phi;_total_4_cubes = Q_enclosed / &epsilon;₀ = (&lambda;a / 2) / &epsilon;₀ = &lambda;a / (2&epsilon;₀)</code>.</p>
+            <p><strong>Step 4: Find the flux through the original, single cube.</strong></p>
+            <p>Since the 4 cubes are identical and the charge is symmetrically placed among them, the total flux is shared equally.</p>
+            <p>The flux through our one cube is 1/4th of the total flux.</p>
+            <p><code>&Phi;_one_cube = &Phi;_total_4_cubes / 4 = (&lambda;a / (2&epsilon;₀)) / 4 = &lambda;a / (8&epsilon;₀)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The total electric flux through the cube is <strong>&lambda;a / (8&epsilon;₀)</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 38 is (4), which corresponds to <strong>&lambda;a / 8&epsilon;₀</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

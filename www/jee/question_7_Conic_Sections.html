@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Conic Sections</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Conic Sections</h1>
+    <p>This guide will build your understanding from basic coordinate geometry to solving a JEE-level problem involving parabolas and circles.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Finding Where a Curve Meets the Axes</h2>
+        <p>Any curve meets the y-axis where the x-coordinate is 0. It meets the x-axis where the y-coordinate is 0.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> A parabola is given by the equation <code>y = x² + 2x - 3</code>. At what point does it cross the y-axis? What are the x-coordinates of the points where it crosses the x-axis?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p><strong>Y-intercept:</strong> Set x=0. <code>y = 0² + 2(0) - 3 = -3</code>. The point is (0, -3).</p>
+            <p><strong>X-intercepts:</strong> Set y=0. <code>x² + 2x - 3 = 0</code>. This is a quadratic equation. We can factor it: <code>(x+3)(x-1) = 0</code>. The roots are x = -3 and x = 1. The points are (-3, 0) and (1, 0).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Equation of a Circle -->
+    <div class="phase">
+        <h2>Phase 2: Defining a Circle</h2>
+        <p>A circle is defined by its center and its radius. Every point on the circle is the same distance (the radius) from the center. The equation of a circle with center (h, k) and radius r is <code>(x-h)² + (y-k)² = r²</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> A circle has its center at (-1, -1). It passes through the point (0, -3). What is the equation of the circle?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>The center is (h, k) = (-1, -1). To find the radius squared (r²), we can plug the point (0, -3) into the equation:</p>
+            <p><code>(0 - (-1))² + (-3 - (-1))² = r²</code></p>
+            <p><code>(1)² + (-2)² = r²</code></p>
+            <p><code>1 + 4 = 5 = r²</code>.</p>
+            <p>So, the equation of the circle is <code>(x+1)² + (y+1)² = 5</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Combining the Concepts -->
+    <div class="phase">
+        <h2>Phase 3: Finding Unknowns</h2>
+        <p>Now, let's use the circle equation to find information about the parabola.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> A parabola <code>y = x² + px - 3</code> and a circle <code>(x+1)² + (y+1)² = 5</code> intersect on the x-axis. What are the coordinates of the intersection points?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The intersection happens on the x-axis, which means y=0. Let's plug y=0 into the circle's equation:</p>
+            <p><code>(x+1)² + (0+1)² = 5</code></p>
+            <p><code>(x+1)² + 1 = 5</code></p>
+            <p><code>(x+1)² = 4</code></p>
+            <p><code>x+1 = 2</code> or <code>x+1 = -2</code>.</p>
+            <p>So, <code>x = 1</code> and <code>x = -3</code>. The intersection points are (1, 0) and (-3, 0). Since the parabola also passes through these points, these must be its x-intercepts.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You have all the skills. The JEE question asks for the area of the triangle formed by the intersection points.</p>
+        <div class="question">
+            <strong>Question 7:</strong> Let the parabola y = x² + px - 3, meet the coordinate axes at the points P, Q and R. If the circle C with centre at (-1, -1) passes through the points P, Q and R, then the area of △PQR is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Identify the intersection points P, Q, and R.</strong></p>
+            <p>R is the y-intercept of the parabola. Set x=0 in <code>y = x² + px - 3</code> to get y=-3. So, <strong>R = (0, -3)</strong>.</p>
+            <p>P and Q are the x-intercepts. The circle passes through all three points. Since the circle passes through R(0,-3) and has its center at (-1,-1), we can find its radius squared: <code>r² = (0 - (-1))² + (-3 - (-1))² = 1² + (-2)² = 5</code>. The circle equation is <code>(x+1)² + (y+1)² = 5</code>.</p>
+            <p>Since P and Q are on the x-axis (y=0) and on the circle, we set y=0 in the circle's equation: <code>(x+1)² + (0+1)² = 5</code>, which gives <code>(x+1)² = 4</code>. The solutions are x=1 and x=-3. So, <strong>P = (1, 0)</strong> and <strong>Q = (-3, 0)</strong>.</p>
+            <p><strong>Step 2: Calculate the area of △PQR.</strong></p>
+            <p>We have a triangle with vertices (1, 0), (-3, 0), and (0, -3). We can take the segment from Q to P as the base.</p>
+            <p>Base length = |1 - (-3)| = 4.</p>
+            <p>The height is the perpendicular distance from R to the x-axis, which is |-3| = 3.</p>
+            <p>Area = 1/2 * base * height = 1/2 * 4 * 3 = 6.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the area of the triangle as <strong>6</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 7 is (3).</p>
+        <p><strong>Result:</strong> The derived answer <strong>6</strong> matches option (3). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

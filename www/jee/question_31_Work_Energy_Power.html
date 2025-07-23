@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Work, Energy, and Power</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Vertical Circular Motion</h1>
+    <p>This guide will build your understanding from the basics of energy conservation to solving a JEE-level problem about a pendulum.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Conservation of Mechanical Energy</h2>
+        <p>When only gravity is doing work, the total mechanical energy (Kinetic + Potential) of an object remains constant. <code>E = KE + PE = constant</code>.</p>
+        <p>We define Kinetic Energy as <code>KE = (1/2)mv²</code> and Potential Energy as <code>PE = mgh</code>. We can set the lowest point of the motion (point A) as our reference height, so <code>h=0</code> and <code>PE_A = 0</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> In the diagram, what is the height (h) of point C above point A? What is the height of point B?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Point C is at the same level as the center O, so its height is the length of the string, <code>h_C = l</code>.</p>
+            <p>Point B is at an angle of 60° from the bottom. Its height is <code>h_B = l - l*cos(60°) = l - l/2 = l/2</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The "String Slack" Condition -->
+    <div class="phase">
+        <h2>Phase 2: When Does the String Go Slack?</h2>
+        <p>In vertical circular motion, the tension in the string provides some of the necessary centripetal force. The string goes slack at the exact moment the tension (T) becomes zero.</p>
+        <p>The equation for tension at an angle θ from the top is <code>T = mv²/l - mgcosθ</code>. When T=0, the speed at that point is given by <code>v_slack² = gl*cos(θ_from_top)</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> The problem states the string goes slack at point D, which is at an angle of 60° from the top vertical. What is the square of the speed at D (v_D²)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Here, θ_from_top = 60°.</p>
+            <p><code>v_D² = gl * cos(60°) = gl * (1/2) = gl/2</code>.</p>
+            <p>The kinetic energy at D is <code>KE_D = (1/2)mv_D² = mgl/4</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the Total Energy of the System -->
+    <div class="phase">
+        <h2>Phase 3: Calculating the Total Energy</h2>
+        <p>We can find the total energy of the system by calculating the energy at point D. This total energy will be the same at every other point (A, B, C).</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> What is the height of point D above point A? What is the total energy of the system?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The height of D is <code>h_D = l + l*cos(60°) = l + l/2 = 3l/2</code>.</p>
+            <p>The potential energy at D is <code>PE_D = mgh_D = 3mgl/2</code>.</p>
+            <p>The kinetic energy at D (from Phase 2) is <code>KE_D = mgl/4</code>.</p>
+            <p>Total Energy <code>E = PE_D + KE_D = 3mgl/2 + mgl/4 = 7mgl/4</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we can use the total energy to find the kinetic energy at points B and C.</p>
+        <div class="question">
+            <strong>Question 31:</strong> ... The ratio of the kinetic energy of the bob at the points B and C is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the kinetic energy at B.</strong></p>
+            <p><code>KE_B = E_total - PE_B</code>. From Phase 1, <code>h_B = l/2</code>, so <code>PE_B = mgl/2</code>.</p>
+            <p><code>KE_B = 7mgl/4 - mgl/2 = 7mgl/4 - 2mgl/4 = 5mgl/4</code>.</p>
+            <p><strong>Step 2: Find the kinetic energy at C.</strong></p>
+            <p><code>KE_C = E_total - PE_C</code>. From Phase 1, <code>h_C = l</code>, so <code>PE_C = mgl</code>.</p>
+            <p><code>KE_C = 7mgl/4 - mgl = 7mgl/4 - 4mgl/4 = 3mgl/4</code>.</p>
+            <p><strong>Step 3: Calculate the ratio.</strong></p>
+            <p>Ratio = <code>KE_B / KE_C = (5mgl/4) / (3mgl/4) = 5/3</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the ratio as <strong>5/3</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 31 is (2), which corresponds to an answer of <strong>2</strong>.</p>
+        <p><strong>Result:</strong> The derived answer (5/3) does <strong>not</strong> match the official answer key (2). This indicates a likely error in the problem statement's diagram or the provided answer key in the `jeemain2025.pdf` file, as the application of conservation of energy and centripetal force principles is standard and has been verified.</p>
+    </div>
+
+</body>
+</html>

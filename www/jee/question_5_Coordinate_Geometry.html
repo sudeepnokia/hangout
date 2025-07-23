@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Coordinate Geometry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Coordinate Geometry</h1>
+    <p>This guide will build your understanding from basic coordinate points to solving a JEE-level problem involving reflections and centroids.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Centroid?</h2>
+        <p>The centroid is the "center of mass" of a shape. For a triangle, it's the point where the three medians (lines from a vertex to the midpoint of the opposite side) intersect. The formula is simple: it's just the average of the x-coordinates and the average of the y-coordinates.</p>
+        <p>For vertices (x₁, y₁), (x₂, y₂), (x₃, y₃), the Centroid is <code>((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Find the centroid of a triangle with vertices at (1, 3), (3, 1), and (2, 4).
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>x-coordinate of centroid: (1 + 3 + 2) / 3 = 6 / 3 = 2.</p>
+            <p>y-coordinate of centroid: (3 + 1 + 4) / 3 = 8 / 3.</p>
+            <p>The centroid is at (2, 8/3).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Concept of an Image -->
+    <div class="phase">
+        <h2>Phase 2: What is an Image in a Line?</h2>
+        <p>An "image" is a reflection, like looking in a mirror. If you have a point and a line (the mirror), the image is another point on the opposite side, at the same perpendicular distance.</p>
+        <p>A key property: If you reflect a whole shape (like a triangle), the centroid of the new shape is just the reflection of the old centroid. This is a huge shortcut! We don't need to reflect every point.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> The formula to find the image (α, β) of a point (h, k) in the line ax + by + c = 0 is: <br><code>(α - h)/a = (β - k)/b = -2(ah + bk + c) / (a² + b²)</code>.<br> Let's find the image of the point (2, 8/3) in the line x + 2y - 2 = 0. What are a, b, and c?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Comparing <code>x + 2y - 2 = 0</code> to <code>ax + by + c = 0</code>, we get:</p>
+            <p>a = 1, b = 2, c = -2.</p>
+            <p>The point we are reflecting is (h, k) = (2, 8/3).</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Putting the Formula to Work -->
+    <div class="phase">
+        <h2>Phase 3: Calculating the Image</h2>
+        <p>Now we plug all our values into the image formula.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Calculate the value of the expression <code>-2(ah + bk + c) / (a² + b²)</code> using the values from the previous phases.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>-2( (1)(2) + (2)(8/3) - 2 ) / (1² + 2²)</code></p>
+            <p><code>= -2( 2 + 16/3 - 2 ) / (1 + 4)</code></p>
+            <p><code>= -2( 16/3 ) / 5</code></p>
+            <p><code>= -32/15</code></p>
+            <p>This value is the common ratio for our formula.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You have all the skills and intermediate values. Now you can solve the full problem.</p>
+        <div class="question">
+            <strong>Question 5:</strong> Let the triangle PQR be the image of the triangle with vertices (1, 3), (3, 1) and (2, 4) in the line x + 2y = 2. If the centroid of △PQR is the point (α, β), then 15(α – β) is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the centroid of the original triangle.</strong></p>
+            <p>From Phase 1, the centroid is (h, k) = (2, 8/3).</p>
+            <p><strong>Step 2: Realize the centroid of PQR is the image of this point.</strong></p>
+            <p>The centroid of the image triangle (α, β) is the image of (2, 8/3) in the line x + 2y - 2 = 0.</p>
+            <p><strong>Step 3: Use the image formula to find α and β.</strong></p>
+            <p>From Phase 3, we know: <code>(α - 2)/1 = (β - 8/3)/2 = -32/15</code>.</p>
+            <p>Solving for α: <code>α - 2 = -32/15  =>  α = 2 - 32/15 = (30-32)/15 = -2/15</code>.</p>
+            <p>Solving for β: <code>(β - 8/3)/2 = -32/15  => β - 8/3 = -64/15 => β = 8/3 - 64/15 = (40-64)/15 = -24/15</code>.</p>
+            <p><strong>Step 4: Calculate the final expression.</strong></p>
+            <p><code>15(α - β) = 15( (-2/15) - (-24/15) ) = 15( 22/15 ) = 22</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of 15(α – β) as <strong>22</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 5 is (4).</p>
+        <p><strong>Result:</strong> The derived answer <strong>22</strong> matches option (4). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

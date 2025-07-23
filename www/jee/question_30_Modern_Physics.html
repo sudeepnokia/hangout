@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Modern Physics</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Modern Physics</h1>
+    <p>This guide will build your understanding from the basics of the Bohr model to solving a JEE-level problem involving de Broglie wavelengths.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Bohr Model and de Broglie Wavelength</h2>
+        <p>In the Bohr model of the hydrogen atom, the angular momentum of an electron in an orbit is quantized: <code>mvr = nh/(2π)</code>, where n is the principal quantum number (n=1, 2, 3...).</p>
+        <p>The de Broglie wavelength (λ) of a particle is given by <code>λ = h/p = h/(mv)</code>, where p is the momentum.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Combine these two equations to find a relationship between the de Broglie wavelength (λ) and the radius of the orbit (r).
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>From the de Broglie equation, <code>mv = h/λ</code>.</p>
+            <p>Substitute this into the Bohr model equation:</p>
+            <p><code>(h/λ) * r = nh/(2π)</code></p>
+            <p><code>2πr = nλ</code>. This is a very important relationship!</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Radius of Bohr Orbits -->
+    <div class="phase">
+        <h2>Phase 2: How the Radius Depends on n</h2>
+        <p>The radius of the n-th orbit in the Bohr model is proportional to the square of the principal quantum number: <code>r_n ∝ n²</code>.</p>
+        <p>This means that the ratio of two radii is equal to the ratio of the squares of their quantum numbers: <code>r₂ / r₁ = (n₂ / n₁)²</code>.</p>
+    </div>
+
+    <!-- Phase 3: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 3: The JEE Main Question</h2>
+        <p>Now we can combine these concepts to solve the problem.</p>
+        <div class="question">
+            <strong>Question 30:</strong> An electron in the ground state of the hydrogen atom has the orbital radius of 5.3 × 10⁻¹¹ m while that for the electron in third excited state is 8.48 × 10⁻¹⁰ m. The ratio of the de Broglie wavelengths of electron in the excited state to that in the ground state is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><strong>Step 1: Identify the quantum numbers.</strong></p>
+            <p>Ground state corresponds to n=1.</p>
+            <p>Third excited state means the electron has jumped 3 levels above the ground state, so it is in the n=4 state.</p>
+            <p>Let the ground state be state 1 (n₁=1) and the third excited state be state 2 (n₂=4).</p>
+            <p><strong>Step 2: Use the relationship from Phase 1.</strong></p>
+            <p>We have <code>2πr₁ = n₁λ₁</code> and <code>2πr₂ = n₂λ₂</code>.</p>
+            <p>We want to find the ratio <code>λ₂ / λ₁</code>.</p>
+            <p><code>λ₂ / λ₁ = (2πr₂ / n₂) / (2πr₁ / n₁) = (r₂ / r₁) * (n₁ / n₂)</code>.</p>
+            <p><strong>Step 3: Use the relationship from Phase 2.</strong></p>
+            <p>We know <code>r₂ / r₁ = (n₂ / n₁)²</code>.</p>
+            <p>Substitute this into our ratio equation:</p>
+            <p><code>λ₂ / λ₁ = (n₂ / n₁)² * (n₁ / n₂) = n₂ / n₁</code>.</p>
+            <p><strong>Step 4: Calculate the final ratio.</strong></p>
+            <p><code>λ₂ / λ₁ = 4 / 1 = 4</code>.</p>
+            <p>Note that the given radii values are not needed to solve the problem, they are there to confirm the r ∝ n² relationship if you wish to check it.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the ratio as <strong>4</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 30 is (4).</p>
+        <p><strong>Result:</strong> The derived answer <strong>4</strong> matches option (4). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

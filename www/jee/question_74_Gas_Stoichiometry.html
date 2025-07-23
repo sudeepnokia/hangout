@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Gas Stoichiometry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Multi-Step Gas Stoichiometry</h1>
+    <p>This guide breaks down a two-step reaction problem involving gases, neutralization, and the ideal gas law.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Neutralization Reactions</h2>
+        <div class="concept">
+            <p>A neutralization reaction occurs when an acid and a base react to form a salt and water. The key to solving these problems is understanding the stoichiometry (the mole ratios).</p>
+            <p>The reaction between calcium hydroxide (a base) and hydrochloric acid (an acid) is:</p>
+            <p><code>Ca(OH)₂ + 2HCl &rarr; CaCl₂ + 2H₂O</code></p>
+            <p>This balanced equation tells us that <span class="highlight">1 mole</span> of Ca(OH)₂ reacts completely with <span class="highlight">2 moles</span> of HCl.</p>
+            <p>We can calculate moles of a solute if we know its molarity (M) and volume (V in Liters):</p>
+            <p><code>Moles = Molarity &times; Volume</code></p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> How many moles of Ca(OH)₂ are needed to neutralize 40 mL of 0.1 M HCl?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Find moles of HCl.</strong></p>
+            <p>First, convert volume to Liters: 40 mL = 0.040 L.</p>
+            <p><code>Moles_HCl = 0.1 mol/L * 0.040 L = 0.004 moles</code>.</p>
+            <p><strong>Step 2: Use stoichiometry to find moles of Ca(OH)₂.</strong></p>
+            <p>From the 1:2 ratio, <code>Moles_Ca(OH)₂ = Moles_HCl / 2</code>.</p>
+            <p><code>Moles_Ca(OH)₂ = 0.004 / 2 = 0.002 moles</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The First Reaction -->
+    <div class="phase">
+        <h2>Phase 2: The Reaction of CO₂ with Ca(OH)₂</h2>
+        <div class="concept">
+            <p>When carbon dioxide gas is bubbled through a solution of calcium hydroxide (limewater), it reacts to form a white precipitate of calcium carbonate.</p>
+            <p><code>CO₂(g) + Ca(OH)₂ (aq) &rarr; CaCO₃(s) + H₂O(l)</code></p>
+            <p>The stoichiometry here is simple: <span class="highlight">1 mole</span> of CO₂ reacts with <span class="highlight">1 mole</span> of Ca(OH)₂.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Ideal Gas Law -->
+    <div class="phase">
+        <h2>Phase 3: Relating Moles of Gas to Volume</h2>
+        <div class="concept">
+            <p>The Ideal Gas Law relates the pressure (P), volume (V), number of moles (n), and temperature (T) of a gas.</p>
+            <p><strong>Ideal Gas Law:</strong> <code>PV = nRT</code></p>
+            <ul>
+                <li>P: Pressure (in atm)</li>
+                <li>V: Volume (in Liters)</li>
+                <li>n: Moles</li>
+                <li>R: Ideal gas constant (0.0821 L&middot;atm/mol&middot;K)</li>
+                <li>T: Temperature (in Kelvin)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Some CO₂ gas was kept in a sealed container at a pressure of 1 atm and at 273 K. This entire amount of CO₂ gas was later passed through an aqueous solution of Ca(OH)₂. The excess unreacted Ca(OH)₂ was later neutralized with 0.1 M of 40 mL HCl. If the volume of the sealed container of CO₂ was x, then x is ___ cm³. [Given: The entire amount of CO₂(g) reacted with exactly half the initial amount of Ca(OH)₂ present in the aqueous solution.]</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>This is a multi-step problem. Let's work backwards from the final step.</p>
+            <p><strong>Step 1: Find the moles of excess Ca(OH)₂.</strong></p>
+            <p>This is the amount of Ca(OH)₂ that was left over after reacting with CO₂. This amount was neutralized by the HCl. From our warm-up question in Phase 1, we already calculated this!</p>
+            <p><code>Moles of excess Ca(OH)₂ = 0.002 moles</code>.</p>
+
+            <p><strong>Step 2: Find the moles of Ca(OH)₂ that reacted with CO₂.</strong></p>
+            <p>The problem states that the CO₂ reacted with "exactly half the initial amount of Ca(OH)₂". This means the other half was the "excess" amount we just calculated.</p>
+            <p>So, the amount that reacted must be equal to the amount that was in excess.</p>
+            <p><code>Moles of Ca(OH)₂ reacted with CO₂ = 0.002 moles</code>.</p>
+
+            <p><strong>Step 3: Find the moles of CO₂ that reacted.</strong></p>
+            <p>From the reaction in Phase 2 (<code>CO₂ + Ca(OH)₂ &rarr; CaCO₃</code>), the mole ratio is 1:1.</p>
+            <p>Therefore, <code>Moles of CO₂ = Moles of Ca(OH)₂ reacted = 0.002 moles</code>.</p>
+
+            <p><strong>Step 4: Use the Ideal Gas Law to find the volume of the CO₂.</strong></p>
+            <p>Now we know the number of moles of CO₂ gas (n) that was in the container initially. We are given its pressure and temperature.</p>
+            <ul>
+                <li>n = 0.002 mol</li>
+                <li>P = 1 atm</li>
+                <li>T = 273 K (Note: 273 K and 1 atm are STP conditions)</li>
+                <li>R = 0.0821 L&middot;atm/mol&middot;K</li>
+            </ul>
+            <p><code>PV = nRT</code> &rarr; <code>V = nRT / P</code></p>
+            <p><code>V = (0.002 * 0.0821 * 273) / 1</code></p>
+            <p><code>V &asymp; 0.0448 L</code></p>
+            <p><em>Alternatively, using the molar volume at STP (1 mole = 22.4 L):</em></p>
+            <p><code>V = 0.002 mol * 22.4 L/mol = 0.0448 L</code>.</p>
+
+            <p><strong>Step 5: Convert the volume to cm³.</strong></p>
+            <p>1 Liter = 1000 milliliters (mL)</p>
+            <p>1 mL = 1 cm³</p>
+            <p>So, 1 Liter = 1000 cm³.</p>
+            <p><code>V = 0.0448 L * 1000 cm³/L = 44.8 cm³</code>.</p>
+
+            <p><strong>Step 6: Round to the nearest integer.</strong></p>
+            <p>The nearest integer to 44.8 is 45.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The volume x is <strong>45 cm³</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 74 is <strong>45</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

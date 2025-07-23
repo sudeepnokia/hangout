@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Progressions: From Basics to JEE Main</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+            background-color: #fdfdfd;
+        }
+        h1, h2, h3 {
+            color: #2c6e49; /* Dark Green */
+            border-bottom: 2px solid #eef;
+            padding-bottom: 10px;
+        }
+        .main-title {
+            text-align: center;
+            color: #1b4332; /* Darker Green */
+            border-bottom: none;
+        }
+        .phase {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .problem-box {
+            background-color: #f0f4f8; /* Light blue-gray */
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-style: italic;
+            border-left: 5px solid #4a90e2;
+        }
+        .question {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .solution {
+            background-color: #e6f4ea; /* Light Green */
+            border: 1px solid #a8d5b9;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .toggle-solution {
+            cursor: pointer;
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Step-by-Step Path to a JEE Main G.P. Problem</h1>
+    <p>This guide will build your understanding of Geometric Progressions (G.P.) to solve a competitive exam question.</p>
+
+    <div class="problem-box">
+        <strong>The Original Problem (JEE Main 2025, Q1):</strong> Let a₁, a₂, a₃, ... be a G.P. of increasing positive terms. If a₁a₅ = 28 and a₂ + a₄ = 29, then what is a₆?
+    </div>
+
+    <!-- Phase 1: What is a G.P.? -->
+    <div class="phase">
+        <h2>Phase 1: What is a Geometric Progression (G.P.)?</h2>
+        <p>A G.P. is a sequence of numbers where each term after the first is found by multiplying the previous one by a fixed, non-zero number called the <strong>common ratio (r)</strong>.</p>
+        <p>Example: In the sequence <code>2, 6, 18, 54, ...</code>, the first term <code>a₁</code> is 2. The common ratio <code>r</code> is 3 (since 2*3=6, 6*3=18, and so on).</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> What is the common ratio of the G.P.: <code>5, 10, 20, 40, ...</code>?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>To find the common ratio, divide any term by its preceding term.</p>
+            <p><code>r = 10 / 5 = 2</code>.</p>
+            <p>You can check this with other terms: <code>20 / 10 = 2</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The General Term -->
+    <div class="phase">
+        <h2>Phase 2: The Formula for the n-th Term</h2>
+        <p>There's a formula to find any term in a G.P. without listing all the terms. It is: <code>aₙ = a₁ * rⁿ⁻¹</code></p>
+        <p>Where <code>aₙ</code> is the term you want to find, <code>a₁</code> is the first term, and <code>r</code> is the common ratio.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> For a G.P. with first term <code>a₁ = 4</code> and common ratio <code>r = 3</code>, what is the 4th term (a₄)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Using the formula <code>aₙ = a₁ * rⁿ⁻¹</code>:</p>
+            <p><code>a₄ = 4 * 3⁴⁻¹ = 4 * 3³ = 4 * 27 = 108</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: A Key Property -->
+    <div class="phase">
+        <h2>Phase 3: The Secret Shortcut - A Key G.P. Property</h2>
+        <p>In any G.P., the product of terms equidistant from the center is always the same. For example, <code>a₁ * a₅ = a₂ * a₄</code> because the sum of the indices is the same (1+5 = 6 and 2+4 = 6).</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> In our original problem, we are given <code>a₁a₅ = 28</code>. What can you deduce about the product <code>a₂a₄</code>?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>Because the sum of the indices is equal (<code>1 + 5 = 6</code> and <code>2 + 4 = 6</code>), the products of these terms must be equal.</p>
+            <p>Therefore, <code>a₂a₄ = a₁a₅</code>.</p>
+            <p>Since we are given <code>a₁a₅ = 28</code>, we now know that <strong><code>a₂a₄ = 28</code></strong>. This is the key insight!</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: Solving a Simple System -->
+    <div class="phase">
+        <h2>Phase 4: Solving a Simple System of Equations</h2>
+        <p>From the original problem and our deduction in Phase 3, we now have two simple pieces of information:</p>
+        <ol>
+            <li><code>a₂ + a₄ = 29</code> (from the problem statement)</li>
+            <li><code>a₂a₄ = 28</code> (from our deduction)</li>
+        </ol>
+        <p>We just need to find two numbers that add up to 29 and multiply to 28.</p>
+        <div class="question">
+            <strong>Question 4.1:</strong> Find the values of a₂ and a₄.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p>Let's call the two numbers x and y. We have <code>x + y = 29</code> and <code>xy = 28</code>.</p>
+            <p>We can solve this by thinking about factors of 28 (1, 2, 4, 7, 14, 28). Which pair adds up to 29? The pair is 1 and 28.</p>
+            <p>So, the two terms are 1 and 28. But which is which? The problem states it is an <strong>increasing</strong> G.P., which means terms get larger as n increases. Therefore, <code>a₄</code> must be greater than <code>a₂</code>.</p>
+            <p>So, <strong><code>a₂ = 1</code></strong> and <strong><code>a₄ = 28</code></strong>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 5: Finding the Common Ratio -->
+    <div class="phase">
+        <h2>Phase 5: Finding the Common Ratio (r)</h2>
+        <p>Now that we know two terms, we can find the common ratio.</p>
+        <div class="question">
+            <strong>Question 5.1:</strong> Using <code>a₂ = 1</code> and <code>a₄ = 28</code>, find the value of <code>r²</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol5_1')">Show Solution</span>
+        <div class="solution" id="sol5_1">
+            <p>We know that to get from one term to the next, we multiply by r. So:</p>
+            <p><code>a₃ = a₂ * r</code></p>
+            <p><code>a₄ = a₃ * r = (a₂ * r) * r = a₂ * r²</code></p>
+            <p>Now, substitute the values we know:</p>
+            <p><code>28 = 1 * r²</code></p>
+            <p>So, <strong><code>r² = 28</code></strong>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 6: The Final Answer -->
+    <div class="phase" style="background-color: #fffbe6; border-color: #ffc107;">
+        <h2>Phase 6: The Final JEE Main Question</h2>
+        <p>You have all the pieces. The goal is to find the 6th term, <code>a₆</code>.</p>
+        <div class="question">
+            <strong>Final Question:</strong> What is the value of a₆?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol6_1')">Show Solution</span>
+        <div class="solution" id="sol6_1">
+            <p>We can find <code>a₆</code> by starting from a term we know (like <code>a₄</code>) and multiplying by the common ratio.</p>
+            <p><code>a₅ = a₄ * r</code></p>
+            <p><code>a₆ = a₅ * r = (a₄ * r) * r = a₄ * r²</code></p>
+            <p>We know both of these values from our previous steps!</p>
+            <p><code>a₄ = 28</code></p>
+            <p><code>r² = 28</code></p>
+            <p>Now, calculate the final answer:</p>
+            <p><code>a₆ = 28 * 28 = 784</code>.</p>
+            <p><strong>The final answer is 784.</strong></p>
+        </div>
+    </div>
+
+</body>
+</html>

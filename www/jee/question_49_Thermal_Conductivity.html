@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Thermal Conductivity</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Heat Flow and Thermal Resistance</h1>
+    <p>This guide explains how heat flows through materials and introduces an analogy to electric circuits that makes solving complex problems much easier.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Law of Heat Conduction</h2>
+        <div class="concept">
+            <p>When there is a temperature difference across a material, heat will flow from the hotter end to the colder end. The rate of this heat flow (H) is also called heat current.</p>
+            <p><strong>Fourier's Law of Heat Conduction:</strong> <code>H = dQ/dt = kA(&Delta;T / L)</code></p>
+            <ul>
+                <li><code>H</code>: Rate of heat flow (in Watts or J/s).</li>
+                <li><code>k</code>: Thermal conductivity of the material. A high 'k' means it's a good conductor of heat (like metal).</li>
+                <li><code>A</code>: The cross-sectional area through which the heat is flowing.</li>
+                <li><code>L</code>: The length of the material the heat is flowing through.</li>
+                <li><code>&Delta;T</code>: The temperature difference between the hot and cold ends.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Electrical Analogy -->
+    <div class="phase">
+        <h2>Phase 2: A Powerful Analogy - Thermal Resistance</h2>
+        <div class="concept">
+            <p>The heat flow equation looks a lot like Ohm's Law for electric circuits, <code>I = V/R</code>.</p>
+            <p>Let's rearrange the heat equation: <code>H = &Delta;T / (L / kA)</code>.</p>
+            <p>We can draw a direct comparison:</p>
+            <ul>
+                <li>Heat Current (H) is like Electric Current (I).</li>
+                <li>Temperature Difference (&Delta;T) is like Voltage Difference (V).</li>
+                <li>The term <code>(L / kA)</code> is like Electrical Resistance (R).</li>
+            </ul>
+            <p>We call this term the <span class="highlight">Thermal Resistance (R_th)</span>.</p>
+            <p><strong>Thermal Resistance Formula:</strong> <code>R_th = L / kA</code></p>
+            <p>This analogy is incredibly useful. We can now solve heat flow problems by drawing them as electrical circuits. Conductors in series and parallel behave just like resistors!</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> You have two rods of the same length and area. Rod 1 has conductivity k₁ and Rod 2 has conductivity k₂. What is the ratio of their thermal resistances, R₁/R₂?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><code>R₁ = L / (k₁A)</code></p>
+            <p><code>R₂ = L / (k₂A)</code></p>
+            <p><code>R₁ / R₂ = (L / k₁A) / (L / k₂A)</code></p>
+            <p>The L and A terms cancel, leaving: <code>R₁ / R₂ = k₂ / k₁</code>.</p>
+            <p>Resistance is inversely proportional to conductivity, which makes sense!</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Steady State -->
+    <div class="phase">
+        <h2>Phase 3: Steady State and Junctions</h2>
+        <div class="concept">
+            <p>When a system is in <span class="highlight">steady state</span>, it means the temperatures at all points are no longer changing. The heat flowing *into* any junction must equal the heat flowing *out* of it.</p>
+            <p>This is exactly like Kirchhoff's Current Law for electrical junctions: the total current entering a junction equals the total current leaving it.</p>
+            <p><code>H_in = H_out</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Three conductors of same length having thermal conductivity k₁, k₂ and k₃ are connected as shown in figure. Area of cross sections of 1st and 2nd conductor are same and for 3rd conductor it is double of the 1st conductor. The temperatures are given in the figure. In steady state condition, the value of &theta; is ___ &deg;C.</p>
+            <p>(The figure shows conductors 1 and 2 in parallel, and this combination is in series with conductor 3. The left end is at 100&deg;C, the junction between the parallel pair and the third conductor is at &theta;, and the right end is at 0&deg;C.)</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's model this as a resistor circuit.</p>
+            <p><strong>Step 1: Define the thermal resistances.</strong></p>
+            <ul>
+                <li>Length is the same for all: L.</li>
+                <li>Area of 1: A. Area of 2: A. Area of 3: 2A.</li>
+                <li><code>R₁ = L / (k₁A)</code></li>
+                <li><code>R₂ = L / (k₂A)</code></li>
+                <li><code>R₃ = L / (k₃ * 2A)</code></li>
+            </ul>
+            <p><strong>Step 2: Analyze the circuit diagram.</strong></p>
+            <p>Resistors R₁ and R₂ are in parallel. Their equivalent resistance, R_p, is:</p>
+            <p><code>1/R_p = 1/R₁ + 1/R₂ = k₁A/L + k₂A/L = (k₁ + k₂)A / L</code></p>
+            <p><code>R_p = L / ((k₁ + k₂)A)</code></p>
+            <p>This parallel combination is in series with R₃. The total resistance is <code>R_total = R_p + R₃</code>.</p>
+            <p><strong>Step 3: Apply the steady state condition.</strong></p>
+            <p>The heat current flowing from the 100&deg;C end to the junction at &theta; must be the same as the heat current flowing from &theta; to the 0&deg;C end.</p>
+            <p><code>H_left = H_right</code></p>
+            <p><code>(T_hot - &theta;) / R_p = (&theta; - T_cold) / R₃</code></p>
+            <p><code>(100 - &theta;) / (L / ((k₁ + k₂)A)) = (&theta; - 0) / (L / (2k₃A))</code></p>
+            <p><strong>Step 4: Simplify and solve for &theta;.</strong></p>
+            <p>The terms L and A cancel from the denominators of both sides.</p>
+            <p><code>(100 - &theta;) * (k₁ + k₂) = &theta; * (2k₃)</code></p>
+            <p><code>100(k₁ + k₂) - &theta;(k₁ + k₂) = 2k₃&theta;</code></p>
+            <p><code>100(k₁ + k₂) = &theta;(k₁ + k₂ + 2k₃)</code></p>
+            <p><code>&theta; = 100 * (k₁ + k₂) / (k₁ + k₂ + 2k₃)</code></p>
+            <p><strong>Step 5: Plug in the given values for k.</strong></p>
+            <ul>
+                <li>k₁ = 60</li>
+                <li>k₂ = 120</li>
+                <li>k₃ = 135</li>
+            </ul>
+            <p><code>&theta; = 100 * (60 + 120) / (60 + 120 + 2*135)</code></p>
+            <p><code>&theta; = 100 * (180) / (180 + 270)</code></p>
+            <p><code>&theta; = 100 * 180 / 450</code></p>
+            <p>Simplify the fraction: <code>180 / 450 = 18 / 45 = 2 / 5</code> (dividing by 9).</p>
+            <p><code>&theta; = 100 * (2 / 5) = 200 / 5 = 40</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The temperature of the junction &theta; is <strong>40 &deg;C</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct answer for question 49 is <strong>40</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

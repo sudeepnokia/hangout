@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Logarithmic Equations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Logarithmic Equations</h1>
+    <p>This guide will build your understanding from basic exponent rules to solving a complex logarithmic equation from the JEE Main exam.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Logarithm?</h2>
+        <p>A logarithm is the inverse of an exponent. The natural logarithm (ln) is the inverse of the number e (approx 2.718).</p>
+        <p>This means that <code>ln(e^a) = a</code> and <code>e^(ln(b)) = b</code>. They cancel each other out.</p>
+        <p>A key rule we will use is: <code>ln(x^k) = k * ln(x)</code>. The exponent can be brought down in front.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> How can you simplify the equation <code>e^y = x^8</code> to get y by itself?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>To get rid of the 'e' on the left, we take the natural log (ln) of both sides:</p>
+            <p><code>ln(e^y) = ln(x^8)</code></p>
+            <p>The left side simplifies to just 'y'. On the right side, we can bring the exponent down:</p>
+            <p><code>y = 8 * ln(x)</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Recognizing a Disguised Quadratic -->
+    <div class="phase">
+        <h2>Phase 2: Finding Hidden Quadratic Equations</h2>
+        <p>Sometimes, a complex equation is just a simple quadratic equation (<code>ax² + bx + c = 0</code>) in disguise. The key is to find what to substitute.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Look at the equation <code>5(lnx)² - 8(lnx) + 3 = 0</code>. Does this look like a quadratic equation? What could you substitute to make it look like one?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Yes, it does! Notice that the term <code>lnx</code> appears squared and also by itself.</p>
+            <p>If we let <code>y = lnx</code>, the equation becomes:</p>
+            <p><code>5y² - 8y + 3 = 0</code></p>
+            <p>This is a standard quadratic equation that we can solve for y.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Solving the Quadratic and Reversing -->
+    <div class="phase">
+        <h2>Phase 3: Solving and Reversing the Substitution</h2>
+        <p>Now we solve the quadratic and then go back to our original variable.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Solve <code>5y² - 8y + 3 = 0</code> for y. Then, since we know <code>y = lnx</code>, find the corresponding values for x.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>We can factor the quadratic: <code>(5y - 3)(y - 1) = 0</code>.</p>
+            <p>The solutions for y are <code>y₁ = 1</code> and <code>y₂ = 3/5</code>.</p>
+            <p>Now we reverse the substitution:</p>
+            <p>If <code>ln(x₁) = 1</code>, then <code>x₁ = e¹ = e</code>.</p>
+            <p>If <code>ln(x₂) = 3/5</code>, then <code>x₂ = e^(3/5)</code>.</p>
+            <p>So the two solutions for x are <code>e</code> and <code>e^(3/5)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You have all the skills. The JEE question combines these steps. Try it yourself first.</p>
+        <div class="question">
+            <strong>Question 4:</strong> The product of all solutions of the equation e^(5(logₑx)²+3) = x⁸, x > 0, is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Simplify the equation by taking the natural log of both sides.</strong></p>
+            <p><code>ln(e^(5(lnx)²+3)) = ln(x⁸)</code></p>
+            <p><code>5(lnx)² + 3 = 8lnx</code></p>
+            <p><strong>Step 2: Rearrange into a quadratic equation.</strong></p>
+            <p><code>5(lnx)² - 8lnx + 3 = 0</code></p>
+            <p><strong>Step 3: Substitute and solve for the roots.</strong></p>
+            <p>Let <code>y = lnx</code>. The equation is <code>5y² - 8y + 3 = 0</code>. We already solved this in Phase 3. The solutions are <code>y₁ = 1</code> and <code>y₂ = 3/5</code>.</p>
+            <p><strong>Step 4: Find the solutions for x.</strong></p>
+            <p>The solutions for x are <code>x₁ = e¹</code> and <code>x₂ = e^(3/5)</code>.</p>
+            <p><strong>Step 5: Find the product of the solutions.</strong></p>
+            <p>Product = <code>x₁ * x₂ = e¹ * e^(3/5) = e^(1 + 3/5) = e^(8/5)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the product of the solutions as <strong>e⁸/⁵</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 4 is (1).</p>
+        <p><strong>Result:</strong> The derived answer <strong>e⁸/⁵</strong> matches option (1). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: 3D Geometry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: 3D Geometry</h1>
+    <p>This guide will build your understanding from the basics of lines in 3D to solving a JEE-level problem involving intersecting lines and the foot of a perpendicular.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Intersection of Two Lines</h2>
+        <p>Two lines in 3D intersect if there is a point (x, y, z) that lies on both lines. We can find this point by setting the general coordinates of each line equal to each other.</p>
+        <p>L₁: (x-1)/1 = (y-1)/-1 = (z+1)/3 = λ. So, a general point on L₁ is (λ+1, -λ+1, 3λ-1).</p>
+        <p>L₂: (x-1)/α = (y-2)/1 = (z-3)/4 = μ. So, a general point on L₂ is (αμ+1, μ+2, 4μ+3).</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If the lines intersect, their coordinates must be equal. Set the y and z coordinates equal to each other to find λ and μ.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>y-coordinates: -λ+1 = μ+2  =>  λ+μ = -1</p>
+            <p>z-coordinates: 3λ-1 = 4μ+3  =>  3λ-4μ = 4</p>
+            <p>We have a system of two linear equations. Multiply the first by 4: 4λ+4μ=-4. Add this to the second equation: 7λ=0 => λ=0. Then μ=-1.</p>
+            <p>The intersection point B is found by plugging λ=0 into the coordinates for L₁: B = (1, 1, -1).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Finding the Unknown Constant -->
+    <div class="phase">
+        <h2>Phase 2: Using the x-coordinate</h2>
+        <p>Now that we have the intersection point, we can use the x-coordinates to find the value of α.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Set the x-coordinates of the two lines equal at the intersection point and solve for α.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>x-coordinates: λ+1 = αμ+1. We know λ=0 and μ=-1.</p>
+            <p>0+1 = α(-1)+1  =>  1 = -α+1  =>  α = 0.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Foot of the Perpendicular -->
+    <div class="phase">
+        <h2>Phase 3: Finding the Foot of the Perpendicular</h2>
+        <p>We need to find the foot of the perpendicular from point A(1, 1, -1) to the line L₂. Let this foot be P. Since P is on L₂, its coordinates can be written in terms of μ.</p>
+        <p>The vector AP will be perpendicular to the direction vector of L₂. Their dot product will be zero.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Find the coordinates of P and the value of (PB)².
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>A is the same as the intersection point B. The foot of the perpendicular from a point on a line to that same line is the point itself. So P=A=B=(1,1,-1).</p>
+            <p>The distance PB is 0. So (PB)² = 0.</p>
+            <p>This seems too simple. Let's re-read the question. A(1,1,-1) is a point. L1 and L2 intersect at B. P is the foot of the perpendicular from A to L2. We found that A is the intersection point B. So P=A=B. This means PB=0.</p>
+            <p>The question asks for 26α(PB)². Since PB=0, the answer is 0. This is likely not the intended question. Let's assume A is a different point, say A(2,1,0). Then AP = (αμ-1, μ+1, 4μ+3). Direction vector of L₂ is (α,1,4) = (0,1,4). AP . b₂ = 0 => (αμ-1)(α) + (μ+1)(1) + (4μ+3)(4) = 0. With α=0, this is μ+1 + 16μ+12 = 0 => 17μ=-13 => μ=-13/17. P = (1, 2-13/17, 3-52/17) = (1, 21/17, -1/17). B=(1,1,-1). PB² = (1-1)² + (1-21/17)² + (-1+1/17)² = ( -4/17)² + (-16/17)² = (16+256)/289 = 272/289. 26α(PB)² = 0.</p>
+            <p>Let's assume the point A is (1,2,3). Then AP = (αμ-0, μ, 4μ). AP.b₂=0 => μ+16μ=0 => μ=0. P=(1,2,3). B=(1,1,-1). PB² = (1-1)²+(1-2)²+(-1-3)² = 1+16=17. 26α(PB)² = 0.</p>
+            <p>It seems that since α=0, the final answer must be 0. Let's check the answer key. The answer is 216. This means α cannot be 0. Let's re-check the calculation for α.</p>
+            <p>λ+μ=-1, 3λ-4μ=4. 4λ+4μ=-4. 7λ=0, λ=0. μ=-1. λ+1=αμ+1 => 1=-α+1 => α=0. The calculation is correct. There must be a typo in the question.</p>
+            <p>Let's assume L₁ is (x-2)/1 = (y-2)/-1 = (z-2)/3. Then a₁=(2,2,2). a₁-a₂ = (1,-1,-1). (a₁-a₂).b₂ = α-1-4=α-5. This is not helping.</p>
+            <p>Let's assume the intersection point is different. Let's assume α=2. Then λ+1=2μ+1 => λ=2μ. 3(2μ)-4μ=4 => 2μ=4 => μ=2. λ=4. y-coord: -4+1 = 2+2 => -3=4. No. So α cannot be 2.</p>
+            <p>Given the provided solution is 216, there is a high probability of a typo in the question. I cannot derive the given answer from the question as stated.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Due to a likely typo in the question, a definitive solution cannot be reached. The calculation for α consistently yields 0, which would make the final answer 0, contradicting the provided answer key.</p>
+        <div class="question">
+            <strong>Question 25:</strong> Let L₁ : (x-1)/1 = (y-1)/-1 = (z+1)/3 and L₂ : (x-1)/α = (y-2)/1 = (z-3)/4, α ∈ R, be two lines, which intersect at the point B. If P is the foot of perpendicular from the point A(1, 1, −1) on L₂, then the value of 26α(PB)² is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p>As determined in the previous phases, there appears to be an error in the question or the provided options. The calculation leads to α=0, which makes the final expression 0. This contradicts the provided answer of 216.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> A definitive answer cannot be determined due to inconsistencies in the problem statement. The calculation leads to α=0.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the answer for Question 25 is 216.</p>
+        <p><strong>Result:</strong> The derived answer does not match the official answer key. This is due to a likely error in the question as presented in the PDF.</p>
+    </div>
+
+</body>
+</html>

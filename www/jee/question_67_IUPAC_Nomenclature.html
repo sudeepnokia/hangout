@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: IUPAC Nomenclature</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: IUPAC Nomenclature for Polyfunctional Compounds</h1>
+    <p>This guide explains the systematic IUPAC rules for naming a complex organic molecule with multiple functional groups.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Priority List</h2>
+        <div class="concept">
+            <p>When a molecule has more than one functional group, we must decide which one is the "most important". IUPAC has a priority order for this.</p>
+            <p>The <span class="highlight">principal functional group</span> is the one with the highest priority. It determines the <span class="highlight">suffix</span> (the ending) of the molecule's name.</p>
+            <p>All other functional groups are treated as <span class="highlight">substituents</span> and are named using prefixes.</p>
+            <p>For this problem, the two functional groups are a carboxylic acid (-COOH) and an ester (-COOR).</p>
+            <p><strong>Priority Order:</strong> <span class="highlight">Carboxylic Acid > Ester</span></p>
+            <p>Therefore, the molecule will be named as an "-oic acid", and the ester group will be named as a substituent.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Naming Substituents -->
+    <div class="phase">
+        <h2>Phase 2: How to Name an Ester as a Substituent</h2>
+        <div class="concept">
+            <p>When an ester group (-COOR) is not the principal functional group, it is named as an <span class="highlight">alkoxycarbonyl</span> substituent.</p>
+            <p>You name the part that came from the alcohol first (alkoxy-), followed by "carbonyl".</p>
+            <p>In our molecule, the ester group is <code>-COOCH₃</code>. The alcohol part is methanol, so the prefix is "methoxy".</p>
+            <p>Therefore, the <code>-COOCH₃</code> group as a substituent is named <span class="highlight">methoxycarbonyl</span>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The IUPAC name of the following compound is:</p>
+            <p>Structure: A six-carbon chain with methyl groups on C2 and C5. A COOH group is on C2 and a COOCH₃ group is on C5 (numbering from right to left).</p>
+            <p>Let's draw the structure clearly: <code>CH₃-CH(COOCH₃)-CH₂-CH₂-CH(COOH)-CH₃</code></p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's apply the IUPAC rules systematically.</p>
+            <p><strong>Step 1: Identify the Principal Functional Group.</strong></p>
+            <p>The molecule contains a carboxylic acid (-COOH) and an ester (-COOCH₃). From Phase 1, we know the <span class="highlight">carboxylic acid</span> has higher priority. The name will end in <strong>-oic acid</strong>.</p>
+
+            <p><strong>Step 2: Find and Number the Parent Chain.</strong></p>
+            <p>The parent chain must be the longest continuous carbon chain that <span class="highlight">includes the carbon of the principal functional group</span>.</p>
+            <p>Let's trace the chains starting from the COOH carbon:</p>
+            <p><code>HOOC-CH(CH₃)-CH₂-CH₂-CH(COOCH₃)-CH₃</code></p>
+            <p>The longest chain is 6 carbons long. So, the parent name is <strong>hexanoic acid</strong>.</p>
+            <p>The numbering must start from the principal group's carbon, so the COOH carbon is C1.</p>
+            <p><code>C1(OOH)-C2(H)(CH₃)-C3(H₂)-C4(H₂)-C5(H)(COOCH₃)-C6(H₃)</code></p>
+
+            <p><strong>Step 3: Identify and Name the Substituents.</strong></p>
+            <p>Based on our numbering:</p>
+            <ul>
+                <li>At C2, there is a <strong>methyl</strong> group.</li>
+                <li>At C5, there is a <strong>methoxycarbonyl</strong> group (as determined in Phase 2).</li>
+            </ul>
+
+            <p><strong>Step 4: Assemble the Full Name.</strong></p>
+            <p>The substituents are listed alphabetically (methoxycarbonyl comes before methyl).</p>
+            <p>The correct name is: <strong>5-Methoxycarbonyl-2-methylhexanoic acid</strong>.</p>
+
+            <p><strong>Step 5: Compare with the Options.</strong></p>
+            <p>Let's look at the options provided in the exam:</p>
+            <ol>
+                <li>Methyl-6-carboxy-2,5-dimethylhexanoate</li>
+                <li>2-Carboxy-5-methoxycarbonylhexane</li>
+                <li>6-Methoxycarbonyl-2,5-dimethylhexanoic acid</li>
+                <li>Methyl-5-carboxy-2-methylhexanoate</li>
+            </ol>
+            <p>Our correctly derived name, "5-Methoxycarbonyl-2-methylhexanoic acid", is not among the options. Furthermore, the official answer key selects option (3), "6-Methoxycarbonyl-2,5-dimethylhexanoic acid". This name is impossible, as you cannot have a substituent on carbon 6 of a 6-carbon chain (hexanoic acid). This indicates a clear error in the question paper's options and answer key.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The correct IUPAC name for the given structure is <strong>5-Methoxycarbonyl-2-methylhexanoic acid</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The provided answer key for question 67 is (3), which is "6-Methoxycarbonyl-2,5-dimethylhexanoic acid".</p>
+        <p><strong>Result:</strong> <span style="color: red; font-weight: bold;">Mismatch.</span> The official answer key corresponds to a name that is structurally impossible. The question is flawed. Our derived name is the correct one based on IUPAC rules.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Electrolysis</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Electrolysis and Peroxydisulfuric Acid</h1>
+    <p>This guide explains the principles of electrolysis and how it can be used to synthesize specific chemical compounds.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is Electrolysis?</h2>
+        <div class="concept">
+            <p>Electrolysis is the process of using a direct electric current (DC) to drive an otherwise non-spontaneous chemical reaction. It is carried out in an electrolytic cell, which contains two electrodes (anode and cathode) submerged in an electrolyte.</p>
+            <p><strong>Key Definitions:</strong></p>
+            <ul>
+                <li><strong>Electrolyte:</strong> A substance that produces an electrically conducting solution when dissolved in a polar solvent, such as water. It contains ions.</li>
+                <li><strong>Anode:</strong> The positive electrode. <span class="highlight">Oxidation</span> occurs here (loss of electrons). Anions move towards the anode.</li>
+                <li><strong>Cathode:</strong> The negative electrode. <span class="highlight">Reduction</span> occurs here (gain of electrons). Cations move towards the cathode.</li>
+            </ul>
+            <p>In the electrolysis of an aqueous solution, you must consider not only the ions from the salt but also the water itself, which can be oxidized (to O₂) or reduced (to H₂).</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Kolbe and Marshall Syntheses -->
+    <div class="phase">
+        <h2>Phase 2: Special Types of Electrolysis</h2>
+        <div class="concept">
+            <p>Certain electrolysis reactions are famous for the specific products they create.</p>
+            <p><strong>Kolbe Electrolysis:</strong> The electrolysis of an aqueous solution of a sodium or potassium salt of a carboxylic acid. It results in the formation of an alkane at the anode.</p>
+            <p><strong>Marshall's Acid Synthesis:</strong> This is a specific industrial process to produce peroxydisulfuric acid (H₂S₂O₈), also known as Marshall's acid. It involves the electrolysis of a <span class="highlight">cold, concentrated solution of sulfuric acid (H₂SO₄)</span> or an alkali metal bisulfate (like KHSO₄) at a high current density.</p>
+            <p>At the anode, the bisulfate ions (HSO₄⁻) or sulfate ions (SO₄²⁻) are oxidized and dimerize (pair up) to form the peroxydisulfate ion (S₂O₈²⁻).</p>
+            <p><strong>Anode Reaction:</strong> <code>2HSO₄⁻ &rarr; S₂O₈²⁻ + 2H⁺ + 2e⁻</code></p>
+            <p>The resulting product in the electrolyte is peroxydisulfuric acid, H₂S₂O₈.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Which of the following electrolyte can be used to obtain H₂S₂O₈ by the process of electrolysis?</p>
+            <ol>
+                <li>Dilute solution of sodium sulphate.</li>
+                <li>Acidified dilute solution of sodium sulphate.</li>
+                <li>Dilute solution of sulphuric acid.</li>
+                <li>Concentrated solution of sulphuric acid.</li>
+            </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The question is asking for the specific conditions required to produce H₂S₂O₈ (peroxydisulfuric acid).</p>
+            <p>From our concept in Phase 2, we know that this synthesis is a specific, named process called the synthesis of Marshall's acid.</p>
+            <p>The key requirements for this process are:</p>
+            <ol>
+                <li>The presence of sulfate (SO₄²⁻) or bisulfate (HSO₄⁻) ions.</li>
+                <li>The solution must be <span class="highlight">cold and concentrated</span>.</li>
+                <li>A high current density is needed.</li>
+            </ol>
+            <p>Let's analyze the options:</p>
+            <ol>
+                <li><strong>Dilute solution of sodium sulphate:</strong> This has the right ions, but it is dilute. In a dilute aqueous solution, the oxidation of water to produce oxygen gas (<code>2H₂O &rarr; O₂ + 4H⁺ + 4e⁻</code>) is favored over the oxidation of sulfate ions. So, this will not work.</li>
+                <li><strong>Acidified dilute solution of sodium sulphate:</strong> Same problem as above. It is dilute, so water will be oxidized preferentially.</li>
+                <li><strong>Dilute solution of sulphuric acid:</strong> Again, the key issue is that the solution is <span class="highlight">dilute</span>. Water will be oxidized instead of the sulfate ions.</li>
+                <li><strong>Concentrated solution of sulphuric acid:</strong> This matches the specific conditions required for the synthesis of Marshall's acid. In a concentrated solution, the concentration of water is much lower, and the concentration of bisulfate/sulfate ions is very high. This high concentration favors the oxidation of the sulfate species to form the peroxydisulfate ion at the anode.</li>
+            </ol>
+            <p>Therefore, the correct electrolyte is a concentrated solution of sulphuric acid.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The correct electrolyte is a <strong>Concentrated solution of sulphuric acid</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 58 is (4), which corresponds to <strong>Concentrated solution of sulphuric acid</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

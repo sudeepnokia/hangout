@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Vitamins</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Identifying Vitamins by Chemical Name</h1>
+    <p>This guide helps you connect the common names of vitamins to their chemical structures and names, focusing on carboxylic acids.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Vitamin?</h2>
+        <div class="concept">
+            <p>Vitamins are organic molecules that are essential micronutrients which an organism needs in small quantities for the proper functioning of its metabolism. Essential nutrients cannot be synthesized in the organism, either at all or not in sufficient quantities, and therefore must be obtained through the diet.</p>
+            <p>Vitamins are classified by their biological and chemical activity, not their structure. Each "vitamin" refers to a number of vitamer compounds that all show the biological activity associated with a particular vitamin. For example, "vitamin A" includes retinal, retinol, and several other carotenoids.</p>
+            <p>Many vitamins have common chemical names, and it's important to be able to recognize them.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Analyzing the Options -->
+    <div class="phase">
+        <h2>Phase 2: A Look at the Acids</h2>
+        <div class="concept">
+            <p>The question asks which of the given acids is a vitamin. Let's look at the structure and function of each one.</p>
+            <ul>
+                <li><strong>Adipic Acid:</strong> HOOC-(CH₂)₄-COOH. This is a dicarboxylic acid. It is primarily used in industry as a precursor for the production of nylon. It is <span class="highlight">not a vitamin</span>.</li>
+                <li><strong>Ascorbic Acid:</strong> This is a water-soluble compound with the formula C₆H₈O₆. It is found in citrus fruits and many other vegetables. Its deficiency causes the disease scurvy. Ascorbic acid is the chemical name for <span class="highlight">Vitamin C</span>.</li>
+                <li><strong>Saccharic Acid:</strong> HOOC-(CHOH)₄-COOH. This is a dicarboxylic acid derived from the oxidation of a sugar like glucose. It is not a vitamin.</li>
+                <li><strong>Aspartic Acid:</strong> This is an &alpha;-amino acid with the formula HOOC-CH(NH₂)-CH₂-COOH. It is one of the 20 proteinogenic amino acids. While it is an essential nutrient (as a building block for proteins), it is classified as an <span class="highlight">amino acid</span>, not a vitamin. The body can synthesize it, so it's a non-essential amino acid.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Which of the following acids is a vitamin?</p>
+            <ol>
+                <li>Adipic acid</li>
+                <li>Ascorbic acid</li>
+                <li>Saccharic acid</li>
+                <li>Aspartic acid</li>
+            </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Based on our analysis in Phase 2:</p>
+            <ul>
+                <li>Adipic acid is an industrial chemical.</li>
+                <li>Saccharic acid is a sugar derivative.</li>
+                <li>Aspartic acid is an amino acid.</li>
+                <li><span class="highlight">Ascorbic acid</span> is the chemical name for Vitamin C.</li>
+            </ul>
+            <p>Therefore, ascorbic acid is the correct answer.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> <strong>Ascorbic acid</strong> is a vitamin (Vitamin C).</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 60 is (2), which corresponds to <strong>Ascorbic acid</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Thermal Radiation</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Blackbody Radiation</h1>
+    <p>This guide explains how hot objects radiate energy and how we can compare the energy radiated by different objects.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Hot Things Glow - The Stefan-Boltzmann Law</h2>
+        <div class="concept">
+            <p>Any object with a temperature above absolute zero radiates energy into its surroundings. A hot stove, the sun, and even you are all radiating energy right now!</p>
+            <p>The rate at which an object radiates energy (its Power, P) is described by the Stefan-Boltzmann Law.</p>
+            <p><strong>Formula:</strong> <code>P = &epsilon;&sigma;AT⁴</code></p>
+            <ul>
+                <li><code>P</code>: Power, or Energy radiated per second.</li>
+                <li><code>&epsilon;</code> (epsilon): Emissivity. A number from 0 to 1 that describes how good an object is at radiating. We assume it's the same for similar materials.</li>
+                <li><code>&sigma;</code> (sigma): The Stefan-Boltzmann constant. It's just a number, and we won't need its value for this problem.</li>
+                <li><code>A</code>: The surface area of the object. A bigger object has more surface to radiate from.</li>
+                <li><code>T</code>: The absolute temperature of the object in <span class="highlight">Kelvin (K)</span>. This is the most important part - the power depends on the temperature to the <span class="highlight">fourth power</span>!</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> If you double the absolute temperature of an object, how much more energy does it radiate per second?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The power is proportional to <code>T⁴</code>.</p>
+            <p>If the new temperature <code>T' = 2T</code>, the new power is <code>P' &prop; (2T)⁴ = 16T⁴</code>.</p>
+            <p>The new power is 16 times the original power. A small change in temperature leads to a huge change in radiated energy!</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Using Ratios to Simplify -->
+    <div class="phase">
+        <h2>Phase 2: The Power of Ratios</h2>
+        <div class="concept">
+            <p>When we need to compare two objects, we can use ratios. This is a great trick to cancel out all the constants (like &epsilon; and &sigma;) that are the same for both objects.</p>
+            <p>Let's say we have two objects, 1 and 2. The ratio of their radiated power is:</p>
+            <p><code>P₂ / P₁ = (&epsilon;&sigma;A₂T₂⁴) / (&epsilon;&sigma;A₁T₁⁴)</code></p>
+            <p>Since &epsilon; and &sigma; are the same for both, they cancel out:</p>
+            <p><code>P₂ / P₁ = (A₂ / A₁) * (T₂ / T₁)⁴</code></p>
+            <p>This simplified formula is all we need!</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Area of a Sphere -->
+    <div class="phase">
+        <h2>Phase 3: Sizing Up the Objects</h2>
+        <div class="concept">
+            <p>The problem involves spherical bodies. The surface area (A) of a sphere with radius (r) is given by the formula:</p>
+            <p><code>A = 4&pi;r²</code></p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> One sphere has a radius of 0.8 m. Another has a radius of 0.2 m. What is the ratio of their surface areas (A_bigger / A_smaller)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><code>A_bigger = 4&pi;(0.8)²</code></p>
+            <p><code>A_smaller = 4&pi;(0.2)²</code></p>
+            <p><code>A_bigger / A_smaller = (4&pi;(0.8)²) / (4&pi;(0.2)²)</code></p>
+            <p>The <code>4&pi;</code> cancels out.</p>
+            <p><code>Ratio = (0.8 / 0.2)² = (4)² = 16</code></p>
+            <p>The bigger sphere has 16 times the surface area of the smaller one.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Two spherical bodies of same materials having radii 0.2 m and 0.8 m are placed in same atmosphere. The temperature of the smaller body is 800 K and temperature of the bigger body is 400 K. If the energy radiated from the smaller body is E, the energy radiated from the bigger body is:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's identify our variables. Let the smaller body be object 1 and the bigger body be object 2.</p>
+            <ul>
+                <li>Radius 1 (smaller): <code>r₁ = 0.2 m</code></li>
+                <li>Temperature 1 (smaller): <code>T₁ = 800 K</code></li>
+                <li>Energy of smaller body: <code>E₁ = E</code></li>
+                <li>Radius 2 (bigger): <code>r₂ = 0.8 m</code></li>
+                <li>Temperature 2 (bigger): <code>T₂ = 400 K</code></li>
+                <li>Energy of bigger body: <code>E₂ = ?</code></li>
+            </ul>
+            <p>We use our ratio formula from Phase 2:</p>
+            <p><code>E₂ / E₁ = (A₂ / A₁) * (T₂ / T₁)⁴</code></p>
+            <p><strong>Step 1: Calculate the area ratio (A₂ / A₁).</strong></p>
+            <p><code>A₂ / A₁ = (4&pi;r₂²) / (4&pi;r₁²) = (r₂ / r₁)²</code></p>
+            <p><code>A₂ / A₁ = (0.8 / 0.2)² = (4)² = 16</code></p>
+            <p><strong>Step 2: Calculate the temperature ratio (T₂ / T₁).</strong></p>
+            <p><code>T₂ / T₁ = 400 / 800 = 1/2</code></p>
+            <p><strong>Step 3: Plug the ratios into the main formula.</strong></p>
+            <p><code>E₂ / E₁ = (16) * (1/2)⁴</code></p>
+            <p><code>E₂ / E₁ = 16 * (1 / 16)</code></p>
+            <p><code>E₂ / E₁ = 1</code></p>
+            <p><strong>Step 4: Find E₂.</strong></p>
+            <p>Since <code>E₂ / E₁ = 1</code>, this means <code>E₂ = E₁</code>.</p>
+            <p>The problem states the energy from the smaller body is E, so <code>E₁ = E</code>.</p>
+            <p>Therefore, <code>E₂ = E</code>. The energy radiated from the bigger body is also E.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The energy radiated from the bigger body is <strong>E</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 41 is (2), which corresponds to <strong>E</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

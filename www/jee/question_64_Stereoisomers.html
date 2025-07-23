@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Stereoisomers</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Counting Stereoisomers</h1>
+    <p>This guide explains how to identify sources of stereoisomerism in a molecule and calculate the total number of possible stereoisomers.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What Creates Stereoisomers?</h2>
+        <div class="concept">
+            <p>Stereoisomers are molecules that have the same molecular formula and the same connectivity of atoms, but differ in the three-dimensional arrangement of their atoms in space.</p>
+            <p>There are two main sources of stereoisomerism in organic molecules:</p>
+            <ol>
+                <li><strong>Chiral Centers (or Chiral Carbons):</strong> A carbon atom that is bonded to <span class="highlight">four different</span> groups. A chiral center can exist in two different 3D arrangements (called enantiomers), designated as R or S.</li>
+                <li><strong>Geometrical Isomerism (Cis/Trans):</strong> This occurs due to restricted rotation, usually around a carbon-carbon double bond. For a double bond to exhibit geometrical isomerism, each carbon in the bond must be attached to two different groups. This gives rise to cis/trans (or E/Z) isomers.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Phase 2: Finding the Stereocenters -->
+    <div class="phase">
+        <h2>Phase 2: Analyzing the Molecule</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> How many different stereoisomers are possible for the given molecule?</p>
+            <p><strong>Molecule:</strong> CH₃-CH(OH)-CH=CH-CH₃ (Pentan-3-en-2-ol)</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's examine the molecule to find all possible sources of stereoisomerism.</p>
+            <p><code>C₅H₃ - C₄H = C₃H - C₂(OH)H - C₁H₃</code></p>
+
+            <p><strong>1. Check for Chiral Centers:</strong></p>
+            <ul>
+                <li><strong>C1 (CH₃):</strong> Bonded to 3 H's. Not chiral.</li>
+                <li><strong>C2 (CH(OH)):</strong> Let's see what it's bonded to:
+                    <ol>
+                        <li>A hydrogen atom (-H)</li>
+                        <li>A hydroxyl group (-OH)</li>
+                        <li>A methyl group (-CH₃)</li>
+                        <li>A <code>-CH=CH-CH₃</code> group.</li>
+                    </ol>
+                    These four groups are all different. Therefore, C2 is a <span class="highlight">chiral center</span>. This gives us one source of stereoisomerism (R/S).</li>
+                <li><strong>C3 (CH=):</strong> Part of a double bond. Cannot be a chiral center.</li>
+                <li><strong>C4 (=CH):</strong> Part of a double bond. Cannot be a chiral center.</li>
+                <li><strong>C5 (CH₃):</strong> Bonded to 3 H's. Not chiral.</li>
+            </ul>
+            <p><strong>2. Check for Geometrical Isomerism:</strong></p>
+            <ul>
+                <li>The molecule has a double bond between C3 and C4. Let's check if it meets the condition.</li>
+                <li><strong>C3 is bonded to:</strong> A hydrogen atom (-H) and a <code>-CH(OH)-CH₃</code> group. These are different.</li>
+                <li><strong>C4 is bonded to:</strong> A hydrogen atom (-H) and a methyl group (-CH₃). These are also different.</li>
+                <li>Since both carbons of the double bond are attached to two different groups, the double bond can exhibit <span class="highlight">geometrical isomerism</span> (cis/trans or E/Z). This gives us a second source of stereoisomerism.</li>
+            </ul>
+            <p>So, we have found two stereogenic elements in the molecule: one chiral carbon (C2) and one double bond capable of geometrical isomerism (C3=C4).</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: Calculating the Total Number of Stereoisomers</h2>
+        <div class="concept">
+            <p>For a molecule with multiple, independent stereocenters, the total number of possible stereoisomers can be calculated with a simple formula.</p>
+            <p>If a molecule has 'n' stereogenic centers (this includes both chiral centers and double bonds that can show geometrical isomerism) and the molecule is unsymmetrical, the maximum number of stereoisomers is:</p>
+            <p><strong>Max Stereoisomers = 2ⁿ</strong></p>
+            <p><em>(This formula can have exceptions if the molecule is symmetrical, which can lead to meso compounds, but our molecule is not symmetrical).</em></p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> For the molecule CH₃-CH(OH)-CH=CH-CH₃, how many stereoisomers are possible?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>From our analysis in Phase 2, we identified <span class="highlight">n = 2</span> stereogenic centers:</p>
+            <ol>
+                <li>The chiral carbon at C2.</li>
+                <li>The double bond between C3 and C4.</li>
+            </ol>
+            <p>The molecule is unsymmetrical, so we can use the formula 2ⁿ.</p>
+            <p>Total stereoisomers = 2ⁿ = 2² = 4.</p>
+            <p>Let's list them out to be sure:</p>
+            <ul>
+                <li>(R)-configuration at C2, trans-double bond</li>
+                <li>(S)-configuration at C2, trans-double bond</li>
+                <li>(R)-configuration at C2, cis-double bond</li>
+                <li>(S)-configuration at C2, cis-double bond</li>
+            </ul>
+            <p>These are four distinct molecules that cannot be superimposed on each other.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> There are <strong>4</strong> possible stereoisomers.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 64 is (3), which corresponds to <strong>4</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

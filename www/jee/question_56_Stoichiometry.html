@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Stoichiometry</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .statement { border: 1px solid #bdc3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Acidity of Alkynes and Gas Stoichiometry</h1>
+    <p>This guide explains why certain alkynes are acidic and how to relate chemical reactions to gas volumes.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Acidity of Terminal Alkynes</h2>
+        <div class="concept">
+            <p>An alkyne is a hydrocarbon with a carbon-carbon triple bond (C&equiv;C).</p>
+            <p>A <span class="highlight">terminal alkyne</span> is an alkyne where the triple bond is at the end of the carbon chain, meaning one of the triply-bonded carbons is attached to a hydrogen atom (R-C&equiv;C-H).</p>
+            <p>This hydrogen atom is unusually <span class="highlight">acidic</span> compared to hydrogens on double or single bonds. This is because the carbon atom of the C-H bond is <span class="highlight">sp hybridized</span>. The high s-character (50%) of the sp orbital pulls the electron density away from the hydrogen, making it easier to remove as a proton (H⁺).</p>
+            <p>Because of this acidity, terminal alkynes can react with very strong bases, like sodium (Na) or sodamide (NaNH₂), to lose their proton.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement I:</strong> One mole of propyne reacts with excess of sodium to liberate half a mole of H₂ gas.</p>
+            </div>
+            <strong>Question:</strong> Analyze the reaction of propyne with sodium. Is Statement I correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Propyne has the structure CH₃-C&equiv;C-H. It is a terminal alkyne because of the hydrogen attached to the triple bond.</p>
+            <p>The reaction with sodium (a strong base/reducing agent) is an acid-base reaction where the acidic hydrogen is replaced.</p>
+            <p>The balanced chemical equation is:</p>
+            <p><code>2 CH₃-C&equiv;C-H + 2 Na &rarr; 2 CH₃-C&equiv;C⁻Na⁺ + H₂(&uarr;)</code></p>
+            <p>Let's look at the stoichiometry (the mole ratios):</p>
+            <p><span class="highlight">2 moles</span> of propyne react to produce <span class="highlight">1 mole</span> of hydrogen gas (H₂).</p>
+            <p>Therefore, if we start with <span class="highlight">1 mole</span> of propyne, it will produce <span class="highlight">0.5 moles (half a mole)</span> of H₂ gas.</p>
+            <p>The statement says it liberates half a mole of H₂ gas. This is correct. <strong>Statement I is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Molar Volume of a Gas -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - The Ideal Gas Law at STP</h2>
+        <div class="concept">
+            <p>Avogadro's Law states that equal volumes of all ideal gases, at the same temperature and pressure, have the same number of molecules.</p>
+            <p>A very useful consequence of this is the concept of molar volume. At <span class="highlight">Standard Temperature and Pressure (STP)</span>, which is 0&deg;C (273.15 K) and 1 atm pressure:</p>
+            <p><strong>1 mole of any ideal gas occupies a volume of 22.4 Liters (L) or 22400 milliliters (mL).</strong></p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement II:</strong> Four g of propyne reacts with NaNH₂ to liberate NH₃ gas which occupies 224 mL at STP.</p>
+            </div>
+            <strong>Question:</strong> Analyze this reaction and the volume of gas produced. Is Statement II correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Write the balanced chemical equation.</strong></p>
+            <p>Sodamide (NaNH₂) is a very strong base. The acidic proton of propyne will react with the amide ion (NH₂⁻) to form ammonia (NH₃).</p>
+            <p><code>CH₃-C&equiv;C-H + NaNH₂ &rarr; CH₃-C&equiv;C⁻Na⁺ + NH₃(&uarr;)</code></p>
+            <p>The stoichiometry is simple: <span class="highlight">1 mole</span> of propyne produces <span class="highlight">1 mole</span> of ammonia gas.</p>
+            <p><strong>Step 2: Calculate the moles of the reactant (propyne).</strong></p>
+            <p>We are given 4 g of propyne. We need its molar mass.</p>
+            <p>Propyne is C₃H₄. Molar Mass = 3 * (12.01 g/mol) + 4 * (1.01 g/mol) &asymp; 36 + 4 = 40 g/mol.</p>
+            <p>Moles of propyne = Mass / Molar Mass = 4 g / 40 g/mol = 0.1 moles.</p>
+            <p><strong>Step 3: Calculate the moles of the product (ammonia).</strong></p>
+            <p>From the 1:1 stoichiometry, 0.1 moles of propyne will produce 0.1 moles of NH₃ gas.</p>
+            <p><strong>Step 4: Calculate the volume of the gas at STP.</strong></p>
+            <p>We have 0.1 moles of NH₃. We know that 1 mole at STP occupies 22400 mL.</p>
+            <p>Volume = Moles &times; Molar Volume = 0.1 mol &times; 22400 mL/mol = 2240 mL.</p>
+            <p><strong>Step 5: Compare with the statement.</strong></p>
+            <p>Our calculated volume is 2240 mL. The statement says the gas occupies 224 mL.</p>
+            <p>2240 mL &ne; 224 mL. The statement is off by a factor of 10.</p>
+            <p>Therefore, <strong>Statement II is incorrect.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Given below are two statements :</p>
+            <p><strong>Statement I :</strong> One mole of propyne reacts with excess of sodium to liberate half a mole of H₂ gas.</p>
+            <p><strong>Statement II :</strong> Four g of propyne reacts with NaNH₂ to liberate NH₃ gas which occupies 224 mL at STP.</p>
+            <p>In the light of the above statements, choose the most appropriate answer from the options given below.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's summarize our findings from the previous phases.</p>
+            <p><strong>Analysis of Statement I:</strong> We found that 2 moles of propyne produce 1 mole of H₂, so 1 mole of propyne produces 0.5 moles of H₂. <strong>Statement I is correct.</strong></p>
+            <p><strong>Analysis of Statement II:</strong> We found that 4g (0.1 mol) of propyne produces 0.1 mol of NH₃, which should occupy 2240 mL at STP, not 224 mL. <strong>Statement II is incorrect.</strong></p>
+            <p>We are looking for the option that says Statement I is correct and Statement II is incorrect.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Statement I is correct but Statement II is incorrect.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 56 is (3), which states "Statement I is correct but Statement II is incorrect".</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

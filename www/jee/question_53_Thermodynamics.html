@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Thermodynamics</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: The First Law of Thermodynamics</h1>
+    <p>This guide explains the fundamental law governing energy changes in a system, focusing on internal energy, heat, and work.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The System and Surroundings</h2>
+        <div class="concept">
+            <p>In thermodynamics, we divide the universe into two parts:</p>
+            <ul>
+                <li><strong>The System:</strong> The part of the universe we are interested in studying (e.g., a gas in a container, a chemical reaction).</li>
+                <li><strong>The Surroundings:</strong> Everything else outside the system.</li>
+            </ul>
+            <p>An <span class="highlight">isolated system</span> is one that cannot exchange either energy (like heat or work) or matter with its surroundings. A perfectly insulated, sealed container (like a thermos flask) is a good approximation of an isolated system.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> The problem describes a liquid in a "thermally insulated closed vessel". What kind of system is this, and what does that imply about the exchange of heat?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>A "closed vessel" means no matter can get in or out.</p>
+            <p>"Thermally insulated" means no heat can be exchanged with the surroundings.</p>
+            <p>This describes an <span class="highlight">isolated system</span>.</p>
+            <p>The amount of heat exchanged with the surroundings, denoted by <span class="highlight">q</span>, must be zero.</p>
+            <p>Therefore, <code>q = 0</code>. This is also called an <span class="highlight">adiabatic</span> process.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The First Law of Thermodynamics -->
+    <div class="phase">
+        <h2>Phase 2: The Energy Balance Sheet</h2>
+        <div class="concept">
+            <p>The First Law of Thermodynamics is a statement of the conservation of energy. It relates the change in the internal energy of a system (&Delta;U) to the heat (q) added to the system and the work (w) done on the system.</p>
+            <p><strong>The First Law:</strong> <code>&Delta;U = q + w</code></p>
+            <p><strong>Sign Convention (from the system's perspective):</strong></p>
+            <ul>
+                <li><code>&Delta;U</code>: The change in the total energy contained within the system.</li>
+                <li><code>q</code>: Heat. If heat flows <span class="highlight">into</span> the system, q is positive. If heat flows <span class="highlight">out</span>, q is negative.</li>
+                <li><code>w</code>: Work. If work is done <span class="highlight">on</span> the system (e.g., compressing it), w is positive. If the system does work <span class="highlight">on the surroundings</span> (e.g., expanding), w is negative.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A liquid when kept inside a thermally insulated closed vessel at 25&deg;C was mechanically stirred from outside. What will be the correct option for the following thermodynamic parameters?</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze the process step-by-step using the First Law.</p>
+            <p><strong>Step 1: Analyze the heat (q).</strong></p>
+            <p>The vessel is "thermally insulated". As we determined in Phase 1, this means it's an adiabatic process. No heat can enter or leave the system.</p>
+            <p>Therefore, <code>q = 0</code>.</p>
+            <p><strong>Step 2: Analyze the work (w).</strong></p>
+            <p>The liquid was "mechanically stirred from outside". This means something from the surroundings (the stirrer) is doing work <span class="highlight">on</span> the system (the liquid). The work is being put into the system.</p>
+            <p>According to our sign convention, work done ON the system is positive.</p>
+            <p>Therefore, <code>w > 0</code>.</p>
+            <p><strong>Step 3: Analyze the change in internal energy (&Delta;U).</strong></p>
+            <p>Now we use the First Law of Thermodynamics: <code>&Delta;U = q + w</code>.</p>
+            <p>We substitute the values we found:</p>
+            <p><code>&Delta;U = 0 + w</code></p>
+            <p>Since <code>w</code> is a positive number, <code>&Delta;U</code> must also be a positive number.</p>
+            <p>Therefore, <code>&Delta;U > 0</code>.</p>
+            <p>A positive change in internal energy means the internal energy of the liquid has increased. This energy increase will manifest as a slight increase in the temperature of the liquid.</p>
+            <p><strong>Conclusion:</strong> We have <code>&Delta;U > 0</code>, <code>q = 0</code>, and <code>w > 0</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The correct parameters are <strong>&Delta;U > 0, q = 0, w > 0</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 53 is (3), which corresponds to <strong>&Delta;U > 0, q = 0, w > 0</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Electric Circuits</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Electric Circuits</h1>
+    <p>This guide will build your understanding from the basics of resistors in parallel to the concepts of equivalent EMF and internal resistance for batteries.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Resistors in Parallel</h2>
+        <p>When two resistors, r₁ and r₂, are connected in parallel, the equivalent resistance, r_eq, is given by the formula: <code>1/r_eq = 1/r₁ + 1/r₂</code>.</p>
+        <p>This can be rearranged to <code>r_eq = (r₁ * r₂) / (r₁ + r₂)</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If r₁ = 2Ω and r₂ = 3Ω, what is r_eq? Is r_eq smaller than both r₁ and r₂?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p><code>r_eq = (2 * 3) / (2 + 3) = 6 / 5 = 1.2Ω</code>.</p>
+            <p>Yes, 1.2Ω is smaller than both 2Ω and 3Ω. This is always true for resistors in parallel. The equivalent resistance is always smaller than the smallest individual resistance.</p>
+            <p>This directly proves that <strong>Statement-II</strong> of the problem is <strong>true</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Understanding Real Batteries -->
+    <div class="phase">
+        <h2>Phase 2: EMF and Internal Resistance</h2>
+        <p>An ideal battery provides a constant voltage, called its EMF (ε). A real-world ("nonideal") battery has this EMF but also a small <strong>internal resistance (r)</strong>. This is like having a tiny resistor inside the battery itself.</p>
+        <p>When we connect two nonideal batteries in parallel, we need to find both the equivalent EMF (ε_eq) and the equivalent internal resistance (r_eq).</p>
+    </div>
+
+    <!-- Phase 3: Equivalent EMF -->
+    <div class="phase">
+        <h2>Phase 3: Equivalent EMF for Parallel Batteries</h2>
+        <p>The formula for the equivalent EMF of two batteries in parallel is a weighted average:</p>
+        <p><code>ε_eq = (ε₁/r₁ + ε₂/r₂) / (1/r₁ + 1/r₂) = (ε₁r₂ + ε₂r₁) / (r₁ + r₂)</code></p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Let's say we have a 10V battery (ε₁) with 2Ω internal resistance (r₁) and a 4V battery (ε₂) with 1Ω internal resistance (r₂). What is the equivalent EMF?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>ε_eq = (10*1 + 4*2) / (2 + 1) = (10 + 8) / 3 = 18 / 3 = 6V</code>.</p>
+            <p>Notice that the result, 6V, is between the two individual EMFs (4V and 10V). It is smaller than the larger EMF (10V) but larger than the smaller EMF (4V).</p>
+            <p>This means the statement "The equivalent emf... is smaller than either of the two emfs" is not always true. It is only smaller than the larger of the two.</p>
+            <p>Therefore, <strong>Statement-I</strong> is <strong>false</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now let's evaluate the two statements given in the problem.</p>
+        <div class="question">
+            <strong>Question 27:</strong> Given below are two statements :<br>
+            <strong>Statement-I :</strong> The equivalent emf of two nonideal batteries connected in parallel is smaller than either of the two emfs.<br>
+            <strong>Statement-II :</strong> The equivalent internal resistance of two nonideal batteries connected in parallel is smaller than the internal resistance of either of the two batteries.<br>
+            In the light of the above statements, choose the correct answer from the options given below.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Evaluating Statement-I:</strong></p>
+            <p>As we saw in Phase 3, the equivalent EMF (ε_eq) is a weighted average of the individual EMFs. This means <code>ε_eq</code> will always be between ε₁ and ε₂. It will be smaller than the larger EMF, but larger than the smaller EMF. The statement says it is smaller than *either* EMF, which is incorrect. So, Statement-I is <strong>False</strong>.</p>
+            <p><strong>Evaluating Statement-II:</strong></p>
+            <p>As we saw in Phase 1, the formula for equivalent resistance of parallel resistors always results in a value smaller than the smallest individual resistance. So, Statement-II is <strong>True</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our analysis shows that <strong>Statement-I is false but Statement-II is true</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 27 is (2), which corresponds to "Statement-I is false but Statement-II is true".</p>
+        <p><strong>Result:</strong> The derived answer matches the official answer key. The solution is correct.</p>
+    </div>
+
+</body>
+</html>

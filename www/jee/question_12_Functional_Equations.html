@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Functional Equations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Functional Equations</h1>
+    <p>This guide will build your understanding from basic functional equations to solving a JEE-level problem involving a second-order differential equation and area calculation.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: A Common Functional Equation</h2>
+        <p>The problem states that <code>f(x+y) = f(x)f(y)</code>. This is a very famous functional equation. The function that satisfies this is the exponential function, <code>f(x) = e^(kx)</code> for some constant k.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If f(x) = e^(kx), what is f'(x)? What is f'(0)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Using the chain rule, <code>f'(x) = k * e^(kx)</code>.</p>
+            <p><code>f'(0) = k * e^0 = k * 1 = k</code>.</p>
+            <p>So, if we know f'(0), we know the function! In our problem, we are given <code>f'(0) = 4a</code>. So, <code>k = 4a</code>, and the function is <code>f(x) = e^(4ax)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Using the Differential Equation -->
+    <div class="phase">
+        <h2>Phase 2: Verifying with a Differential Equation</h2>
+        <p>The problem also gives a differential equation: <code>f''(x) - 3af'(x) - f(x) = 0</code>. We can use our function from Phase 1 to solve for the unknown constant 'a'.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Find f''(x) for <code>f(x) = e^(4ax)</code> and substitute f(x), f'(x), and f''(x) into the differential equation.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>f(x) = e^(4ax)</code></p>
+            <p><code>f'(x) = 4a * e^(4ax)</code></p>
+            <p><code>f''(x) = (4a)² * e^(4ax) = 16a² * e^(4ax)</code></p>
+            <p>Substituting into the equation:</p>
+            <p><code>(16a² * e^(4ax)) - 3a(4a * e^(4ax)) - e^(4ax) = 0</code></p>
+            <p><code>16a²e^(4ax) - 12a²e^(4ax) - e^(4ax) = 0</code></p>
+            <p>We can divide by e^(4ax) (since it's never zero):</p>
+            <p><code>16a² - 12a² - 1 = 0</code></p>
+            <p><code>4a² = 1</code> => <code>a² = 1/4</code>. Since a > 0, we have <code>a = 1/2</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the Area Under a Curve -->
+    <div class="phase">
+        <h2>Phase 3: Calculating Area with a Definite Integral</h2>
+        <p>The area of a region bounded by a curve y = g(x), the x-axis, and the lines x=c and x=d is given by the definite integral: <code>Area = ∫(from c to d) g(x) dx</code>.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> The problem asks for the area of the region <code>R = {(x, y) | 0 ≤ y ≤ f(ax), 0 ≤ x ≤ 2}</code>. What is the function we need to integrate, and what are the limits?</p>
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The upper boundary of the region is <code>y = f(ax)</code>. This is the function we need to integrate.</p>
+            <p>The limits for x are given as 0 to 2.</p>
+            <p>So, the area is <code>∫(from 0 to 2) f(ax) dx</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now you have all the pieces to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 12:</strong> Let f : R → R be a twice differentiable function such that f(x + y) = f(x)f(y) for all x, y ∈ R. If f'(0) = 4a and f satisfies f''(x) – 3af'(x) − f(x) = 0, a > 0, then the area of the region R = {(x, y) | 0 ≤ y ≤ f(ax), 0 ≤ x ≤ 2} is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the function f(x) and the value of a.</strong></p>
+            <p>From Phase 1 and 2, we found that <code>a = 1/2</code> and <code>f(x) = e^(4ax) = e^(2x)</code>.</p>
+            <p><strong>Step 2: Set up the integral for the area.</strong></p>
+            <p>We need to find the area under the curve <code>y = f(ax)</code> from x=0 to x=2.</p>
+            <p><code>f(ax) = f(x/2) = e^(2*(x/2)) = e^x</code>.</p>
+            <p>Area = <code>∫(from 0 to 2) e^x dx</code>.</p>
+            <p><strong>Step 3: Evaluate the integral.</strong></p>
+            <p>The integral of e^x is just e^x.</p>
+            <p>Area = <code>[e^x] (from 0 to 2) = e² - e⁰ = e² - 1</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the area as <strong>e² - 1</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 12 is (1).</p>
+        <p><strong>Result:</strong> The derived answer <strong>e² - 1</strong> matches option (1). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

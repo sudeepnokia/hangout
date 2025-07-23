@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Gravitation</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Gravitation & Superposition Principle</h1>
+    <p>Welcome! This guide will walk you through all the concepts needed to solve a complex gravitation problem, starting from the very basics.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Absolute Basics - Force Between Two Points</h2>
+        <div class="concept">
+            <p>Imagine two objects in space. They pull on each other with a force called gravity. Sir Isaac Newton figured out a way to calculate this force.</p>
+            <p><strong>Newton's Law of Universal Gravitation:</strong> The force (F) between two point masses (m₁ and m₂) is directly proportional to the product of their masses and inversely proportional to the square of the distance (r) between their centers.</p>
+            <p>The formula is: <code>F = G * (m₁ * m₂) / r²</code></p>
+            <p>Here, <code>G</code> is a special number called the Gravitational Constant. We don't need its exact value for this problem, just the relationship.</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A large object of mass <code>M</code> and a small object of mass <code>m</code> are separated by a distance of <code>2R</code>. What is the gravitational force between them?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We just use the formula directly!</p>
+            <p>m₁ = M</p>
+            <p>m₂ = m</p>
+            <p>r = 2R</p>
+            <p>F = G * (M * m) / (2R)² = G * M * m / 4R²</p>
+            <p>This is the force <code>F₁</code> mentioned in the main problem.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Gravity and a Solid Sphere -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - The Sphere Trick</h2>
+        <div class="concept">
+            <p>What if one of the objects isn't a tiny point, but a big, solid sphere (like a planet)? Calculating the pull from every single particle in the sphere sounds complicated!</p>
+            <p><strong>The Shell Theorem:</strong> Luckily, Newton also proved something very convenient. For any point <span class="highlight">outside</span> a uniform spherical shell or solid sphere, the sphere's gravitational pull is the <span class="highlight">exact same</span> as if all of its mass were concentrated into a single point at its center.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> A uniform solid sphere has mass <code>M</code> and radius <code>R</code>. A point mass <code>m</code> is placed at a distance <code>2R</code> from the sphere's center. What is the force on <code>m</code>?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Because of the Shell Theorem, we can pretend the entire mass <code>M</code> of the sphere is a single point at its center.</p>
+            <p>The distance from this "center point" to the mass <code>m</code> is <code>2R</code>.</p>
+            <p>This is now the exact same as our Phase 1 problem!</p>
+            <p><code>F₁ = G * (M * m) / (2R)² = G M m / 4R²</code></p>
+            <p>This confirms our understanding of the initial force <code>F₁</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The "Aha!" Moment - The Cavity Trick -->
+    <div class="phase">
+        <h2>Phase 3: The "Aha!" Moment - The Superposition Principle</h2>
+        <div class="concept">
+            <p>How do we calculate the force from a sphere that has a piece missing? This is where a clever physics trick comes in, called the <span class="highlight">Principle of Superposition</span>.</p>
+            <p>Imagine the sphere with the hole in it. The force from this object is hard to calculate directly.</p>
+            <p>Instead, let's think about it like this:</p>
+            <p><b>Force of (Sphere with Hole) = Force of (Complete Big Sphere) - Force of (The Small Sphere that was removed)</b></p>
+            <p>This is powerful! We already know how to calculate the force from complete spheres (Phase 2). So, all we need to do is calculate the force from the small piece that was "removed" and subtract it from the force of the original, complete sphere.</p>
+            <p><code>F₂ = F₁ - F_removed</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: Finding the Mass of the Removed Part -->
+    <div class="phase">
+        <h2>Phase 4: Sizing Up the Missing Piece</h2>
+        <div class="concept">
+            <p>To calculate the force from the removed piece, we first need its mass.</p>
+            <p><strong>Density is Key:</strong> The sphere is uniform, meaning its density (mass per unit volume) is the same everywhere.
+            <p>Density (ρ) = Total Mass / Total Volume</p>
+            <p>The volume of a sphere is <code>V = (4/3)πr³</code>.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> The big sphere has mass <code>M</code> and radius <code>R</code>. The removed spherical part has a radius of <code>r_removed = R/3</code>. What is the mass of the removed part (<code>M_removed</code>)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>Step 1: Find the density of the big sphere.</strong></p>
+            <p><code>ρ = M / V = M / ((4/3)πR³)</code></p>
+            <p><strong>Step 2: Find the volume of the removed sphere.</strong></p>
+            <p><code>V_removed = (4/3)π * (r_removed)³ = (4/3)π * (R/3)³ = (4/3)π * (R³/27)</code></p>
+            <p><strong>Step 3: Calculate the mass of the removed sphere.</strong></p>
+            <p><code>M_removed = Density * V_removed</code></p>
+            <p><code>M_removed = [M / ((4/3)πR³)] * [(4/3)π * (R³/27)]</code></p>
+            <p>The <code>(4/3)πR³</code> parts cancel out!</p>
+            <p><code>M_removed = M / 27</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 5: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 5: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> A small point of mass m is placed at a distance 2R from the centre 'O' of a big uniform solid sphere of mass M and radius R. The gravitational force on 'm' due to M is F₁. A spherical part of radius R/3 is removed from the big sphere as shown in the figure and the gravitational force on m due to remaining part of M is found to be F₂. The value of ratio F₁ : F₂ is:</p>
+            <p>(The figure shows the removed sphere's center is on the line between 'O' and 'm'. Based on the problem's context and solution, the center of the removed sphere is located at a distance of 2R/3 from the main center O.)</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We have all the pieces. Let's assemble the solution.</p>
+            <p><strong>Step 1: Write down the force from the original, complete sphere (F₁).</strong></p>
+            <p>From Phase 2, we know: <code>F₁ = G M m / (2R)² = G M m / 4R²</code></p>
+            <p><strong>Step 2: Calculate the force from the removed part (F_removed).</strong></p>
+            <p>From Phase 4, the mass of the removed part is <code>M_removed = M/27</code>.</p>
+            <p>The center of the removed sphere is at a distance <code>d = 2R/3</code> from O.</p>
+            <p>The point mass <code>m</code> is at a distance <code>2R</code> from O.</p>
+            <p>So, the distance between the center of the removed sphere and mass <code>m</code> is <code>r' = 2R - d = 2R - 2R/3 = 4R/3</code>.</p>
+            <p>Now, we use the force formula for this removed sphere:</p>
+            <p><code>F_removed = G * M_removed * m / (r')²</code></p>
+            <p><code>F_removed = G * (M/27) * m / (4R/3)² = G * (M/27) * m / (16R²/9)</code></p>
+            <p><code>F_removed = (G M m / R²) * (9 / (27 * 16)) = (G M m / R²) * (1 / (3 * 16)) = G M m / 48R²</code></p>
+            <p><strong>Step 3: Calculate the force from the sphere with the hole (F₂).</strong></p>
+            <p>Using our superposition principle from Phase 3:</p>
+            <p><code>F₂ = F₁ - F_removed</code></p>
+            <p><code>F₂ = (G M m / 4R²) - (G M m / 48R²)</code></p>
+            <p>To subtract, we find a common denominator (48):</p>
+            <p><code>F₂ = (12 * G M m / 48R²) - (1 * G M m / 48R²) = 11 * G M m / 48R²</code></p>
+            <p><strong>Step 4: Find the ratio F₁ : F₂.</strong></p>
+            <p><code>F₁ / F₂ = (G M m / 4R²) / (11 G M m / 48R²)</code></p>
+            <p>The <code>G M m / R²</code> parts cancel out:</p>
+            <p><code>F₁ / F₂ = (1/4) / (11/48) = (1/4) * (48/11) = 48 / 44</code></p>
+            <p>Simplifying by dividing the top and bottom by 4:</p>
+            <p><code>F₁ / F₂ = 12 / 11</code></p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The ratio F₁ : F₂ is <strong>12 : 11</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 35 is (1), which corresponds to <strong>12 : 11</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step derivation is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

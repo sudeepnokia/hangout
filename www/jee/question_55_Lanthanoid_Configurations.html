@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Lanthanoid Configurations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Electron Configurations and Stability</h1>
+    <p>This guide explains how to determine the electron configurations of ions and why certain configurations are especially stable.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Stability of Half-Filled and Fully-Filled Orbitals</h2>
+        <div class="concept">
+            <p>Electrons occupy orbitals (s, p, d, f). Each type of orbital can hold a certain number of electrons:</p>
+            <ul>
+                <li>s-orbital: 2 electrons</li>
+                <li>p-orbitals: 6 electrons</li>
+                <li>d-orbitals: 10 electrons</li>
+                <li>f-orbitals: 14 electrons</li>
+            </ul>
+            <p>A key principle in chemistry is that atoms and ions gain extra stability when their orbitals are either <span class="highlight">exactly half-filled</span> or <span class="highlight">completely filled</span>.</p>
+            <p>For the f-orbitals, this means configurations with <span class="highlight">f⁷</span> (half-filled) or <span class="highlight">f¹⁴</span> (fully-filled) are particularly stable. This stability is due to symmetrical distribution of electrons and maximum exchange energy.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Electron Configurations of Lanthanoids -->
+    <div class="phase">
+        <h2>Phase 2: Writing Configurations for Lanthanoid Ions</h2>
+        <div class="concept">
+            <p>The Lanthanoids are the elements in the f-block, where the 4f orbital is being filled. Their general electron configuration is [Xe] 4fⁿ 5d⁰⁻¹ 6s².</p>
+            <p>When lanthanoids form ions, they lose electrons. The rule is to <span class="highlight">remove the outermost electrons first</span>. This means electrons are removed from the 6s orbital first, then the 5d (if any), and finally from the 4f orbital.</p>
+            <p>The most common oxidation state for lanthanoids is +3, meaning they lose 3 electrons.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> Determine the 4f configuration for the ions given in the question: Eu²⁺, Gd³⁺, Eu³⁺, Tb³⁺, Sm²⁺.
+            <p><em>(You would typically use a periodic table for the atomic numbers: Eu=63, Gd=64, Tb=65, Sm=62)</em></p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p><strong>(A) Europium (Eu), Z=63:</strong></p>
+            <ul>
+                <li>Neutral Eu config: [Xe] 4f⁷ 6s²</li>
+                <li>To form Eu²⁺, remove the two 6s electrons.</li>
+                <li><strong>Eu²⁺ config: [Xe] 4f⁷</strong></li>
+            </ul>
+            <p><strong>(B) Gadolinium (Gd), Z=64:</strong></p>
+            <ul>
+                <li>Neutral Gd config: [Xe] 4f⁷ 5d¹ 6s² (This is an exception, gaining stability from the half-filled 4f shell)</li>
+                <li>To form Gd³⁺, remove the two 6s electrons and the one 5d electron.</li>
+                <li><strong>Gd³⁺ config: [Xe] 4f⁷</strong></li>
+            </ul>
+            <p><strong>(C) Europium (Eu), Z=63:</strong></p>
+            <ul>
+                <li>Neutral Eu config: [Xe] 4f⁷ 6s²</li>
+                <li>To form Eu³⁺, remove the two 6s electrons and one 4f electron.</li>
+                <li><strong>Eu³⁺ config: [Xe] 4f⁶</strong></li>
+            </ul>
+            <p><strong>(D) Terbium (Tb), Z=65:</strong></p>
+            <ul>
+                <li>Neutral Tb config: [Xe] 4f⁹ 6s²</li>
+                <li>To form Tb³⁺, remove the two 6s electrons and one 4f electron.</li>
+                <li><strong>Tb³⁺ config: [Xe] 4f⁸</strong></li>
+            </ul>
+            <p><strong>(E) Samarium (Sm), Z=62:</strong></p>
+            <ul>
+                <li>Neutral Sm config: [Xe] 4f⁶ 6s²</li>
+                <li>To form Sm²⁺, remove the two 6s electrons.</li>
+                <li><strong>Sm²⁺ config: [Xe] 4f⁶</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 3: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Lanthanoid ions with 4f⁷ configuration are : (A) Eu²⁺ (B) Gd³⁺ (C) Eu³⁺ (D) Tb³⁺ (E) Sm²⁺. Choose the correct answer from the options given below.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The question asks which of the ions have the especially stable, half-filled <span class="highlight">4f⁷</span> configuration.</p>
+            <p>Let's look at our results from Phase 2:</p>
+            <ul>
+                <li><strong>(A) Eu²⁺:</strong> [Xe] 4f⁷ &rarr; Yes!</li>
+                <li><strong>(B) Gd³⁺:</strong> [Xe] 4f⁷ &rarr; Yes!</li>
+                <li><strong>(C) Eu³⁺:</strong> [Xe] 4f⁶ &rarr; No.</li>
+                <li><strong>(D) Tb³⁺:</strong> [Xe] 4f⁸ &rarr; No.</li>
+                <li><strong>(E) Sm²⁺:</strong> [Xe] 4f⁶ &rarr; No.</li>
+            </ul>
+            <p>The ions with the 4f⁷ configuration are Eu²⁺ and Gd³⁺.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The correct ions are <strong>(A) and (B) only</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 55 is (3), which corresponds to <strong>(A) and (B) only</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

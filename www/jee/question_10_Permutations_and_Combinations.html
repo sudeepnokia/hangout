@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Permutations and Combinations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Permutations and Combinations</h1>
+    <p>This guide will build your understanding from basic counting principles to solving a JEE-level problem involving combinations and arrangements.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Choosing vs. Arranging</h2>
+        <p>In these problems, it's important to know the difference between combinations (order doesn't matter) and permutations (order matters).</p>
+        <p>The problem states that the chosen letters are "arranged in alphabetical order". This is a key phrase. It means that once we choose a set of 5 letters, there is only ONE way to arrange them. For example, if we choose the letters {E, A, C, B, D}, the only valid arrangement is (A, B, C, D, E).</p>
+        <p>This means we only need to worry about <strong>choosing</strong> the letters (combinations), not arranging them.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> The formula for choosing k items from a set of n items is given by nCk or "n choose k". How many ways can you choose 2 letters from the set {A, B, C, D}?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>The formula is <code>nCk = n! / (k! * (n-k)!)</code>.</p>
+            <p>Here, n=4 and k=2.</p>
+            <p><code>4C2 = 4! / (2! * 2!) = (4*3*2*1) / ((2*1)*(2*1)) = 24 / 4 = 6</code>.</p>
+            <p>The 6 combinations are: {A,B}, {A,C}, {A,D}, {B,C}, {B,D}, {C,D}.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Applying Constraints -->
+    <div class="phase">
+        <h2>Phase 2: Handling Constraints</h2>
+        <p>The problem has a major constraint: the middle letter of the 5 chosen letters must be 'M'.</p>
+        <p>If we have 5 letters in alphabetical order (L₁, L₂, L₃, L₄, L₅), the middle letter is L₃. So, we know for sure that <strong>L₃ = M</strong>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> If the middle letter must be M, where must the other 4 letters come from in the alphabet?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Since the letters are in alphabetical order, the first two letters (L₁ and L₂) must come from the letters before M.</p>
+            <p>The last two letters (L₄ and L₅) must come from the letters after M.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Breaking Down the Problem -->
+    <div class="phase">
+        <h2>Phase 3: Solving the Sub-problems</h2>
+        <p>Now we can treat this as two separate, smaller problems.</p>
+        <p>The English alphabet has 26 letters. The letter M is the 13th letter.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> How many letters are there before M in the alphabet? How many ways can we choose the first two letters (L₁ and L₂) from this group?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>There are 12 letters before M (A, B, C, ..., L).</p>
+            <p>We need to choose 2 letters from these 12. The number of ways is <code>12C2</code>.</p>
+            <p><code>12C2 = 12! / (2! * 10!) = (12 * 11) / 2 = 66</code> ways.</p>
+        </div>
+        <div class="question">
+            <strong>Question 3.2:</strong> How many letters are there after M in the alphabet? How many ways can we choose the last two letters (L₄ and L₅) from this group?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_2')">Show Solution</span>
+        <div class="solution" id="sol3_2">
+            <p>There are 13 letters after M (N, O, P, ..., Z).</p>
+            <p>We need to choose 2 letters from these 13. The number of ways is <code>13C2</code>.</p>
+            <p><code>13C2 = 13! / (2! * 11!) = (13 * 12) / 2 = 78</code> ways.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>To get the total number of ways, we multiply the number of ways for each independent choice.</p>
+        <div class="question">
+            <strong>Question 10:</strong> From all the English alphabets, five letters are chosen and are arranged in alphabetical order. The total number of ways, in which the middle letter is 'M', is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Fix the middle letter.</strong></p>
+            <p>The middle letter is M. This is 1 choice.</p>
+            <p><strong>Step 2: Choose the two letters before M.</strong></p>
+            <p>There are 12 letters before M. We need to choose 2. Number of ways = <code>12C2 = 66</code>.</p>
+            <p><strong>Step 3: Choose the two letters after M.</strong></p>
+            <p>There are 13 letters after M. We need to choose 2. Number of ways = <code>13C2 = 78</code>.</p>
+            <p><strong>Step 4: Find the total number of ways.</strong></p>
+            <p>Total ways = (Ways to choose letters before M) * (Ways to choose M) * (Ways to choose letters after M)</p>
+            <p>Total ways = <code>66 * 1 * 78 = 5148</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the total number of ways as <strong>5148</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 10 is (1).</p>
+        <p><strong>Result:</strong> The derived answer <strong>5148</strong> matches option (1). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

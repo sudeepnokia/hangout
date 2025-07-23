@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Radioactive Decay</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .statement { border: 1px solid #bdc3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: The Nature of Radioactive Decay</h1>
+    <p>This guide explains the fundamental principles of radioactive decay, focusing on the decay constant and half-life.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Random Nature of Decay</h2>
+        <div class="concept">
+            <p>Radioactive decay is the process by which an unstable atomic nucleus loses energy by radiation. This process is fundamentally <span class="highlight">random and spontaneous</span> at the level of a single atom. We can never predict when a specific nucleus will decay.</p>
+            <p>Because it is a nuclear process, it is <span class="highlight">not affected by external physical or chemical conditions</span> like temperature, pressure, or chemical bonding. The forces inside the nucleus are immensely stronger than the forces that govern chemical reactions or thermal vibrations.</p>
+            <p>The rate of decay depends only on the type of nucleus and the number of nuclei present.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (1):</strong> Decay constant increases with increase in temperature.</p>
+                <p><strong>Statement (3):</strong> Decay constant does not depend upon temperature.</p>
+            </div>
+            <strong>Question:</strong> Which of these statements is correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>As explained in the concept, radioactive decay is a nuclear phenomenon, independent of external conditions like temperature.</p>
+            <p>The <span class="highlight">decay constant (&lambda;)</span> is a measure of the probability of decay per unit time for a single nucleus. Since the process itself is independent of temperature, the decay constant must also be independent of temperature.</p>
+            <p>Therefore, Statement (1) is false, and <strong>Statement (3) is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Half-Life -->
+    <div class="phase">
+        <h2>Phase 2: Half-Life and the Decay Equation</h2>
+        <div class="concept">
+            <p>Since we can't predict the decay of a single atom, we talk about the <span class="highlight">half-life (t&frac12;)</span>. This is the time it takes for half of the radioactive nuclei in a sample to decay.</p>
+            <p>The number of radioactive nuclei remaining (N) after a certain time (t) is given by:</p>
+            <p><code>N = N₀ * (1/2)^(t / t&frac12;)</code></p>
+            <ul>
+                <li><code>N₀</code> is the initial number of nuclei.</li>
+                <li><code>t</code> is the time elapsed.</li>
+                <li><code>t&frac12;</code> is the half-life.</li>
+            </ul>
+            <p>Let's see what happens after 1, 2, and 3 half-lives:</p>
+            <ul>
+                <li>After 1 half-life (t = t&frac12;): N = N₀ * (1/2)¹ = N₀/2 (Half remains)</li>
+                <li>After 2 half-lives (t = 2t&frac12;): N = N₀ * (1/2)² = N₀/4 (A quarter remains)</li>
+                <li>After 3 half-lives (t = 3t&frac12;): N = N₀ * (1/2)³ = N₀/8 (An eighth remains)</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (2):</strong> Amount of radioactive substance remained after three half lives is 1/8 th of original amount.</p>
+            </div>
+            <strong>Question:</strong> Is this statement correct?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Using the formula or the logic from the concept section, after three half-lives, the amount remaining is:</p>
+            <p><code>N = N₀ * (1/2)³ = N₀ * (1/8)</code></p>
+            <p>So, 1/8th of the original amount remains. <strong>Statement (2) is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Connecting Half-Life and the Decay Constant -->
+    <div class="phase">
+        <h2>Phase 3: The Link Between &lambda; and t&frac12;</h2>
+        <div class="concept">
+            <p>The decay constant (&lambda;) and the half-life (t&frac12;) are two ways of describing the same decay process. They are related by a simple formula derived from the exponential decay law (<code>N = N₀e^(-&lambda;t)</code>).</p>
+            <p><strong>The Relationship:</strong> <code>t&frac12; = ln(2) / &lambda;</code></p>
+            <p>Where <code>ln(2)</code> is the natural logarithm of 2, which is approximately 0.693.</p>
+            <p>We can rearrange this to be: <code>&lambda; = ln(2) / t&frac12;</code> or <code>t&frac12; * &lambda; = ln(2)</code>.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Statement (4):</strong> Half life is ln 2 times of 1/rate constant.</p>
+            </div>
+            <strong>Question:</strong> Is this statement correct? (Note: "rate constant" is another name for decay constant, &lambda;).
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>The statement says: <code>Half life = ln(2) * (1 / rate constant)</code></p>
+            <p>Let's write this in symbols: <code>t&frac12; = ln(2) * (1 / &lambda;)</code></p>
+            <p>This can be rewritten as <code>t&frac12; = ln(2) / &lambda;</code>.</p>
+            <p>This is the exact formula that relates half-life and the decay constant. <strong>Statement (4) is correct.</strong></p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p>The question asks for the statement that is <span class="highlight">not true</span> for radioactive decay.</p>
+        <p>Let's review our findings:</p>
+        <ul>
+            <li><strong>Statement (1):</strong> Decay constant increases with temperature. &rarr; <span class="highlight">FALSE</span>.</li>
+            <li><strong>Statement (2):</strong> Amount remaining after 3 half-lives is 1/8. &rarr; <strong>TRUE</strong>.</li>
+            <li><strong>Statement (3):</strong> Decay constant does not depend on temperature. &rarr; <strong>TRUE</strong>.</li>
+            <li><strong>Statement (4):</strong> Half life = ln(2) / &lambda;. &rarr; <strong>TRUE</strong>.</li>
+        </ul>
+        <p>The only statement that is not true is Statement (1).</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 62 is (1).</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

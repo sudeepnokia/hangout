@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Electromagnetism</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Electromagnetism</h1>
+    <p>This guide will build your understanding from basic kinematics and electric forces to solving a JEE-level problem about an electron moving in an electric field.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Motion in One Dimension</h2>
+        <p>The electron enters with a horizontal velocity and the electric field is vertical. This means the horizontal and vertical motions are independent.</p>
+        <p>The horizontal velocity remains constant. We can use this to find the time the electron spends between the plates.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> The plates are 10 cm (0.1 m) long and the horizontal velocity is 10⁶ m/s. How long does the electron spend in the electric field?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Time = Distance / Speed</p>
+            <p><code>t = 0.1 m / 10⁶ m/s = 10⁻⁷ s</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Electric Force and Acceleration -->
+    <div class="phase">
+        <h2>Phase 2: Force and Acceleration in an Electric Field</h2>
+        <p>The electric field (E) exerts a force (F) on a charge (q) given by <code>F = qE</code>. By Newton's second law, this force causes an acceleration (a) given by <code>F = ma</code>.</p>
+        <p>Combining these, the vertical acceleration of the electron is <code>a = qE/m</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> The electric field is 9.1 V/cm. Convert this to V/m. Then calculate the vertical acceleration of the electron.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>E = 9.1 V/cm * 100 cm/m = 910 V/m</code>.</p>
+            <p><code>a = (1.6 * 10⁻¹⁹ C) * (910 V/m) / (9.1 * 10⁻³¹ kg)</code></p>
+            <p><code>a = (1.6 * 10⁻¹⁹ * 100 * 9.1) / (9.1 * 10⁻³¹) = 1.6 * 10¹⁴ m/s²</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the Final Vertical Velocity -->
+    <div class="phase">
+        <h2>Phase 3: Kinematics in the Vertical Direction</h2>
+        <p>Now we can use the standard kinematic equation <code>v = u + at</code> to find the final vertical velocity (v_y). The initial vertical velocity (u_y) is 0.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Using the time from Phase 1 and the acceleration from Phase 2, calculate the final vertical velocity of the electron as it emerges from the plates.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>v_y = 0 + (1.6 * 10¹⁴ m/s²) * (10⁻⁷ s)</code></p>
+            <p><code>v_y = 1.6 * 10⁷ m/s</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now you have all the components to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 26:</strong> An electron is made to enter symmetrically between two parallel and equally but oppositely charged metal plates, each of 10 cm length. The electron emerges out of the electric field region with a horizontal component of velocity 10⁶ m/s. If the magnitude of the electric field between the plates is 9.1 V/cm, then the vertical component of velocity of electron is (mass of electron = 9.1 × 10⁻³¹ kg and charge of electron = 1.6 × 10⁻¹⁹C)
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the time of flight.</strong></p>
+            <p>From Phase 1, <code>t = 10⁻⁷ s</code>.</p>
+            <p><strong>Step 2: Find the vertical acceleration.</strong></p>
+            <p>From Phase 2, <code>a = 1.6 * 10¹⁴ m/s²</code>.</p>
+            <p><strong>Step 3: Calculate the final vertical velocity.</strong></p>
+            <p>From Phase 3, <code>v_y = at = (1.6 * 10¹⁴) * (10⁻⁷) = 1.6 * 10⁷ m/s</code>.</p>
+            <p>The options are given in terms of 16 * 10^n. Let's convert our answer.</p>
+            <p><code>1.6 * 10⁷ = 16 * 10⁶ m/s</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the vertical component of velocity as <strong>16 × 10⁶ m/s</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 26 is (3).</p>
+        <p><strong>Result:</strong> The derived answer <strong>16 × 10⁶ m/s</strong> matches option (3). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Vectors</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Vectors</h1>
+    <p>This guide will build your understanding from the basics of vector projection to solving a JEE-level problem involving vector magnitudes and areas.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Projection of a Vector</h2>
+        <p>The projection of a vector <code>b</code> onto another vector <code>a</code> is the "shadow" that <code>b</code> casts on <code>a</code>. The formula for the projection vector (let's call it <code>c</code>) is:</p>
+        <p><code>c = ( (a · b) / |a|² ) * a</code></p>
+        <p>where <code>a · b</code> is the dot product and <code>|a|</code> is the magnitude of a.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Find the projection vector <code>c</code> of <code>b = xi + 4k</code> onto <code>a = i + 2j + 2k</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>First, calculate the dot product <code>a · b</code>:</p>
+            <p><code>a · b = (1)(x) + (2)(0) + (2)(4) = x + 8</code>.</p>
+            <p>Next, find the squared magnitude of <code>a</code>:</p>
+            <p><code>|a|² = 1² + 2² + 2² = 1 + 4 + 4 = 9</code>.</p>
+            <p>Now, plug these into the formula:</p>
+            <p><code>c = ( (x+8) / 9 ) * (i + 2j + 2k)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Using the Magnitude Condition -->
+    <div class="phase">
+        <h2>Phase 2: Solving for an Unknown</h2>
+        <p>The problem gives us a clue about the magnitude of the sum of two vectors: <code>|a + c| = 7</code>. We can use this to solve for the unknown x.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Use the condition <code>|a + c| = 7</code> to find the value of x.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>First, let's find the vector <code>a + c</code>:</p>
+            <p><code>a + c = a + ( (x+8)/9 )a = (1 + (x+8)/9)a = ((9+x+8)/9)a = ((x+17)/9)a</code>.</p>
+            <p>Now, let's find its magnitude:</p>
+            <p><code>|a + c| = |((x+17)/9)a| = |(x+17)/9| * |a|</code>.</p>
+            <p>We know <code>|a| = √9 = 3</code>. So, <code>|a + c| = |(x+17)/9| * 3 = |x+17|/3</code>.</p>
+            <p>We are given that this equals 7: <code>|x+17|/3 = 7</code> => <code>|x+17| = 21</code>.</p>
+            <p>This gives two possibilities: <code>x+17 = 21</code> or <code>x+17 = -21</code>.</p>
+            <p><code>x = 4</code> or <code>x = -38</code>. The problem states x > 0, so we must have <strong>x = 4</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Area of a Parallelogram -->
+    <div class="phase">
+        <h2>Phase 3: The Geometric Meaning of the Cross Product</h2>
+        <p>The magnitude of the cross product of two vectors, <code>|b x c|</code>, gives the area of the parallelogram formed by those two vectors.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Calculate the area of the parallelogram formed by vectors <code>b</code> and <code>c</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>We have <code>b = 4i + 4k</code> (since x=4).</p>
+            <p>And <code>c = ((4+8)/9)a = (12/9)a = (4/3)a = (4/3)(i + 2j + 2k)</code>.</p>
+            <p>Area = <code>|b x c| = |(4i + 4k) x (4/3)(i + 2j + 2k)|</code></p>
+            <p>Area = <code>(4/3) * |(i+k) x (i+2j+2k)|</code> (factoring out 4 from b)</p>
+            <p>The cross product is: <code>(i+k) x (i+2j+2k) = | i j k | = i(2-0) - j(2-1) + k(2-0) = 2i - j + 2k</code>.</p>
+            <p>The magnitude of this vector is <code>√(2² + (-1)² + 2²) = √9 = 3</code>.</p>
+            <p>So, the area is <code>(4/3) * 4 * 3 = 16</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now you have all the components to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 23:</strong> Let c be the projection vector of b = xi + 4k, x > 0, on the vector a = i + 2j + 2k. If |a + c| = 7, then the area of the parallelogram formed by the vectors b and c is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find x.</strong></p>
+            <p>From Phase 2, we found that x=4.</p>
+            <p><strong>Step 2: Find the vectors b and c.</strong></p>
+            <p><code>b = 4i + 4k</code>.</p>
+            <p><code>c = (4/3)(i + 2j + 2k)</code>.</p>
+            <p><strong>Step 3: Calculate the area of the parallelogram.</strong></p>
+            <p>From Phase 3, we found the area to be <code>|b x c| = 16</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the area as <strong>16</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the answer for Question 23 is 16.</p>
+        <p><strong>Result:</strong> The derived answer <strong>16</strong> matches the official answer key. The solution is correct.</p>
+    </div>
+
+</body>
+</html>

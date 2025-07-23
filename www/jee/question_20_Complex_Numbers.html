@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Complex Numbers</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Complex Numbers</h1>
+    <p>This guide will build your understanding from the basics of complex numbers to solving a JEE-level problem involving their geometric interpretation.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Polar Form of Complex Numbers</h2>
+        <p>A complex number z can be written in polar form as <code>z = r(cosθ + isinθ) = re^(iθ)</code>, where r is the magnitude (|z|) and θ is the argument (arg(z)).</p>
+        <p>The problem states that z₁, z₂, and z₃ are on the circle |z|=1, which means their magnitude is 1. So, we can write them as:</p>
+        <p>z₁ = e^(iθ₁), z₂ = e^(iθ₂), z₃ = e^(iθ₃)</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Given arg(z₁) = π/6, arg(z₂) = π/3, and arg(z₃) = 2π/3, write the three complex numbers in polar form.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>z₁ = e^(iπ/6)</p>
+            <p>z₂ = e^(iπ/3)</p>
+            <p>z₃ = e^(i2π/3)</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: A Key Property of Unimodular Complex Numbers -->
+    <div class="phase">
+        <h2>Phase 2: The Sum of Unimodular Complex Numbers</h2>
+        <p>If a set of complex numbers z₁, z₂, z₃ all have a magnitude of 1, there is a very useful property: <code>|z₁ + z₂ + z₃| = |1/z₁ + 1/z₂ + 1/z₃|</code>. This is because for a unimodular complex number, <code>1/z = z̄</code> (the conjugate).</p>
+        <p>The problem asks for <code>|z₁z₂ + z₂z₃ + z₃z₁|²</code>. Let's see if we can relate this to the sum.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> How can we rewrite the expression <code>z₁z₂ + z₂z₃ + z₃z₁</code> using the sum z₁ + z₂ + z₃?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Let's factor out z₁z₂z₃:</p>
+            <p><code>z₁z₂ + z₂z₃ + z₃z₁ = z₁z₂z₃ * (1/z₃ + 1/z₁ + 1/z₂)</code></p>
+            <p>Taking the magnitude of both sides:</p>
+            <p><code>|z₁z₂ + z₂z₃ + z₃z₁| = |z₁z₂z₃| * |1/z₁ + 1/z₂ + 1/z₃|</code></p>
+            <p>Since |z₁|=|z₂|=|z₃|=1, we have |z₁z₂z₃| = 1. So,</p>
+            <p><code>|z₁z₂ + z₂z₃ + z₃z₁| = |1/z₁ + 1/z₂ + 1/z₃|</code></p>
+            <p>Using the property mentioned above, this is equal to <code>|z₁ + z₂ + z₃|</code>.</p>
+            <p>Therefore, <code>|z₁z₂ + z₂z₃ + z₃z₁|² = |z₁ + z₂ + z₃|²</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Calculating the Sum -->
+    <div class="phase">
+        <h2>Phase 3: Finding the Sum Geometrically</h2>
+        <p>Now we need to find <code>|z₁ + z₂ + z₃|²</code>. Let's find the sum z₁ + z₂ + z₃ by converting to Cartesian coordinates (a+bi).</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Convert z₁, z₂, and z₃ to Cartesian form and find their sum.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>z₁ = cos(π/6) + isin(π/6) = √3/2 + i/2</p>
+            <p>z₂ = cos(π/3) + isin(π/3) = 1/2 + i√3/2</p>
+            <p>z₃ = cos(2π/3) + isin(2π/3) = -1/2 + i√3/2</p>
+            <p>Sum = (√3/2 + 1/2 - 1/2) + i(1/2 + √3/2 + √3/2) = √3/2 + i(1/2 + √3)</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we have all the components to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 20:</strong> Let z₁, z₂ and z₃ be three complex numbers on the circle |z| = 1 with arg(z₁) = π/6, arg(z₂) = π/3 and arg(z₃) = 2π/3. If |z₁z₂ + z₂z₃ + z₃z₁|² = α + β√2, α, β ∈ Z, then the value of α² + β² is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Use the property from Phase 2.</strong></p>
+            <p><code>|z₁z₂ + z₂z₃ + z₃z₁|² = |z₁ + z₂ + z₃|²</code>.</p>
+            <p><strong>Step 2: Calculate the sum and its squared magnitude.</strong></p>
+            <p>From Phase 3, the sum is <code>√3/2 + i(1/2 + √3)</code>. Let's recheck the arguments. arg(z1)=pi/6, arg(z2)=pi/3, arg(z3)=2pi/3. This is incorrect in the PDF. The arguments should be π/6, π/2, 2π/3 for the solution to work out. Let's assume the arguments are π/4, π/2, 3π/4. Then z1=1/√2+i/√2, z2=i, z3=-1/√2+i/√2. Sum = i(1+2/√2) = i(1+√2). |Sum|² = (1+√2)² = 1+2+2√2 = 3+2√2. α=3, β=2. α²+β²=13. This is not an option.</p>
+            <p>Let's use the arguments given in the PDF. z₁=√3/2+i/2, z₂=1/2+i√3/2, z₃=-1/2+i√3/2. Sum = (√3/2) + i(1/2+√3). |Sum|² = (√3/2)² + (1/2+√3)² = 3/4 + 1/4 + √3 + 3 = 4 + √3. This is not in the form α+β√2.</p>
+            <p>Let's assume the arguments are 0, π/4, π/2. z₁=1, z₂=1/√2+i/√2, z₃=i. Sum = (1+1/√2) + i(1+1/√2). |Sum|² = 2(1+1/√2)² = 2(1+√2+1/2) = 3+2√2. α=3, β=2. α²+β²=13. Still not an option.</p>
+            <p>Let's assume the arguments are -π/4, 0, π/4. z₁=1/√2-i/√2, z₂=1, z₃=1/√2+i/√2. Sum = 1+2/√2 = 1+√2. |Sum|² = (1+√2)² = 3+2√2. α=3, β=2. α²+β²=13. Still not an option.</p>
+            <p>There seems to be a significant error in the question statement or the options provided in the PDF. Let's assume the intended answer is 29. Then α²+β²=29. Possible integer pairs are (2,5) or (5,2). Let's try to get α=5, β=2. So we need |Sum|² = 5+2√2. This is not easily obtained.</p>
+            <p>Let's assume the question intended to ask for <code>|z₁+z₂|² + |z₂+z₃|² + |z₃+z₁|²</code>. This would be <code>(z₁+z₂)(z̄₁+z̄₂) + ... = 2(|z₁|²+|z₂|²+|z₃|²) + (z₁z̄₂+z₂z̄₁ + ...) = 6 + 2Re(z₁z̄₂+z₂z̄₃+z₃z̄₁)</code>. This is also getting complicated.</p>
+            <p>Given the provided solution is 29, there is a high probability of a typo in the question. I cannot derive the given answer from the question as stated.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> A definitive answer cannot be determined due to inconsistencies in the problem statement.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 20 is (2).</p>
+        <p><strong>Result:</strong> The derived answer does not match the official answer key. This is due to a likely error in the question as presented in the PDF.</p>
+    </div>
+
+</body>
+</html>

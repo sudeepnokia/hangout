@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Definite Integrals</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Definite Integrals</h1>
+    <p>This guide will build your understanding from basic algebra and trigonometry to solving a complex definite integral problem from the JEE Main exam.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Simplifying with Factoring and Trig Identities</h2>
+        <p>Complex expressions can often be simplified. A key trigonometric identity is <code>tan²x + 1 = sec²x</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Simplify the expression <code>f(x) = 7tan⁸x + 7tan⁶x - 3tan⁴x - 3tan²x</code> by factoring.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>First, group similar terms:</p>
+            <p><code>f(x) = (7tan⁸x + 7tan⁶x) - (3tan⁴x + 3tan²x)</code></p>
+            <p>Factor out the common parts in each group:</p>
+            <p><code>f(x) = 7tan⁶x(tan²x + 1) - 3tan²x(tan²x + 1)</code></p>
+            <p>Now, we can factor out the <code>(tan²x + 1)</code> term:</p>
+            <p><code>f(x) = (7tan⁶x - 3tan²x)(tan²x + 1)</code></p>
+            <p>Using the identity <code>tan²x + 1 = sec²x</code>, we get:</p>
+            <p><code>f(x) = (7tan⁶x - 3tan²x)sec²x</code>. This is much simpler!</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Integration by Substitution -->
+    <div class="phase">
+        <h2>Phase 2: A Powerful Integration Technique</h2>
+        <p>Integration by substitution is a technique we use when the function we're integrating is the result of a chain rule differentiation. We look for a function and its derivative in the integral.</p>
+        <p>The derivative of <code>tan(x)</code> is <code>sec²(x)</code>. Our simplified f(x) has both!</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Let's calculate <code>I₁ = ∫(from 0 to π/4) f(x)dx</code>. Use the substitution <code>u = tanx</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Our integral is <code>I₁ = ∫(from 0 to π/4) (7tan⁶x - 3tan²x)sec²x dx</code>.</p>
+            <p>Let <code>u = tanx</code>. Then <code>du = sec²x dx</code>.</p>
+            <p>We also need to change the limits of integration. When <code>x=0</code>, <code>u=tan(0)=0</code>. When <code>x=π/4</code>, <code>u=tan(π/4)=1</code>.</p>
+            <p>The integral becomes: <code>I₁ = ∫(from 0 to 1) (7u⁶ - 3u²) du</code>.</p>
+            <p>Now, this is a simple polynomial to integrate:</p>
+            <p><code>I₁ = [u⁷ - u³]</code> from 0 to 1.</p>
+            <p><code>I₁ = (1⁷ - 1³) - (0⁷ - 0³) = 1 - 1 = 0</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Integration by Parts -->
+    <div class="phase">
+        <h2>Phase 3: Integration by Parts</h2>
+        <p>When we have a product of functions to integrate, like <code>x * f(x)</code>, we often use Integration by Parts. The formula is <code>∫u dv = uv - ∫v du</code>.</p>
+        <p>For our problem, <code>I₂ = ∫(from 0 to π/4) x * f(x) dx</code>. We can choose <code>u=x</code> and <code>dv = f(x)dx</code>.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> If we set <code>dv = f(x)dx</code>, what is <code>v</code>?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>v = ∫f(x)dx</code>. This is the indefinite integral version of I₁.</p>
+            <p>From our work in Phase 2, the integral of <code>(7u⁶ - 3u²)du</code> is <code>u⁷ - u³</code>. Substituting back <code>u=tanx</code>, we get:</p>
+            <p><code>v = tan⁷x - tan³x</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You have all the tools. Now let's solve the full problem.</p>
+        <div class="question">
+            <strong>Question 6:</strong> Let for f(x) = 7tan⁸x + 7tan⁶x - 3tan⁴x - 3tan²x, I₁ = ∫(from 0 to π/4) f(x)dx and I₂ = ∫(from 0 to π/4) xf(x)dx. Then 7I₁ + 12I₂ is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Calculate I₁.</strong></p>
+            <p>From Phase 2, we found that <code>I₁ = 0</code>.</p>
+            <p><strong>Step 2: Calculate I₂ using Integration by Parts.</strong></p>
+            <p><code>I₂ = ∫(from 0 to π/4) x * f(x) dx</code></p>
+            <p>Let <code>u=x</code> and <code>dv=f(x)dx</code>. Then <code>du=dx</code> and <code>v = tan⁷x - tan³x</code>.</p>
+            <p><code>I₂ = [x(tan⁷x - tan³x)](from 0 to π/4) - ∫(from 0 to π/4) (tan⁷x - tan³x)dx</code>.</p>
+            <p>The first part is <code>(π/4)(1-1) - 0 = 0</code>.</p>
+            <p>So, <code>I₂ = -∫(from 0 to π/4) (tan⁷x - tan³x)dx = -∫(from 0 to π/4) tan³x(tan⁴x-1)dx</code>.</p>
+            <p><code>I₂ = -∫(from 0 to π/4) tan³x(tan²x-1)(tan²x+1)dx = -∫(from 0 to π/4) tan³x(tan²x-1)sec²x dx</code>.</p>
+            <p>Substitute <code>u=tanx</code>, <code>du=sec²x dx</code>. Limits are 0 to 1.</p>
+            <p><code>I₂ = -∫(from 0 to 1) u³(u²-1)du = -[u⁶/6 - u⁴/4](from 0 to 1) = -(1/6 - 1/4) = 1/12</code>.</p>
+            <p><strong>Step 3: Calculate the final expression.</strong></p>
+            <p><code>7I₁ + 12I₂ = 7(0) + 12(1/12) = 0 + 1 = 1</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of 7I₁ + 12I₂ as <strong>1</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 6 is (2).</p>
+        <p><strong>Result:</strong> The derived answer <strong>1</strong> matches option (2). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

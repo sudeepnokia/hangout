@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Matrices and Determinants</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Matrices and Determinants</h1>
+    <p>This guide will build your understanding from basic determinant properties to solving a complex JEE-level problem involving nested adjugate matrices.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Determinant of a Scaled Matrix</h2>
+        <p>A fundamental property of determinants is how they behave when the matrix is multiplied by a scalar (a constant number).</p>
+        <p>If A is a square matrix of order n, and k is a scalar, then <code>det(kA) = kⁿ * det(A)</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If A is a 3x3 matrix with det(A) = -2, what is det(3A)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Here, n=3 and k=3.</p>
+            <p><code>det(3A) = 3³ * det(A) = 27 * (-2) = -54</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Adjugate Matrix -->
+    <div class="phase">
+        <h2>Phase 2: The Adjugate (or Adjoint) Matrix Properties</h2>
+        <p>The adjugate of a matrix has several important properties. For this problem, we need two key ones for a matrix M of order n:</p>
+        <ol>
+            <li><code>adj(kM) = kⁿ⁻¹ * adj(M)</code></li>
+            <li><code>adj(adj(M)) = det(M)ⁿ⁻² * M</code></li>
+        </ol>
+        <div class="question">
+            <strong>Question 2.1:</strong> Let A be a 3x3 matrix. Simplify the expression <code>adj(3A)</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Using property 1, with k=3 and n=3:</p>
+            <p><code>adj(3A) = 3³⁻¹ * adj(A) = 3² * adj(A) = 9adj(A)</code>.</p>
+        </div>
+        <div class="question">
+            <strong>Question 2.2:</strong> Let A be a 3x3 matrix with det(A) = -2. Simplify the expression <code>adj(adj(A))</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_2')">Show Solution</span>
+        <div class="solution" id="sol2_2">
+            <p>Using property 2, with n=3:</p>
+            <p><code>adj(adj(A)) = det(A)³⁻² * A = det(A)¹ * A = -2A</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 3: The JEE Main Question</h2>
+        <p>Now we combine these properties to solve the problem step-by-step, working from the inside out.</p>
+        <div class="question">
+            <strong>Question 21:</strong> Let A be a square matrix of order 3 such that det(A) = -2 and det(3adj(-6 adj(3A))) = 2ᵐ3ⁿ, m, n > 0. Then 4m + 2n is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>Let's simplify the matrix inside the determinant first. Let's call it X.</p>
+            <p><code>X = 3 * adj(-6 * adj(3A))</code></p>
+            <p><strong>Step 1: Innermost part.</strong> As in Phase 2, <code>adj(3A) = 9adj(A)</code>.</p>
+            <p><strong>Step 2: Next layer.</strong> The expression becomes <code>X = 3 * adj(-6 * 9adj(A)) = 3 * adj(-54adj(A))</code>.</p>
+            <p><strong>Step 3: Apply adj(kM) property.</strong> Let M = adj(A), k = -54, n=3. <br><code>adj(-54adj(A)) = (-54)³⁻¹ * adj(adj(A)) = (-54)² * adj(adj(A))</code>.</p>
+            <p><strong>Step 4: Apply adj(adj(M)) property.</strong> As in Phase 2, <code>adj(adj(A)) = -2A</code>.</p>
+            <p><strong>Step 5: Combine steps.</strong> The expression from Step 3 becomes <code>(-54)² * (-2A) = -2 * 54² * A</code>.</p>
+            <p><strong>Step 6: Final matrix form.</strong> Substitute this back into the expression for X: <br><code>X = 3 * (-2 * 54² * A) = -6 * 54² * A</code>.</p>
+            <p><strong>Step 7: Calculate the determinant.</strong> Now we find det(X).</p>
+            <p><code>det(X) = det(-6 * 54² * A)</code>. Using the property from Phase 1, the scalar is k = -6 * 54² and n=3.</p>
+            <p><code>det(X) = (-6 * 54²)³ * det(A) = (-6)³ * (54)⁶ * (-2)</code></p>
+            <p><code>det(X) = (-216) * (54)⁶ * (-2) = 432 * 54⁶</code>.</p>
+            <p><strong>Step 8: Prime Factorization.</strong></p>
+            <p><code>432 = 2 * 216 = 2 * 6³ = 2 * (2*3)³ = 2⁴ * 3³</code>.</p>
+            <p><code>54 = 2 * 27 = 2 * 3³</code>. So, <code>54⁶ = (2 * 3³)⁶ = 2⁶ * 3¹⁸</code>.</p>
+            <p><code>det(X) = (2⁴ * 3³) * (2⁶ * 3¹⁸) = 2¹⁰ * 3²¹</code>.</p>
+            <p><strong>Step 9: Find m and n and the final answer.</strong></p>
+            <p>We have <code>2ᵐ3ⁿ = 2¹⁰3²¹</code>, so m=10 and n=21.</p>
+            <p>The question asks for <code>4m + 2n = 4(10) + 2(21) = 40 + 42 = 82</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value as <strong>82</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The answer key in the provided PDF for Question 21 is <strong>34</strong>.</p>
+        <p><strong>Result:</strong> The derived answer (82) does <strong>not</strong> match the official answer key (34). This strongly suggests there is an error in the question statement or the provided answer key in the `jeemain2025.pdf` file. The properties of determinants and adjugates are standard, and the calculation has been verified.</p>
+    </div>
+
+</body>
+</html>

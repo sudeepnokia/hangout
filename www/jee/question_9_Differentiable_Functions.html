@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Differentiable Functions</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Differentiable Functions</h1>
+    <p>This guide will build your understanding from basic differentiation to solving a JEE-level problem involving functional equations.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Definition of a Derivative</h2>
+        <p>The derivative of a function f(x), written as f'(x), is defined as: <code>f'(x) = lim(h->0) [f(x+h) - f(x)] / h</code>. This represents the instantaneous rate of change of the function.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> A function satisfies the equation <code>f(x+y) = f(x) + f(y)</code>. Find f'(x) using the definition of the derivative.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p><code>f'(x) = lim(h->0) [f(x+h) - f(x)] / h</code></p>
+            <p>Using the given property, <code>f(x+h) = f(x) + f(h)</code>.</p>
+            <p><code>f'(x) = lim(h->0) [f(x) + f(h) - f(x)] / h = lim(h->0) f(h) / h</code>.</p>
+            <p>Also, <code>f'(0) = lim(h->0) [f(0+h) - f(0)] / h = lim(h->0) f(h)/h</code> (since f(0)=0 from the original property).</p>
+            <p>So, <code>f'(x) = f'(0)</code>, which means the derivative is a constant.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: A More Complex Functional Equation -->
+    <div class="phase">
+        <h2>Phase 2: Differentiating a Functional Equation</h2>
+        <p>The given problem has a more complex functional equation: <code>f(x+y) = f(x)f'(y) + f'(x)f(y)</code>. This looks like the sine addition formula: <code>sin(a+b) = sin(a)cos(b) + cos(a)sin(b)</code>. This suggests that f(x) might be related to sin(kx) and f'(x) to cos(kx).</p>
+        <p>Let's try to find f'(x) by differentiating the functional equation with respect to x (treating y as a constant).</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Differentiate <code>f(x+y) = f(x)f'(y) + f'(x)f(y)</code> with respect to x.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>f'(x+y) = f'(x)f'(y) + f''(x)f(y)</code>.</p>
+            <p>Now, let x=0. <code>f'(y) = f'(0)f'(y) + f''(0)f(y)</code>.</p>
+            <p>Let's try differentiating with respect to y (treating x as a constant).</p>
+            <p><code>f'(x+y) = f(x)f''(y) + f'(x)f'(y)</code>.</p>
+            <p>Comparing the two expressions for f'(x+y), we get: <code>f'(x)f'(y) + f''(x)f(y) = f(x)f''(y) + f'(x)f'(y)</code>.</p>
+            <p><code>f''(x)f(y) = f(x)f''(y)</code> => <code>f''(x)/f(x) = f''(y)/f(y)</code>. This means that this ratio is a constant, let's say k.</p>
+            <p>So, <code>f''(x) = kf(x)</code>. This is a second-order linear differential equation.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Solving the Differential Equation -->
+    <div class="phase">
+        <h2>Phase 3: Solving f''(x) = kf(x)</h2>
+        <p>The solution to this differential equation depends on the sign of k. Let's find k.</p>
+        <p>From <code>f'(y) = f'(0)f'(y) + f''(0)f(y)</code>, we have <code>f''(0)f(y) = f'(y)(1-f'(0))</code>. So <code>f''(0)/f(y) = (1-f'(0))/f'(y)</code>. This doesn't seem to lead anywhere.</p>
+        <p>Let's try another approach. Let's assume f(x) = A*sin(ax+b). Then f'(x) = A*a*cos(ax+b). f(0)=1 => A*sin(b)=1. f(x+y) = A*sin(a(x+y)+b). f(x)f'(y)+f'(x)f(y) = A*sin(ax+b)*A*a*cos(ay+b) + A*a*cos(ax+b)*A*sin(ay+b) = A²a*sin(a(x+y)+2b). This is not working.</p>
+        <p>Let's go back to the original equation and set y=0. <code>f(x) = f(x)f'(0) + f'(x)f(0)</code>. We are given f(0)=1. So, <code>f(x) = f(x)f'(0) + f'(x)</code>. <code>f'(x) = f(x)(1-f'(0))</code>. Let <code>1-f'(0) = k</code>. Then <code>f'(x) = kf(x)</code>. This is a first-order linear differential equation.</p>
+        <p><code>dy/dx = ky</code> => <code>dy/y = kdx</code> => <code>ln|y| = kx + C</code> => <code>y = A*e^(kx)</code>. So <code>f(x) = A*e^(kx)</code>.</p>
+        <p>We are given f(0)=1, so <code>A*e^0 = 1</code> => <code>A=1</code>. So <code>f(x) = e^(kx)</code>.</p>
+        <p>Then <code>f'(x) = k*e^(kx)</code>. <code>f'(0) = k</code>. From <code>1-f'(0)=k</code>, we get <code>1-k=k</code> => <code>2k=1</code> => <code>k=1/2</code>.</p>
+        <p>So, <code>f(x) = e^(x/2)</code>.</p>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now we have the function, we can solve the final problem.</p>
+        <div class="question">
+            <strong>Question 9:</strong> Let f(x) be a real differentiable function such that f(0) = 1 and f(x + y) = f(x)f'(y) + f'(x)f(y) for all x,y ∈ R. Then Σ(from n=1 to 100) logₑf(n) is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find the function f(x).</strong></p>
+            <p>From our work in Phase 3, we found that <code>f(x) = e^(x/2)</code>.</p>
+            <p><strong>Step 2: Find logₑf(n).</strong></p>
+            <p><code>logₑf(n) = logₑ(e^(n/2)) = n/2</code>.</p>
+            <p><strong>Step 3: Calculate the summation.</strong></p>
+            <p>We need to find <code>Σ(from n=1 to 100) n/2</code>.</p>
+            <p><code>= 1/2 * Σ(from n=1 to 100) n</code>.</p>
+            <p>The sum of the first N integers is given by <code>N(N+1)/2</code>.</p>
+            <p><code>= 1/2 * (100 * 101 / 2) = 1/2 * 5050 = 2525</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of the summation as <strong>2525</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 9 is (1).</p>
+        <p><strong>Result:</strong> The derived answer <strong>2525</strong> matches option (1). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

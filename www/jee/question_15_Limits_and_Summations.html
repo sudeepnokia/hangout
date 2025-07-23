@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Limits and Summations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Limits and Summations</h1>
+    <p>This guide will build your understanding from the method of differences to solving a JEE-level problem involving the limit of a summation.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Method of Differences (Telescoping Series)</h2>
+        <p>Sometimes, a complex fraction can be broken down into the difference of two simpler fractions. This is a powerful technique for simplifying summations.</p>
+        <p>The key is to find A and B such that <code>1/((2r-1)(2r+1)) = A/(2r-1) + B/(2r+1)</code>. Multiplying by the denominator gives <code>1 = A(2r+1) + B(2r-1)</code>. By choosing strategic values for r (like 1/2 and -1/2), we can find A and B.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Find A and B for the expression <code>1/((2r-1)(2r+1))</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>If r = 1/2, <code>1 = A(2) => A = 1/2</code>.</p>
+            <p>If r = -1/2, <code>1 = B(-2) => B = -1/2</code>.</p>
+            <p>So, <code>1/((2r-1)(2r+1)) = (1/2) * [1/(2r-1) - 1/(2r+1)]</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Applying the Method to a Summation -->
+    <div class="phase">
+        <h2>Phase 2: The Telescoping Sum</h2>
+        <p>When we sum terms that are differences, most of the terms cancel out. This is called a telescoping series.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> Let's find the sum <code>S = Σ(from r=1 to n) 1/((2r-1)(2r+1))</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>S = (1/2) * Σ [1/(2r-1) - 1/(2r+1)]</code></p>
+            <p>Let's write out the first few terms:</p>
+            <p>r=1: (1/2) * [1/1 - 1/3]</p>
+            <p>r=2: (1/2) * [1/3 - 1/5]</p>
+            <p>r=3: (1/2) * [1/5 - 1/7]</p>
+            <p>... a lot of terms cancel ...</p>
+            <p>r=n: (1/2) * [1/(2n-1) - 1/(2n+1)]</p>
+            <p>The only terms that don't cancel are the very first and the very last.</p>
+            <p><code>S = (1/2) * [1 - 1/(2n+1)] = (1/2) * [2n / (2n+1)] = n / (2n+1)</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Limit of a Function -->
+    <div class="phase">
+        <h2>Phase 3: What Happens as n Gets Very Large?</h2>
+        <p>The concept of a limit at infinity is about finding the value a function approaches as the input (n) grows without bound. A simple way to do this for rational functions is to divide every term by the highest power of n in the denominator.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Find the limit of the sum we found in Phase 2 as n approaches infinity: <code>lim(n->∞) n / (2n+1)</code>.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>Divide the numerator and denominator by n:</p>
+            <p><code>lim(n->∞) (n/n) / ((2n/n) + (1/n)) = lim(n->∞) 1 / (2 + 1/n)</code>.</p>
+            <p>As n gets infinitely large, 1/n becomes 0.</p>
+            <p>So the limit is <code>1 / (2 + 0) = 1/2</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>The JEE question is a bit more complex, but it uses the exact same principles.</p>
+        <div class="question">
+            <strong>Question 15:</strong> If T = Σ(from r=1 to n) 1/((2r-1)(2r+1)(2r+3)(2r+5)), then lim(n->∞) n * T is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Use the method of differences.</strong></p>
+            <p>Let's try to express the term as a difference: <code>A/((2r-1)(2r+1)) - A/((2r+3)(2r+5))</code>. This doesn't work easily.</p>
+            <p>Let's try a different difference: <code>V(r) - V(r+1)</code> where <code>V(r) = 1/((2r-1)(2r+1)(2r+3))</code>. This is a common pattern.</p>
+            <p><code>V(r) - V(r+1) = 1/((2r-1)(2r+1)(2r+3)) - 1/((2r+1)(2r+3)(2r+5))</code></p>
+            <p><code>= [ (2r+5) - (2r-1) ] / ((2r-1)(2r+1)(2r+3)(2r+5)) = 6 / (...)</code></p>
+            <p>So, the term in the sum is <code>(1/6) * [V(r) - V(r+1)]</code>.</p>
+            <p><strong>Step 2: Apply the telescoping sum.</strong></p>
+            <p><code>T = (1/6) * [ (V(1)-V(2)) + (V(2)-V(3)) + ... + (V(n)-V(n+1)) ]</code></p>
+            <p><code>T = (1/6) * [ V(1) - V(n+1) ]</code></p>
+            <p><code>V(1) = 1 / (1*3*5) = 1/15</code>.</p>
+            <p><code>V(n+1) = 1 / ((2n+1)(2n+3)(2n+5))</code>.</p>
+            <p><code>T = (1/6) * [ 1/15 - 1/((2n+1)(2n+3)(2n+5)) ]</code>.</p>
+            <p><strong>Step 3: Find the limit.</strong></p>
+            <p>We need <code>lim(n->∞) n * T</code>.</p>
+            <p><code>lim(n->∞) (n/6) * [ 1/15 - 1/((2n+1)(2n+3)(2n+5)) ]</code></p>
+            <p>As n->∞, the second term inside the bracket goes to 0. So we have:</p>
+            <p><code>lim(n->∞) (n/6) * (1/15) = lim(n->∞) n/90</code>. This goes to infinity. There must be a mistake.</p>
+            <p>Let's re-read the question. It asks for <code>lim(n->∞) n * T</code>. Let's re-check the telescoping sum. It seems correct. Let's re-check the limit. It also seems correct. Let's re-read the question again. It seems there is a typo in the question. Let's assume the question was <code>lim(n->∞) T</code>. Then the answer would be <code>(1/6) * (1/15) = 1/90</code>. This is not among the options.</p>
+            <p>Let's assume the question was <code>lim(n->∞) n^3 * T</code>. Then we would have <code>lim (n^3/6) * [1/15 - 1/(8n^3...)]</code> which would be infinite. Let's assume the question was <code>lim(n->∞) n^4 * T</code>. This would also be infinite.</p>
+            <p>Let's assume the question was about the sum <code>Σ 1/((2r-1)(2r+1))</code>. Then T = n/(2n+1). lim nT = lim n²/(2n+1) = ∞. Let's assume the question was about <code>Σ 1/((r)(r+1))</code>. T = 1 - 1/(n+1). lim nT = lim n(1-1/(n+1)) = lim n*n/(n+1) = ∞.</p>
+            <p>There seems to be an error in the question or options. Let's assume the answer is 1/5. Let's try to work backwards. If lim nT = 1/5, then T must be of the form 1/(5n). Let's see if we can get that. T = (1/6) * [1/15 - ...]. For large n, T is approx 1/90. So nT is approx n/90. This does not converge.</p>
+            <p>Let's assume the question was <code>Σ 1/((2r-1)(2r+1)(2r+3))</code>. Then V(r) = 1/((2r-1)(2r+1)). V(r)-V(r+1) = [ (2r+3)-(2r-1) ] / ... = 4/... So the term is (1/4)[V(r)-V(r+1)]. T = (1/4)[V(1)-V(n+1)] = (1/4)[1/3 - 1/((2n+1)(2n+3))]. lim nT = lim (n/4)[1/3] = ∞.</p>
+            <p>Given the provided solution is 2/5, there is a high probability of a typo in the question. I cannot derive the given answer from the question as stated.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> A definitive answer cannot be determined due to inconsistencies in the problem statement. The calculated limit diverges.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 15 is (2).</p>
+        <p><strong>Result:</strong> The derived answer does not match the official answer key. This is due to a likely error in the question as presented in the PDF.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Photoelectric Effect</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: The Photoelectric Effect</h1>
+    <p>This guide explains how light can knock electrons out of a metal, a phenomenon that puzzled early physicists and led to the birth of quantum mechanics.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Light as a Particle (Photon)</h2>
+        <div class="concept">
+            <p>We often think of light as a wave, but Albert Einstein proposed that light can also behave like a stream of tiny energy packets called <span class="highlight">photons</span>.</p>
+            <p>The energy of a single photon depends on the light's wavelength (λ) or frequency (f).</p>
+            <p><strong>Photon Energy Formula:</strong> <code>E = h * f = h * c / &lambda;</code></p>
+            <ul>
+                <li><code>E</code> is the energy of one photon.</li>
+                <li><code>h</code> is Planck's constant.</li>
+                <li><code>c</code> is the speed of light.</li>
+                <li><code>&lambda;</code> is the wavelength of the light.</li>
+            </ul>
+            <p>A very useful shortcut for calculations is the combined value <code>hc &asymp; 1240 eV&middot;nm</code>. This gives the energy in electron-volts (eV) if you plug in the wavelength in nanometers (nm).</p>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> A beam of light has a wavelength of 550 nm. What is the energy of a single photon in this beam, in electron-volts (eV)?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We use the handy shortcut formula:</p>
+            <p><code>E = 1240 eV&middot;nm / &lambda;</code></p>
+            <p><code>E = 1240 / 550 eV</code></p>
+            <p><code>E &asymp; 2.25 eV</code></p>
+            <p>So, each photon in this light beam carries about 2.25 eV of energy.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Price of Freedom -->
+    <div class="phase">
+        <h2>Phase 2: The Work Function</h2>
+        <div class="concept">
+            <p>Electrons in a metal are held inside it. To pull an electron out of the metal, you need to give it a certain minimum amount of energy. This "escape energy" is called the <span class="highlight">Work Function (Φ)</span>.</p>
+            <p>Every metal has its own unique work function. Some metals hold their electrons tightly (high work function), while others let them go more easily (low work function).</p>
+            <p>Think of it like an admission fee. If a photon hits the metal, it gives all its energy to one electron. If the photon's energy is less than the work function, the electron can't "pay the fee" and remains trapped inside.</p>
+        </div>
+        <div class="problem">
+            <strong>Question:</strong> A metal has a work function of 2.5 eV. A photon with 2.25 eV of energy hits the metal. Will an electron be ejected?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Energy of incoming photon = 2.25 eV.</p>
+            <p>Energy required to escape (Work Function) = 2.5 eV.</p>
+            <p>Since <code>2.25 eV < 2.5 eV</code>, the photon does not have enough energy to pay the escape fee. No electron will be ejected.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Photoelectric Equation -->
+    <div class="phase">
+        <h2>Phase 3: The Condition for the Photoelectric Effect</h2>
+        <div class="concept">
+            <p>The photoelectric effect (the ejection of electrons by light) only happens if the energy of the incoming photon (E) is <span class="highlight">greater than or equal to</span> the work function (Φ) of the metal.</p>
+            <p><strong>Condition:</strong> <code>E &ge; &Phi;</code></p>
+            <p>Or, using the photon energy formula:</p>
+            <p><code>(h * c / &lambda;) &ge; &Phi;</code></p>
+            <p>Any extra energy the photon has beyond the work function becomes the kinetic energy (moving energy) of the ejected electron, but for this problem, we only need to know if the effect happens at all.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> The work functions of cesium (Cs) and lithium (Li) metals are 1.9 eV and 2.5 eV, respectively. If we incident a light of wavelength 550 nm on these two metal surfaces, then photo-electric effect is possible for the case of:</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>We need to check the condition from Phase 3 for each metal.</p>
+            <p><strong>Step 1: Calculate the energy of the incoming photons.</strong></p>
+            <p>From our warm-up question in Phase 1, we already did this!</p>
+            <p>The light has a wavelength <code>&lambda; = 550 nm</code>.</p>
+            <p>The energy of each photon is <code>E = 1240 / 550 &asymp; 2.25 eV</code>.</p>
+            <p><strong>Step 2: Check the condition for Cesium (Cs).</strong></p>
+            <p>Work function of Cesium, <code>&Phi;_Cs = 1.9 eV</code>.</p>
+            <p>Is <code>E &ge; &Phi;_Cs</code>?</p>
+            <p>Is <code>2.25 eV &ge; 1.9 eV</code>? Yes, it is.</p>
+            <p>So, the photoelectric effect <span class="highlight">is possible</span> for Cesium.</p>
+            <p><strong>Step 3: Check the condition for Lithium (Li).</strong></p>
+            <p>Work function of Lithium, <code>&Phi;_Li = 2.5 eV</code>.</p>
+            <p>Is <code>E &ge; &Phi;_Li</code>?</p>
+            <p>Is <code>2.25 eV &ge; 2.5 eV</code>? No, it is not.</p>
+            <p>So, the photoelectric effect <span class="highlight">is not possible</span> for Lithium.</p>
+            <p><strong>Conclusion:</strong> The effect is only possible for Cesium.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The photoelectric effect is possible for <strong>Cs only</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 40 is (3), which corresponds to <strong>Cs only</strong>.</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

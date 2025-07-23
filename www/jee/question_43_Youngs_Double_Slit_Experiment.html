@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Young's Double Slit Experiment</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .statement { border: 1px solid #bdc3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Interference and Young's Double Slit Experiment</h1>
+    <p>This guide explains the famous experiment that demonstrated the wave nature of light and how the pattern changes in different media.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: The Basic Setup and Fringe Width</h2>
+        <div class="concept">
+            <p>In Young's Double Slit Experiment (YDSE), light passes through two narrow, parallel slits, creating a pattern of bright and dark bands (fringes) on a screen. This pattern is caused by the interference of light waves from the two slits.</p>
+            <p>The <span class="highlight">fringe width (&beta;)</span> is the distance between the centers of two consecutive bright fringes (or two consecutive dark fringes).</p>
+            <p><strong>Fringe Width Formula:</strong> <code>&beta; = &lambda;D / d</code></p>
+            <ul>
+                <li><code>&beta;</code>: The fringe width.</li>
+                <li><code>&lambda;</code>: The wavelength of the light.</li>
+                <li><code>D</code>: The distance from the slits to the screen.</li>
+                <li><code>d</code>: The distance between the two slits.</li>
+            </ul>
+        </div>
+        <div class="problem">
+            <strong>Warm-up Question:</strong> In a YDSE setup, if you use light with a longer wavelength, what happens to the distance between the bright fringes?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>From the formula <code>&beta; = &lambda;D / d</code>, we can see that the fringe width <code>&beta;</code> is directly proportional to the wavelength <code>&lambda;</code>.</p>
+            <p>So, if you use light with a longer wavelength, the fringe width will increase. The bright fringes will be spaced further apart.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Light in a Medium -->
+    <div class="phase">
+        <h2>Phase 2: A Step Up - Light Traveling Through a Medium</h2>
+        <div class="concept">
+            <p>When light enters a medium (like water or glass) from a vacuum (or air), two things change:</p>
+            <ol>
+                <li>Its <span class="highlight">speed decreases</span>.</li>
+                <li>Its <span class="highlight">wavelength decreases</span>.</li>
+            </ol>
+            <p>The one thing that <span class="highlight">does not change</span> is its <strong>frequency (f)</strong>. The frequency is determined by the source of the light and remains constant.</p>
+            <p>The refractive index (n) of a medium tells us how much the speed and wavelength change.</p>
+            <p><code>n = (Speed of light in vacuum) / (Speed of light in medium) = c / v</code></p>
+            <p><code>n = (Wavelength in vacuum) / (Wavelength in medium) = &lambda;_vac / &lambda;_med</code></p>
+            <p>This gives us a crucial relationship: <code>&lambda;_med = &lambda;_vac / n</code>. The wavelength inside a medium is shorter than in a vacuum.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Reason (R):</strong> The speed of light reduces in an optically denser medium than air while its frequency does not change.</p>
+            </div>
+            <strong>Question:</strong> Is the statement given in the Reason (R) true or false?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>This is the fundamental definition of what happens when light enters a denser medium. The speed slows down, the wavelength gets shorter, but the frequency (the number of wave crests passing a point per second) stays the same. The statement is a correct piece of physics theory.</p>
+            <p>Therefore, <span class="highlight">Reason (R) is true.</span></p>
+        </div>
+    </div>
+
+    <!-- Phase 3: YDSE in a Medium -->
+    <div class="phase">
+        <h2>Phase 3: Putting It All Together</h2>
+        <div class="concept">
+            <p>What happens if you perform the entire YDSE experiment submerged in a medium with refractive index 'n' (like water)?</p>
+            <p>The only thing in our fringe width formula that changes is the wavelength of the light. The distances D and d stay the same.</p>
+            <p>The new wavelength is <code>&lambda;' = &lambda;_air / n</code>.</p>
+            <p>So the new fringe width, &beta;', will be:</p>
+            <p><code>&beta;' = &lambda;'D / d = (&lambda;_air / n) * D / d = (&lambda;_air * D / d) / n</code></p>
+            <p><code>&beta;' = &beta;_air / n</code></p>
+            <p>Since for a denser medium n > 1, the new fringe width <code>&beta;'</code> will be <span class="highlight">smaller</span> than the fringe width in air. The fringes get closer together.</p>
+        </div>
+        <div class="problem">
+            <div class="statement">
+                <p><strong>Assertion (A):</strong> If Young's double slit experiment is performed in an optically denser medium than air, then the consecutive fringes come closer.</p>
+            </div>
+            <strong>Question:</strong> Is the Assertion (A) true or false?
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>As we derived in the concept, performing the experiment in a denser medium (n > 1) reduces the fringe width by a factor of n (<code>&beta;' = &beta;_air / n</code>).</p>
+            <p>If the fringe width is smaller, it means the fringes are closer together.</p>
+            <p>Therefore, <span class="highlight">Assertion (A) is true.</span></p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Given below are two statements : one is labelled as Assertion (A) and the other is labelled as Reason (R).</p>
+            <p><strong>Assertion (A) :</strong> If Young's double slit experiment is performed in an optically denser medium than air, then the consecutive fringes come closer.</p>
+            <p><strong>Reason (R) :</strong> The speed of light reduces in an optically denser medium than air while its frequency does not change.</p>
+            <p>In the light of the above statements, choose the most appropriate answer from the options given below.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze both statements and their relationship.</p>
+            <p><strong>1. Check if A is true:</strong> From Phase 3, we confirmed that in a denser medium, the fringe width decreases (<code>&beta;' = &beta;/n</code>), so the fringes come closer. <strong>Assertion (A) is true.</strong></p>
+            <p><strong>2. Check if R is true:</strong> From Phase 2, we confirmed that when light enters a denser medium, its speed decreases but its frequency remains constant. <strong>Reason (R) is true.</strong></p>
+            <p><strong>3. Check if R is the correct explanation for A:</strong> Now we must see if the reason *causes* the assertion.</p>
+            <ul>
+                <li>The assertion (fringes get closer) is about the fringe width (&beta;).</li>
+                <li>The formula for fringe width is <code>&beta; = &lambda;D/d</code>.</li>
+                <li>The reason states that in the medium, speed (v) decreases and frequency (f) is constant.</li>
+                <li>The relationship between speed, frequency, and wavelength is <code>v = f&lambda;</code>.</li>
+                <li>If v decreases and f is constant, then wavelength <code>&lambda; = v/f</code> must also decrease.</li>
+                <li>Since &lambda; decreases, the fringe width <code>&beta;</code> must also decrease.</li>
+            </ul>
+            <p>The logic flows perfectly. The reason (speed decreases, frequency is constant) leads directly to the conclusion that the wavelength decreases, which in turn is the direct cause for the assertion (fringes get closer). Therefore, R is the correct explanation for A.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Both (A) and (R) are true, and (R) is the correct explanation of (A).</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 43 is (2), which states "Both (A) and (R) are true and (R) is the correct explanation of (A)".</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

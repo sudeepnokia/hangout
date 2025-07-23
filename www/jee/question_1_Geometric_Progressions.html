@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Geometric Progressions</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Geometric Progressions</h1>
+    <p>This guide will build your understanding from the ground up, so you can solve a real JEE Main problem on your own.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Sequence?</h2>
+        <p>In math, a sequence is just a list of numbers in a specific order. A special type of sequence is a <strong>Geometric Progression (GP)</strong>, where you get from one number to the next by multiplying by the same number every time. We call this number the <strong>common ratio (r)</strong>.</p>
+        <p>Example: The sequence 2, 6, 18, 54... is a GP because you multiply by 3 each time. Here, r=3.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If the first term of a GP is 4 and the common ratio is 2, what is the 5th term?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Term 1: 4</p>
+            <p>Term 2: 4 * 2 = 8</p>
+            <p>Term 3: 8 * 2 = 16</p>
+            <p>Term 4: 16 * 2 = 32</p>
+            <p>Term 5: 32 * 2 = 64. The 5th term is 64.</p>
+            <p>Notice a pattern? The nth term is the first term multiplied by r, (n-1) times. Formula: <code>aₙ = a * rⁿ⁻¹</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Using the Nth Term Formula -->
+    <div class="phase">
+        <h2>Phase 2: A Smarter Way to Write Terms</h2>
+        <p>Instead of writing out the whole sequence, we can use the formula <code>aₙ = a * rⁿ⁻¹</code>. Let's use this to connect different terms.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> If the first term is 'a' and ratio is 'r', write the 1st and 5th terms using the formula. What is their product (a₁ * a₅)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>a₁ = a * r¹⁻¹ = a * r⁰ = a</p>
+            <p>a₅ = a * r⁵⁻¹ = ar⁴</p>
+            <p>Product: a₁ * a₅ = a * ar⁴ = a²r⁴ = (ar²)²</p>
+            <p>Interesting! Notice that ar² is the 3rd term (a₃). So, <code>a₁ * a₅ = a₃²</code>. This is a useful shortcut!</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Solving for Unknowns -->
+    <div class="phase">
+        <h2>Phase 3: Finding Unknowns from Clues</h2>
+        <p>Now let's use the ideas from Phase 2 to solve a puzzle. This is the core skill for the JEE problem.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> In a GP, we are told that the product of the 1st and 5th term is 49 (<code>a₁a₅ = 49</code>). What is the 3rd term (a₃)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>From our shortcut in Phase 2, we know <code>a₁a₅ = a₃²</code>.</p>
+            <p>So, <code>a₃² = 49</code>.</p>
+            <p>Taking the square root, <code>a₃ = 7</code> (assuming positive terms).</p>
+        </div>
+        <div class="question">
+            <strong>Question 3.2:</strong> We are also told the sum of the 2nd and 4th term is 14.5 (<code>a₂ + a₄ = 14.5</code>). Can you write this using 'a' and 'r'?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_2')">Show Solution</span>
+        <div class="solution" id="sol3_2">
+            <p>a₂ = ar</p>
+            <p>a₄ = ar³</p>
+            <p>So, <code>ar + ar³ = 14.5</code>. We can factor this: <code>a(r + r³) = 14.5</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You now have all the skills. The numbers are just a bit different. Try to solve it yourself first!</p>
+        <div class="question">
+            <strong>Question 1:</strong> Let a₁, a₂, a₃, . . . be a G.P. of increasing positive terms. If a₁a₅ = 28 and a₂ + a₄ = 29, then a₆ is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Use the product clue.</strong></p>
+            <p><code>a₁a₅ = a₃² = 28</code>. So, <code>a₃ = √28 = 2√7</code>.</p>
+            <p><strong>Step 2: Use the sum clue.</strong></p>
+            <p><code>a₂ + a₄ = ar + ar³ = a(r + r³) = 29</code>. This is not as helpful. Let's try expressing it using a₃:</p>
+            <p><code>a₂ = a₃/r</code> and <code>a₄ = a₃*r</code>. So, <code>a₃/r + a₃*r = 29</code>.</p>
+            <p><code>a₃(1/r + r) = 29</code>.</p>
+            <p><strong>Step 3: Solve for r.</strong></p>
+            <p>Substitute a₃: <code>2√7 * (1/r + r) = 29</code>. Multiply by r: <code>2√7(1 + r²) = 29r</code>.</p>
+            <p>This is a quadratic: <code>2√7r² - 29r + 2√7 = 0</code>. Using the quadratic formula gives <code>r = 2√7</code> or <code>r = 1/(2√7)</code>. Since the terms are "increasing", r must be > 1. So, <code>r = 2√7</code>.</p>
+            <p><strong>Step 4: Find a₆.</strong></p>
+            <p>We want a₆. We know a₃. <code>a₆ = a₃ * r³</code>.</p>
+            <p><code>a₆ = (2√7) * (2√7)³ = (2√7)⁴ = 2⁴ * (√7)⁴ = 16 * 49 = 784</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of a₆ as <strong>784</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 1 is (4).</p>
+        <p><strong>Result:</strong> The derived answer <strong>784</strong> matches option (4). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

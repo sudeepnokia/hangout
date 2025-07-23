@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Resistivity and Temperature</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: How Temperature Affects Resistance</h1>
+    <p>This guide explains how the electrical resistance of different types of materials changes as they get hotter or colder.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is Resistivity?</h2>
+        <div class="concept">
+            <p><strong>Resistance (R)</strong> is a measure of how much a specific object (like a piece of wire) opposes the flow of electric current. It's measured in Ohms (&Omega;).</p>
+            <p><strong>Resistivity (&rho;)</strong> is a more fundamental property of a <span class="highlight">material</span> itself. It tells you how resistive that substance is, regardless of its shape or size. A material with low resistivity is a good conductor (like copper), and a material with high resistivity is a poor conductor (like rubber).</p>
+            <p>The question asks about resistivity (&rho;) versus temperature (T), which is a fundamental material property.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Conductors (Metals) -->
+    <div class="phase">
+        <h2>Phase 2: Conductors - The Traffic Jam Analogy</h2>
+        <div class="concept">
+            <p>In a metal conductor, electrons flow freely. Think of them as cars on a highway.</p>
+            <p>When you <span class="highlight">increase the temperature</span>, the metal atoms themselves start vibrating more and more violently. These vibrating atoms get in the way of the flowing electrons, causing more "collisions".</p>
+            <p>It's like adding random, shaking obstacles to the highway. The flow of traffic (current) is obstructed more. Therefore, for conductors:</p>
+            <p><strong>As Temperature (&uarr;), Resistivity (&uarr;).</strong></p>
+            <p>The relationship is nearly linear for a wide range of temperatures. The graph of &rho; vs. T is a line that slopes upwards.</p>
+            <img src="https://i.imgur.com/9X7v7qg.png" alt="Resistivity vs Temperature for a Conductor">
+        </div>
+    </div>
+
+    <!-- Phase 3: Semiconductors -->
+    <div class="phase">
+        <h2>Phase 3: Semiconductors - The Reluctant Employee Analogy</h2>
+        <div class="concept">
+            <p>In a semiconductor (like silicon), electrons are not as free as in a metal. They need an energy boost to break free and conduct electricity.</p>
+            <p>When you <span class="highlight">increase the temperature</span>, you are giving these electrons the energy they need to break free and become charge carriers. More heat means more free electrons available to carry current.</p>
+            <p>It's like an office where employees need a lot of coffee (energy) to start working. More coffee (heat) means more employees get up and start moving (conducting).</p>
+            <p>Even though the collisions from Phase 2 also increase, the effect of creating more charge carriers is much more dominant. Therefore, for semiconductors:</p>
+            <p><strong>As Temperature (&uarr;), Resistivity (&darr;).</strong></p>
+            <p>The relationship is not linear; it's an exponential decay. The graph of &rho; vs. T is a curve that slopes downwards.</p>
+            <img src="https://i.imgur.com/3y8gL4e.png" alt="Resistivity vs Temperature for a Semiconductor">
+        </div>
+    </div>
+
+    <!-- Phase 4: The Final Phase -->
+    <div class="phase">
+        <h2>Phase 4: The Summit - The JEE Main Question</h2>
+        <div class="problem">
+            <p><strong>Original Question:</strong> Which of the following resistivity (&rho;) v/s temperature (T) curves is most suitable to be used in wire bound standard resistors?</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's think about what makes a good "standard resistor". A standard resistor is used as a reference in circuits. You want its resistance to be reliable and predictable. If you build a circuit with a 100 &Omega; standard resistor, you want it to be 100 &Omega; whether your room is cold or hot.</p>
+            <p>This means the ideal material for a standard resistor is one whose <span class="highlight">resistivity changes very little with temperature</span>.</p>
+            <p>Let's analyze the graphs provided in the question:</p>
+            <ul>
+                <li><strong>Graph (1):</strong> Shows resistivity decreasing sharply as temperature increases. This is the behavior of a <span class="highlight">semiconductor</span>. Not good for a standard resistor.</li>
+                <li><strong>Graph (2):</strong> Shows resistivity increasing sharply and linearly as temperature increases. This is the behavior of a typical <span class="highlight">metal conductor</span>. Also not ideal, as its resistance would change a lot with temperature.</li>
+                <li><strong>Graph (3):</strong> Shows resistivity decreasing, similar to a semiconductor. Not suitable.</li>
+                <li><strong>Graph (4):</strong> Shows a material that has a certain resistivity, and as the temperature increases, that resistivity <span class="highlight">barely changes at all</span>. The line is almost flat.</li>
+            </ul>
+            <p>This fourth graph represents the ideal behavior for a standard resistor. We want a material that is insensitive to temperature changes.</p>
+            <p>Materials like this exist! They are special alloys, such as Manganin or Constantan, which are specifically engineered to have a very low temperature coefficient of resistivity. They are used to make high-precision, wire-wound standard resistors.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> The most suitable curve is the one where resistivity is nearly constant with respect to temperature, which is <strong>Graph (4)</strong>.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 45 is (4).</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

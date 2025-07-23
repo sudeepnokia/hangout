@@ -1,0 +1,25 @@
+{
+  "selectedAuthType": "oauth-personal",
+  "preferredEditor": "vim",
+  "theme": "GitHub",
+  "mcpServers": {
+    "oai-public-demo": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://public-mcp-demo-oai.agent-ready.ai/mcp",
+        "--transport",
+        "http-only"
+      ]
+    },
+    "geocoding": {
+      "command": "./node_modules/.bin/mcp",
+      "args": [],
+      "timeout": 15000,
+      "env": {
+        "NOMINATIM_URL": "https://nominatim.openstreetmap.org"
+      }
+    }
+  }
+}

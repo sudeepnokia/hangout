@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Differential Equations</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Differential Equations</h1>
+    <p>This guide will build your understanding from basic algebra to solving a JEE-level differential equation.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What is a Differential Equation?</h2>
+        <p>A differential equation is just an equation that contains a derivative (like dy/dx). It connects a function with its rate of change. The goal is to find the original function.</p>
+        <p>The simplest type is a <strong>Linear Differential Equation</strong>. For our problem, the standard form we are looking for is: <code>dx/dy + P(y)x = Q(y)</code>. Here, P(y) and Q(y) are just expressions involving the variable y.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> Take the equation <code>y * (dx/dy) + x = y²</code>. Can you rearrange it to match the standard form <code>dx/dy + P(y)x = Q(y)</code>? What are P(y) and Q(y)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>To get <code>dx/dy</code> by itself, we need to divide the entire equation by <code>y</code>.</p>
+            <p><code>(y * (dx/dy))/y + x/y = y²/y</code></p>
+            <p><code>dx/dy + (1/y)x = y</code></p>
+            <p>This perfectly matches the standard form! By comparing, we can see:</p>
+            <p><code>P(y) = 1/y</code></p>
+            <p><code>Q(y) = y</code></p>
+        </div>
+    </div>
+
+    <!-- Phase 2: The Magic Tool - Integrating Factor -->
+    <div class="phase">
+        <h2>Phase 2: The Integrating Factor (IF)</h2>
+        <p>To solve equations in this form, we use a special tool called the Integrating Factor (IF). It's a function we multiply the whole equation by to make it easy to solve. The formula for it is: <code>IF = e^(∫P(y)dy)</code>.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> From Phase 1, we know <code>P(y) = 1/y</code>. Calculate the Integrating Factor.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>First, we need to find the integral of P(y):</p>
+            <p><code>∫P(y)dy = ∫(1/y)dy = ln(y)</code> (the natural logarithm of y).</p>
+            <p>Now, we plug this into the IF formula:</p>
+            <p><code>IF = e^(ln(y))</code></p>
+            <p>Since <code>e</code> and <code>ln</code> are inverse functions, they cancel each other out.</p>
+            <p><code>IF = y</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Finding the General Solution -->
+    <div class="phase">
+        <h2>Phase 3: Putting It All Together</h2>
+        <p>Once you have the IF, the solution is found using this template: <code>x * (IF) = ∫(Q(y) * IF)dy + C</code>. The 'C' is a constant of integration that we find later.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Using your IF from Phase 2 (<code>IF=y</code>) and Q(y) from Phase 1 (<code>Q(y)=y</code>), find the general solution.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p><code>x * y = ∫(y * y)dy + C</code></p>
+            <p><code>xy = ∫y²dy + C</code></p>
+            <p>Now, we integrate y²:</p>
+            <p><code>xy = y³/3 + C</code></p>
+            <p>This is called the "general solution". To find the specific answer, we need one more clue.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You have now learned all the steps. The final problem just adds one last clue to find the constant C.</p>
+        <div class="question">
+            <strong>Question 2:</strong> Let x = x(y) be the solution of the differential equation y(dx/dy) + (x - y²) = 0. If x(1) = 1, then x(1/e) is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Get the General Solution.</strong></p>
+            <p>From our previous phases, we know the general solution to <code>y(dx/dy) + x = y²</code> is <code>xy = y³/3 + C</code>.</p>
+            <p><strong>Step 2: Use the clue to find C.</strong></p>
+            <p>The clue is <code>x(1) = 1</code>, which means "when y=1, x=1". Let's plug this in:</p>
+            <p><code>(1)(1) = (1)³/3 + C</code></p>
+            <p><code>1 = 1/3 + C  =>  C = 1 - 1/3 = 2/3</code>.</p>
+            <p>So the specific solution is <code>xy = y³/3 + 2/3</code>.</p>
+            <p><strong>Step 3: Find the final answer.</strong></p>
+            <p>The question asks for <code>x(1/e)</code>, which means "what is x when y = 1/e?".</p>
+            <p><code>x * (1/e) = (1/e)³/3 + 2/3</code></p>
+            <p><code>x/e = 1/(3e³) + 2/3</code></p>
+            <p>Multiply by e: <code>x = e/(3e³) + 2e/3 = 1/(3e²) + 2e/3</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of x(1/e) as <strong>1/(3e²) + 2e/3</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 2 is (3), which is listed as '3 - e'.</p>
+        <p><strong>Result:</strong> The derived answer does <strong>not</strong> match the official answer key. This suggests there is likely an error in the question statement or the provided options in the `jeemain2025.pdf` file, as the derivation for the given linear differential equation is straightforward and has been double-checked.</p>
+    </div>
+
+</body>
+</html>

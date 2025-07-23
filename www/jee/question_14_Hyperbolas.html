@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Hyperbolas</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Hyperbolas</h1>
+    <p>This guide will build your understanding from the basic definition of a hyperbola to solving a JEE-level problem involving its foci and latus rectum.</p>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: What Defines a Hyperbola?</h2>
+        <p>A hyperbola is defined by its two foci (F₁ and F₂) and a constant difference. For any point P on the hyperbola, the absolute difference of the distances from P to the foci is constant: <code>|PF₁ - PF₂| = 2a</code>, where 'a' is the semi-major axis.</p>
+        <p>The distance between the foci is <code>2c</code>, and the center of the hyperbola is the midpoint of the foci.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> The foci of a hyperbola are at (1, 14) and (1, -12). What is the center of the hyperbola? What is the distance between the foci (2c)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>The center is the midpoint: <code>( (1+1)/2, (14-12)/2 ) = (1, 1)</code>.</p>
+            <p>The distance between the foci is <code>14 - (-12) = 26</code>. So, <code>2c = 26</code>, which means <code>c = 13</code>.</p>
+            <p>Since the x-coordinates of the foci are the same, this is a vertical hyperbola.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Using a Point on the Hyperbola -->
+    <div class="phase">
+        <h2>Phase 2: Finding the Constant 'a'</h2>
+        <p>We can use the defining property of the hyperbola and a point on it to find the value of 'a'.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> The hyperbola passes through the point P(1, 6). Using the foci F₁(1, 14) and F₂(1, -12), find the value of 2a.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p><code>PF₁ = √((1-1)² + (14-6)²) = √(0² + 8²) = 8</code>.</p>
+            <p><code>PF₂ = √((1-1)² + (-12-6)²) = √(0² + (-18)²) = 18</code>.</p>
+            <p><code>2a = |PF₁ - PF₂| = |8 - 18| = 10</code>. So, <code>a = 5</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The Hyperbola Identity -->
+    <div class="phase">
+        <h2>Phase 3: Finding 'b' and the Latus Rectum</h2>
+        <p>For any hyperbola, the values a, b, and c are related by the identity: <code>c² = a² + b²</code>.</p>
+        <p>The length of the latus rectum of a hyperbola is given by the formula <code>2b²/a</code>.</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> Using the values of a and c from the previous phases, find b².
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>We have <code>a = 5</code> and <code>c = 13</code>.</p>
+            <p><code>13² = 5² + b²</code></p>
+            <p><code>169 = 25 + b²</code></p>
+            <p><code>b² = 144</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>Now you have all the components to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 14:</strong> Let the foci of a hyperbola be (1, 14) and (1, -12). If it passes through the point (1, 6), then the length of its latus-rectum is:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Find a, b, and c.</strong></p>
+            <p>From Phase 1, we found the center is (1,1) and <code>c = 13</code>.</p>
+            <p>From Phase 2, we used the point (1,6) to find <code>a = 5</code>.</p>
+            <p>From Phase 3, we used the identity c²=a²+b² to find <code>b² = 144</code>.</p>
+            <p><strong>Step 2: Calculate the length of the latus rectum.</strong></p>
+            <p>The formula is <code>2b²/a</code>.</p>
+            <p>Length = <code>2 * 144 / 5 = 288/5</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the length of the latus rectum as <strong>288/5</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 14 is (4).</p>
+        <p><strong>Result:</strong> The derived answer <strong>288/5</strong> matches option (4). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

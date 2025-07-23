@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Main Learning Guide: Periodic Properties</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 0 20px; background-color: #f9f9f9; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .phase { background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .concept { background-color: #eafaf1; border-left: 5px solid #2ecc71; padding: 15px; margin: 15px 0; }
+        .problem { background-color: #fdf2e9; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        .solution { background-color: #ecf0f1; border-left: 5px solid #95a5a6; padding: 15px; margin: 15px 0; display: none; }
+        .toggle-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 10px; }
+        .toggle-btn:hover { background-color: #2980b9; }
+        .final-answer { background-color: #dff9fb; border: 2px solid #00a8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: "Courier New", Courier, monospace; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Guide: Matching Periodic Properties and Trends</h1>
+    <p>This guide reviews four key periodic properties and their trends to help you match them correctly.</p>
+
+    <!-- Phase 1: The Properties -->
+    <div class="phase">
+        <h2>Phase 1: Defining the Properties</h2>
+        <div class="concept">
+            <p>Let's define the four properties from List-II:</p>
+            <ul>
+                <li><strong>(I) Ionisation Enthalpy (IE):</strong> The minimum energy required to remove the most loosely bound electron from an isolated gaseous atom. <br/><em>Trend: Generally increases across a period and decreases down a group.</em></li>
+                <li><strong>(II) Metallic character:</strong> The tendency of an atom to lose electrons and form a positive ion. It's the opposite of electronegativity. <br/><em>Trend: Decreases across a period and increases down a group.</em></li>
+                <li><strong>(III) Electronegativity:</strong> The ability of an atom to attract shared electrons in a chemical bond. <br/><em>Trend: Increases across a period and decreases down a group.</em></li>
+                <li><strong>(IV) Ionic radii:</strong> The radius of an atom's ion. For isoelectronic species (ions with the same number of electrons), the radius <span class="highlight">decreases</span> as the nuclear charge (number of protons) <span class="highlight">increases</span>, because the stronger positive nucleus pulls the same number of electrons in more tightly.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Phase 2: Analyzing the Lists -->
+    <div class="phase">
+        <h2>Phase 2: Matching Trends to Properties</h2>
+        <div class="problem">
+            <p><strong>List-I</strong></p>
+            <p>(A) Al³⁺ < Mg²⁺ < Na⁺ < F⁻</p>
+            <p>(B) B < C < O < N</p>
+            <p>(C) B < Al < Mg < K</p>
+            <p>(D) Si < P < S < Cl</p>
+            <br/>
+            <p><strong>List-II</strong></p>
+            <p>(I) Ionisation Enthalpy</p>
+            <p>(II) Metallic character</p>
+            <p>(III) Electronegativity</p>
+            <p>(IV) Ionic radii</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSolution(this)">Show/Hide Solution</button>
+        <div class="solution">
+            <p>Let's analyze each item in List-I and find its corresponding property from List-II.</p>
+
+            <p><strong>Analysis of (A): Al³⁺ < Mg²⁺ < Na⁺ < F⁻</strong></p>
+            <ul>
+                <li>Let's find the number of electrons in each ion: Al (13p, 10e), Mg (12p, 10e), Na (11p, 10e), F (9p, 10e).</li>
+                <li>These are all <span class="highlight">isoelectronic</span> species. They all have 10 electrons.</li>
+                <li>The property being compared is <span class="highlight">Ionic Radii (IV)</span>.</li>
+                <li>The rule for isoelectronic species is that radius decreases as nuclear charge (number of protons) increases.</li>
+                <li>Order of protons: F (9) < Na (11) < Mg (12) < Al (13).</li>
+                <li>Therefore, the order of radii should be: Al³⁺ < Mg²⁺ < Na⁺ < F⁻.</li>
+                <li>This matches the given order perfectly. So, <span class="highlight">A matches with (IV)</span>.</li>
+            </ul>
+
+            <p><strong>Analysis of (B): B < C < O < N</strong></p>
+            <ul>
+                <li>These elements are all in Period 2. The general trend for both Ionisation Enthalpy (I) and Electronegativity (III) is to increase from left to right (B < C < N < O).</li>
+                <li>However, there is a well-known exception. Nitrogen (N) has a stable, half-filled p-orbital (2p³). Oxygen (O) has a 2p⁴ configuration. It is easier to remove an electron from the already paired-up orbital in oxygen than from the stable half-filled orbital in nitrogen.</li>
+                <li>Therefore, the <span class="highlight">Ionisation Enthalpy (I)</span> of Nitrogen is greater than that of Oxygen.</li>
+                <li>The correct order for IE is B < C < O < N.</li>
+                <li>This matches the given order. So, <span class="highlight">B matches with (I)</span>.</li>
+            </ul>
+
+            <p><strong>Analysis of (C): B < Al < Mg < K</strong></p>
+            <ul>
+                <li>Let's consider the trends. K is in Group 1, Period 4. Mg is Group 2, Period 3. Al is Group 13, Period 3. B is Group 13, Period 2.</li>
+                <li>This order doesn't follow a simple left-to-right or top-to-bottom trend for IE or Electronegativity.</li>
+                <li>Let's consider <span class="highlight">Metallic Character (II)</span>. Metallic character increases down and to the left.</li>
+                <li>K is the most metallic (bottom-left). Mg is more metallic than Al (left of Al). Al is more metallic than B (below B).</li>
+                <li>So the order of increasing metallic character is B < Al < Mg < K.</li>
+                <li>This matches the given order. So, <span class="highlight">C matches with (II)</span>.</li>
+            </ul>
+
+            <p><strong>Analysis of (D): Si < P < S < Cl</strong></p>
+            <ul>
+                <li>These elements are all in Period 3, in order from left to right.</li>
+                <li>Both Ionisation Enthalpy and Electronegativity increase across a period.</li>
+                <li>Let's check for exceptions in IE. P has a half-filled p-orbital (3p³), and S has 3p⁴. So, the IE of P > S. The order for IE would be Si < S < P < Cl. This does not match.</li>
+                <li>Let's check <span class="highlight">Electronegativity (III)</span>. Electronegativity does not have this exception and increases steadily across the period.</li>
+                <li>The correct order for electronegativity is Si < P < S < Cl.</li>
+                <li>This matches the given order. So, <span class="highlight">D matches with (III)</span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="final-answer">
+        <h3>Final Answer Verification</h3>
+        <p>Our derived matches are:</p>
+        <ul>
+            <li>A &rarr; IV (Ionic radii)</li>
+            <li>B &rarr; I (Ionisation Enthalpy)</li>
+            <li>C &rarr; II (Metallic character)</li>
+            <li>D &rarr; III (Electronegativity)</li>
+        </ul>
+        <p>We need to find the option that corresponds to this matching.</p>
+        <p><strong>Official Answer Key:</strong> The correct option for question 61 is (1), which is (A)-(IV), (B)-(I), (C)-(II), (D)-(III).</p>
+        <p><strong>Result:</strong> <span style="color: green; font-weight: bold;">Match!</span> Our step-by-step analysis is correct.</p>
+    </div>
+
+    <script>
+        function toggleSolution(btn) {
+            var solution = btn.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                btn.textContent = "Hide Solution";
+            } else {
+                solution.style.display = "none";
+                btn.textContent = "Show Solution";
+            }
+        }
+    </script>
+
+</body>
+</html>

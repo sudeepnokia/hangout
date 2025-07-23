@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path: Conditional Probability</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0 auto; max-width: 800px; padding: 20px; color: #333; background-color: #fdfdfd; }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #eef; padding-bottom: 10px; }
+        .main-title { text-align: center; color: #003d80; border-bottom: none; }
+        .phase { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .problem-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .question { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .solution { background-color: #e9f7ef; border: 1px solid #a7d7c5; padding: 15px; margin-top: 10px; border-radius: 5px; display: none; }
+        .toggle-solution { cursor: pointer; color: #007bff; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .verification { background-color: #fffbe6; border: 1px solid #ffc107; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-family: "Courier New", Courier, monospace; }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Build Your Skills: Conditional Probability</h1>
+    <p>This guide will build your understanding from basic probability to solving a tricky JEE-level problem about dependent events.</p>
+
+    <div class="problem-box">
+        <strong>The Scenario:</strong> A bag contains <strong>4 White</strong> and <strong>6 Black</strong> balls. Total balls = 10.
+    </div>
+
+    <!-- Phase 1: The Foundation -->
+    <div class="phase">
+        <h2>Phase 1: Basic Probability</h2>
+        <p>Probability is the chance of something happening. The formula is: <code>P(Event) = (Number of ways the event can happen) / (Total number of possible outcomes)</code>.</p>
+        <div class="question">
+            <strong>Question 1.1:</strong> If you pick one ball from the bag, what is the probability it is black?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Number of black balls = 6.</p>
+            <p>Total number of balls = 10.</p>
+            <p>P(Black) = 6 / 10 = 3/5.</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Dependent Events -->
+    <div class="phase">
+        <h2>Phase 2: When One Event Affects Another</h2>
+        <p>Things get interesting when we don't put the first ball back. This is called "without replacement". The first draw changes the probabilities for the second draw.</p>
+        <div class="question">
+            <strong>Question 2.1:</strong> What is the probability of drawing a black ball, and then (without replacing it) drawing another black ball?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>Probability of the first ball being black is <code>P(1st is B) = 6/10</code>.</p>
+            <p>After taking one black ball, the bag now has 5 black balls and 4 white balls (9 total).</p>
+            <p>So, the probability of the second ball being black is now <code>P(2nd is B) = 5/9</code>.</p>
+            <p>The combined probability is the product of the two steps: <code>P(B and then B) = (6/10) * (5/9) = 30/90 = 1/3</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: The "Given That" Clue -->
+    <div class="phase">
+        <h2>Phase 3: Thinking Backwards - Conditional Probability</h2>
+        <p>This is the core idea. What if we know the outcome of the second event, and want to find the probability of the first? This is called <strong>Conditional Probability</strong>.</p>
+        <p>The formula is <code>P(A | B) = P(A and B) / P(B)</code>. It reads "The probability of A happening, given that B happened, is the probability of both happening divided by the total probability of B happening."</p>
+        <div class="question">
+            <strong>Question 3.1:</strong> We need <code>P(B)</code>, the total probability of the second ball being black. A black ball can be picked second in two ways: (Black, Black) or (White, Black). Calculate the total probability.
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>Path 1: P(Black and Black) = 1/3 (from Phase 2).</p>
+            <p>Path 2: P(White and Black) = P(1st is W) * P(2nd is B after W) = (4/10) * (6/9) = 24/90 = 4/15.</p>
+            <p>Total P(2nd is Black) = P(Path 1) + P(Path 2) = 1/3 + 4/15 = 5/15 + 4/15 = 9/15 = 3/5.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: The Summit -->
+    <div class="phase" style="background-color: #e9f7ef; border-color: #a7d7c5;">
+        <h2>Phase 4: The JEE Main Question</h2>
+        <p>You now have all the concepts and values needed to solve the final problem.</p>
+        <div class="question">
+            <strong>Question 3:</strong> Two balls are selected at random one by one without replacement from a bag containing 4 white and 6 black balls. If the probability that the first selected ball is black, given that the second selected ball is also black, is m/n, where gcd(m, n) = 1, then m + n is equal to:
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p><strong>Step 1: Identify the events.</strong></p>
+            <p>A = The first ball is black.</p>
+            <p>B = The second ball is black.</p>
+            <p>We want to find <code>P(A | B)</code>.</p>
+            <p><strong>Step 2: Use the conditional probability formula.</strong></p>
+            <p><code>P(A | B) = P(A and B) / P(B)</code></p>
+            <p><strong>Step 3: Plug in the values from our previous phases.</strong></p>
+            <p><code>P(A and B)</code> is the probability of (Black, Black), which we found in Phase 2 is <strong>1/3</strong>.</p>
+            <p><code>P(B)</code> is the total probability of the second ball being black, which we found in Phase 3 is <strong>3/5</strong>.</p>
+            <p><code>P(A | B) = (1/3) / (3/5) = (1/3) * (5/3) = 5/9</code>.</p>
+            <p><strong>Step 4: Solve the final part of the question.</strong></p>
+            <p>The probability is <code>m/n = 5/9</code>. So, m=5 and n=9. gcd(5,9)=1.</p>
+            <p><code>m + n = 5 + 9 = 14</code>.</p>
+        </div>
+    </div>
+
+    <!-- Final Answer Verification -->
+    <div class="phase verification">
+        <h3>Final Answer Verification</h3>
+        <p><strong>Derived Answer:</strong> Our step-by-step calculation gives the value of m+n as <strong>14</strong>.</p>
+        <p><strong>Official Answer Key:</strong> Looking at the provided PDF, the correct option for Question 3 is (2).</p>
+        <p><strong>Result:</strong> The derived answer <strong>14</strong> matches option (2). The solution is correct.</p>
+    </div>
+
+</body>
+</html>

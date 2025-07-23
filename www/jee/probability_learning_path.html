@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Learning Path: From Basics to JEE Main</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+            background-color: #fdfdfd;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #eef;
+            padding-bottom: 10px;
+        }
+        .main-title {
+            text-align: center;
+            color: #003d80;
+            border-bottom: none;
+        }
+        .phase {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .problem-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .question {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .solution {
+            background-color: #e9f7ef;
+            border: 1px solid #a7d7c5;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .toggle-solution {
+            cursor: pointer;
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var element = document.getElementById(id);
+            var button = element.previousElementSibling;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                element.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1 class="main-title">Step-by-Step Path to a JEE Main Probability Problem</h1>
+    <p>This guide will walk you through the concepts needed to solve a challenging probability question, starting from the very basics. Each phase builds on the previous one.</p>
+
+    <div class="problem-box">
+        <strong>The Scenario:</strong> We have a bag containing <strong>4 White</strong> and <strong>6 Black</strong> balls. The total number of balls is 10.
+    </div>
+
+    <!-- Phase 1: The Basics -->
+    <div class="phase">
+        <h2>Phase 1: The Absolute Basics (Class 9 Level)</h2>
+        <p>Let's start with the fundamental idea of probability.</p>
+        <p>Probability = (Number of favorable outcomes) / (Total number of possible outcomes)</p>
+
+        <div class="question">
+            <strong>Question 1.1:</strong> If you pick one ball from the bag at random, what is the probability that it is black?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol1_1')">Show Solution</span>
+        <div class="solution" id="sol1_1">
+            <p>Number of black balls (favorable outcomes) = 6</p>
+            <p>Total number of balls (total outcomes) = 10</p>
+            <p>Probability of picking a black ball = 6 / 10 = 3 / 5</p>
+        </div>
+    </div>
+
+    <!-- Phase 2: Dependent Events -->
+    <div class="phase">
+        <h2>Phase 2: Dependent Events (Without Replacement)</h2>
+        <p>Things get interesting when we don't put the first ball back in the bag. This is called "without replacement," and it means the outcome of the second draw depends on the first.</p>
+        
+        <div class="question">
+            <strong>Question 2.1:</strong> What is the probability of picking a black ball first, AND then picking another black ball second (without replacement)?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol2_1')">Show Solution</span>
+        <div class="solution" id="sol2_1">
+            <p>This is a two-step event. We calculate the probability of each step and multiply them.</p>
+            <p><strong>Step 1:</strong> Probability of the first ball being black is <code>P(First is B) = 6/10</code>.</p>
+            <p><strong>Step 2:</strong> After taking one black ball, we have 5 black balls left and a total of 9 balls.</p>
+            <p>So, the probability of the second ball being black (given the first was black) is <code>P(Second is B | First was B) = 5/9</code>.</p>
+            <p><strong>Total Probability:</strong> <code>P(First is B AND Second is B) = (6/10) * (5/9) = 30/90 = 1/3</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 3: Total Probability -->
+    <div class="phase">
+        <h2>Phase 3: Finding the Total Probability of an Event</h2>
+        <p>Sometimes, an event can happen in more than one way. To find its total probability, we find the probability of each way and add them up.</p>
+        
+        <div class="question">
+            <strong>Question 3.1:</strong> What is the total probability that the second ball selected is black? (Remember, we don't know the color of the first ball).
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol3_1')">Show Solution</span>
+        <div class="solution" id="sol3_1">
+            <p>The second ball can be black in two different scenarios:</p>
+            <p><strong>Scenario 1:</strong> The first was black AND the second is black.</p>
+            <p>We calculated this in Phase 2: <code>P(B and B) = 1/3</code>.</p>
+            <p><strong>Scenario 2:</strong> The first was white AND the second is black.</p>
+            <p>- Probability of first being white: <code>P(First is W) = 4/10</code>.</p>
+            <p>- If the first was white, we have 6 black balls left and 9 total balls. So, <code>P(Second is B | First was W) = 6/9</code>.</p>
+            <p>- Probability of this scenario: <code>P(W and B) = (4/10) * (6/9) = 24/90 = 4/15</code>.</p>
+            <p><strong>Total Probability:</strong> To get the total probability of the second ball being black, we add the probabilities of these two scenarios.</p>
+            <p><code>P(Second is B) = P(B and B) + P(W and B) = (1/3) + (4/15) = (5/15) + (4/15) = 9/15 = 3/5</code>.</p>
+        </div>
+    </div>
+
+    <!-- Phase 4: Conditional Probability -->
+    <div class="phase">
+        <h2>Phase 4: Introduction to Conditional Probability</h2>
+        <p>This is the heart of the problem. We want to find the probability of an event, given that another event has already happened. The formula is:</p>
+        <p><code>P(A | B) = P(A and B) / P(B)</code></p>
+        <p>In words: "The probability of A happening, given B has happened, is the probability of both happening divided by the probability of B happening."</p>
+        
+        <div class="question">
+            <strong>Question 4.1:</strong> Let's apply this. What is the probability that the first ball was black, given that we know the second ball was black?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol4_1')">Show Solution</span>
+        <div class="solution" id="sol4_1">
+            <p>We are looking for <code>P(First was B | Second was B)</code>.</p>
+            <p>Let A = First ball was black. Let B = Second ball was black.</p>
+            <p>We need to find <code>P(A | B)</code>. Using the formula, we need two pieces of information:</p>
+            <p>1. <code>P(A and B)</code>: Probability of "First was B AND Second was B". We found this in Phase 2. It's <strong>1/3</strong>.</p>
+            <p>2. <code>P(B)</code>: Probability of "Second was B". We found this in Phase 3. It's <strong>3/5</strong>.</p>
+            <p><strong>Calculation:</strong></p>
+            <p><code>P(A | B) = P(A and B) / P(B) = (1/3) / (3/5)</code></p>
+            <p><code>= (1/3) * (5/3) = 5/9</code>.</p>
+            <p>So, the probability that the first ball was black, given the second was black, is 5/9.</p>
+        </div>
+    </div>
+
+    <!-- Phase 5: The JEE Main Question -->
+    <div class="phase" style="background-color: #fffbe6; border-color: #ffc107;">
+        <h2>Phase 5: The Final JEE Main Question</h2>
+        <p>You now have all the skills needed to solve the original question.</p>
+        
+        <div class="question">
+            <strong>JEE Main Question:</strong> Two balls are selected at random one by one without replacement from a bag containing 4 white and 6 black balls. If the probability that the first selected ball is black, given that the second selected ball is also black, is <code>m/n</code>, where gcd(m, n) = 1, then what is <code>m + n</code>?
+        </div>
+        <span class="toggle-solution" onclick="toggleSolution('sol5_1')">Show Solution</span>
+        <div class="solution" id="sol5_1">
+            <p>This question is exactly what we solved in Phase 4!</p>
+            <p>The "probability that the first selected ball is black, given that the second selected ball is also black" is what we calculated as <code>P(First was B | Second was B)</code>.</p>
+            <p>Our calculated probability was <strong>5/9</strong>.</p>
+            <p>So, <code>m/n = 5/9</code>.</p>
+            <p>- <code>m = 5</code></p>
+            <p>- <code>n = 9</code></p>
+            <p>The condition <code>gcd(m, n) = 1</code> means that the fraction should be in its simplest form. gcd(5, 9) is indeed 1.</p>
+            <p>The final step is to calculate <code>m + n</code>.</p>
+            <p><code>m + n = 5 + 9 = 14</code>.</p>
+            <p><strong>The final answer is 14.</strong></p>
+        </div>
+    </div>
+
+</body>
+</html>
