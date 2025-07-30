@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyderabad Itinerary - Modified</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .icon-style {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+        .cost-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        .travel-option-card {
+             background-color: #fafafa;
+             border-radius: 10px;
+             padding: 1rem;
+             transition: all 0.3s ease;
+             border: 1px solid #e5e7eb;
+        }
+        .travel-option-card:hover {
+            border-color: #667eea;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body class="antialiased"><header class="header-bg text-white text-center py-12 sm:py-20">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hyderabad Getaway - Modified Itinerary</h1>
+        <p class="mt-4 text-lg sm:text-xl opacity-90">A 3-Day Heritage & Film City Journey</p>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-8 sm:py-12">
+    
+    <!-- Itinerary Section -->
+    <section id="itinerary" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
+            <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6">
+                <!-- Tabs will be inserted here -->
+            </div>
+            <div id="tab-content">
+                <!-- Content for tabs will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Planning Section -->
+    <section id="planning" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4">Trip Planning</h2>
+            <p class="text-center text-sm text-indigo-600 mb-8">Click the options with the <i data-feather="external-link" class="inline-block w-4 h-4"></i> icon for more details.</p>
+            
+            <!-- Travel Options -->
+            <div class="mb-10">
+                <h3 class="text-xl font-bold mb-4 text-gray-700">Travel Options</h3>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <a href="https://www.google.com/travel/flights?q=Flights%20from%20Bangalore%20to%20HYD%20on%202025-08-15" target="_blank" class="travel-option-card block">
+                        <div class="flex justify-center mb-2"><i data-feather="send" class="icon-style text-blue-500"></i></div>
+                        <h4 class="font-bold flex items-center justify-center">By Flight <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                        <p class="text-sm text-gray-600">Quickest option. Departs Aug 15.</p>
+                    </a>
+                    <div class="travel-option-card">
+                        <div class="flex justify-center mb-2"><i data-feather="train" class="icon-style text-green-500"></i></div>
+                        <h4 class="font-bold">By Train</h4>
+                        <p class="text-sm text-gray-600">Rajdhani Express. Departs BLR Aug 14, 8 PM, Arrives HYD 7 AM.</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/83bUjpCekhWmvHmQA?g_st=ac" target="_blank" class="travel-option-card block">
+                        <div class="flex justify-center mb-2"><i data-feather="truck" class="icon-style text-purple-500"></i></div>
+                        <h4 class="font-bold flex items-center justify-center">By Car <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                        <p class="text-sm text-gray-600">Scenic route. Depart on Aug 15 morning.</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pre-trip Checklist -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-gray-700">Pre-Trip Checklist</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-blue-100 text-blue-600 p-3 rounded-full"><i data-feather="briefcase" class="icon-style"></i></div>
+                        <div>
+                            <h3 class="font-bold text-lg">Things to Pack</h3>
+                            <ul class="mt-2 list-disc list-inside text-gray-600">
+                                <li>Comfortable cottons for warm, humid weather.</li>
+                                <li>Walking shoes and sandals.</li>
+                                <li>Umbrella and a light jacket.</li>
+                                <li>Sunscreen, sunglasses, and a hat.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-100 text-green-600 p-3 rounded-full"><i data-feather="wifi" class="icon-style"></i></div>
+                        <div>
+                            <h3 class="font-bold text-lg">Connectivity</h3>
+                            <ul class="mt-2 list-disc list-inside text-gray-600">
+                                <li>Major providers like Jio, Airtel, Vi have good coverage.</li>
+                                <li>Consider an eSIM for instant connectivity (e.g., Airalo).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Summary -->
+    <section id="costs">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Trip Cost Summary</h2>
+            <div class="cost-summary-grid text-center">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-gray-500 text-sm">Flights/Train</h4>
+                    <p class="font-bold text-2xl text-indigo-600">~₹6,000</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-gray-500 text-sm">Accommodation</h4>
+                    <p class="font-bold text-2xl text-indigo-600">~₹8,000</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-gray-500 text-sm">Transport</h4>
+                    <p class="font-bold text-2xl text-indigo-600">~₹3,000</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-gray-500 text-sm">Food</h4>
+                    <p class="font-bold text-2xl text-indigo-600">~₹4,000</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-gray-500 text-sm">Activities</h4>
+                    <p class="font-bold text-2xl text-indigo-600">~₹3,500</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center bg-indigo-600 text-white p-4 rounded-lg">
+                <h4 class="font-semibold text-lg">Total Estimated Cost Per Person</h4>
+                <p class="font-bold text-3xl tracking-tight">~₹24,500</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Places to Explore -->
+    <section id="not-included">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Other Places to Explore</h2>
+            <p class="text-center text-gray-600 mb-8">This itinerary is packed, but if you have extra time or want to swap an activity, here are other great options in Hyderabad:</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="https://www.google.com/maps/place/Hussain+Sagar/@17.42388,78.473824,15z" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <div class="text-purple-500 pt-1"><i data-feather="anchor" class="icon-style"></i></div>
+                    <div>
+                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Hussain Sagar Lake <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                        <p class="text-sm text-gray-600">A large, heart-shaped lake with a famous Buddha statue. Great for an evening stroll or boat ride.</p>
+                    </div>
+                </a>
+                <a href="https://www.google.com/maps/search/Tank+Bund,+Hyderabad" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <div class="text-purple-500 pt-1"><i data-feather="wind" class="icon-style"></i></div>
+                    <div>
+                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Tank Bund <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                        <p class="text-sm text-gray-600">A popular promenade with statues of famous personalities.</p>
+                    </div>
+                </a>
+                <a href="https://www.google.com/maps/place/Laad+Bazaar,+Ghansi+Bazar,+Hyderabad,+Telangana,+India" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <div class="text-purple-500 pt-1"><i data-feather="shopping-bag" class="icon-style"></i></div>
+                    <div>
+                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Laad Bazaar <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                        <p class="text-sm text-gray-600">A historic market famous for its bangles, pearls, and traditional wares.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="text-center py-8 text-gray-500">
+    <p>Itinerary generated by Gemini</p>
+</footer>
+
+<script>
+    const itineraryData = [
+        { day: 1, title: 'Arrival & Modern Sights', dailyCost: '₹3,000', items: [
+            { type: 'travel', icon: 'log-in', text: 'Arrive in Hyderabad and check into your hotel: <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/?api=1&query=Treebo+The+Living+Tree+Khairatabad" target="_blank">Treebo The Living Tree, Khairatabad <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>.' },
+            { type: 'travel', icon: 'truck', text: '<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Golconda+Fort+Hyderabad&travelmode=driving" target="_blank">Head to Golconda Fort by cab (approx 12 km, 30 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>' },
+            { type: 'visit', icon: 'shield', text: `0 *10:00 AM – 12:30 PM:* <a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/zczwXa3JHQt8jJH77" target="_blank">Explore the historic Golconda Fort <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">This grand 16th-century fortress is known for its acoustic marvels and as a former diamond trading center. Enjoy panoramic views after a climb to the top, and clap under the dome to experience the fort’s famed acoustics.</p>` },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Golconda+Fort+Hyderabad&destination=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad&travelmode=driving" target="_blank">Drive to RTC X Roads for lunch (approx 15 km, 45 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'food', icon: 'coffee', text: `1 *1:00 PM – 2:00 PM:* <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/?api=1&query=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad" target="_blank">Lunch at the famous Bawarchi Restaurant <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Savor authentic Hyderabadi biryani at this iconic spot (they proudly claim “no branches”!). Enjoy the aromatic rice and tender meat, and consider cooling off with a sweet Qubani ka Meetha dessert after your spicy meal.</p>` },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad&destination=Birla+Science+Museum+Hyderabad&travelmode=transit" target="_blank">Reach Birla Science Centre (4 km) via metro/cab <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'box', text: `2 *2:30 PM – 4:00 PM:* <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/?api=1&query=B.M.+Birla+Science+Centre" target="_blank">Visit the B.M. Birla Science Centre <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">This complex includes a science museum, planetarium, and art gallery. Catch an interactive science exhibit or a planetarium show if timing permits. Don’t miss the Dinosaurium with its 160-million-year-old fossil on display.</p>` },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Birla+Science+Museum+Hyderabad&destination=Tank+Bund+Hyderabad&travelmode=driving" target="_blank">Taxi to Tank Bund at Hussain Sagar (approx 3 km, 10 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'wind', text: `3 *5:00 PM – 5:45 PM:* <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/Tank+Bund,+Hyderabad" target="_blank">Stroll along Tank Bund <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Walk this popular lakeside boulevard lined with statues of local icons, and enjoy views of the enormous Buddha statue rising from Hussain Sagar Lake4. The breeze off the lake and the lively atmosphere make for a relaxing early evening walk.</p>` },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Tank+Bund+Hyderabad&destination=Durgam+Cheruvu+Cable+Bridge+Hyderabad&travelmode=driving" target="_blank">Drive to Durgam Cheruvu Cable Bridge (12 km, ~30–40 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'truck', text: `5 *7:00 PM – 8:00 PM:* <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/place/Durgam+Cheruvu+Bridge" target="_blank">Evening at Durgam Cheruvu Cable Bridge <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">This modern cable-stayed bridge dazzles with dynamic lighting displays after dark. Take in the stunning illuminated structure67 and lakeside views. It’s a photographer’s delight and a perfect finale to your day before heading back to the hotel.</p>` }
+        ]},
+        { day: 2, title: 'Ramoji Film City Day Trip', dailyCost: '₹5,000', items: [
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Ramoji+Film+City+Hyderabad&travelmode=driving" target="_blank">Morning travel to Ramoji Film City (approx 1 hr drive) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'film', text: `8 *9:30 AM – 6:30 PM:* Full day at <a class="text-indigo-600 hover:underline" href="https://www.ramojifilmcity.com/" target="_blank">Ramoji Film City <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Explore the world’s largest film studio complex, filled with live shows, movie sets, theme park rides, and gardens. Don’t miss the Hollywood/Bollywood sets tour and stunt shows. There’s an on-site cafeteria for lunch, and plenty of fun photo-ops in this 2000-acre “city” of cinema magic.</p>` },
+            { type: 'food', icon: 'coffee', text: 'Lunch inside Ramoji Film City (at one of the studio restaurants).' },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Ramoji+Film+City+Hyderabad&destination=Treebo+The+Living+Tree+Khairatabad+Hyderabad&travelmode=driving" target="_blank">Evening return to hotel (approx 1.5 hrs) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` }
+        ]},
+        { day: 3, title: 'Old City Heritage & Departure', dailyCost: '₹4,000', items: [
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Charminar+Hyderabad&travelmode=driving" target="_blank">Morning ride to Charminar (approx 8 km, 25 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'camera', text: `9 *9:00 AM – 10:00 AM:* <a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/1BDYGhVhcUoV72K87" target="_blank">Visit the iconic Charminar <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Built in 1591, this landmark mosque with four minarets is the heart of Hyderabad10. Climb up its narrow spiral staircase for panoramic views of the bustling Old City. Around Charminar, browse the Laad Bazaar for bangles and pearls as the area comes to life in the morning.</p>` },
+            { type: 'travel', icon: 'walk', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Charminar+Hyderabad&destination=Chowmahalla+Palace+Hyderabad&travelmode=walking" target="_blank">Walk 5 min to nearby Chowmahalla Palace <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'key', text: `11 *10:00 AM – 11:30 AM:* <a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/search/?api=1&query=Chowmahalla+Palace" target="_blank">Explore the magnificent Chowmahalla Palace <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Once the Nizams’ royal residence, this 18th-century palace complex features four palaces around a grand courtyard12. Admire the Khilwat Mubarak throne room with its chandeliers, the vintage car collection, and the beautiful gardens and fountains that evoke the grandeur of Hyderabad’s princely era.</p>` },
+            { type: 'travel', icon: 'walk', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Chowmahalla+Palace+Hyderabad&destination=Hotel+Shadab+Hyderabad&travelmode=walking" target="_blank">Stroll 10 min to Hotel Shadab for lunch <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'food', icon: 'coffee', text: `*12:00 PM – 1:00 PM:* <a class="text-indigo-600 hover:underline" href="https://maps.google.com/?cid=7876124088418144061" target="_blank">Lunch at Shadab Restaurant <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Enjoy renowned Hyderabadi mutton biryani and kebabs at this Old City institution. This bustling two-story eatery is beloved by locals – don’t forget to sip on some warm Irani chai or try Qubani ka Meetha (apricot dessert) after your meal for a true local experience.</p>` },
+            { type: 'travel', icon: 'truck', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Shadab+Hyderabad&destination=Salar+Jung+Museum+Hyderabad&travelmode=driving" target="_blank">Short drive to Salar Jung Museum (2 km, 10 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'visit', icon: 'archive', text: `13 *1:15 PM – 3:00 PM:* <a class="text-indigo-600 hover:underline" href="https://maps.app.goo.gl/k3C1E3sZNN2ffGdT6" target="_blank">Discover the Salar Jung Museum <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>. <p class="text-sm text-gray-600">Home to one of the world’s largest one-man art collections, this museum displays over a million artifacts1415 from around the globe. Marvel at the veiled Rebecca statue, antique clocks that chime on the hour, Mughal daggers, and rare manuscripts. Allocate enough time to explore highlights in this vast museum.</p>` },
+            { type: 'travel', icon: 'train', text: `<a class="text-indigo-600 hover:underline" href="https://www.google.com/maps/dir/?api=1&origin=Salar+Jung+Museum+Hyderabad&destination=Secunderabad+Railway+Station&travelmode=driving" target="_blank">Transfer to Secunderabad Railway Station (17 km, ~45 min) <i data-feather="external-link" class="inline-block w-4 h-4"></i></a>` },
+            { type: 'travel', icon: 'train', text: 'Depart Hyderabad by <span class="font-semibold">Rajdhani Express (Train 22692)</span> at 17:25, arriving Bengaluru (SBC) at 05:20.' }
+        ]}
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        feather.replace();
+
+        const tabsContainer = document.getElementById('tabs-container');
+        const tabContentContainer = document.getElementById('tab-content');
+
+        itineraryData.forEach((day, index) => {
+            // Create Tab Button
+            const tabButton = document.createElement('button');
+            tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
+            tabButton.textContent = `Day ${day.day}`;
+            tabButton.dataset.day = day.day;
+            tabsContainer.appendChild(tabButton);
+
+            // Create Tab Content
+            const contentDiv = document.createElement('div');
+            contentDiv.className = `tab-content-day-${day.day} ${index !== 0 ? 'hidden' : ''}`;
+
+            day.items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'mb-4 flex items-start';
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'mr-3';
+                iconSpan.innerHTML = `<i data-feather="${item.icon}" class="icon-style text-indigo-600"></i>`;
+                itemDiv.appendChild(iconSpan);
+                const textDiv = document.createElement('div');
+                textDiv.innerHTML = item.text;
+                itemDiv.appendChild(textDiv);
+                contentDiv.appendChild(itemDiv);
+            });
+
+            tabContentContainer.appendChild(contentDiv);
+        });
+
+        // Tab switching functionality
+        tabsContainer.addEventListener('click', e => {
+            if(e.target.classList.contains('tab-button')) {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                const day = e.target.dataset.day;
+                document.querySelectorAll('[class^="tab-content-day-"]').forEach(content => content.classList.add('hidden'));
+                document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
