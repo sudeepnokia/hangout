@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Forest Society and Colonialism</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; color: #333; margin: 20px; }
+        h1 { text-align: center; color: #228B22; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 20px; }
+        .question h3 { margin-bottom: 10px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .submit-btn { background-color: #2E8B57; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .reference { font-size: 0.9em; color: #666; margin-top: 5px; padding-left: 15px; border-left: 3px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Quiz: Forest Society and Colonialism</h1>
+    <div class="quiz-container">
+        <form id="quiz-form"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "The system of 'scientific forestry' advocated by Dietrich Brandis primarily involved...",
+                options: ["The preservation of old-growth forests.", "The planting of a variety of tree species to increase biodiversity.", "The cutting down of natural forests and planting of one type of tree in straight rows.", "The complete ban on all forestry activities."],
+                answer: "The cutting down of natural forests and planting of one type of tree in straight rows.",
+                reference: "See section on the rise of commercial forestry."
+            },
+            {
+                question: "The Forest Act of 1878 divided forests into...",
+                options: ["Two categories: public and private.", "Three categories: reserved, protected, and village forests.", "Four categories based on the type of trees.", "Two categories: commercial and non-commercial."],
+                answer: "Three categories: reserved, protected, and village forests.",
+                reference: "See section on how forest laws affected people."
+            },
+            {
+                question: "'Shifting cultivation' or 'swidden agriculture' was seen by the colonial authorities as...",
+                options: ["A sustainable and efficient method of farming.", "Harmful to the forests and making it difficult to collect taxes.", "A practice to be encouraged among the local population.", "A way to increase timber production."],
+                answer: "Harmful to the forests and making it difficult to collect taxes.",
+                reference: "See section on the impact of forest laws on cultivation."
+            },
+            {
+                question: "The 'Blandongdiensten' system in Java was a form of...",
+                options: ["Forced labor for cutting trees and transporting timber.", "A system of forest guards.", "A method of auctioning forest lands.", "A tax on forest produce."],
+                answer: "Forced labor for cutting trees and transporting timber.",
+                reference: "See section on forestry in Java."
+            },
+            {
+                question: "The Kalangs of Java were known for their skills as...",
+                options: ["Shipbuilders.", "Forest cutters and shifting cultivators.", "Hunters and gatherers.", "Traders in forest produce."],
+                answer: "Forest cutters and shifting cultivators.",
+                reference: "See section on the people of the Javanese forests."
+            },
+            {
+                question: "The Saminist movement in Java was a protest against...",
+                options: ["The Dutch colonial government's forest policies.", "The introduction of new crops.", "The building of railways.", "The activities of Christian missionaries."],
+                answer: "The Dutch colonial government's forest policies.",
+                reference: "See section on the rebellion in the Javanese forests."
+            },
+            {
+                question: "The term 'reserved forests' under the Forest Act of 1878 referred to forests that were...",
+                options: ["Open to all for grazing and collection of produce.", "The best forests, from which villagers were completely barred.", "Managed by the local village communities.", "Set aside for scientific research."],
+                answer: "The best forests, from which villagers were completely barred.",
+                reference: "See section on the classification of forests."
+            },
+            {
+                question: "The Imperial Forest Research Institute was set up in...",
+                options: ["Calcutta (Kolkata).", "Bombay (Mumbai).", "Madras (Chennai).", "Dehradun."],
+                answer: "Dehradun.",
+                reference: "See section on the development of scientific forestry."
+            },
+            {
+                question: "The main reason for the expansion of railways during the colonial period was to...",
+                options: ["Provide better transportation for the Indian people.", "Facilitate the movement of troops and the transport of raw materials.", "Promote tourism.", "Connect religious pilgrimage sites."],
+                answer: "Facilitate the movement of troops and the transport of raw materials.",
+                reference: "See section on the link between railways and deforestation."
+            },
+            {
+                question: "The Bastar rebellion of 1910 was a response to...",
+                options: ["The colonial government's policies on forest reservation and forced labor.", "A famine in the region.", "The imposition of new taxes on agriculture.", "The activities of Christian missionaries."],
+                answer: "The colonial government's policies on forest reservation and forced labor.",
+                reference: "See section on the rebellion in the forest of Bastar."
+            },
+            {
+                question: "The term 'taungya' cultivation refers to a system where...",
+                options: ["Farmers are allowed to cultivate temporarily within a plantation.", "A single crop is grown over a large area.", "Crops are grown on terraces on hillsides.", "Land is left fallow for a period of time to regain fertility."],
+                answer: "Farmers are allowed to cultivate temporarily within a plantation.",
+                reference: "See section on commercial forestry and its impact."
+            },
+            {
+                question: "The 'scorched earth' policy during World War II involved...",
+                options: ["The planting of new forests.", "The destruction of sawmills and burning of teak logs by the Dutch in Java to prevent them from falling into Japanese hands.", "The use of fire to clear land for agriculture.", "A method of fighting forest fires."],
+                answer: "The destruction of sawmills and burning of teak logs by the Dutch in Java to prevent them from falling into Japanese hands.",
+                reference: "See section on the impact of the world wars on forestry."
+            },
+            {
+                question: "The term 'deforestation' refers to...",
+                options: ["The planting of new trees.", "The disappearance of forests.", "The scientific management of forests.", "The classification of forests."],
+                answer: "The disappearance of forests.",
+                reference: "See the introductory section of the chapter."
+            },
+            {
+                question: "The colonial government's primary interest in forests was to...",
+                options: ["Conserve biodiversity.", "Protect the rights of forest dwellers.", "Extract timber for shipbuilding and railways.", "Promote tourism."],
+                answer: "Extract timber for shipbuilding and railways.",
+                reference: "See section on the reasons for deforestation."
+            },
+            {
+                question: "The Forest Research Institute (FRI) in Dehradun was established to...",
+                options: ["Promote traditional forestry practices.", "Train people in the science of forestry and conduct research.", "Protect the rights of forest communities.", "Encourage the planting of diverse tree species."],
+                answer: "Train people in the science of forestry and conduct research.",
+                reference: "See section on the rise of commercial forestry."
+            },
+            {
+                question: "The term 'village forests' under the Forest Act of 1878 referred to forests that...",
+                options: ["Were completely closed to villagers.", "Could be used by villagers for their needs, but under the control of the forest department.", "Were owned and managed by the villagers themselves.", "Were set aside for commercial exploitation."],
+                answer: "Could be used by villagers for their needs, but under the control of the forest department.",
+                reference: "See section on the classification of forests."
+            },
+            {
+                question: "The main cause of the decline of the shipbuilding industry in India during the colonial period was...",
+                options: ["A lack of skilled labor.", "The depletion of forests and the control of the forest department over timber.", "Competition from British shipbuilders.", "A decline in maritime trade."],
+                answer: "The depletion of forests and the control of the forest department over timber.",
+                reference: "See section on the impact of forest laws on industries."
+            },
+            {
+                question: "The term 'scientific forestry' is controversial because...",
+                options: ["It led to the preservation of natural forests.", "It promoted the growth of diverse tree species.", "It led to the destruction of natural forests and biodiversity.", "It was not based on scientific principles."],
+                answer: "It led to the destruction of natural forests and biodiversity.",
+                reference: "See section on the problems with scientific forestry."
+            },
+            {
+                question: "The colonial government's ban on shifting cultivation had a severe impact on...",
+                options: ["The timber industry.", "The livelihoods of many forest communities.", "The expansion of railways.", "The collection of taxes."],
+                answer: "The livelihoods of many forest communities.",
+                reference: "See section on the impact of forest laws on cultivation."
+            },
+            {
+                question: "The main demand of the Saminists was...",
+                options: ["The right to practice shifting cultivation.", "The abolition of all taxes.", "The right to use forests without state interference.", "The establishment of an independent state."],
+                answer: "The right to use forests without state interference.",
+                reference: "See section on the Saminist movement."
+            }
+        ];
+
+        const quizForm = document.getElementById('quiz-form');
+        function loadQuiz() {
+            let quizHTML = '';
+            quizData.forEach((q, index) => {
+                quizHTML += `<div class="question"><h3>${index + 1}. ${q.question}</h3><div class="options">`;
+                q.options.forEach(option => {
+                    quizHTML += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label>`;
+                });
+                quizHTML += `</div></div>`;
+            });
+            quizForm.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+
+            let score = 0;
+            let resultHTML = '<h3>Results:</h3>';
+            quizData.forEach((q, index) => {
+                resultHTML += `<div class="question">`;
+                if (answers[index] === q.answer) {
+                    score++;
+                    resultHTML += `<p><b>Question ${index + 1}: Correct!</b></p>`;
+                } else {
+                    resultHTML += `<p><b>Question ${index + 1}: Incorrect.</b></p><p>The correct answer is: ${q.answer}</p>`;
+                }
+                resultHTML += `<div class="reference"><b>Reference:</b> ${q.reference}</div></div>`;
+            });
+
+            resultHTML += `<p><b>Your final score is ${score} out of ${quizData.length}</b></p>`;
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hyderabad Attractions</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var locations = [
+                { lat: 17.4020, lng: 78.4691, name: 'Birla Science Museum & Planetarium' },
+                { lat: 17.4239, lng: 78.4738, name: 'Tank Bund & Hussain Sagar Lake' },
+                { lat: 17.4317, lng: 78.3900, name: 'Durgam Cheruvu Cable Bridge' },
+                { lat: 17.2558, lng: 78.6824, name: 'Ramoji Film City' },
+                { lat: 17.3614, lng: 78.4745, name: 'Charminar' },
+                { lat: 17.3577, lng: 78.4717, name: 'Chowmahalla Palace' },
+                { lat: 17.3714, lng: 78.4803, name: 'Salar Jung Museum' }
+            ];
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: new google.maps.LatLng(17.40, 78.47)
+            });
+
+            var bounds = new google.maps.LatLngBounds();
+
+            for (var i = 0; i < locations.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                    map: map,
+                    title: locations[i].name
+                });
+                bounds.extend(marker.getPosition());
+            }
+
+            map.fitBounds(bounds);
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+</body>
+</html>

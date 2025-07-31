@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: The French Revolution</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; color: #333; margin: 20px; }
+        h1 { text-align: center; color: #0056B3; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 20px; }
+        .question h3 { margin-bottom: 10px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .submit-btn { background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .reference { font-size: 0.9em; color: #666; margin-top: 5px; padding-left: 15px; border-left: 3px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Quiz: The French Revolution</h1>
+    <div class="quiz-container">
+        <form id="quiz-form"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "What was the 'taille' from which the Third Estate was exempt in theory but paid in practice?",
+                options: ["A tax on salt", "A direct land tax", "A tax on tobacco", "A church tithe"],
+                answer: "A direct land tax",
+                reference: "See section on 'The Struggle to Survive' and the tax structure of the Old Regime."
+            },
+            {
+                question: "The Tennis Court Oath was a pledge to...",
+                options: ["Overthrow the monarchy immediately", "Draft a constitution for France", "Abolish the privileges of the clergy", "Execute the King"],
+                answer: "Draft a constitution for France",
+                reference: "See section on the formation of the National Assembly."
+            },
+            {
+                question: "Which document, passed by the National Assembly, is considered a cornerstone of the revolution's ideals?",
+                options: ["The Napoleonic Code", "The Declaration of the Rights of Man and of the Citizen", "The Civil Constitution of the Clergy", "The Treaty of Paris"],
+                answer: "The Declaration of the Rights of Man and of the Citizen",
+                reference: "See section discussing the initial acts of the National Assembly."
+            },
+            {
+                question: "The 'September Massacres' were a series of killings of...",
+                options: ["Royalist soldiers", "Girondin leaders", "Suspected counter-revolutionaries held in prisons", "Jacobin club members"],
+                answer: "Suspected counter-revolutionaries held in prisons",
+                reference: "See section on the radicalization of the revolution and the Reign of Terror."
+            },
+            {
+                question: "What was the primary purpose of the Committee of Public Safety?",
+                options: ["To manage the economy", "To oversee the war effort and suppress counter-revolution", "To draft a new constitution", "To negotiate peace with other European powers"],
+                answer: "To oversee the war effort and suppress counter-revolution",
+                reference: "See section on the Reign of Terror."
+            },
+            {
+                question: "The Thermidorian Reaction was a revolt against...",
+                options: ["The monarchy", "The Girondins", "The excesses of the Reign of Terror under Robespierre", "The Catholic Church"],
+                answer: "The excesses of the Reign of Terror under Robespierre",
+                reference: "See section on the end of the Reign of Terror."
+            },
+            {
+                question: "The Concordat of 1801 was an agreement between Napoleon and...",
+                options: ["Great Britain", "Austria", "The Pope", "Prussia"],
+                answer: "The Pope",
+                reference: "See section on Napoleon's rise to power and his reforms."
+            },
+            {
+                question: "What was the significance of the Battle of Waterloo?",
+                options: ["It marked the beginning of the French Revolution", "It led to the execution of Louis XVI", "It was Napoleon's final defeat", "It established the First French Republic"],
+                answer: "It was Napoleon's final defeat",
+                reference: "See section on the fall of Napoleon."
+            },
+            {
+                question: "The Civil Constitution of the Clergy of 1790 aimed to...",
+                options: ["Make the clergy subordinate to the state", "Abolish religion in France", "Give the Pope more power in France", "Establish Protestantism as the state religion"],
+                answer: "Make the clergy subordinate to the state",
+                reference: "See section on the reforms of the National Assembly."
+            },
+            {
+                question: "Who was the author of the influential pamphlet, 'What is the Third Estate?'",
+                options: ["Jean-Paul Marat", "Maximilien Robespierre", "Georges Danton", "Emmanuel-Joseph Sieyès"],
+                answer: "Emmanuel-Joseph Sieyès",
+                reference: "See section on the build-up to the Estates-General."
+            },
+            {
+                question: "The 'Great Fear' (Grande Peur) of 1789 involved...",
+                options: ["Urban riots against bread prices", "Peasant uprisings against feudal obligations", "The execution of the royal family", "The invasion of France by foreign armies"],
+                answer: "Peasant uprisings against feudal obligations",
+                reference: "See section on the outbreak of the revolution in the countryside."
+            },
+            {
+                question: "The Law of 22 Prairial (1794) is most associated with...",
+                options: ["The abolition of slavery", "The peak of the Reign of Terror's executions", "The introduction of the metric system", "The sale of church lands"],
+                answer: "The peak of the Reign of Terror's executions",
+                reference: "See section on the Reign of Terror."
+            },
+            {
+                question: "The assignat, the currency of the revolutionary government, was backed by...",
+                options: ["Gold reserves", "Confiscated church lands", "Silver from the New World", "Foreign loans"],
+                answer: "Confiscated church lands",
+                reference: "See section on the economic policies of the revolution."
+            },
+            {
+                question: "The Vendée uprising was a counter-revolutionary revolt primarily driven by...",
+                options: ["Urban workers", "Royalist nobles and clergy", "Girondin politicians", "The Parisian sans-culottes"],
+                answer: "Royalist nobles and clergy",
+                reference: "See section on resistance to the revolution."
+            },
+            {
+                question: "The 'sans-culottes' were...",
+                options: ["A radical group of Parisian workers and artisans", "A moderate faction in the National Convention", "The royal bodyguards", "A secret society of nobles"],
+                answer: "A radical group of Parisian workers and artisans",
+                reference: "See section on the radical phase of the revolution."
+            },
+            {
+                question: "The Brunswick Manifesto...",
+                options: ["Announced the abolition of the monarchy", "Threatened the people of Paris if the royal family was harmed", "Declared war on Austria", "Established the Committee of Public Safety"],
+                answer: "Threatened the people of Paris if the royal family was harmed",
+                reference: "See section on the beginning of the revolutionary wars."
+            },
+            {
+                question: "The Cult of the Supreme Being was an attempt by Robespierre to...",
+                options: ["Restore Catholicism", "Create a deistic state religion", "Promote atheism", "Establish freedom of religion"],
+                answer: "Create a deistic state religion",
+                reference: "See section on the cultural changes during the Reign of Terror."
+            },
+            {
+                question: "The 'gabelle' was a notoriously unpopular tax on...",
+                options: ["Land", "Income", "Salt", "Windows"],
+                answer: "Salt",
+                reference: "See section on the tax system of the Old Regime."
+            },
+            {
+                question: "The Directory, which ruled France from 1795 to 1799, was a...",
+                options: ["Monarchy", "Five-man executive committee", "Military junta", "One-man dictatorship"],
+                answer: "Five-man executive committee",
+                reference: "See section on the period after the Reign of Terror."
+            },
+            {
+                question: "The 'Flight to Varennes' refers to...",
+                options: ["Napoleon's escape from Elba", "The royal family's failed attempt to flee France", "The Girondins' escape from Paris", "The Jacobins' seizure of power"],
+                answer: "The royal family's failed attempt to flee France",
+                reference: "See section on the growing radicalism and the fate of the monarchy."
+            }
+        ];
+
+        const quizForm = document.getElementById('quiz-form');
+        function loadQuiz() {
+            let quizHTML = '';
+            quizData.forEach((q, index) => {
+                quizHTML += `<div class="question"><h3>${index + 1}. ${q.question}</h3><div class="options">`;
+                q.options.forEach(option => {
+                    quizHTML += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label>`;
+                });
+                quizHTML += `</div></div>`;
+            });
+            quizForm.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+
+            let score = 0;
+            let resultHTML = '<h3>Results:</h3>';
+            quizData.forEach((q, index) => {
+                resultHTML += `<div class="question">`;
+                if (answers[index] === q.answer) {
+                    score++;
+                    resultHTML += `<p><b>Question ${index + 1}: Correct!</b></p>`;
+                } else {
+                    resultHTML += `<p><b>Question ${index + 1}: Incorrect.</b></p><p>The correct answer is: ${q.answer}</p>`;
+                }
+                resultHTML += `<div class="reference"><b>Reference:</b> ${q.reference}</div></div>`;
+            });
+
+            resultHTML += `<p><b>Your final score is ${score} out of ${quizData.length}</b></p>`;
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

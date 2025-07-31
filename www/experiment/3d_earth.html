@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Earth with Location Markers</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #search-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        #search-input {
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search for a location...">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Scene
+        const scene = new THREE.Scene();
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Earth
+        const geometry = new THREE.SphereGeometry(2, 32, 32);
+        const texture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg');
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+        const earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+
+        // Controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // Markers
+        const markers = [];
+
+        function addMarker(lat, lon, name) {
+            const markerGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+            const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+            const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+
+            marker.position.x = -2 * Math.sin(phi) * Math.cos(theta);
+            marker.position.y = 2 * Math.cos(phi);
+            marker.position.z = 2 * Math.sin(phi) * Math.sin(theta);
+
+            marker.name = name;
+            markers.push(marker);
+            earth.add(marker);
+        }
+
+        // Add some initial markers
+        addMarker(28.6139, 77.2090, "New Delhi");
+        addMarker(35.6895, 139.6917, "Tokyo");
+        addMarker(40.7128, -74.0060, "New York");
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                const searchText = searchInput.value.toLowerCase();
+                const foundMarker = markers.find(marker => marker.name.toLowerCase() === searchText);
+                if (foundMarker) {
+                    // Animate camera to the marker
+                    const newPosition = foundMarker.position.clone().multiplyScalar(1.5);
+                    gsap.to(camera.position, {
+                        duration: 1,
+                        x: newPosition.x,
+                        y: newPosition.y,
+                        z: newPosition.z,
+                        onUpdate: () => camera.lookAt(earth.position)
+                    });
+                } else {
+                    alert('Location not found!');
+                }
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</body>
+</html>

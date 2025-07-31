@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Socialism in Europe and the Russian Revolution</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; color: #333; margin: 20px; }
+        h1 { text-align: center; color: #8B0000; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 20px; }
+        .question h3 { margin-bottom: 10px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .submit-btn { background-color: #D7191C; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .reference { font-size: 0.9em; color: #666; margin-top: 5px; padding-left: 15px; border-left: 3px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Quiz: Socialism in Europe and the Russian Revolution</h1>
+    <div class="quiz-container">
+        <form id="quiz-form"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "The 'April Theses' were a series of directives issued by...",
+                options: ["Joseph Stalin", "Leon Trotsky", "Vladimir Lenin", "Alexander Kerensky"],
+                answer: "Vladimir Lenin",
+                reference: "See section on the events leading up to the October Revolution."
+            },
+            {
+                question: "What was the main purpose of the 'kulaks' in the context of Soviet collectivization?",
+                options: ["They were a class of wealthy peasants who resisted collectivization.", "They were the elite soldiers of the Red Army.", "They were the members of the secret police.", "They were the industrial workers in the cities."],
+                answer: "They were a class of wealthy peasants who resisted collectivization.",
+                reference: "See section on Stalinism and collectivization."
+            },
+            {
+                question: "The Treaty of Brest-Litovsk, signed by the Bolshevik government, resulted in...",
+                options: ["Russia gaining territory in Poland.", "Russia exiting World War I at the cost of significant territorial losses.", "An alliance between Russia and Germany.", "The establishment of the League of Nations."],
+                answer: "Russia exiting World War I at the cost of significant territorial losses.",
+                reference: "See section on the immediate aftermath of the Bolshevik seizure of power."
+            },
+            {
+                question: "The 'Bloody Sunday' of 1905 was a massacre of...",
+                options: ["Bolshevik leaders.", "Striking workers who were marching to the Winter Palace.", "The royal family.", "Soldiers who had mutinied."],
+                answer: "Striking workers who were marching to the Winter Palace.",
+                reference: "See section on the 1905 Revolution."
+            },
+            {
+                question: "The 'Duma' was a...",
+                options: ["A council of peasants.", "A revolutionary tribunal.", "A type of collective farm.", "A Russian parliament or consultative assembly."],
+                answer: "A Russian parliament or consultative assembly.",
+                reference: "See section on the 1905 Revolution and its aftermath."
+            },
+            {
+                question: "The New Economic Policy (NEP), introduced by Lenin in 1921, allowed for...",
+                options: ["The complete nationalization of all industry.", "A temporary retreat from full communism, allowing for some private enterprise.", "The immediate collectivization of all agriculture.", "The abolition of all money."],
+                answer: "A temporary retreat from full communism, allowing for some private enterprise.",
+                reference: "See section on the early years of the Soviet state."
+            },
+            {
+                question: "The 'Cheka' was the...",
+                options: ["The Soviet currency.", "The Bolshevik secret police.", "The main legislative body of the Soviet government.", "A collective farm."],
+                answer: "The Bolshevik secret police.",
+                reference: "See section on the consolidation of Bolshevik power."
+            },
+            {
+                question: "The Kornilov Affair was an attempted...",
+                options: ["Coup by a right-wing general against the Provisional Government.", "Assassination of Lenin.", "Bolshevik uprising in July 1917.", "Peasant revolt in the countryside."],
+                answer: "Coup by a right-wing general against the Provisional Government.",
+                reference: "See section on the period between the February and October Revolutions."
+            },
+            {
+                question: "The term 'soviets' originally referred to...",
+                options: ["Councils of workers and soldiers.", "The main Bolshevik newspaper.", "The elite units of the Red Army.", "The members of the Provisional Government."],
+                answer: "Councils of workers and soldiers.",
+                reference: "See section on the February Revolution and the dual power structure."
+            },
+            {
+                question: "The Stakhanovite movement was a campaign to...",
+                options: ["Promote literacy among the peasants.", "Encourage workers to exceed their production quotas.", "Eliminate political opponents.", "Spread communist ideology abroad."],
+                answer: "Encourage workers to exceed their production quotas.",
+                reference: "See section on industrialization under Stalin."
+            },
+            {
+                question: "The 'Zemstvos' were...",
+                options: ["Organs of rural self-government in the Russian Empire.", "A secret revolutionary society.", "A type of collective farm.", "The elite guards of the Tsar."],
+                answer: "Organs of rural self-government in the Russian Empire.",
+                reference: "See section on the social and political structure of pre-revolutionary Russia."
+            },
+            {
+                question: "The 'Great Purge' of the 1930s was a campaign of...",
+                options: ["Economic reform.", "Political repression and terror orchestrated by Stalin.", "Military expansion.", "Religious revival."],
+                answer: "Political repression and terror orchestrated by Stalin.",
+                reference: "See section on Stalinism."
+            },
+            {
+                question: "The 'Land Decree' passed by the Bolsheviks...",
+                options: ["Abolished private ownership of land and declared it the property of the state.", "Gave land to the Orthodox Church.", "Compensated landlords for their lost property.", "Established a system of private peasant land ownership."],
+                answer: "Abolished private ownership of land and declared it the property of the state.",
+                reference: "See section on the first acts of the Bolshevik government."
+            },
+            {
+                question: "The 'Socialist Revolutionaries' were a...",
+                options: ["A faction of the Bolshevik party.", "A major rival political party to the Bolsheviks, with strong support among the peasantry.", "A group of anarchist thinkers.", "The main liberal party in the Duma."],
+                answer: "A major rival political party to the Bolsheviks, with strong support among the peasantry.",
+                reference: "See section on the political landscape of revolutionary Russia."
+            },
+            {
+                question: "The Kronstadt Rebellion of 1921 was a...",
+                options: ["A peasant uprising in Siberia.", "A mutiny by sailors against the Bolshevik government.", "A failed attempt by the White Army to capture Moscow.", "A strike by factory workers in Petrograd."],
+                answer: "A mutiny by sailors against the Bolshevik government.",
+                reference: "See section on the challenges to Bolshevik rule after the civil war."
+            },
+            {
+                question: "The term 'War Communism' refers to...",
+                options: ["The Bolsheviks' foreign policy during the civil war.", "The economic and political system in Soviet Russia during the civil war.", "The military strategy of the Red Army.", "The propaganda used by the Bolsheviks."],
+                answer: "The economic and political system in Soviet Russia during the civil war.",
+                reference: "See section on the Russian Civil War."
+            },
+            {
+                question: "The 'Comintern' (Communist International) was an organization that...",
+                options: ["Promoted trade between communist countries.", "Advocated for world revolution and the spread of communism.", "Provided humanitarian aid to war-torn regions.", "Was a precursor to the United Nations."],
+                answer: "Advocated for world revolution and the spread of communism.",
+                reference: "See section on the global impact of the Russian Revolution."
+            },
+            {
+                question: "The 'scissors crisis' of the 1920s referred to...",
+                options: ["A shortage of industrial goods.", "A widening gap between the prices of industrial and agricultural goods.", "A split within the Bolshevik party.", "A famine in the countryside."],
+                answer: "A widening gap between the prices of industrial and agricultural goods.",
+                reference: "See section on the economic challenges of the NEP."
+            },
+            {
+                question: "The 'Provisional Government' that came to power after the February Revolution was led by...",
+                options: ["Vladimir Lenin.", "A coalition of liberals and moderate socialists.", "The Bolsheviks.", "The Tsar's former ministers."],
+                answer: "A coalition of liberals and moderate socialists.",
+                reference: "See section on the February Revolution."
+            },
+            {
+                question: "The 'mir' was a...",
+                options: ["A type of Russian Orthodox church.", "A peasant commune in pre-revolutionary Russia.", "A secret police organization.", "A council of nobles."],
+                answer: "A peasant commune in pre-revolutionary Russia.",
+                reference: "See section on the agrarian system of Tsarist Russia."
+            }
+        ];
+
+        const quizForm = document.getElementById('quiz-form');
+        function loadQuiz() {
+            let quizHTML = '';
+            quizData.forEach((q, index) => {
+                quizHTML += `<div class="question"><h3>${index + 1}. ${q.question}</h3><div class="options">`;
+                q.options.forEach(option => {
+                    quizHTML += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label>`;
+                });
+                quizHTML += `</div></div>`;
+            });
+            quizForm.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+
+            let score = 0;
+            let resultHTML = '<h3>Results:</h3>';
+            quizData.forEach((q, index) => {
+                resultHTML += `<div class="question">`;
+                if (answers[index] === q.answer) {
+                    score++;
+                    resultHTML += `<p><b>Question ${index + 1}: Correct!</b></p>`;
+                } else {
+                    resultHTML += `<p><b>Question ${index + 1}: Incorrect.</b></p><p>The correct answer is: ${q.answer}</p>`;
+                }
+                resultHTML += `<div class="reference"><b>Reference:</b> ${q.reference}</div></div>`;
+            });
+
+            resultHTML += `<p><b>Your final score is ${score} out of ${quizData.length}</b></p>`;
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

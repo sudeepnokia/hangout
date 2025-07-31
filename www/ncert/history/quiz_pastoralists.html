@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Pastoralists in the Modern World</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; color: #333; margin: 20px; }
+        h1 { text-align: center; color: #8B4513; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 20px; }
+        .question h3 { margin-bottom: 10px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .submit-btn { background-color: #A0522D; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .reference { font-size: 0.9em; color: #666; margin-top: 5px; padding-left: 15px; border-left: 3px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Quiz: Pastoralists in the Modern World</h1>
+    <div class="quiz-container">
+        <form id="quiz-form"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "The Gujjar Bakarwals of Jammu and Kashmir are pastoralists who move between...",
+                options: ["The plains of Punjab and the mountains of Kashmir.", "The deserts of Rajasthan and the forests of Madhya Pradesh.", "The coastal areas of Gujarat and the hills of Maharashtra.", "The Siwalik range in winter and the high meadows in summer."],
+                answer: "The Siwalik range in winter and the high meadows in summer.",
+                reference: "See section on pastoral nomads and their movements in the mountains."
+            },
+            {
+                question: "The term 'bhabar' refers to...",
+                options: ["High-altitude meadows.", "A dry forested area below the foothills of the Garhwal and Kumaon.", "A type of seasonal river.", "A tax on grazing."],
+                answer: "A dry forested area below the foothills of the Garhwal and Kumaon.",
+                reference: "See section on the seasonal movements of pastoralists in the Himalayas."
+            },
+            {
+                question: "The Dhangars of Maharashtra are a pastoral community of...",
+                options: ["Shepherds.", "Cattle herders.", "Camel herders.", "Goat herders."],
+                answer: "Shepherds.",
+                reference: "See section on pastoralism in the plateaus, plains, and deserts."
+            },
+            {
+                question: "The Raikas of Rajasthan are known for herding...",
+                options: ["Sheep and goats.", "Cattle.", "Camels.", "All of the above."],
+                answer: "All of the above.",
+                reference: "See section on pastoralism in the deserts of Rajasthan."
+            },
+            {
+                question: "The Colonial government's 'Wasteland Rules' were designed to...",
+                options: ["Protect and preserve uncultivated lands.", "Bring uncultivated lands under cultivation.", "Distribute uncultivated lands to pastoralists.", "Create national parks and wildlife sanctuaries."],
+                answer: "Bring uncultivated lands under cultivation.",
+                reference: "See section on how colonial rule affected pastoral life."
+            },
+            {
+                question: "The Criminal Tribes Act of 1871 was used by the colonial government to...",
+                options: ["Provide special protection to certain communities.", "Classify many communities of craftsmen, traders, and pastoralists as 'criminal' by nature.", "Abolish the caste system.", "Promote education among nomadic tribes."],
+                answer: "Classify many communities of craftsmen, traders, and pastoralists as 'criminal' by nature.",
+                reference: "See section on the impact of colonial laws on pastoralists."
+            },
+            {
+                question: "The Maasai of East Africa are a well-known community of...",
+                options: ["Farmers.", "Pastoralists.", "Hunters and gatherers.", "Traders."],
+                answer: "Pastoralists.",
+                reference: "See section on pastoralism in Africa."
+            },
+            {
+                question: "The term 'Maasailand' refers to the...",
+                options: ["The traditional grazing lands of the Maasai.", "A national park in Kenya.", "A type of cattle breed.", "A Maasai religious festival."],
+                answer: "The traditional grazing lands of the Maasai.",
+                reference: "See section on the division of Maasailand."
+            },
+            {
+                question: "The colonial division of Maasailand between the British and the Germans resulted in the Maasai...",
+                options: ["Gaining more grazing land.", "Losing a large portion of their traditional grazing lands.", "Being forced to become settled agriculturists.", "Migrating to other parts of Africa."],
+                answer: "Losing a large portion of their traditional grazing lands.",
+                reference: "See section on the impact of colonial rule on the Maasai."
+            },
+            {
+                question: "The colonial government's restrictions on grazing in forests and reserved areas led to...",
+                options: ["An improvement in the quality of pastures.", "A decline in the livestock population and the impoverishment of pastoralists.", "An increase in the number of pastoralists.", "A shift from pastoralism to agriculture."],
+                answer: "A decline in the livestock population and the impoverishment of pastoralists.",
+                reference: "See section on the consequences of colonial forest laws."
+            },
+            {
+                question: "The term 'pastoralism' refers to a way of life based on...",
+                options: ["Farming.", "Hunting and gathering.", "Herding livestock.", "Trading."],
+                answer: "Herding livestock.",
+                reference: "See the introductory section of the chapter."
+            },
+            {
+                question: "The seasonal movement of pastoralists with their livestock is known as...",
+                options: ["Transhumance.", "Shifting cultivation.", "Crop rotation.", "Monoculture."],
+                answer: "Transhumance.",
+                reference: "See section on the patterns of pastoral movement."
+            },
+            {
+                question: "The Gaddi shepherds of Himachal Pradesh have a similar cycle of seasonal movement to the...",
+                options: ["Dhangars of Maharashtra.", "Raikas of Rajasthan.", "Gujjars of Garhwal and Kumaon.", "Maasai of East Africa."],
+                answer: "Gujjars of Garhwal and Kumaon.",
+                reference: "See section on pastoralism in the mountains."
+            },
+            {
+                question: "The colonial government's grazing tax was a tax on...",
+                options: ["The land owned by pastoralists.", "The number of cattle they grazed.", "The forest produce they collected.", "The houses they lived in."],
+                answer: "The number of cattle they grazed.",
+                reference: "See section on the impact of colonial taxes."
+            },
+            {
+                question: "The closure of the border between Kenya and Tanganyika (Tanzania) had a severe impact on the...",
+                options: ["Gujjars of Jammu and Kashmir.", "Raikas of Rajasthan.", "Maasai pastoralists.", "Dhangars of Maharashtra."],
+                answer: "Maasai pastoralists.",
+                reference: "See section on the impact of borders on pastoral life in Africa."
+            },
+            {
+                question: "The term 'kafila' refers to...",
+                options: ["A type of grazing tax.", "A caravan or group of pastoralists moving together.", "A traditional pastoralist leader.", "A type of fodder grass."],
+                answer: "A caravan or group of pastoralists moving together.",
+                reference: "See section on the social organization of pastoralists."
+            },
+            {
+                question: "The colonial government's policies towards pastoralists were often based on the assumption that...",
+                options: ["Pastoralism was a sustainable and efficient way of life.", "Pastoralists were a threat to the environment and the settled agricultural economy.", "Pastoralists should be encouraged to expand their herds.", "Pastoralists were a valuable source of revenue."],
+                answer: "Pastoralists were a threat to the environment and the settled agricultural economy.",
+                reference: "See section on the colonial view of pastoralism."
+            },
+            {
+                question: "The main reason for the decline in the number of livestock among pastoralists during the colonial period was...",
+                options: ["A series of droughts and famines.", "The loss of grazing lands and restrictions on movement.", "The spread of new diseases.", "A shift to agriculture."],
+                answer: "The loss of grazing lands and restrictions on movement.",
+                reference: "See section on the consequences of colonial policies."
+            },
+            {
+                question: "The term 'bugyal' refers to...",
+                options: ["Vast meadows in the high mountains.", "A type of seasonal river.", "A tax on grazing.", "A dry forested area."],
+                answer: "Vast meadows in the high mountains.",
+                reference: "See section on pastoralism in the Himalayas."
+            },
+            {
+                question: "The colonial government's encouragement of the cultivation of cash crops like jute and cotton led to...",
+                options: ["An increase in the area available for grazing.", "A decline in the area available for grazing.", "An improvement in the quality of pastures.", "A shift from pastoralism to cash crop cultivation by pastoralists."],
+                answer: "A decline in the area available for grazing.",
+                reference: "See section on the impact of the expansion of cultivation."
+            }
+        ];
+
+        const quizForm = document.getElementById('quiz-form');
+        function loadQuiz() {
+            let quizHTML = '';
+            quizData.forEach((q, index) => {
+                quizHTML += `<div class="question"><h3>${index + 1}. ${q.question}</h3><div class="options">`;
+                q.options.forEach(option => {
+                    quizHTML += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label>`;
+                });
+                quizHTML += `</div></div>`;
+            });
+            quizForm.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+
+            let score = 0;
+            let resultHTML = '<h3>Results:</h3>';
+            quizData.forEach((q, index) => {
+                resultHTML += `<div class="question">`;
+                if (answers[index] === q.answer) {
+                    score++;
+                    resultHTML += `<p><b>Question ${index + 1}: Correct!</b></p>`;
+                } else {
+                    resultHTML += `<p><b>Question ${index + 1}: Incorrect.</b></p><p>The correct answer is: ${q.answer}</p>`;
+                }
+                resultHTML += `<div class="reference"><b>Reference:</b> ${q.reference}</div></div>`;
+            });
+
+            resultHTML += `<p><b>Your final score is ${score} out of ${quizData.length}</b></p>`;
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

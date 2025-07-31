@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Nazism and the Rise of Hitler</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; color: #333; margin: 20px; }
+        h1 { text-align: center; color: #333; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { margin-bottom: 20px; }
+        .question h3 { margin-bottom: 10px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .submit-btn { background-color: #222; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .reference { font-size: 0.9em; color: #666; margin-top: 5px; padding-left: 15px; border-left: 3px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Quiz: Nazism and the Rise of Hitler</h1>
+    <div class="quiz-container">
+        <form id="quiz-form"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "The term 'Lebensraum' refers to the Nazi goal of...",
+                options: ["Racial purity.", "Acquiring living space for the German people.", "Economic self-sufficiency.", "A totalitarian state."],
+                answer: "Acquiring living space for the German people.",
+                reference: "See section on the Nazi worldview and geopolitical aims."
+            },
+            {
+                question: "The Enabling Act of 1933...",
+                options: ["Banned the Communist Party.", "Gave Hitler the power to rule by decree, effectively ending democracy in Germany.", "Established the Nuremberg Laws.", "Announced Germany's withdrawal from the League of Nations."],
+                answer: "Gave Hitler the power to rule by decree, effectively ending democracy in Germany.",
+                reference: "See section on the destruction of democracy."
+            },
+            {
+                question: "The Nuremberg Laws of 1935...",
+                options: ["Outlawed all political parties except the Nazi Party.", "Established the Gestapo.", "Deprived Jews of their citizenship and forbade marriages between Jews and Germans.", "Launched the Four-Year Plan for rearmament."],
+                answer: "Deprived Jews of their citizenship and forbade marriages between Jews and Germans.",
+                reference: "See section on the persecution of Jews."
+            },
+            {
+                question: "Kristallnacht, or the 'Night of Broken Glass', was...",
+                options: ["A failed attempt to overthrow Hitler.", "A nationwide, state-sponsored pogrom against the Jewish population.", "The night the Reichstag building was burned down.", "The signing of the Munich Agreement."],
+                answer: "A nationwide, state-sponsored pogrom against the Jewish population.",
+                reference: "See section on the escalating persecution of Jews."
+            },
+            {
+                question: "The Wannsee Conference of 1942 was where...",
+                options: ["The invasion of Poland was planned.", "The 'Final Solution to the Jewish Question' was coordinated.", "The Munich Agreement was signed.", "The Axis powers were formed."],
+                answer: "The 'Final Solution to the Jewish Question' was coordinated.",
+                reference: "See section on the Holocaust."
+            },
+            {
+                question: "The term 'Gleichschaltung' refers to the process of...",
+                options: ["Nazi rearmament.", "The coordination and Nazification of all aspects of German society.", "The annexation of Austria.", "The invasion of the Soviet Union."],
+                answer: "The coordination and Nazification of all aspects of German society.",
+                reference: "See section on the consolidation of Nazi power."
+            },
+            {
+                question: "The 'Strength through Joy' (Kraft durch Freude) program was designed to...",
+                options: ["Promote physical fitness for military service.", "Provide affordable leisure activities and vacations for German workers.", "Encourage women to have more children.", "Spread Nazi propaganda abroad."],
+                answer: "Provide affordable leisure activities and vacations for German workers.",
+                reference: "See section on life in Nazi Germany."
+            },
+            {
+                question: "The 'Anschluss' of 1938 was the...",
+                options: ["Invasion of Poland.", "Annexation of the Sudetenland.", "Union of Germany and Austria.", "Occupation of the Rhineland."],
+                answer: "Union of Germany and Austria.",
+                reference: "See section on Hitler's foreign policy and the road to war."
+            },
+            {
+                question: "The 'Volksgemeinschaft' was the Nazi concept of a...",
+                options: ["A racially pure 'people's community'.", "A totalitarian state.", "A military alliance.", "An economic union."],
+                answer: "A racially pure 'people's community'.",
+                reference: "See section on the Nazi worldview."
+            },
+            {
+                question: "The 'Gestapo' was the...",
+                options: ["The Nazi party's paramilitary wing.", "The secret state police.", "The ministry of propaganda.", "The organization for German youth."],
+                answer: "The secret state police.",
+                reference: "See section on the Nazi police state."
+            },
+            {
+                question: "The Beer Hall Putsch of 1923 was...",
+                options: ["A successful seizure of power by Hitler.", "A failed attempt by Hitler to seize power in Munich.", "A communist uprising.", "A protest against the Treaty of Versailles."],
+                answer: "A failed attempt by Hitler to seize power in Munich.",
+                reference: "See section on Hitler's early life and the rise of the Nazi Party."
+            },
+            {
+                question: "The Dawes Plan of 1924 was an attempt to...",
+                options: ["Resolve the issue of German reparations after World War I.", "Outlaw war.", "Create a common European currency.", "Establish the League of Nations."],
+                answer: "Resolve the issue of German reparations after World War I.",
+                reference: "See section on the Weimar Republic."
+            },
+            {
+                question: "The term 'hyperinflation' in the context of the Weimar Republic refers to...",
+                options: ["A period of rapid economic growth.", "A period of extremely high and out-of-control inflation.", "A government policy of printing more money.", "A stock market crash."],
+                answer: "A period of extremely high and out-of-control inflation.",
+                reference: "See section on the economic crises of the Weimar Republic."
+            },
+            {
+                question: "The 'Spartacist Uprising' of 1919 was a...",
+                options: ["A right-wing coup attempt.", "A communist revolt in Berlin.", "A protest by war veterans.", "A monarchist rebellion."],
+                answer: "A communist revolt in Berlin.",
+                reference: "See section on the early years of the Weimar Republic."
+            },
+            {
+                question: "The 'Reichstag Fire' was used by the Nazis as a pretext to...",
+                options: ["Declare war on Poland.", "Suspend civil liberties and suppress political opponents.", "Withdraw from the League of Nations.", "Sign a non-aggression pact with the Soviet Union."],
+                answer: "Suspend civil liberties and suppress political opponents.",
+                reference: "See section on the destruction of democracy."
+            },
+            {
+                question: "The 'Four-Year Plan' launched in 1936 was focused on...",
+                options: ["Improving agriculture.", "Building the Autobahn.", "Preparing the German economy for war.", "Promoting consumer goods."],
+                answer: "Preparing the German economy for war.",
+                reference: "See section on the Nazi economy."
+            },
+            {
+                question: "The 'Einsatzgruppen' were...",
+                options: ["Special action groups or mobile killing squads of the SS.", "The elite panzer divisions of the German army.", "The Nazi youth organization.", "The German air force."],
+                answer: "Special action groups or mobile killing squads of the SS.",
+                reference: "See section on the Holocaust."
+            },
+            {
+                question: "The concept of 'Autarky' in the Nazi economy referred to...",
+                options: ["Free trade.", "Economic self-sufficiency.", "A mixed economy.", "A command economy."],
+                answer: "Economic self-sufficiency.",
+                reference: "See section on the Nazi economy."
+            },
+            {
+                question: "The 'Night of the Long Knives' in 1934 was a purge of the...",
+                options: ["The leadership of the SA (Sturmabteilung).", "The Communist Party.", "The Social Democratic Party.", "The German military leadership."],
+                answer: "The leadership of the SA (Sturmabteilung).",
+                reference: "See section on the consolidation of Nazi power."
+            },
+            {
+                question: "The 'Mein Kampf' is...",
+                options: ["A novel about World War I.", "Hitler's autobiographical manifesto.", "The constitution of the Weimar Republic.", "A collection of Nazi propaganda posters."],
+                answer: "Hitler's autobiographical manifesto.",
+                reference: "See section on Hitler's ideology."
+            }
+        ];
+
+        const quizForm = document.getElementById('quiz-form');
+        function loadQuiz() {
+            let quizHTML = '';
+            quizData.forEach((q, index) => {
+                quizHTML += `<div class="question"><h3>${index + 1}. ${q.question}</h3><div class="options">`;
+                q.options.forEach(option => {
+                    quizHTML += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label>`;
+                });
+                quizHTML += `</div></div>`;
+            });
+            quizForm.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+
+            let score = 0;
+            let resultHTML = '<h3>Results:</h3>';
+            quizData.forEach((q, index) => {
+                resultHTML += `<div class="question">`;
+                if (answers[index] === q.answer) {
+                    score++;
+                    resultHTML += `<p><b>Question ${index + 1}: Correct!</b></p>`;
+                } else {
+                    resultHTML += `<p><b>Question ${index + 1}: Incorrect.</b></p><p>The correct answer is: ${q.answer}</p>`;
+                }
+                resultHTML += `<div class="reference"><b>Reference:</b> ${q.reference}</div></div>`;
+            });
+
+            resultHTML += `<p><b>Your final score is ${score} out of ${quizData.length}</b></p>`;
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
