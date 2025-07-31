@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Measurement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 10px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid #4f46e5;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800">The Act of Measurement</h1>
+            <p class="text-xl text-gray-600 mt-3">Extracting classical information from a quantum system.</p>
+        </header>
+
+        <nav class="bg-white shadow-md rounded-lg p-4 mb-10 sticky top-4 z-10">
+            <ul class="flex items-center justify-center space-x-6">
+                <li><a href="index.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Home</a></li>
+                <li><a href="fundamental_concepts.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Fundamentals</a></li>
+                <li><a href="quantum_gates.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Prev: Quantum Gates</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-card">
+            <h2 class="section-title">The Measurement Postulate</h2>
+            <p class="text-gray-700 text-lg">
+                The power of a quantum computer lies in its ability to exist in a superposition of many states. However, to get a result from a quantum computation, we must measure the qubits. The act of measurement is a crucial, and often misunderstood, part of quantum mechanics.
+            </p>
+            <p class="text-gray-700 text-lg mt-4">
+                When we measure a qubit, its superposition collapses. The qubit is forced to choose one of its possible classical states (0 or 1). This process is probabilistic. The probability of measuring a particular state is determined by the amplitude of that state in the superposition. For a qubit in the state `α|0⟩ + β|1⟩`, the probability of measuring `|0⟩` is `|α|²`, and the probability of measuring `|1⟩` is `|β|²`.
+            </p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-title">The Observer Effect</h2>
+            <p class="text-gray-700 text-lg">
+                A key consequence of the measurement postulate is that you cannot measure a quantum state without disturbing it. The very act of observing the system changes it. This is a fundamental departure from classical physics, where we can (in principle) observe a system without affecting it.
+            </p>
+            <p class="text-gray-700 text-lg mt-4">
+                This means we cannot directly see the superposition. We can only see the classical outcome after the superposition has collapsed. Quantum algorithms are designed to cleverly manipulate the probabilities so that when we do measure, the state we want is the one that is most likely to appear.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

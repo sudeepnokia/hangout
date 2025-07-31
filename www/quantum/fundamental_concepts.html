@@ -4,88 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamental Concepts for Quantum VLSI</title>
+    <title>Fundamental Concepts of Quantum Computing</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        .content-card {
+        .link-card {
             background-color: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 0.75rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        .section-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #1f2937;
+            padding: 1.5rem;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #4f46e5;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
         }
-        .concept-title {
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .link-card a {
+            text-decoration: none;
+            color: #1f2937;
             font-size: 1.25rem;
             font-weight: 600;
-            color: #374151;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
+        }
+        .link-card .description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
         }
     </style>
 </head>
 <body class="bg-gray-100 p-8">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-2xl mx-auto">
         <header class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-gray-800">Fundamental Concepts for Quantum VLSI</h1>
-            <p class="text-lg text-gray-600 mt-2">Core ideas needed to understand the intersection of quantum computing and semiconductor design.</p>
+            <h1 class="text-4xl font-bold text-gray-800">Fundamental Concepts of Quantum Computing</h1>
+            <p class="text-lg text-gray-600 mt-2">A breakdown of the core principles.</p>
         </header>
 
-        <div class="content-card">
-            <h2 class="section-title">1. Quantum Mechanics</h2>
-            <p class="text-gray-700">
-                The bedrock of quantum computing. It describes the behavior of matter and energy at the atomic and subatomic levels.
-            </p>
-            <h3 class="concept-title">Qubits, Superposition, and Entanglement</h3>
-            <p class="text-gray-700">
-                A <strong>qubit</strong> is the basic unit of quantum information. Unlike a classical bit, which can be a 0 or a 1, a qubit can exist in a <strong>superposition</strong> of both states simultaneously. Furthermore, multiple qubits can be <strong>entangled</strong>, meaning their fates are linked, regardless of the distance separating them. These properties are what give quantum computers their immense potential power.
-            </p>
-        </div>
+        <nav class="bg-white shadow-md rounded-lg p-4 mb-10 sticky top-4 z-10">
+            <ul class="flex items-center justify-center space-x-6">
+                <li><a href="index.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Home</a></li>
+                <li><a href="quantum_deep_dive.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Quantum Deep Dive</a></li>
+            </ul>
+        </nav>
 
-        <div class="content-card">
-            <h2 class="section-title">2. Semiconductor & VLSI</h2>
-            <p class="text-gray-700">
-                Very Large Scale Integration (VLSI) is the process of creating integrated circuits by combining millions or billions of transistors on a single chip. This is the technology that powers all modern electronics.
-            </p>
-            <h3 class="concept-title">CMOS and Fabrication</h3>
-            <p class="text-gray-700">
-                <strong>CMOS (Complementary Metal-Oxide-Semiconductor)</strong> is the dominant technology for constructing integrated circuits. The documents in this section explore how to adapt CMOS technology to operate at <strong>cryogenic temperatures</strong> to control and read out qubits. <strong>Fabrication</strong> refers to the industrial processes (like lithography and etching) used to build these chips. The goal is to leverage these mature and precise techniques to build high-quality, scalable qubit arrays.
-            </p>
+        <div class="link-card">
+            <a href="qubits.html">1. Qubits and Superposition</a>
+            <p class="description">Learn about the basic unit of quantum information and the principle of being in multiple states at once.</p>
         </div>
-
-        <div class="content-card">
-            <h2 class="section-title">3. Electromagnetism & Optics</h2>
-            <p class="text-gray-700">
-                This area of physics is crucial for controlling qubits and for enabling communication between them.
-            </p>
-            <h3 class="concept-title">Microwaves and Photonics</h3>
-            <p class="text-gray-700">
-                Qubits are often controlled by carefully tuned <strong>microwave</strong> pulses. <strong>Photonics</strong> involves the use of light (photons) to transmit information. The idea of "photonic interconnects" is to use optical fibers to link different quantum modules, which could be a key to building large, scalable quantum computers. A critical challenge here is <strong>transduction</strong>—the efficient conversion of quantum information from microwave signals to optical signals and back again.
-            </p>
+        <div class="link-card">
+            <a href="entanglement.html">2. Quantum Entanglement</a>
+            <p class="description">Explore the "spooky action at a distance" that links the fates of quantum particles.</p>
         </div>
-
-        <div class="content-card">
-            <h2 class="section-title">4. Cryogenics</h2>
-            <p class="text-gray-700">
-                The science of producing and studying very low temperatures.
-            </p>
-            <h3 class="concept-title">Operating Near Absolute Zero</h3>
-            <p class="text-gray-700">
-                Quantum effects are extremely fragile and can be easily destroyed by thermal noise. To protect the delicate quantum states of the qubits, quantum computers must be operated in highly controlled environments at temperatures close to absolute zero (-273.15°C or 0 Kelvin). A major engineering challenge is <strong>heat dissipation</strong>, as even the tiny amount of heat generated by control electronics can be enough to disrupt the qubits.
-            </p>
+        <div class="link-card">
+            <a href="quantum_gates.html">3. Quantum Gates</a>
+            <p class="description">Discover the building blocks of quantum algorithms and how they manipulate qubit states.</p>
         </div>
-
+        <div class="link-card">
+            <a href="measurement.html">4. The Act of Measurement</a>
+            <p class="description">Understand how we extract classical information from a quantum computer and the role of observation.</p>
+        </div>
     </div>
 </body>
 </html>

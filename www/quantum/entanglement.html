@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Entanglement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 10px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid #4f46e5;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800">Quantum Entanglement</h1>
+            <p class="text-xl text-gray-600 mt-3">"Spooky action at a distance."</p>
+        </header>
+
+        <nav class="bg-white shadow-md rounded-lg p-4 mb-10 sticky top-4 z-10">
+            <ul class="flex items-center justify-center space-x-6">
+                <li><a href="index.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Home</a></li>
+                <li><a href="fundamental_concepts.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Fundamentals</a></li>
+                <li><a href="qubits.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Prev: Qubits</a></li>
+                <li><a href="quantum_gates.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Next: Quantum Gates</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-card">
+            <h2 class="section-title">A Mysterious Connection</h2>
+            <p class="text-gray-700 text-lg">
+                Quantum entanglement is one of the most counter-intuitive, yet powerful, phenomena in quantum mechanics. It occurs when two or more quantum particles become linked in such a way that their fates are intertwined, regardless of the distance separating them. Measuring a property of one particle instantaneously influences the corresponding property of the other particle(s).
+            </p>
+            <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg my-6">
+                <p class="text-indigo-800 text-lg">
+                    <strong>Analogy:</strong> Imagine you have a pair of gloves, one left and one right. You put them in separate, identical boxes and mail one to a friend on the other side of the world. Before anyone opens a box, you don't know which box contains which glove. But the moment your friend opens their box and finds a left glove, you instantly know that your box contains the right glove. Entanglement is like this, but with a quantum twist: before measurement, the particles are not in a definite state (like the gloves being pre-determined). They are in a superposition of all possibilities, and it is the act of measurement on one that forces the other into a definite state.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-title">Creating and Using Entanglement</h2>
+            <p class="text-gray-700 text-lg">
+                Entanglement is a resource that can be used to perform powerful computations. It is created by applying specific quantum gates (like the CNOT gate) to a set of qubits. Once entangled, these qubits can be used for tasks like quantum teleportation and superdense coding, and they are a key ingredient in many quantum algorithms, such as Shor's algorithm for factoring.
+            </p>
+            <p class="text-gray-700 text-lg mt-4">
+                The correlations between entangled particles are stronger than any correlations possible in classical physics. This has been experimentally verified many times, proving that entanglement is a real and fundamental aspect of our universe.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

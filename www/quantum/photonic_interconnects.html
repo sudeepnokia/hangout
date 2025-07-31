@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photonic Interconnects for Quantum Systems</title>
+    <title>Photonic Interconnects</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -14,89 +15,80 @@
             background-color: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 0.75rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 10px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
         }
         .section-title {
-            font-size: 1.875rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #4f46e5;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid #4f46e5;
         }
-        .mermaid {
-            background-color: #f9fafb;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .concept-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
         }
     </style>
 </head>
 <body class="bg-gray-100 p-8">
-    <div class="max-w-4xl mx-auto">
-        <header class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-gray-800">Photonic Interconnects for Quantum Systems</h1>
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800">Photonic Interconnects for Scalable Quantum Computing</h1>
+            <p class="text-xl text-gray-600 mt-3">Using light to connect quantum processors.</p>
         </header>
 
+        <nav class="bg-white shadow-md rounded-lg p-4 mb-10 sticky top-4 z-10">
+            <ul class="flex items-center justify-center space-x-6">
+                <li><a href="index.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Home</a></li>
+                <li><a href="fundamental_concepts.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Fundamentals</a></li>
+                <li><a href="quantum_deep_dive.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Quantum Deep Dive</a></li>
+                <li><a href="qubit_fabrication.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Qubit Fabrication</a></li>
+                <li><a href="cryogenic_cmos.html" class="text-lg font-semibold text-gray-700 hover:text-indigo-600 nav-link">Cryogenic CMOS</a></li>
+            </ul>
+        </nav>
+
         <div class="content-card">
-            <h2 class="section-title">Concept Overview</h2>
-            <p class="text-lg text-gray-700">
-                This document explores the use of Photonic Interconnects in the context of Very Large Scale Integration (VLSI) for quantum computing. The goal is to use light (photons) to transmit quantum information between different parts of a quantum computer, enabling modular and scalable architectures.
+            <h2 class="section-title">The Modularity Advantage</h2>
+            <p class="text-gray-700 text-lg">
+                Building a single, monolithic quantum computer with millions of high-quality qubits is incredibly difficult. A more promising approach is to build smaller, more manageable quantum modules and then connect them together to form a larger, more powerful machine. This is the idea behind modular quantum computing.
+            </p>
+
+            <h3 class="concept-title">Why Photonics?</h3>
+            <p class="text-gray-700">
+                Connecting these modules is a major challenge. Superconducting wires, which are used inside the modules, are not suitable for long-distance communication. This is where photonics comes in. Photons (particles of light) are excellent carriers of information. They can travel long distances with very little loss, and they are immune to the kind of electrical noise that can plague conventional wires.
             </p>
         </div>
 
         <div class="content-card">
-            <h2 class="section-title">System Visualization</h2>
-            <div class="mermaid">
-graph TD
-    subgraph "Quantum Chip A"
-        QA["Qubit Array A"]
-        E2P_A["Electrical-to-Photonic Converter"]
-        QA -- "Quantum State" --> E2P_A
-    end
+            <h2 class="section-title">The Transduction Challenge</h2>
+            <p class="text-gray-700 text-lg">
+                The biggest hurdle in photonic interconnects is <strong>quantum transduction</strong>: the process of converting quantum information from one physical form to another. In this case, we need to convert the information from a superconducting qubit (which operates at microwave frequencies) to a photon (which operates at optical frequencies), and then back again, all without destroying the delicate quantum state.
+            </p>
 
-    subgraph "Quantum Chip B"
-        QB["Qubit Array B"]
-        P2E_B["Photonic-to-Electrical Converter"]
-        P2E_B -- "Quantum State" --> QB
-    end
-
-    E2P_A -- "Photonic Link (Optical Fiber)" --> P2E_B
-
-    style QA fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style QB fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style E2P_A fill:#fde68a,stroke:#d97706,stroke-width:2px
-    style P2E_B fill:#fde68a,stroke:#d97706,stroke-width:2px
-</div>
+            <h3 class="concept-title">Approaches to Transduction</h3>
+            <p class="text-gray-700">
+                This is an active area of research, with several promising approaches:
+                <ul>
+                    <li><strong>Opto-mechanical systems:</strong> Using tiny mechanical resonators to bridge the gap between microwave and optical frequencies.</li>
+                    <li><strong>Electro-optic modulators:</strong> Using special materials that can change their optical properties in response to an electric field.</li>
+                    <li><strong>Rare-earth ions:</strong> Using certain types of atoms that can interact with both microwaves and light.</li>
+                </ul>
+            </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="content-card">
-                <h2 class="section-title text-green-700 border-green-400">Pros</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li><strong>High Bandwidth:</strong> Optical links can carry vast amounts of information.</li>
-                    <li><strong>Low Crosstalk:</strong> Photons do not easily interfere with each other, reducing noise.</li>
-                    <li><strong>Room Temperature Operation:</strong> Interconnects can operate at room temperature, simplifying system design.</li>
-                    <li><strong>Modularity:</strong> Enables connecting multiple quantum processors to build a larger machine.</li>
-                </ul>
-            </div>
-            <div class="content-card">
-                <h2 class="section-title text-red-700 border-red-400">Cons</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li><strong>Transduction Inefficiency:</strong> Converting quantum information from electrical to photonic form (and back) is inefficient and noisy.</li>
-                    <li><strong>Photon Loss:</strong> Photons can be lost in the interconnect, leading to information loss.</li>
-                    <li><strong>Material Integration:</strong> Integrating photonic components with qubit materials is a major fabrication challenge.</li>
-                    <li><strong>Synchronization:</strong> Precisely timing the arrival of photons across different links is difficult.</li>
-                </ul>
-            </div>
-        </div>
     </div>
-    <script>
-        mermaid.initialize({ startOnLoad: true });
-    </script>
 </body>
 </html>
