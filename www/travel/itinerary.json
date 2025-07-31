@@ -1,0 +1,144 @@
+[
+    {
+        "day": 1,
+        "title": "Arrival & Modern Sights",
+        "dailyCost": "₹3,000",
+        "items": [
+            {
+                "type": "travel",
+                "icon": "log-in",
+                "text": "Arrive in Hyderabad and check into your hotel: <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Treebo+The+Living+Tree+Khairatabad\" target=\"_blank\">Treebo The Living Tree, Khairatabad <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <br> <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Secunderabad+Junction/Treebo+The+Living+Tree+Khairatabad,+metro+station+khaiaratabad,+Kammari+Krishna+Street,+khairatabad,+Khairtabad,+Hyderabad,+Telangana/@17.423034,78.469934,14z/data=!4m13!4m12!1m5!1m1!1s0x3bcb99e1a5555555:0x43a377644f309575!2m2!1d78.497732!2d17.43608!1m5!1m1!1s0x3bcb97388b555555:0x449946e913e49e6!2m2!1d78.46483!2d17.4096\" target=\"_blank\">Directions from Secunderabad Junction to hotel <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Golconda+Fort+Hyderabad&travelmode=driving\" target=\"_blank\">Head to Golconda Fort by cab (approx 12 km, 30 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "shield",
+                "text": "*10:00 AM – 12:30 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/zczwXa3JHQt8jJH77\" target=\"_blank\">Explore the historic Golconda Fort <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This grand 16th-century fortress is known for its acoustic marvels and as a former diamond trading center. Enjoy panoramic views after a climb to the top, and clap under the dome to experience the fort’s famed acoustics.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 9:00 AM - 5:30 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹25 (Indians), ₹300 (Foreigners)</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Golconda+Fort+Hyderabad&destination=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad&travelmode=driving\" target=\"_blank\">Drive to RTC X Roads for lunch (approx 15 km, 45 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "food",
+                "icon": "coffee",
+                "text": "*1:00 PM – 2:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad\" target=\"_blank\">Lunch at the famous Bawarchi Restaurant <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Savor authentic Hyderabadi biryani at this iconic spot (they proudly claim “no branches”!). Enjoy the aromatic rice and tender meat, and consider cooling off with a sweet Qubani ka Meetha dessert after your spicy meal.</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad&destination=Birla+Science+Museum+Hyderabad&travelmode=transit\" target=\"_blank\">Reach Birla Science Centre (4 km) via metro/cab <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {                "type": "visit",                "icon": "box",                "text": "*2:30 PM – 4:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=B.M.+Birla+Science+Centre\" target=\"_blank\">Visit the B.M. Birla Science Centre <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This complex includes a science museum, planetarium, and art gallery. Catch an interactive science exhibit or a planetarium show if timing permits. Don’t miss the Dinosaurium with its 160-million-year-old fossil on display.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 10:30 AM - 8:00 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹150 (Science Museum), Combo tickets available. <a class=\"text-indigo-600 hover:underline\" href=\"https://gpbaasri.org/wp-content/uploads/2022/08/GPBAASRI-TICKETS-v6.jpg\" target=\"_blank\">View Tickets <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a></p>"            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Birla+Science+Museum+Hyderabad&destination=Tank+Bund+Hyderabad&travelmode=driving\" target=\"_blank\">Taxi to Tank Bund at Hussain Sagar (approx 3 km, 10 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "wind",
+                "text": "*5:00 PM – 5:45 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/Tank+Bund,+Hyderabad\" target=\"_blank\">Stroll along Tank Bund <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Walk this popular lakeside boulevard lined with statues of local icons, and enjoy views of the enormous Buddha statue rising from Hussain Sagar Lake. The breeze off the lake and the lively atmosphere make for a relaxing early evening walk.</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Tank+Bund+Hyderabad&destination=Durgam+Cheruvu+Cable+Bridge+Hyderabad&travelmode=driving\" target=\"_blank\">Drive to Durgam Cheruvu Cable Bridge (12 km, ~30–40 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "truck",
+                "text": "*7:00 PM – 8:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Durgam+Cheruvu+Bridge\" target=\"_blank\">Evening at Durgam Cheruvu Cable Bridge <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This modern cable-stayed bridge dazzles with dynamic lighting displays after dark. Take in the stunning illuminated structure and lakeside views. It’s a photographer’s delight and a perfect finale to your day before heading back to the hotel.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 24/7 (Lighting: 7:00 PM - 10:00 PM)</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> Free</p>"
+            }
+        ]
+    },
+    {
+        "day": 2,
+        "title": "Ramoji Film City Day Trip",
+        "dailyCost": "₹5,000",
+        "items": [
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/zE23A7jDLoD477bq7?g_st=ac\" target=\"_blank\">Morning travel to Ramoji Film City (approx 1 hr drive) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "film",
+                "text": "*9:30 AM – 6:30 PM:* Full day at <a class=\"text-indigo-600 hover:underline\" href=\"https://www.ramojifilmcity.com/\" target=\"_blank\">Ramoji Film City <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Explore the world’s largest film studio complex, filled with live shows, movie sets, theme park rides, and gardens. Don’t miss the Hollywood/Bollywood sets tour and stunt shows. There’s an on-site cafeteria for lunch, and plenty of fun photo-ops in this 2000-acre “city” of cinema magic.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 9:00 AM - 5:30 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> Starting from ₹1350 (Adults), ₹1150 (Children)</p>"
+            },
+            {
+                "type": "food",
+                "icon": "coffee",
+                "text": "Lunch inside Ramoji Film City (at one of the studio restaurants)."
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/ZM1FfE2bKjxoKZL9A?g_st=ac\" target=\"_blank\">Evening return to hotel (approx 1.5 hrs) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            }
+        ]
+    },
+    {
+        "day": 3,
+        "title": "Old City Heritage & Departure",
+        "dailyCost": "₹4,000",
+        "items": [
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Charminar+Hyderabad&travelmode=driving\" target=\"_blank\">Morning ride to Charminar (approx 8 km, 25 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "camera",
+                "text": "*9:00 AM – 10:00 AM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/1BDYGhVhcUoV72K87\" target=\"_blank\">Visit the iconic Charminar <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Built in 1591, this landmark mosque with four minarets is the heart of Hyderabad. Climb up its narrow spiral staircase for panoramic views of the bustling Old City. Around Charminar, browse the Laad Bazaar for bangles and pearls as the area comes to life in the morning.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 9:30 AM - 5:30 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹25 (Indians), ₹300 (Foreigners)</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "walk",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Charminar+Hyderabad&destination=Chowmahalla+Palace+Hyderabad&travelmode=walking\" target=\"_blank\">Walk 5 min to nearby Chowmahalla Palace <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "key",
+                "text": "*10:00 AM – 11:30 AM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Chowmahalla+Palace\" target=\"_blank\">Explore the magnificent Chowmahalla Palace <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Once the Nizams’ royal residence, this 18th-century palace complex features four palaces around a grand courtyard. Admire the Khilwat Mubarak throne room with its chandeliers, the vintage car collection, and the beautiful gardens and fountains that evoke the grandeur of Hyderabad’s princely era.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 10:00 AM - 5:00 PM (Closed Fridays)</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹100 (Indians), ₹400 (Foreigners)</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "walk",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Chowmahalla+Palace+Hyderabad&destination=Hotel+Shadab+Hyderabad&travelmode=walking\" target=\"_blank\">Stroll 10 min to Hotel Shadab for lunch <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "food",
+                "icon": "coffee",
+                "text": "*12:00 PM – 1:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://maps.google.com/?cid=7876124088418144061\" target=\"_blank\">Lunch at Shadab Restaurant <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Enjoy renowned Hyderabadi mutton biryani and kebabs at this Old City institution. This bustling two-story eatery is beloved by locals – don’t forget to sip on some warm Irani chai or try Qubani ka Meetha (apricot dessert) after your meal for a true local experience.</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "truck",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Hotel+Shadab+Hyderabad&destination=Salar+Jung+Museum+Hyderabad&travelmode=driving\" target=\"_blank\">Short drive to Salar Jung Museum (2 km, 10 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "visit",
+                "icon": "archive",
+                "text": "*1:15 PM – 3:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/k3C1E3sZNN2ffGdT6\" target=\"_blank\">Discover the Salar Jung Museum <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">Home to one of the world’s largest one-man art collections, this museum displays over a million artifacts from around the globe. Marvel at the veiled Rebecca statue, antique clocks that chime on the hour, Mughal daggers, and rare manuscripts. Allocate enough time to explore highlights in this vast museum.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 10:00 AM - 5:00 PM (Closed Fridays)</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹50 (Indians), ₹500 (Foreigners)</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "train",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Salar+Jung+Museum,+Darulshifa,+Hyderabad,+Telangana+500002/Treebo+The+Living+Tree+Khairatabad,+metro+station+khaiaratabad,+Kammari+Krishna+Street,+khairatabad,+Khairtabad,+Hyderabad,+Telangana/Secunderabad+Junction,+Secunderabad+Railway+Station+Rd,+Railway+Officer+Colony,+Botiguda,+Bhoiguda,+Secunderabad,+Telangana+500025/\" target=\"_blank\">Transfer to Secunderabad Railway Station via hotel (to pick up luggage) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "travel",
+                "icon": "train",
+                "text": "Depart Hyderabad by <span class=\"font-semibold\">Rajdhani Express (Train 22692)</span> at 17:25, arriving Bengaluru (SBC) at 05:20."
+            }
+        ]
+    }
+]
