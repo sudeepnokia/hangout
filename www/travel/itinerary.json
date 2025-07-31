@@ -34,7 +34,7 @@
                 "icon": "truck",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Bawarchi+Restaurant+RTC+X+Roads+Hyderabad&destination=Birla+Science+Museum+Hyderabad&travelmode=transit\" target=\"_blank\">Reach Birla Science Centre (4 km) via metro/cab <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
-            {                "type": "visit",                "icon": "box",                "text": "*2:30 PM – 4:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=B.M.+Birla+Science+Centre\" target=\"_blank\">Visit the B.M. Birla Science Centre <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This complex includes a science museum, planetarium, and art gallery. Catch an interactive science exhibit or a planetarium show if timing permits. Don’t miss the Dinosaurium with its 160-million-year-old fossil on display.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 10:30 AM - 8:00 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹150 (Science Museum), Combo tickets available. <a class=\"text-indigo-600 hover:underline\" href=\"https://gpbaasri.org/wp-content/uploads/2022/08/GPBAASRI-TICKETS-v6.jpg\" target=\"_blank\">View Tickets <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a></p>"            },
+            {                "type": "visit",                "icon": "box",                "text": "*2:30 PM – 4:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=B.M.+Birla+Science+Centre\" target=\"_blank\">Visit the B.M. Birla Science Centre <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This complex includes a science museum, planetarium, and art gallery. Catch an interactive science exhibit or a planetarium show if timing permits. Don’t miss the Dinosaurium with its 160-million-year-old fossil on display.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 10:30 AM - 8:00 PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> ₹150 (Science Museum), Combo tickets available. <a class=\"text-indigo-600 hover:underline\" href=\"https://gpbaasri.org/wp-content/uploads/2022/08/GPBAASRI-TICKETS-v6.jpg\" target=\"_blank\">View Tickets <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a></p><hr class='my-3 border-gray-300 dark:border-gray-600'><p class='font-semibold text-gray-800 dark:text-gray-200'>OR (Spiritual Alternative)</p><p class=\"text-sm text-gray-600 mt-1\">*2:30 PM – 4:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/search/?api=1&query=Birla+Mandir+Hyderabad\" target=\"_blank\">Visit Birla Mandir <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. A stunning modern temple built of white marble, offering serene vibes and panoramic city views.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 7AM-12PM, 3PM-9PM</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> Free</p>"},
             {
                 "type": "travel",
                 "icon": "truck",
@@ -64,8 +64,13 @@
         "items": [
             {
                 "type": "travel",
+                "icon": "train",
+                "text": "<b>Part 1:</b> Take the metro from Khairatabad station to LB Nagar station. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "travel",
                 "icon": "truck",
-                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/zE23A7jDLoD477bq7?g_st=ac\" target=\"_blank\">Morning travel to Ramoji Film City (approx 1 hr drive) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+                "text": "<b>Part 2:</b> From LB Nagar, take an Ola cab (2 x ₹600) to Ramoji Film City. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana/Ramoji+Film+City,+Hyderabad,+Telangana\" target=\"_blank\">View Cab Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
                 "type": "visit",
@@ -80,7 +85,12 @@
             {
                 "type": "travel",
                 "icon": "truck",
-                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://maps.app.goo.gl/ZM1FfE2bKjxoKZL9A?g_st=ac\" target=\"_blank\">Evening return to hotel (approx 1.5 hrs) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+                "text": "<b>Part 1:</b> Take an Ola cab (2 x ₹600) from Ramoji Film City to LB Nagar metro station. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Ramoji+Film+City,+Hyderabad,+Telangana/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana/\" target=\"_blank\">View Cab Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "travel",
+                "icon": "train",
+                "text": "<b>Part 2:</b> Take the metro from LB Nagar station to Khairatabad station. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             }
         ]
     },

@@ -239,7 +239,12 @@
         const tabContentContainer = document.getElementById('tab-content');
 
         fetch('itinerary.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
             .then(itineraryData => {
                 itineraryData.forEach((day, index) => {
                     // Create Tab Button
@@ -289,6 +294,10 @@
                         document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
                     }
                 });
+            })
+            .catch(error => {
+                console.error('Error loading itinerary:', error);
+                tabContentContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data. Please check if itinerary.json is valid.</p>`;
             });
     });
 
