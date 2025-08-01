@@ -54,6 +54,11 @@
                 "type": "visit",
                 "icon": "truck",
                 "text": "*7:00 PM – 8:00 PM:* <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/place/Durgam+Cheruvu+Bridge\" target=\"_blank\">Evening at Durgam Cheruvu Cable Bridge <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>. <p class=\"text-sm text-gray-600\">This modern cable-stayed bridge dazzles with dynamic lighting displays after dark. Take in the stunning illuminated structure and lakeside views. It’s a photographer’s delight and a perfect finale to your day before heading back to the hotel.</p><p class=\"text-sm text-gray-600 mt-2\"><b>Timings:</b> 24/7 (Lighting: 7:00 PM - 10:00 PM)</p><p class=\"text-sm text-gray-600\"><b>Entry Fee:</b> Free</p>"
+            },
+            {
+                "type": "travel",
+                "icon": "hotel",
+                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Durgam+Cheruvu+Bridge,+Hyderabad/Treebo+The+Living+Tree+Khairatabad,+Hyderabad\" target=\"_blank\">Drive back to the hotel <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             }
         ]
     },
@@ -101,8 +106,13 @@
         "items": [
             {
                 "type": "travel",
+                "icon": "train",
+                "text": "<b>Part 1:</b> Take the metro from Khairatabad station to MG Bus station (6 stops, 11 min). <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/MG+Bus+Station+Metro+Station,+Hyderabad,+Telangana\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+            },
+            {
+                "type": "travel",
                 "icon": "truck",
-                "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Charminar+Hyderabad&travelmode=driving\" target=\"_blank\">Morning ride to Charminar (approx 8 km, 25 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+                "text": "<b>Part 2:</b> From MG Bus station, take an auto/cab to Charminar. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/MG+Bus+Station+Metro+Station,+Hyderabad,+Telangana/Charminar,+Hyderabad,+Telangana\" target=\"_blank\">View Cab Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
                 "type": "visit",
