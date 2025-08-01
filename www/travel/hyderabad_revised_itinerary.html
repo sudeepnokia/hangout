@@ -172,30 +172,42 @@
     <!-- Important Links -->
     <section id="important-links" class="mb-12">
         <div class="card p-6 sm:p-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Important Links</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <a href="https://ltmetro.com/train-timings/" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                    <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
-                    <div>
-                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Hyderabad Metro Rail Timings <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                        <p class="text-sm text-gray-600">Official website for Hyderabad Metro Rail train timings.</p>
-                    </div>
-                </a>
-                <a href="https://etrain.info/pnr-status/4122529261" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                    <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
-                    <div>
-                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">PNR Status (Onwards Journey) <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                        <p class="text-sm text-gray-600">Check the PNR status for the onwards journey.</p>
-                    </div>
-                </a>
-                <a href="https://etrain.info/pnr-status/2138890801" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                    <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
-                    <div>
-                        <h4 class="font-bold text-indigo-600 hover:underline flex items-center">PNR Status (Return Journey) <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
-                        <p class="text-sm text-gray-600">Check the PNR status for the return journey.</p>
-                    </div>
-                </a>
-            </div>
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Important Links</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <a href="https://ltmetro.com/train-timings/" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Hyderabad Metro Rail Timings <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">Official website for Hyderabad Metro Rail train timings.</p>
+                        </div>
+                    </a>
+                    <a href="https://etrain.info/pnr-status/4122529261" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">PNR Status (Onwards Journey) <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">Check the PNR status for the onwards journey.</p>
+                        </div>
+                    </a>
+                    <a href="https://etrain.info/pnr-status/2138890801" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">PNR Status (Return Journey) <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">Check the PNR status for the return journey.</p>
+                        </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.minfy.tsavaari" target="_blank" class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Official Hyderabad Metro App <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                            <p class="text-sm text-gray-600">Download the official T-Savari app for metro tickets and info.</p>
+                        </div>
+                    </a>
+                </div>
+            </details>
         </div>
     </section>
 
@@ -205,9 +217,12 @@
             <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4">Trip Planning</h2>
             
             <!-- Pre-trip Checklist -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-gray-700">Pre-Trip Checklist</h3>
-                <div class="grid md:grid-cols-2 gap-8">
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-xl text-gray-700 cursor-pointer">
+                    Pre-Trip Checklist
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="grid md:grid-cols-2 gap-8 mt-4">
                     <div class="flex items-start space-x-4">
                         <div class="bg-blue-100 text-blue-600 p-3 rounded-full"><i data-feather="briefcase" class="icon-style"></i></div>
                         <div>
@@ -221,7 +236,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </details>
         </div>
     </section>
 
@@ -231,86 +246,96 @@
     <!-- Onwards Ticket Information -->
     <section id="onwards-ticket" class="mb-12">
         <div class="card p-6 sm:p-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Onwards Ticket Information</h2>
-            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
-                        <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22691 - RAJDHANI EXP</p>
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Onwards Ticket Information</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
+                            <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22691 - RAJDHANI EXP</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
+                            <p class="font-bold text-lg">4122529261</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
-                        <p class="font-bold text-lg">4122529261</p>
+                    <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                        <div>
+                            <p class="font-bold text-xl">20:00</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Thu, 14 Aug 25</p>
+                            <p class="font-semibold">KSR BENGALURU (SBC)</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">11h 5m</p>
+                            <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">07:05</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Fri, 15 Aug 25</p>
+                            <p class="font-semibold">SECUNDERABAD JN (SC)</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p><span class="font-semibold">Passengers:</span> 5 Adult, 0 Child</p>
+                        <p><span class="font-semibold">Class:</span> 2A (AC 2 Tier)</p>
+                        <p><span class="font-semibold">Quota:</span> GENERAL</p>
+                        <p><span class="font-semibold">Boarding:</span> KSR BENGALURU (SBC)</p>
+                        <p><span class="font-semibold">Booked on:</span> Tue, 22 Jul 25</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 text-center mb-4">
-                    <div>
-                        <p class="font-bold text-xl">20:00</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Thu, 14 Aug 25</p>
-                        <p class="font-semibold">KSR BENGALURU (SBC)</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <p class="text-sm text-gray-600 dark:text-gray-400">11h 5m</p>
-                        <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-xl">07:05</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Fri, 15 Aug 25</p>
-                        <p class="font-semibold">SECUNDERABAD JN (SC)</p>
-                    </div>
-                </div>
-                <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
-                    <p><span class="font-semibold">Passengers:</span> 5 Adult, 0 Child</p>
-                    <p><span class="font-semibold">Class:</span> 2A (AC 2 Tier)</p>
-                    <p><span class="font-semibold">Quota:</span> GENERAL</p>
-                    <p><span class="font-semibold">Boarding:</span> KSR BENGALURU (SBC)</p>
-                    <p><span class="font-semibold">Booked on:</span> Tue, 22 Jul 25</p>
-                </div>
-            </div>
+            </details>
         </div>
     </section>
 
     <!-- Return Ticket Information -->
     <section id="return-ticket" class="mb-12">
         <div class="card p-6 sm:p-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Return Ticket Information</h2>
-            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
-                        <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22692 - SBC RAJDHANI</p>
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Return Ticket Information</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
+                            <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22692 - SBC RAJDHANI</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
+                            <p class="font-bold text-lg">2138890801</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
-                        <p class="font-bold text-lg">2138890801</p>
+                    <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                        <div>
+                            <p class="font-bold text-xl">17:25</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Sun, 17 Aug 25</p>
+                            <p class="font-semibold">SECUNDERABAD JN (SC)</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">11h 55m</p>
+                            <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">05:20</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Mon, 18 Aug 25</p>
+                            <p class="font-semibold">KSR BENGALURU (SBC)</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p><span class="font-semibold">Passengers:</span> 5 Adult, 0 Child</p>
+                        <p><span class="font-semibold">Class:</span> 2A (AC 2 Tier)</p>
+                        <p><span class="font-semibold">Quota:</span> GENERAL</p>
+                        <p><span class="font-semibold">Boarding:</span> SECUNDERABAD JN (SC)</p>
+                        <p><span class="font-semibold">Booked on:</span> Sun, 20 Jul 25</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 text-center mb-4">
-                    <div>
-                        <p class="font-bold text-xl">17:25</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Sun, 17 Aug 25</p>
-                        <p class="font-semibold">SECUNDERABAD JN (SC)</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <p class="text-sm text-gray-600 dark:text-gray-400">11h 55m</p>
-                        <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
-                    </div>
-                    <div>
-                        <p class="font-bold text-xl">05:20</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Mon, 18 Aug 25</p>
-                        <p class="font-semibold">KSR BENGALURU (SBC)</p>
-                    </div>
-                </div>
-                <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
-                    <p><span class="font-semibold">Passengers:</span> 5 Adult, 0 Child</p>
-                    <p><span class="font-semibold">Class:</span> 2A (AC 2 Tier)</p>
-                    <p><span class="font-semibold">Quota:</span> GENERAL</p>
-                    <p><span class="font-semibold">Boarding:</span> SECUNDERABAD JN (SC)</p>
-                    <p><span class="font-semibold">Booked on:</span> Sun, 20 Jul 25</p>
-                </div>
-            </div>
+            </details>
         </div>
     </section>
 
