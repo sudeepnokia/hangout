@@ -570,10 +570,15 @@
         const infowindow = new google.maps.InfoWindow();
 
         for (const location in locations) {
+            let icon = null;
+            if (location === "Treebo The Living Tree, Khairatabad") {
+                icon = 'http://maps.google.com/mapfiles/ms/icons/lodging.png';
+            }
             const marker = new google.maps.Marker({
                 position: locations[location],
                 map: map,
-                title: location
+                title: location,
+                icon: icon
             });
 
             marker.addListener('click', () => {
