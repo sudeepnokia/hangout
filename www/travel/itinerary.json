@@ -12,7 +12,7 @@
             {
                 "type": "travel",
                 "icon": "alert-triangle",
-                "text": "<strong><span class=\"text-red-500\">Tatkal ticket (if needed) for return will need to be booked at 10am. (as train originates from starting station on saturday)</span></strong>"
+                "text": "<strong><span class=\"text-red-500\">Tatkal ticket (if needed) for return will need to be booked at 10am. (as train originates from starting station on saturday)</span></strong> <a class=\"text-indigo-600 hover:underline\" href=\"https://play.google.com/store/apps/details?id=org.cris.aikyam&hl=en_IN\" target=\"_blank\">via RailYatri app <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
                 "type": "travel",
