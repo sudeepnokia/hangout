@@ -11,6 +11,11 @@
             },
             {
                 "type": "travel",
+                "icon": "alert-triangle",
+                "text": "<strong><span class=\"text-red-500\">Tatkal ticket for return will need to be booked at 10am. (as train originates from starting station on saturday)</span></strong>"
+            },
+            {
+                "type": "travel",
                 "icon": "truck",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Treebo+The+Living+Tree+Khairatabad+Hyderabad&destination=Golconda+Fort+Hyderabad&travelmode=driving\" target=\"_blank\">Head to Golconda Fort by cab (approx 12 km, 30 min) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
@@ -112,7 +117,7 @@
             {
                 "type": "travel",
                 "icon": "truck",
-                "text": "<b>Part 2:</b> From MG Bus station, take an auto/cab to Charminar. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/MG+Bus+Station+Metro+Station,+Hyderabad,+Telangana/Charminar,+Hyderabad,+Telangana\" target=\"_blank\">View Cab Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
+                "text": "<b>Part 2:</b> From MG Bus station, take an auto/cab to Charminar (3.2 km). <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/MG+Bus+Station+Metro+Station,+Hyderabad,+Telangana/Charminar,+Hyderabad,+Telangana\" target=\"_blank\">View Cab Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
                 "type": "visit",
