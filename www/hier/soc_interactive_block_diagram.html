@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SoC Block Diagram (JointJS)</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.7.2/joint.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .toolbar {
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-bottom: 1px solid #ccc;
+        }
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+        }
+        #paper-container {
+            flex-grow: 1;
+            height: 100%;
+            border-right: 1px solid #ccc;
+        }
+        #sidebar {
+            width: 300px;
+            padding: 15px;
+            background-color: #fafafa;
+            overflow-y: auto;
+            transition: width 0.3s;
+        }
+        #sidebar.collapsed {
+            width: 0;
+            padding: 0;
+        }
+        #sidebar h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .joint-element .joint-highlight-stroke {
+            stroke: #FF4365;
+            stroke-width: 4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <input type="text" id="search-box" placeholder="Search for a module...">
+        <button id="search-button">Search</button>
+    </div>
+
+    <div class="main-container">
+        <div id="paper-container"></div>
+        <div id="sidebar">
+            <h3>Properties</h3>
+            <div id="properties-content">Select a block to see its properties.</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.1/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.7.2/joint.js"></script>
+
+    <script>
+        const namespace = joint.shapes;
+        const graph = new joint.dia.Graph({}, { cellNamespace: namespace });
+        const paper = new joint.dia.Paper({
+            el: document.getElementById('paper-container'),
+            model: graph,
+            width: '100%',
+            height: '100%',
+            gridSize: 10,
+            drawGrid: true,
+            background: {
+                color: 'rgba(240, 240, 240, 0.9)'
+            },
+            cellViewNamespace: namespace,
+            interactive: { elementMove: true },
+            // Enable embedding to allow dropping elements into others
+            embeddingMode: true,
+            // When an element is dropped over another, highlight the parent
+            highlighting: {
+                'embedding': {
+                    name: 'stroke',
+                    options: {
+                        padding: 10,
+                        rx: 5,
+                        ry: 5,
+                        attrs: {
+                            'stroke-width': 3,
+                            'stroke': '#222138'
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- Data ---
+        const socData = {
+            'MegaSoC': { features: 'Main SoC container', parent: null, size: { width: 780, height: 560 } },
+            'CPU_Complex': { features: 'Handles all general purpose computation.', parent: 'MegaSoC', size: { width: 360, height: 150 } },
+            'GPU': { features: 'Dedicated graphics processing unit.', parent: 'MegaSoC', size: { width: 180, height: 100 } },
+            'Memory_Subsystem': { features: 'Manages data flow and caching.', parent: 'MegaSoC', size: { width: 760, height: 100 } },
+            'Peripherals': { features: 'Interfaces for external devices.', parent: 'MegaSoC', size: { width: 380, height: 200 } },
+            'A78': { features: 'High-performance core. 2.8GHz clock speed.', parent: 'CPU_Complex', size: { width: 150, height: 60 } },
+            'A55': { features: 'High-efficiency core. 1.8GHz clock speed.', parent: 'CPU_Complex', size: { width: 150, height: 60 } },
+            'Mali': { features: 'Mali-G78 MP12. 12 Shader Cores.', parent: 'GPU', size: { width: 150, height: 60 } },
+            'DDR5': { features: 'Dual-channel DDR5 6400MHz controller.', parent: 'Memory_Subsystem', size: { width: 200, height: 60 } },
+            'L3': { features: '8MB shared L3 Cache.', parent: 'Memory_Subsystem', size: { width: 150, height: 60 } },
+            'PCIe': { features: 'PCIe 5.0 x16 controller.', parent: 'Peripherals', size: { width: 150, height: 60 } },
+            'USB': { features: 'USB 3.2 Gen 2 controller.', parent: 'Peripherals', size: { width: 150, height: 60 } }
+        };
+
+        // --- Create Shapes ---
+        const elements = {};
+        function createRect(id, label, data) {
+            const isParent = Object.values(socData).some(d => d.parent === id);
+            const labelAttrs = {
+                text: label,
+                fontWeight: 'bold'
+            };
+
+            if (isParent) {
+                // Position label in top-right for containers
+                Object.assign(labelAttrs, {
+                    refX: '100%',
+                    refY: '0',
+                    refX2: -10, // padding from right
+                    refY2: 10, // padding from top
+                    textAnchor: 'end',
+                    textVerticalAnchor: 'top'
+                });
+            }
+
+            const rect = new joint.shapes.standard.Rectangle({
+                id: id,
+                position: { x: 100, y: 100 },
+                size: data.size,
+                attrs: {
+                    body: { rx: 10, ry: 10, strokeWidth: 2, fill: 'rgba(255,255,255,0.8)' },
+                    label: labelAttrs
+                },
+                features: data.features // Custom data
+            });
+            return rect;
+        }
+
+        Object.keys(socData).forEach(key => {
+            const data = socData[key];
+            elements[key] = createRect(key, key.replace(/_/g, ' '), data);
+        });
+
+        // --- Parenting ---
+        Object.keys(socData).forEach(key => {
+            const parentId = socData[key].parent;
+            if (parentId && elements[parentId]) {
+                elements[parentId].embed(elements[key]);
+            }
+        });
+
+        graph.addCells(Object.values(elements));
+
+        // --- Layout ---
+        elements.MegaSoC.position(10, 10);
+        elements.CPU_Complex.position(30, 50);
+        elements.A78.position(50, 100);
+        elements.A55.position(220, 100);
+        elements.GPU.position(420, 50);
+        elements.Mali.position(435, 100);
+        elements.Peripherals.position(30, 220);
+        elements.PCIe.position(50, 270);
+        elements.USB.position(220, 270);
+        elements.Memory_Subsystem.position(20, 450);
+        elements.DDR5.position(50, 480);
+        elements.L3.position(300, 480);
+
+        // --- Interactivity ---
+        let highlightedCell = null;
+        const highlightStroke = { name: 'stroke', args: { color: '#FF4365', width: 4 } };
+
+        paper.on('element:pointerclick', function(cellView) {
+            if (highlightedCell) {
+                highlightedCell.unhighlight(this, { highlighter: highlightStroke });
+            }
+            cellView.highlight(this, { highlighter: highlightStroke });
+            highlightedCell = cellView;
+            const features = cellView.model.get('features');
+            document.getElementById('properties-content').innerHTML = `<b>${cellView.model.attr('label/text')}:</b><br><br>${features}`;
+        });
+
+        paper.on('blank:pointerclick', function() {
+            if (highlightedCell) {
+                highlightedCell.unhighlight(this, { highlighter: highlightStroke });
+                highlightedCell = null;
+                document.getElementById('properties-content').innerHTML = 'Select a block to see its properties.';
+            }
+        });
+
+        // --- Dynamic Resizing ---
+        graph.on('change:parent', function(cell, newParentId, oldParentId) {
+            const padding = 20;
+            if (oldParentId) {
+                const oldParent = graph.getCell(oldParentId);
+                if (oldParent) oldParent.fitEmbeds({ padding: padding });
+            }
+            if (newParentId) {
+                const newParent = graph.getCell(newParentId);
+                if (newParent) newParent.fitEmbeds({ padding: padding });
+            }
+        });
+
+        // Find parent for a dropped element
+        paper.on('element:pointerup', function(elementView) {
+            const element = elementView.model;
+            const elementBBox = element.getBBox();
+            const newParent = graph.findModelsInArea(elementBBox).find(function(cell) {
+                return cell.isElement() && cell.id !== element.id && !element.isEmbeddedIn(cell);
+            });
+
+            if (newParent) {
+                const oldParent = graph.getCell(element.get('parent'));
+                if (oldParent) oldParent.unembed(element);
+                newParent.embed(element);
+            }
+        });
+
+        // --- Search ---
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchTerm = document.getElementById('search-box').value.toLowerCase();
+            if (!searchTerm) return;
+
+            const targetCellView = Object.values(paper._cellViews).find(view => {
+                const label = view.model.attr('label/text');
+                return label && label.toLowerCase().includes(searchTerm);
+            });
+
+            if (targetCellView) {
+                paper.trigger('element:pointerclick', targetCellView);
+                paper.scrollToElement(targetCellView.model, { padding: 20 });
+            } else {
+                alert('Module not found!');
+            }
+        });
+
+    </script>
+</body>
+</html>

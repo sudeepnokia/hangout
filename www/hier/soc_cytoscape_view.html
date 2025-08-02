@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC Graph View (Cytoscape.js)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container {
+            margin: 20px;
+        }
+        #cy {
+            width: 90vw;
+            height: 75vh;
+            border: 1px solid #ccc;
+        }
+        .highlighted {
+            background-color: #ff4444;
+            border-color: #b00000;
+            border-width: 4px;
+            color: white;
+            text-outline-color: #b00000;
+        }
+        .ancestor-highlight {
+            background-color: #ffaaaa;
+            border-color: #ff4444;
+            border-width: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>System on Chip (SoC) - Graph View</h1>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search for a module...">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="cy"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const socData = [
+                // Parent Nodes (Clusters)
+                { data: { id: 'MegaSoC', label: 'MegaSoC' } },
+                { data: { id: 'CPU_Complex', label: 'CPU Complex', parent: 'MegaSoC' } },
+                { data: { id: 'GPU', label: 'GPU', parent: 'MegaSoC' } },
+                { data: { id: 'NPU', label: 'NPU', parent: 'MegaSoC' } },
+                { data: { id: 'Memory_Subsystem', label: 'Memory Subsystem', parent: 'MegaSoC' } },
+                { data: { id: 'Peripherals', label: 'Peripherals', parent: 'MegaSoC' } },
+                { data: { id: 'Multimedia', label: 'Multimedia', parent: 'MegaSoC' } },
+                { data: { id: 'Security', label: 'Security', parent: 'MegaSoC' } },
+
+                // Child Nodes
+                { data: { id: 'A78', label: 'ARM Cortex-A78', parent: 'CPU_Complex' } },
+                { data: { id: 'A55', label: 'ARM Cortex-A55', parent: 'CPU_Complex' } },
+                { data: { id: 'Mali', label: 'Mali-G78', parent: 'GPU' } },
+                { data: { id: 'Ethos', label: 'Ethos-N78', parent: 'NPU' } },
+                { data: { id: 'DDR5', label: 'DDR5 Controller', parent: 'Memory_Subsystem' } },
+                { data: { id: 'L3', label: 'L3 Cache', parent: 'Memory_Subsystem' } },
+                { data: { id: 'PCIe', label: 'PCIe Controller', parent: 'Peripherals' } },
+                { data: { id: 'USB', label: 'USB Controller', parent: 'Peripherals' } },
+                { data: { id: 'I2C', label: 'I2C Controller', parent: 'Peripherals' } },
+                { data: { id: 'SPI', label: 'SPI Controller', parent: 'Peripherals' } },
+                { data: { id: 'VidEnc', label: 'Video Encoder', parent: 'Multimedia' } },
+                { data: { id: 'VidDec', label: 'Video Decoder', parent: 'Multimedia' } },
+                { data: { id: 'AudioDSP', label: 'Audio DSP', parent: 'Multimedia' } },
+                { data: { id: 'SecEnc', label: 'Secure Enclave', parent: 'Security' } },
+                { data: { id: 'Crypto', label: 'Crypto Accelerator', parent: 'Security' } },
+
+                // Edges (Connections)
+                { data: { id: 'cpu-mem', source: 'CPU_Complex', target: 'Memory_Subsystem' } },
+                { data: { id: 'gpu-mem', source: 'GPU', target: 'Memory_Subsystem' } },
+                { data: { id: 'npu-mem', source: 'NPU', target: 'Memory_Subsystem' } },
+                { data: { id: 'mm-mem', source: 'Multimedia', target: 'Memory_Subsystem' } },
+                { data: { id: 'peri-cpu', source: 'Peripherals', target: 'CPU_Complex' } },
+                { data: { id: 'sec-cpu', source: 'Security', target: 'CPU_Complex' } }
+            ];
+
+            const cy = cytoscape({
+                container: document.getElementById('cy'),
+                elements: socData,
+                style: [
+                    {
+                        selector: 'node',
+                        style: {
+                            'label': 'data(label)',
+                            'text-valign': 'center',
+                            'color': '#000',
+                            'background-color': '#eee',
+                            'border-color': '#666',
+                            'border-width': 2,
+                            'shape': 'rectangle'
+                        }
+                    },
+                    {
+                        selector: ':parent',
+                        style: {
+                            'background-opacity': 0.333,
+                            'text-valign': 'top',
+                            'text-halign': 'center',
+                            'border-color': '#333',
+                            'font-weight': 'bold'
+                        }
+                    },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'width': 3,
+                            'line-color': '#ccc',
+                            'target-arrow-color': '#ccc',
+                            'target-arrow-shape': 'triangle',
+                            'curve-style': 'bezier'
+                        }
+                    }
+                ],
+                layout: {
+                    name: 'cose',
+                    animate: 'end',
+                    animationEasing: 'ease-out',
+                    animationDuration: 1000,
+                    randomize: true
+                }
+            });
+
+            document.getElementById('search-button').addEventListener('click', function() {
+                const searchTerm = document.getElementById('search-box').value.toLowerCase();
+                
+                // Clear previous highlights
+                cy.elements().removeClass('highlighted').removeClass('ancestor-highlight');
+
+                if (!searchTerm) return;
+
+                const targetNode = cy.nodes().filter(node => {
+                    return node.data('label').toLowerCase().includes(searchTerm);
+                });
+
+                if (targetNode.length > 0) {
+                    const firstMatch = targetNode[0];
+                    firstMatch.addClass('highlighted');
+                    firstMatch.ancestors().addClass('ancestor-highlight');
+
+                    cy.animate({
+                        fit: {
+                            eles: firstMatch.union(firstMatch.ancestors()),
+                            padding: 50
+                        },
+                        duration: 500
+                    });
+                } else {
+                    alert('Module not found!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

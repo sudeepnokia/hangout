@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC Hierarchy</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container {
+            margin: 20px;
+        }
+        .node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 3px;
+        }
+        .node text {
+            font: 12px sans-serif;
+        }
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>System on Chip (SoC) Hierarchical View</h1>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search for a module...">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="tree-container"></div>
+
+    <script>
+        const socData = {
+            "name": "MegaSoC",
+            "children": [
+                {
+                    "name": "CPU Complex",
+                    "children": [
+                        {"name": "ARM Cortex-A78", "children": [{"name": "L1 Cache"}, {"name": "L2 Cache"}]},
+                        {"name": "ARM Cortex-A55", "children": [{"name": "L1 Cache"}, {"name": "L2 Cache"}]}
+                    ]
+                },
+                {
+                    "name": "GPU",
+                    "children": [
+                        {"name": "Mali-G78", "children": [{"name": "Shader Core"}, {"name": "Texture Unit"}]}
+                    ]
+                },
+                {
+                    "name": "NPU",
+                    "children": [
+                        {"name": "Ethos-N78"}
+                    ]
+                },
+                {
+                    "name": "Memory Subsystem",
+                    "children": [
+                        {"name": "DDR5 Controller"},
+                        {"name": "L3 Cache"}
+                    ]
+                },
+                {
+                    "name": "Peripherals",
+                    "children": [
+                        {"name": "PCIe Controller"},
+                        {"name": "USB Controller"},
+                        {"name": "I2C Controller"},
+                        {"name": "SPI Controller"}
+                    ]
+                },
+                {
+                    "name": "Multimedia",
+                    "children": [
+                        {"name": "Video Encoder"},
+                        {"name": "Video Decoder"},
+                        {"name": "Audio DSP"}
+                    ]
+                },
+                {
+                    "name": "Security",
+                    "children": [
+                        {"name": "Secure Enclave"},
+                        {"name": "Crypto Accelerator"}
+                    ]
+                }
+            ]
+        };
+
+        const width = 960;
+        const height = 500;
+
+        const tree = d3.tree().size([height, width - 160]);
+
+        let root = d3.hierarchy(socData);
+
+        tree(root);
+
+        const svg = d3.select("#tree-container").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(80,0)");
+
+        const g = svg.append("g");
+
+        function drawTree(source) {
+            const duration = 250;
+
+            const links = source.links();
+            const nodes = source.descendants();
+
+            const link = g.selectAll(".link")
+                .data(links, d => d.target.id);
+
+            link.enter().append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x))
+                .merge(link)
+                .transition().duration(duration)
+                .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
+
+            link.exit().remove();
+
+            const node = g.selectAll(".node")
+                .data(nodes, d => d.id);
+
+            const nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${source.y0 || source.y},${source.x0 || source.x})`)
+                .on("click", (event, d) => {
+                    d.children = d.children ? null : d._children;
+                    drawTree(root);
+                });
+
+            nodeEnter.append("circle")
+                .attr("r", 10);
+
+            nodeEnter.append("text")
+                .attr("dy", "0.31em")
+                .attr("x", d => d.children ? -13 : 13)
+                .attr("text-anchor", d => d.children ? "end" : "start")
+                .text(d => d.data.name);
+
+            const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            nodeUpdate.select('circle')
+                .style("fill", d => d._children ? "lightsteelblue" : "#fff");
+
+            node.exit().remove();
+
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+        }
+
+        root.descendants().forEach(d => {
+            d._children = d.children;
+        });
+
+        drawTree(root);
+
+        d3.select("#search-button").on("click", function() {
+            const searchTerm = d3.select("#search-box").property("value").toLowerCase();
+            if (!searchTerm) {
+                root.descendants().forEach(d => {
+                    d.children = d._children;
+                });
+                drawTree(root);
+                return;
+            }
+
+            // Collapse all nodes first
+            root.each(d => {
+                if (d.children) {
+                    d.children = null;
+                }
+            });
+
+            // Find the nodes that match the search term
+            const searchResults = [];
+            root.each(d => {
+                if (d.data.name.toLowerCase().includes(searchTerm)) {
+                    searchResults.push(d);
+                }
+            });
+
+            // Get the ancestors of the search results and expand them
+            searchResults.forEach(d => {
+                let current = d;
+                while (current.parent) {
+                    const parent = current.parent;
+                    if (!parent.children) {
+                        parent.children = parent._children;
+                    }
+                    current = parent;
+                }
+            });
+
+            drawTree(root);
+
+            // Highlight the search results
+            g.selectAll(".node text")
+                .style("fill", d => searchResults.includes(d) ? "red" : "black");
+        });
+    </script>
+</body>
+</html>

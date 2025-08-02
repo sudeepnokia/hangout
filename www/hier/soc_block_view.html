@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC Block Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container {
+            margin: 20px;
+        }
+        .highlight .node-rect {
+            stroke: #ff0000 !important;
+            stroke-width: 4px !important;
+        }
+        .highlight .label {
+            fill: #ff0000 !important;
+            font-weight: bold;
+        }
+        .cluster-highlight .cluster-rect {
+            stroke: #ff8888 !important;
+            stroke-width: 4px !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>System on Chip (SoC) Block Diagram</h1>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search for a module...">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="mermaid-container">
+        <div class="mermaid">
+graph TD
+    subgraph MegaSoC
+        subgraph CPU_Complex [CPU Complex]
+            A78[ARM Cortex-A78]
+            A55[ARM Cortex-A55]
+        end
+        subgraph GPU
+            Mali[Mali-G78]
+        end
+        subgraph NPU
+            Ethos[Ethos-N78]
+        end
+        subgraph Memory_Subsystem [Memory Subsystem]
+            DDR5[DDR5 Controller]
+            L3[L3 Cache]
+        end
+        subgraph Peripherals
+            PCIe[PCIe Controller]
+            USB[USB Controller]
+            I2C[I2C Controller]
+            SPI[SPI Controller]
+        end
+        subgraph Multimedia
+            VidEnc[Video Encoder]
+            VidDec[Video Decoder]
+            AudioDSP[Audio DSP]
+        end
+        subgraph Security
+            SecEnc[Secure Enclave]
+            Crypto[Crypto Accelerator]
+        end
+    end
+
+    CPU_Complex --> Memory_Subsystem
+    GPU --> Memory_Subsystem
+    NPU --> Memory_Subsystem
+    Multimedia --> Memory_Subsystem
+    Peripherals --> CPU_Complex
+    Security --> CPU_Complex
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+
+        const allNodes = {
+            "arm cortex-a78": { id: "A78", parent: "CPU_Complex" },
+            "arm cortex-a55": { id: "A55", parent: "CPU_Complex" },
+            "mali-g78": { id: "Mali", parent: "GPU" },
+            "ethos-n78": { id: "Ethos", parent: "NPU" },
+            "ddr5 controller": { id: "DDR5", parent: "Memory_Subsystem" },
+            "l3 cache": { id: "L3", parent: "Memory_Subsystem" },
+            "pcie controller": { id: "PCIe", parent: "Peripherals" },
+            "usb controller": { id: "USB", parent: "Peripherals" },
+            "i2c controller": { id: "I2C", parent: "Peripherals" },
+            "spi controller": { id: "SPI", parent: "Peripherals" },
+            "video encoder": { id: "VidEnc", parent: "Multimedia" },
+            "video decoder": { id: "VidDec", parent: "Multimedia" },
+            "audio dsp": { id: "AudioDSP", parent: "Multimedia" },
+            "secure enclave": { id: "SecEnc", parent: "Security" },
+            "crypto accelerator": { id: "Crypto", parent: "Security" },
+            "cpu complex": { id: "CPU_Complex", parent: "MegaSoC" },
+            "gpu": { id: "GPU", parent: "MegaSoC" },
+            "npu": { id: "NPU", parent: "MegaSoC" },
+            "memory subsystem": { id: "Memory_Subsystem", parent: "MegaSoC" },
+            "peripherals": { id: "Peripherals", parent: "MegaSoC" },
+            "multimedia": { id: "Multimedia", parent: "MegaSoC" },
+            "security": { id: "Security", parent: "MegaSoC" }
+        };
+
+        d3.select("#search-button").on("click", function() {
+            const searchTerm = d3.select("#search-box").property("value").toLowerCase();
+            
+            // Clear previous highlights
+            d3.selectAll(".node, .cluster").classed("highlight", false).classed("cluster-highlight", false);
+
+            if (!searchTerm) {
+                return;
+            }
+
+            const result = allNodes[searchTerm];
+
+            if (result) {
+                let currentId = result.id;
+                let parentId = result.parent;
+
+                // Highlight the node itself
+                d3.select("#" + currentId).classed("highlight", true);
+
+                // Highlight parent clusters
+                while(parentId && parentId !== "MegaSoC") {
+                    const parentNode = Object.values(allNodes).find(n => n.id === parentId);
+                    d3.select("#" + parentId).classed("cluster-highlight", true);
+                    if (parentNode) {
+                        parentId = parentNode.parent;
+                    } else {
+                        parentId = null;
+                    }
+                }
+            } else {
+                alert("Module not found!");
+            }
+        });
+    </script>
+</body>
+</html>

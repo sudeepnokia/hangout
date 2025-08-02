@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC Hierarchy (Google Charts)</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container {
+            margin: 20px;
+        }
+        #chart_div {
+            width: 90%;
+            margin: auto;
+        }
+        /* Style for the selected node */
+        .google-visualization-orgchart-node-selected {
+            background-color: #ffcccc !important;
+            border: 2px solid red !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>System on Chip (SoC) - Org Chart View</h1>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search for a module...">
+        <button id="search-button">Search</button>
+        <button id="reset-button">Reset View</button>
+    </div>
+    <div id="chart_div"></div>
+
+    <script type="text/javascript">
+        google.charts.load('current', {packages:['orgchart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        const socData = [
+            [{v:'MegaSoC', f:'MegaSoC'}, '', 'Top Level SoC'],
+            [{v:'CPU_Complex', f:'CPU Complex'}, 'MegaSoC', ''],
+            [{v:'GPU', f:'GPU'}, 'MegaSoC', ''],
+            [{v:'NPU', f:'NPU'}, 'MegaSoC', ''],
+            [{v:'Memory_Subsystem', f:'Memory Subsystem'}, 'MegaSoC', ''],
+            [{v:'Peripherals', f:'Peripherals'}, 'MegaSoC', ''],
+            [{v:'Multimedia', f:'Multimedia'}, 'MegaSoC', ''],
+            [{v:'Security', f:'Security'}, 'MegaSoC', ''],
+            ['ARM Cortex-A78', 'CPU_Complex', ''],
+            ['ARM Cortex-A55', 'CPU_Complex', ''],
+            ['Mali-G78', 'GPU', ''],
+            ['Ethos-N78', 'NPU', ''],
+            ['DDR5 Controller', 'Memory_Subsystem', ''],
+            ['L3 Cache', 'Memory_Subsystem', ''],
+            ['PCIe Controller', 'Peripherals', ''],
+            ['USB Controller', 'Peripherals', ''],
+            ['I2C Controller', 'Peripherals', ''],
+            ['SPI Controller', 'Peripherals', ''],
+            ['Video Encoder', 'Multimedia', ''],
+            ['Video Decoder', 'Multimedia', ''],
+            ['Audio DSP', 'Multimedia', ''],
+            ['Secure Enclave', 'Security', ''],
+            ['Crypto Accelerator', 'Security', '']
+        ];
+
+        let chart;
+        let dataTable;
+
+        function drawChart(filteredData) {
+            dataTable = new google.visualization.DataTable();
+            dataTable.addColumn('string', 'Name');
+            dataTable.addColumn('string', 'Manager');
+            dataTable.addColumn('string', 'ToolTip');
+
+            dataTable.addRows(filteredData || socData);
+
+            chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            chart.draw(dataTable, {allowHtml:true, allowCollapse:true});
+        }
+
+        function findAncestors(nodeId) {
+            const ancestors = new Set();
+            let currentNodeId = nodeId;
+            while (currentNodeId) {
+                ancestors.add(currentNodeId);
+                const parentRow = socData.find(row => (row[0].v || row[0]) === currentNodeId);
+                currentNodeId = parentRow ? parentRow[1] : null;
+            }
+            return ancestors;
+        }
+
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchTerm = document.getElementById('search-box').value.toLowerCase();
+            if (!searchTerm) return;
+
+            let foundRow = null;
+            for(let i = 0; i < socData.length; i++) {
+                const nodeName = (socData[i][0].f || socData[i][0]).toLowerCase();
+                if (nodeName.includes(searchTerm)) {
+                    foundRow = socData[i];
+                    break;
+                }
+            }
+
+            if (foundRow) {
+                const nodeId = foundRow[0].v || foundRow[0];
+                const ancestors = findAncestors(nodeId);
+                const newChartData = socData.filter(row => ancestors.has(row[0].v || row[0]));
+                
+                drawChart(newChartData);
+
+                // Highlight the specific node found
+                const rowIndex = dataTable.getFilteredRows([{column: 0, value: nodeId}])[0];
+                chart.setSelection([{row: rowIndex, column: null}]);
+
+            } else {
+                alert('Module not found!');
+            }
+        });
+
+        document.getElementById('reset-button').addEventListener('click', () => {
+            drawChart(); // Redraw with the full dataset
+        });
+
+    </script>
+</body>
+</html>
