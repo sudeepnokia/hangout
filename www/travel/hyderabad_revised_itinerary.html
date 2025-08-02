@@ -559,7 +559,8 @@
             "Chowmahalla Palace": { lat: 17.3580016, lng: 78.4716789 },
             "Shadab Restaurant": { lat: 17.3945822, lng: 78.47046139999999 },
             "Salar Jung Museum": { lat: 17.3716084, lng: 78.48024389999999 },
-            "Treebo The Living Tree, Khairatabad": { lat: 17.4104929, lng: 78.4604683 }
+            "Treebo The Living Tree, Khairatabad": { lat: 17.4104929, lng: 78.4604683 },
+            "Secunderabad Junction": { lat: 17.4337454, lng: 78.50157420000001 }
         };
 
         const map = new google.maps.Map(document.getElementById('map'), {
@@ -577,6 +578,13 @@
                     background: '#800080',
                     borderColor: '#000000',
                     glyph: 'H',
+                    glyphColor: '#FFFFFF',
+                }).element;
+            } else if (location === "Secunderabad Junction") {
+                pinContent = new google.maps.marker.PinElement({
+                    background: '#000080',
+                    borderColor: '#000000',
+                    glyph: 'T',
                     glyphColor: '#FFFFFF',
                 }).element;
             } else {
