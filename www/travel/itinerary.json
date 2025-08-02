@@ -57,7 +57,7 @@
             },
             {
                 "type": "travel",
-                "icon": "hotel",
+                "icon": "home",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Durgam+Cheruvu+Bridge,+Hyderabad/Treebo+The+Living+Tree+Khairatabad,+Hyderabad\" target=\"_blank\">Drive back to the hotel <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             }
         ]
@@ -69,7 +69,7 @@
         "items": [
             {
                 "type": "travel",
-                "icon": "train",
+                "icon": "truck",
                 "text": "<b>Part 1:</b> Take the metro from Khairatabad station to LB Nagar station. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
@@ -94,7 +94,7 @@
             },
             {
                 "type": "travel",
-                "icon": "train",
+                "icon": "truck",
                 "text": "<b>Part 2:</b> Take the metro from LB Nagar station to Khairatabad station. <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/L.+B.+Nagar+Metro+Station,+Hyderabad,+Telangana/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             }
         ]
@@ -106,7 +106,7 @@
         "items": [
             {
                 "type": "travel",
-                "icon": "train",
+                "icon": "truck",
                 "text": "<b>Part 1:</b> Take the metro from Khairatabad station to MG Bus station (6 stops, 11 min). <a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Treebo+The+Living+Tree+Khairatabad,+Hyderabad/MG+Bus+Station+Metro+Station,+Hyderabad,+Telangana\" target=\"_blank\">View Metro Route <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
@@ -121,7 +121,7 @@
             },
             {
                 "type": "travel",
-                "icon": "walk",
+                "icon": "user",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Charminar+Hyderabad&destination=Chowmahalla+Palace+Hyderabad&travelmode=walking\" target=\"_blank\">Walk 5 min to nearby Chowmahalla Palace <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
@@ -131,7 +131,7 @@
             },
             {
                 "type": "travel",
-                "icon": "walk",
+                "icon": "user",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/?api=1&origin=Chowmahalla+Palace+Hyderabad&destination=Hotel+Shadab+Hyderabad&travelmode=walking\" target=\"_blank\">Stroll 10 min to Hotel Shadab for lunch <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
@@ -151,12 +151,12 @@
             },
             {
                 "type": "travel",
-                "icon": "train",
+                "icon": "truck",
                 "text": "<a class=\"text-indigo-600 hover:underline\" href=\"https://www.google.com/maps/dir/Salar+Jung+Museum,+Darulshifa,+Hyderabad,+Telangana+500002/Treebo+The+Living+Tree+Khairatabad,+metro+station+khaiaratabad,+Kammari+Krishna+Street,+khairatabad,+Khairtabad,+Hyderabad,+Telangana/Secunderabad+Junction,+Secunderabad+Railway+Station+Rd,+Railway+Officer+Colony,+Botiguda,+Bhoiguda,+Secunderabad,+Telangana+500025/\" target=\"_blank\">Transfer to Secunderabad Railway Station via hotel (to pick up luggage) <i data-feather=\"external-link\" class=\"inline-block w-4 h-4\"></i></a>"
             },
             {
                 "type": "travel",
-                "icon": "train",
+                "icon": "truck",
                 "text": "Depart Hyderabad by <span class=\"font-semibold\">Rajdhani Express (Train 22692)</span> at 17:25, arriving Bengaluru (SBC) at 05:20."
             }
         ]
