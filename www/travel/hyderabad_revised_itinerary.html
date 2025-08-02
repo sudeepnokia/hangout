@@ -644,27 +644,37 @@
 
         const infowindow = new google.maps.InfoWindow();
 
+        const dayColors = {
+            1: { background: '#4285F4', borderColor: '#1a73e8', glyphColor: '#FFFFFF' }, // Blue
+            2: { background: '#34A853', borderColor: '#2c9f42', glyphColor: '#FFFFFF' }, // Green
+            3: { background: '#FBBC05', borderColor: '#f9ab00', glyphColor: '#000000' }  // Yellow
+        };
+
         for (const location in locations) {
             let pinContent;
             const day = locations[location].day;
 
             if (location === "Treebo The Living Tree, Khairatabad") {
                 pinContent = new google.maps.marker.PinElement({
-                    background: '#800080',
+                    background: '#800080', // Purple
                     borderColor: '#000000',
                     glyph: 'H',
                     glyphColor: '#FFFFFF',
                 }).element;
             } else if (location === "Secunderabad Junction") {
                 pinContent = new google.maps.marker.PinElement({
-                    background: '#000080',
+                    background: '#000080', // Navy
                     borderColor: '#000000',
                     glyph: 'T',
                     glyphColor: '#FFFFFF',
                 }).element;
             } else {
-                 pinContent = new google.maps.marker.PinElement({
+                const colors = dayColors[day] || { background: '#EA4335', borderColor: '#d52516', glyphColor: '#FFFFFF' }; // Red for default
+                pinContent = new google.maps.marker.PinElement({
+                    background: colors.background,
+                    borderColor: colors.borderColor,
                     glyph: day.toString(),
+                    glyphColor: colors.glyphColor,
                 }).element;
             }
 
