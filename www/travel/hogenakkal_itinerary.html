@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=marker&loading=async" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGIbMv6u8jARvEDwiFDmIO1XFUNyuxT4o&callback=initMap&libraries=marker&loading=async" async defer></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -184,16 +184,23 @@
                         <div class="pl-12 history-event">
                             <div class="flex items-center">
                                 <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                                <h4 class="font-bold ml-4">Ancient Name</h4>
+                                <h4 class="font-bold ml-4">Ancient Origins</h4>
                             </div>
-                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The area was known as Thalaineer Naadu, and the falls were called Thalaineer aruvi in Sangam literature.</p>
+                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The area was known as Thalaineer Naadu, and the falls were called Thalaineer aruvi in Sangam literature, with references in ancient texts like Purananooru and Agananooru. The original Tamil name is believed to be Uguneer Kal.</p>
                         </div>
                         <div class="pl-12 history-event">
                             <div class="flex items-center">
                                 <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">2</div>
-                                <h4 class="font-bold ml-4">Meaning of Hogenakkal</h4>
+                                <h4 class="font-bold ml-4">The Name "Hogenakkal"</h4>
                             </div>
-                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The name is derived from Kannada words 'hoge' (smoke) and 'kal' (rock), meaning 'Smoky Rocks' because of the mist created by the gushing water.</p>
+                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The name is derived from Kannada words 'hoge' (smoke) and 'kal' (rock), meaning 'Smoky Rocks'. This name became prevalent during the rule of the Mysore Kingdom (1652-1768) and aptly describes the misty spray created by the gushing water.</p>
+                        </div>
+                         <div class="pl-12 history-event">
+                            <div class="flex items-center">
+                                <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                                <h4 class="font-bold ml-4">Modern Developments</h4>
+                            </div>
+                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The nearby Mettur Dam, which forms the Stanley Reservoir, was constructed in 1934. A crocodile rehabilitation center was established near the falls in 1975. Today, Hogenakkal is a major tourist destination, and there are ongoing projects to provide safe drinking water to the surrounding areas.</p>
                         </div>
                     </div>
                 </div>
@@ -214,7 +221,14 @@
                         <div class="text-purple-500 pt-1"><i data-feather="aperture" class="icon-style"></i></div>
                         <div>
                             <h4 class="font-bold text-xl">Ancient Rocks</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">Hogenakkal is home to some of the oldest carbonatite rocks in South Asia and the world, estimated to be around 2.0 billion years old.</p>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">Hogenakkal is home to some of the oldest carbonatite rocks in South Asia and the world, estimated to be around 2.0 billion years old. These igneous rocks are a key feature of the unique geological landscape.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-purple-500 pt-1"><i data-feather="git-merge" class="icon-style"></i></div>
+                        <div>
+                            <h4 class="font-bold text-xl">River's Course</h4>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">The Kaveri River, originating in the Western Ghats, carves its way through this rocky terrain, creating a series of waterfalls with drops up to 20 meters (66 feet). The river's flow also transports sediment that enriches the downstream plains.</p>
                         </div>
                     </div>
                 </div>
@@ -374,9 +388,7 @@
     function initMap() {
         const locations = {
             "Hogenakkal Falls": { lat: 12.1165, lng: 77.7753, day: 1 },
-            "The Royal Honeychilk Palace": { lat: 12.1186, lng: 77.7745, day: 1 },
-            "Sun City Apartments": { lat: 12.8943, lng: 77.5831, day: 0 },
-            "Kempegowda International Airport Bengaluru": { lat: 13.1986, lng: 77.7066, day: 2 }
+            "The Royal Honeychilk Palace": { lat: 12.045702337377557, lng: 78.2095979028502, day: 1 }
         };
 
         const map = new google.maps.Map(document.getElementById('map'), {
