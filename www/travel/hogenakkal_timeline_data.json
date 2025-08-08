@@ -1,0 +1,52 @@
+{
+    "title": {
+        "text": {
+            "headline": "History of Hogenakkal",
+            "text": "<p>A timeline of significant events related to Hogenakkal Falls and the surrounding region.</p>"
+        }
+    },
+    "events": [
+        {
+            "start_date": {
+                "year": "-300"
+            },
+            "end_date": {
+                "year": "300"
+            },
+            "text": {
+                "headline": "Sangam Period - Rule of King Adiyaman Neduman Anji",
+                "text": "<p>The area was known as Thalaineer Naadu and the falls as Thalaineer aruvi in Sangam literature (Purananooru, Agananooru). The original Tamil name is believed to be Uguneer Kal.</p>"
+            }
+        },
+        {
+            "start_date": {
+                "year": "1652"
+            },
+            "end_date": {
+                "year": "1768"
+            },
+            "text": {
+                "headline": "Mysore Kingdom Rule - The Name 'Hogenakkal'",
+                "text": "<p>The name 'Hogenakkal' becomes prevalent. It is derived from the Kannada words 'hoge' (smoke) and 'kal' (rock), meaning 'Smoky Rocks'.</p>"
+            }
+        },
+        {
+            "start_date": {
+                "year": "1934"
+            },
+            "text": {
+                "headline": "Mettur Dam Constructed",
+                "text": "<p>The Mettur Dam, which forms the Stanley Reservoir, is built downstream from the falls.</p>"
+            }
+        },
+        {
+            "start_date": {
+                "year": "1975"
+            },
+            "text": {
+                "headline": "Crocodile Rehabilitation Center Established",
+                "text": "<p>A center for the rehabilitation of crocodiles is established near the falls.</p>"
+            }
+        }
+    ]
+}

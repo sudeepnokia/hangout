@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGIbMv6u8jARvEDwiFDmIO1XFUNyuxT4o&callback=initMap&libraries=marker&loading=async" async defer></script>
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -143,309 +145,271 @@
             position: relative;
             top: -5px;
         }
+
+        /* TimelineJS3 Custom Styles */
+        .tl-timeline {
+            background-color: #f0f2f5;
+        }
+        .tl-slide {
+            background-color: #ffffff;
+        }
+        .tl-timenav-arrow {
+            color: #667eea;
+        }
+        .tl-headline,
+        .tl-headline-date {
+            color: #667eea;
+        }
     </style>
 </head>
-<body class="antialiased"><header class="header-bg text-white text-center py-12 sm:py-20">
-    <div class="container mx-auto px-4 relative">
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hogenakkal Waterfalls Getaway</h1>
-        <p class="mt-4 text-lg sm:text-xl opacity-90">A 2-Day Weekend Trip</p>
-        <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-800 text-white">
-            <i id="theme-toggle-icon" data-feather="sun"></i>
-        </button>
-    </div>
-</header>
+<body class="antialiased">
+    <header class="header-bg text-white text-center py-12 sm:py-20">
+        <div class="container mx-auto px-4 relative">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hogenakkal Waterfalls Getaway</h1>
+            <p class="mt-4 text-lg sm:text-xl opacity-90">A 2-Day Weekend Trip</p>
+            <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-800 text-white">
+                <i id="theme-toggle-icon" data-feather="sun"></i>
+            </button>
+        </div>
+    </header>
 
-<main class="container mx-auto px-4 py-8 sm:py-12">
-    
-    <!-- Itinerary Section -->
-    <section id="itinerary" class="mb-12">
-        <div class="card p-6 sm:p-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
-            <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6">
-                <!-- Tabs will be inserted here -->
+    <main class="container mx-auto px-4 py-8 sm:py-12">
+        
+        <!-- Itinerary Section -->
+        <section id="itinerary" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
+                <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6">
+                    <!-- Tabs will be inserted here -->
+                </div>
+                <div id="tab-content">
+                    <!-- Content for tabs will be inserted here -->
+                </div>
             </div>
-            <div id="tab-content">
-                <!-- Content for tabs will be inserted here -->
+        </section>
+
+        <!-- Historical Timeline Section -->
+        <section id="timeline-section" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <button id="show-timeline-btn" class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none w-full">
+                    <span class="text-center flex-grow">Historical Timeline</span>
+                    <i id="timeline-chevron" data-feather="chevron-down" class="transition-transform"></i>
+                </button>
+                <div id="timeline-embed" style="width: 100%; height: 600px; display: none;" class="mt-6"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- History Timeline Section -->
-    <section id="history" class="mb-12">
-        <div class="card p-6 sm:p-8">
-            <details class="group">
-                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
-                    <span class="text-center flex-grow">History of Hogenakkal</span>
-                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <div class="relative mt-6">
-                    <div class="border-l-2 border-gray-200 dark:border-gray-700 absolute h-full left-4"></div>
-                    <div class="space-y-8">
-                        <div class="pl-12 history-event">
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                                <h4 class="font-bold ml-4">Ancient Origins</h4>
+        <!-- Geology Section -->
+        <section id="geology" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <details class="group">
+                    <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                        <span class="text-center flex-grow">Geology of Hogenakkal</span>
+                        <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="grid md:grid-cols-1 gap-8 mt-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-purple-500 pt-1"><i data-feather="aperture" class="icon-style"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">Ancient Rocks</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Hogenakkal is home to some of the oldest carbonatite rocks in South Asia and the world, estimated to be around 2.0 billion years old. These igneous rocks are a key feature of the unique geological landscape.</p>
                             </div>
-                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The area was known as Thalaineer Naadu, and the falls were called Thalaineer aruvi in Sangam literature, with references in ancient texts like Purananooru and Agananooru. The original Tamil name is believed to be Uguneer Kal.</p>
                         </div>
-                        <div class="pl-12 history-event">
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">2</div>
-                                <h4 class="font-bold ml-4">The Name "Hogenakkal"</h4>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-purple-500 pt-1"><i data-feather="git-merge" class="icon-style"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">River's Course</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">The Kaveri River, originating in the Western Ghats, carves its way through this rocky terrain, creating a series of waterfalls with drops up to 20 meters (66 feet). The river's flow also transports sediment that enriches the downstream plains.</p>
                             </div>
-                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The name is derived from Kannada words 'hoge' (smoke) and 'kal' (rock), meaning 'Smoky Rocks'. This name became prevalent during the rule of the Mysore Kingdom (1652-1768) and aptly describes the misty spray created by the gushing water.</p>
                         </div>
-                         <div class="pl-12 history-event">
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold">3</div>
-                                <h4 class="font-bold ml-4">Modern Developments</h4>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Traditions Section -->
+        <section id="traditions" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <details class="group">
+                    <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                        <span class="text-center flex-grow">Traditions of Hogenakkal</span>
+                        <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="grid md:grid-cols-1 gap-8 mt-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-purple-500 pt-1"><i data-feather="droplet" class="icon-style"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">Medicinal Baths</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">The waters of Hogenakkal are believed to have healing properties due to the herbs the Kaveri River flows through.</p>
                             </div>
-                            <p class="ml-12 mt-2 text-sm text-gray-600 dark:text-gray-400">The nearby Mettur Dam, which forms the Stanley Reservoir, was constructed in 1934. A crocodile rehabilitation center was established near the falls in 1975. Today, Hogenakkal is a major tourist destination, and there are ongoing projects to provide safe drinking water to the surrounding areas.</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-purple-500 pt-1"><i data-feather="anchor" class="icon-style"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">Coracle Rides</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">A traditional round boat called a coracle (or parisal) is used to give visitors a close-up view of the falls.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-purple-500 pt-1"><i data-feather="coffee" class="icon-style"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl">Local Cuisine</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Freshly caught fish is a local delicacy, often cooked at improvised stalls along the riverbank.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </details>
-        </div>
-    </section>
+                </details>
+            </div>
+        </section>
 
-    <!-- Geology Section -->
-    <section id="geology" class="mb-12">
-        <div class="card p-6 sm:p-8">
-            <details class="group">
-                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
-                    <span class="text-center flex-grow">Geology of Hogenakkal</span>
-                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <div class="grid md:grid-cols-1 gap-8 mt-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="text-purple-500 pt-1"><i data-feather="aperture" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-xl">Ancient Rocks</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">Hogenakkal is home to some of the oldest carbonatite rocks in South Asia and the world, estimated to be around 2.0 billion years old. These igneous rocks are a key feature of the unique geological landscape.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-purple-500 pt-1"><i data-feather="git-merge" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-xl">River's Course</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">The Kaveri River, originating in the Western Ghats, carves its way through this rocky terrain, creating a series of waterfalls with drops up to 20 meters (66 feet). The river's flow also transports sediment that enriches the downstream plains.</p>
-                        </div>
-                    </div>
-                </div>
-            </details>
-        </div>
-    </section>
+        <!-- Map Section -->
+        <section id="map-section" class="mb-12">
+            <div class="card p-6 sm:p-8">
+                <details class="group">
+                    <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                        <span class="text-center flex-grow">Locations Map</span>
+                        <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div id="map" style="height: 400px;" class="rounded-lg mt-6"></div>
+                </details>
+            </div>
+        </section>
 
-    <!-- Traditions Section -->
-    <section id="traditions" class="mb-12">
-        <div class="card p-6 sm:p-8">
-            <details class="group">
-                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
-                    <span class="text-center flex-grow">Traditions of Hogenakkal</span>
-                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <div class="grid md:grid-cols-1 gap-8 mt-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="text-purple-500 pt-1"><i data-feather="droplet" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-xl">Medicinal Baths</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">The waters of Hogenakkal are believed to have healing properties due to the herbs the Kaveri River flows through.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-purple-500 pt-1"><i data-feather="anchor" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-xl">Coracle Rides</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">A traditional round boat called a coracle (or parisal) is used to give visitors a close-up view of the falls.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-purple-500 pt-1"><i data-feather="coffee" class="icon-style"></i></div>
-                        <div>
-                            <h4 class="font-bold text-xl">Local Cuisine</h4>
-                            <p class="mt-2 text-gray-600 dark:text-gray-400">Freshly caught fish is a local delicacy, often cooked at improvised stalls along the riverbank.</p>
-                        </div>
-                    </div>
-                </div>
-            </details>
-        </div>
-    </section>
+    </main>
 
-    <!-- Map Section -->
-    <section id="map-section" class="mb-12">
-        <div class="card p-6 sm:p-8">
-            <details class="group">
-                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
-                    <span class="text-center flex-grow">Locations Map</span>
-                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <div id="map" style="height: 400px;" class="rounded-lg mt-6"></div>
-            </details>
-        </div>
-    </section>
+    <footer class="text-center py-8 text-gray-500">
+        <p>Itinerary generated by Gemini</p>
+    </footer>
 
-</main>
-
-<footer class="text-center py-8 text-gray-500">
-    <p>Itinerary generated by Gemini</p>
-</footer>
-
-<script>
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
         feather.replace();
 
+        // Itinerary Tabs
         const tabsContainer = document.getElementById('tabs-container');
         const tabContentContainer = document.getElementById('tab-content');
+        if (tabsContainer) {
+            fetch('hogenakkal_itinerary.json?v=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+                    return response.json();
+                })
+                .then(itineraryData => {
+                    itineraryData.forEach((day, index) => {
+                        const tabButton = document.createElement('button');
+                        tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
+                        tabButton.textContent = `Day ${day.day}`;
+                        tabButton.dataset.day = day.day;
+                        tabsContainer.appendChild(tabButton);
 
-        fetch('hogenakkal_itinerary.json?v=' + new Date().getTime())
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
-                }
-                return response.json();
-            })
-            .then(itineraryData => {
-                itineraryData.forEach((day, index) => {
-                    // Create Tab Button
-                    const tabButton = document.createElement('button');
-                    tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
-                    tabButton.textContent = `Day ${day.day}`;
-                    tabButton.dataset.day = day.day;
-                    tabsContainer.appendChild(tabButton);
-
-                    // Create Tab Content
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = `tab-content-day-${day.day} ${index !== 0 ? 'hidden' : ''}`;
-                    
-                    const timelineDiv = document.createElement('div');
-                    timelineDiv.className = 'timeline';
-
-                    day.items.forEach(item => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'timeline-item';
-
-                        const iconDiv = document.createElement('div');
-                        iconDiv.className = 'timeline-icon';
-                        iconDiv.innerHTML = `<i data-feather="${item.icon}" class="icon-style"></i>`;
-                        
-                        const contentDivItem = document.createElement('div');
-                        contentDivItem.className = 'timeline-content';
-                        contentDivItem.innerHTML = item.text;
-
-                        itemDiv.appendChild(iconDiv);
-                        itemDiv.appendChild(contentDivItem);
-                        timelineDiv.appendChild(itemDiv);
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = `tab-content-day-${day.day} ${index !== 0 ? 'hidden' : ''}`;
+                        const timelineDiv = document.createElement('div');
+                        timelineDiv.className = 'timeline';
+                        day.items.forEach(item => {
+                            timelineDiv.innerHTML += `
+                                <div class="timeline-item">
+                                    <div class="timeline-icon"><i data-feather="${item.icon}" class="icon-style"></i></div>
+                                    <div class="timeline-content">${item.text}</div>
+                                </div>`;
+                        });
+                        contentDiv.appendChild(timelineDiv);
+                        tabContentContainer.appendChild(contentDiv);
                     });
-
-                    contentDiv.appendChild(timelineDiv);
-                    tabContentContainer.appendChild(contentDiv);
+                    feather.replace();
+                    tabsContainer.addEventListener('click', e => {
+                        if(e.target.classList.contains('tab-button')) {
+                            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                            e.target.classList.add('active');
+                            const day = e.target.dataset.day;
+                            document.querySelectorAll('[class^="tab-content-day-"]').forEach(content => content.classList.add('hidden'));
+                            document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading itinerary:', error);
+                    tabContentContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data.</p>`;
                 });
-
-                feather.replace(); // Re-run feather icons
-
-                // Tab switching functionality
-                tabsContainer.addEventListener('click', e => {
-                    if(e.target.classList.contains('tab-button')) {
-                        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                        e.target.classList.add('active');
-                        const day = e.target.dataset.day;
-                        document.querySelectorAll('[class^="tab-content-day-"]').forEach(content => content.classList.add('hidden'));
-                        document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Error loading itinerary:', error);
-                tabContentContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data. Please check if hogenakkal_itinerary.json is valid.</p>`;
-            });
-
-    });
-
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleIcon = document.getElementById('theme-toggle-icon');
-    const body = document.body;
-
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            body.classList.add('dark');
-            themeToggleIcon.setAttribute('data-feather', 'moon');
-        } else {
-            body.classList.remove('dark');
-            themeToggleIcon.setAttribute('data-feather', 'sun');
         }
-        feather.replace();
-    };
 
-    themeToggle.addEventListener('click', () => {
-        const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-        localStorage.setItem('theme', newTheme);
-        applyTheme(newTheme);
+        // Theme Toggler
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const body = document.body;
+        const applyTheme = (theme) => {
+            body.classList.toggle('dark', theme === 'dark');
+            themeToggleIcon.setAttribute('data-feather', theme === 'dark' ? 'moon' : 'sun');
+            feather.replace();
+        };
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+        applyTheme(localStorage.getItem('theme') || 'dark');
+
+        // Historical Timeline
+        const showTimelineBtn = document.getElementById('show-timeline-btn');
+        const timelineEmbed = document.getElementById('timeline-embed');
+        const timelineChevron = document.getElementById('timeline-chevron');
+        let timelineInitialized = false;
+
+        showTimelineBtn.addEventListener('click', () => {
+            if (timelineEmbed.style.display === 'none') {
+                timelineEmbed.style.display = 'block';
+                timelineChevron.style.transform = 'rotate(180deg)';
+                if (!timelineInitialized) {
+                    new TL.Timeline('timeline-embed', 'hogenakkal_timeline_data.json', {
+                        hash_bookmark: true,
+                        initial_zoom: 0
+                    });
+                    timelineInitialized = true;
+                }
+            } else {
+                timelineEmbed.style.display = 'none';
+                timelineChevron.style.transform = 'rotate(0deg)';
+            }
+        });
     });
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    applyTheme(savedTheme);
-
+    // Google Map Initialization
     function initMap() {
         const locations = {
             "Hogenakkal Falls": { lat: 12.1165, lng: 77.7753, day: 1 },
             "The Royal Honeychilk Palace": { lat: 12.045702337377557, lng: 78.2095979028502, day: 1 }
         };
-
         const map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
             center: { lat: 12.45, lng: 77.7 },
             mapId: 'HOGENAKKAL_ITINERARY_MAP'
         });
-
         const infowindow = new google.maps.InfoWindow();
-
         const dayColors = {
-            1: { background: '#4285F4', borderColor: '#1a73e8', glyphColor: '#FFFFFF' }, // Blue
-            2: { background: '#34A853', borderColor: '#2c9f42', glyphColor: '#FFFFFF' } // Green
+            1: { background: '#4285F4', borderColor: '#1a73e8', glyphColor: '#FFFFFF' },
+            2: { background: '#34A853', borderColor: '#2c9f42', glyphColor: '#FFFFFF' }
         };
-
-        for (const location in locations) {
-            let pinContent;
-            const day = locations[location].day;
-
-            if (location === "Sun City Apartments") {
-                pinContent = new google.maps.marker.PinElement({
-                    background: '#800080', // Purple
-                    borderColor: '#000000',
-                    glyph: 'S',
-                    glyphColor: '#FFFFFF',
-                }).element;
-            } else if (location === "Kempegowda International Airport Bengaluru") {
-                pinContent = new google.maps.marker.PinElement({
-                    background: '#000080', // Navy
-                    borderColor: '#000000',
-                    glyph: 'A',
-                    glyphColor: '#FFFFFF',
-                }).element;
-            } else {
-                const colors = dayColors[day] || { background: '#EA4335', borderColor: '#d52516', glyphColor: '#FFFFFF' }; // Red for default
-                pinContent = new google.maps.marker.PinElement({
-                    background: colors.background,
-                    borderColor: colors.borderColor,
-                    glyph: day.toString(),
-                    glyphColor: colors.glyphColor,
-                }).element;
-            }
-
+        for (const [location, data] of Object.entries(locations)) {
+            const colors = dayColors[data.day] || { background: '#EA4335', borderColor: '#d52516', glyphColor: '#FFFFFF' };
+            const pin = new google.maps.marker.PinElement({
+                background: colors.background,
+                borderColor: colors.borderColor,
+                glyph: data.day.toString(),
+                glyphColor: colors.glyphColor,
+            });
             const marker = new google.maps.marker.AdvancedMarkerElement({
-                position: locations[location],
+                position: data,
                 map: map,
                 title: location,
-                content: pinContent
+                content: pin.element
             });
-
             marker.addListener('click', () => {
                 infowindow.setContent(`<div style="color: black;">${location}</div>`);
                 infowindow.open(map, marker);
             });
         }
     }
-</script>
-
+    </script>
 </body>
 </html>
