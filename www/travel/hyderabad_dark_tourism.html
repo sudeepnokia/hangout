@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyderabad Dark Tourism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #b91c1c 0%, #4a044e 100%);
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .icon-style {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #b91c1c;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .dark .card {
+            background: #1f2937;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .dark .bg-gray-100, .dark .bg-gray-50 {
+            background-color: #374151;
+        }
+        .dark .tab-button {
+            color: #d1d5db;
+        }
+        .dark .tab-button.active {
+            background-color: #991b1b;
+            color: #fecaca;
+        }
+        .dark h2, .dark h3, .dark h4 {
+            color: #f9fafb;
+        }
+        .dark .text-indigo-600 {
+            color: #818cf8;
+        }
+        .dark .text-gray-600 {
+            color: #9ca3af;
+        }
+        .dark .text-gray-700 {
+            color: #d1d5db;
+        }
+        .dark .text-purple-500 {
+            color: #a78bfa;
+        }
+        .dark .bg-red-100 {
+            background-color: #450a0a;
+        }
+        .dark .text-red-600 {
+            color: #fca5a5;
+        }
+        .dark footer {
+            color: #9ca3af;
+        }
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+            padding: 2em 0;
+            max-width: 800px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        .dark .timeline::before {
+            background: #4a5568;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2em;
+            padding-left: 50px;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #b91c1c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #f0f2f5;
+        }
+        .dark .timeline-icon {
+            border-color: #111827;
+        }
+        .timeline-content {
+            position: relative;
+            top: -5px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<header class="header-bg text-white text-center py-12 sm:py-20">
+    <div class="container mx-auto px-4 relative">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Hyderabad Dark Tourism</h1>
+        <p class="mt-4 text-lg sm:text-xl opacity-90">An Itinerary for the Adventurous, Amidst the Elements</p>
+        <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-gray-800 text-white">
+            <i id="theme-toggle-icon" data-feather="sun"></i>
+        </button>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-8 sm:py-12">
+
+    <!-- Weather and Flood Update Section -->
+    <section id="weather-update" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow text-red-600 dark:text-red-500">Weather and Flood Update</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="mt-6 space-y-4">
+                    <p><strong>Severe Rainfall Warning:</strong> The IMD has issued an “extremely heavy rainfall” warning for Hyderabad from <strong>August 14 to 16</strong>. Expect 64mm to over 204mm of rain, thunderstorms, and gusty winds.</p>
+                    <p><strong>Ongoing Flood Risk:</strong> Multiple areas have already experienced waterlogging and flash floods. Low-lying neighborhoods are particularly vulnerable.</p>
+                    <h4 class="font-bold text-xl mt-4">Forecasted Conditions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                        <li><strong>August 15 (Friday):</strong> Heavy showers, overcast, high humidity. High ~28°C, low ~22°C.</li>
+                        <li><strong>August 16 (Saturday):</strong> Passing showers, continued disruptions. High ~29°C.</li>
+                        <li><strong>August 17 (Sunday):</strong> Persistent rain, gradual decrease in intensity. High ~29°C.</li>
+                    </ul>
+                     <p><strong>Advisories:</strong> Expect possible partial road closures, traffic diversions, and detours. Transport, especially in flood-prone areas and older city sections like Charminar, may be affected.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Suggested Itinerary Section -->
+    <section id="itinerary" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Suggested Itinerary (Flood-Safe)</h2>
+            <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6"></div>
+            <div id="tab-content"></div>
+        </div>
+    </section>
+
+    <!-- Onwards Ticket Information -->
+    <section id="onwards-ticket" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Onwards Ticket Information</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
+                            <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22691 - RAJDHANI EXP</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
+                            <p class="font-bold text-lg">4122529261</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                        <div>
+                            <p class="font-bold text-xl">20:00</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Thu, 14 Aug 25</p>
+                            <p class="font-semibold">KSR BENGALURU (SBC)</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">11h 5m</p>
+                            <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">07:05</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Fri, 15 Aug 25</p>
+                            <p class="font-semibold">SECUNDERABAD JN (SC)</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p><span class="font-semibold">Passengers:</span> 5 Adult, 0 Child</p>
+                        <p><span class="font-semibold">Class:</span> 2A (AC 2 Tier)</p>
+                        <p><span class="font-semibold">Quota:</span> GENERAL</p>
+                        <p><span class="font-semibold">Boarding:</span> KSR BENGALURU (SBC)</p>
+                        <p><span class="font-semibold">Booked on:</span> Tue, 22 Jul 25</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Return Ticket Information -->
+    <section id="return-ticket" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl sm:text-3xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Return Ticket Information</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Train</p>
+                            <p class="font-bold text-lg text-indigo-600 dark:text-indigo-400">22692 - SBC RAJDHANI</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">PNR</p>
+                            <p class="font-bold text-lg text-gray-900 dark:text-gray-100">2138890801</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 text-center mb-4">
+                        <div>
+                            <p class="font-bold text-xl text-gray-900 dark:text-gray-100">17:25</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Sun, 17 Aug 25</p>
+                            <p class="font-semibold text-gray-800 dark:text-gray-200">SECUNDERABAD JN (SC)</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">11h 55m</p>
+                            <div class="w-full h-0.5 bg-gray-300 dark:bg-gray-600 my-1"></div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Non-Stop</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl text-gray-900 dark:text-gray-100">05:20</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Mon, 18 Aug 25</p>
+                            <p class="font-semibold text-gray-800 dark:text-gray-200">KSR BENGALURU (SBC)</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4 mt-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p><span class="font-semibold text-gray-800 dark:text-gray-200">Passengers:</span> 5 Adult, 0 Child</p>
+                        <p><span class="font-semibold text-gray-800 dark:text-gray-200">Class:</span> 2A (AC 2 Tier)</p>
+                        <p><span class="font-semibold text-gray-800 dark:text-gray-200">Quota:</span> GENERAL</p>
+                        <p><span class="font-semibold text-gray-800 dark:text-gray-200">Boarding:</span> SECUNDERABAD JN (SC)</p>
+                        <p><span class="font-semibold text-gray-800 dark:text-gray-200">Booked on:</span> Sun, 20 Jul 25</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- City News and Events Section -->
+    <section id="city-news" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-3xl font-bold text-center mb-6">City News and Events</h2>
+            <div class="space-y-4">
+                <p><strong>Independence Day (August 15) and School Holidays:</strong> A three-day school holiday from August 15–17 may lead to heavier crowds and tightened security at public spaces and tourist attractions.</p>
+                <p><strong>Property Show at HITEX:</strong> The Hyderabad Property Show 2025 (August 15–17) will increase traffic around the HITEX Exhibition Centre and Hitec City area.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Advice Section -->
+    <section id="travel-advice" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <h2 class="text-3xl font-bold text-center mb-6">Travel Advice</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-4">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-full"><i data-feather="alert-triangle" class="icon-style"></i></div>
+                    <div>
+                        <h3 class="font-bold text-lg">Key Recommendations</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+                            <li>Carry rain protection (umbrellas, raincoats, waterproof shoes).</li>
+                            <li>Monitor real-time weather and traffic before venturing out.</li>
+                            <li>Expect delays at airports, railway stations, and on city roads.</li>
+                            <li>Be flexible with plans and consider backup options for outdoor activities.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-full"><i data-feather="shield" class="icon-style"></i></div>
+                    <div>
+                        <h3 class="font-bold text-lg">Safety First</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+                             <li>Avoid flood-prone and waterlogged areas.</li>
+                             <li>Stay updated on official announcements from civic authorities.</li>
+                             <li>Exercise caution while traveling, especially in older parts of the city.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section id="summary" class="mb-12">
+        <div class="card p-6 sm:p-8 bg-gray-50 dark:bg-gray-800">
+            <h2 class="text-3xl font-bold text-center mb-4">Summary</h2>
+            <p class="text-center text-lg">Expect <strong>heavy to extremely heavy rainfall, flooding, and potential traffic disruptions</strong> across Hyderabad from August 15–17. It is strongly recommended to adjust travel and sightseeing schedules based on live weather and civic advisories. Exercise caution and stay updated on official announcements for a safe visit.</p>
+        </div>
+    </section>
+
+    <!-- Citations Section -->
+    <section id="citations" class="mb-12">
+        <div class="card p-6 sm:p-8">
+            <details class="group">
+                <summary class="flex items-center justify-between font-bold text-2xl cursor-pointer list-none">
+                    <span class="text-center flex-grow">Citations</span>
+                    <i data-feather="chevron-down" class="group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="grid md:grid-cols-2 gap-6 mt-6 text-sm">
+                    <!-- Citations will be dynamically inserted here -->
+                </div>
+            </details>
+        </div>
+    </section>
+
+</main>
+
+<footer class="text-center py-8 text-gray-500">
+    <p>Information compiled by Gemini</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        feather.replace();
+
+        // Citations
+        const citations = [
+            "https://telanganatoday.com/telangana-on-high-alert-imd-issues-first-extremely-heavy-rainfall-warning-of-season",
+            "https://www.hindustantimes.com/india-news/heavy-rain-alert-in-telangana-till-aug-17-cm-revanth-reddy-inspects-flood-hit-hyderabad-areas-101754838839619.html",
+            "https://www.newsonair.gov.in/imd-issues-heavy-to-very-heavy-rainfall-warning-at-isolated-places-across-telangana-till-august-17/",
+            "https://www.theweek.in/news/india/2025/08/11/telangana-weather-hyderabad-among-11-districts-to-be-hit-with-heavy-rains-till-august-17.html",
+            "http://www.uniindia.com/very-heavy-rainfall-forecast-for-telangana-on-aug-14-15-met/south/news/3541694.html",
+            "https://www.instagram.com/p/DNKd6FzyAeu/",
+            "https://www.timeanddate.com/weather/india/hyderabad/ext",
+            "https://www.easeweather.com/asia/india/telangana/hyderabad/august",
+            "https://www.accuweather.com/en/in/hyderabad/202190/august-weather/202190",
+            "https://www.oneindia.com/hyderabad/hyderabad-school-holidays-three-day-break-for-hyderabad-and-andhra-students-this-week-011-7826835.html",
+            "https://www.oneindia.com/hyderabad/hyderabad-school-holidays-3-day-break-for-hyderabad-and-andhra-students-this-week-011-7826835.html",
+            "https://www.jagranjosh.com/articles/hyderabad-school-holidays-schools-closed-on-these-days-within-this-week-1800001750-1",
+            "https://www.thehindu.com/real-estate/creda-hyderabad-property-show-2025-from-august-15/article68498202.ece"
+        ];
+        const citationsContainer = document.querySelector('#citations .grid');
+        citations.forEach((url, index) => {
+            const linkElement = document.createElement('a');
+            linkElement.href = url;
+            linkElement.target = "_blank";
+            linkElement.className = "flex items-start space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg";
+            linkElement.innerHTML = `
+                <div class="text-purple-500 pt-1"><i data-feather="link" class="icon-style"></i></div>
+                <div>
+                    <h4 class="font-bold text-indigo-600 hover:underline flex items-center">Source [${index+1}] <i data-feather="external-link" class="w-4 h-4 ml-2"></i></h4>
+                </div>
+            `;
+            citationsContainer.appendChild(linkElement);
+        });
+
+        // Itinerary
+        const tabsContainer = document.getElementById('tabs-container');
+        const tabContentContainer = document.getElementById('tab-content');
+        fetch('dark_itinerary.json?v=' + new Date().getTime())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(itineraryData => {
+                itineraryData.forEach((day, index) => {
+                    const tabButton = document.createElement('button');
+                    tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
+                    tabButton.textContent = `Day ${day.day}`;
+                    tabButton.dataset.day = day.day;
+                    tabsContainer.appendChild(tabButton);
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = `tab-content-day-${day.day} ${index !== 0 ? 'hidden' : ''}`;
+                    
+                    const timelineDiv = document.createElement('div');
+                    timelineDiv.className = 'timeline';
+
+                    day.items.forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'timeline-item';
+
+                        const iconDiv = document.createElement('div');
+                        iconDiv.className = 'timeline-icon';
+                        iconDiv.innerHTML = `<i data-feather="${item.icon}" class="icon-style"></i>`;
+                        
+                        const contentDivItem = document.createElement('div');
+                        contentDivItem.className = 'timeline-content';
+                        contentDivItem.innerHTML = item.text;
+
+                        itemDiv.appendChild(iconDiv);
+                        itemDiv.appendChild(contentDivItem);
+                        timelineDiv.appendChild(itemDiv);
+                    });
+
+                    contentDiv.appendChild(timelineDiv);
+                    tabContentContainer.appendChild(contentDiv);
+                });
+
+                feather.replace();
+
+                tabsContainer.addEventListener('click', e => {
+                    if(e.target.classList.contains('tab-button')) {
+                        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        const day = e.target.dataset.day;
+                        document.querySelectorAll('[class^="tab-content-day-"]').forEach(content => content.classList.add('hidden'));
+                        document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading itinerary:', error);
+                tabContentContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data. Please check if dark_itinerary.json is valid.</p>`;
+            });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const body = document.body;
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                themeToggleIcon.setAttribute('data-feather', 'moon');
+            } else {
+                body.classList.remove('dark');
+                themeToggleIcon.setAttribute('data-feather', 'sun');
+            }
+            feather.replace();
+        };
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        feather.replace();
+    });
+</script>
+
+</body>
+</html>
