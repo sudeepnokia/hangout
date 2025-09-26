@@ -1,0 +1,158 @@
+[
+  {
+    "day": 1,
+    "date": "Friday, September 26, 2025",
+    "items": [
+      {
+        "icon": "train",
+        "text": "<h4 class='font-bold'>20:10 (8:10 PM)</h4><p><b>Rail Departure</b> from KSR Bengaluru. Train: <b>KANYAKUMARI EXP (16526)</b></p>"
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "date": "Saturday, September 27, 2025",
+    "items": [
+      {
+        "icon": "train",
+        "text": "<h4 class='font-bold'>07:10 (7:10 AM)</h4><p>Rail Arrival at Ernakulam Town. Train: <b>KANYAKUMARI EXP (16526)</b></p>"
+      },
+      {
+        "icon": "home",
+        "text": "<h4 class='font-bold'>Arrival</h4><p><b>Hotel Stay (1 night)</b> at Coral Reef Kochi - A Unit of Coral Isle Hotels.</p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>23:50 (11:50 PM)</h4><p><b>Flight Departure</b> from Kochi (T3) to Ho Chi Minh City. Flight: <b>VJ1812</b></p>"
+      }
+    ]
+  },
+  {
+    "day": 3,
+    "date": "Sunday, September 28, 2025",
+    "items": [
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>06:40 (6:40 AM)</h4><p>Flight Arrival at Ho Chi Minh (T2). Flight: <b>VJ1812</b></p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>10:25 (10:25 AM)</h4><p><b>Connecting Flight Departure</b> from Ho Chi Minh (T1) to Ha Noi. Flight: <b>VJ1130</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>12:35 (12:35 PM)</h4><p>Flight Arrival at Ha Noi. Flight: <b>VJ1130</b></p>"
+      },
+      {
+        "icon": "key",
+        "text": "<h4 class='font-bold'>Check-in</h4><p><b>Hotel Stay</b> at Sapa Praha Hotel, Sapa.</p>"
+      }
+    ]
+  },
+  {
+    "day": 4,
+    "date": "Monday, September 29, 2025",
+    "items": [
+      {
+        "icon": "camera",
+        "text": "<h4 class='font-bold'>Full Day</h4><p>Explore Sapa. Enjoy the scenery and local culture.</p>"
+      }
+    ]
+  },
+  {
+    "day": 5,
+    "date": "Tuesday, September 30, 2025",
+    "items": [
+      {
+        "icon": "arrow-left",
+        "text": "<h4 class='font-bold'>Check-out</h4><p>Hotel Departure from Sapa Praha Hotel.</p>"
+      },
+      {
+        "icon": "home",
+        "text": "<h4 class='font-bold'>Arrival</h4><p><b>Hotel Stay</b> at Aurora Central Hotel, Hanoi (Old Quarter).</p>"
+      }
+    ]
+  },
+  {
+    "day": 6,
+    "date": "Wednesday, October 1, 2025",
+    "items": [
+      {
+        "icon": "coffee",
+        "text": "<h4 class='font-bold'>Full Day</h4><p>Explore Hanoi's Old Quarter. Enjoy the local cuisine and attractions.</p>"
+      }
+    ]
+  },
+  {
+    "day": 7,
+    "date": "Thursday, October 2, 2025",
+    "items": [
+      {
+        "icon": "arrow-left",
+        "text": "<h4 class='font-bold'>Departure</h4><p>Hotel Check-out from Aurora Central Hotel.</p>"
+      },
+      {
+        "icon": "key",
+        "text": "<h4 class='font-bold'>After 2:00 PM</h4><p><b>Hotel Stay</b> at Hôtel L'art Hanoi.</p>"
+      }
+    ]
+  },
+  {
+    "day": 8,
+    "date": "Friday, October 3, 2025",
+    "items": [
+      {
+        "icon": "gift",
+        "text": "<h4 class='font-bold'>Full Day</h4><p>Explore Hanoi. Visit museums, lakes, and enjoy the city.</p>"
+      }
+    ]
+  },
+  {
+    "day": 9,
+    "date": "Saturday, October 4, 2025",
+    "items": [
+      {
+        "icon": "arrow-left",
+        "text": "<h4 class='font-bold'>Before 12:00 PM</h4><p>Hotel Check-out from Hôtel L'art Hanoi.</p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>13:10 (1:10 PM)</h4><p><b>Flight Departure</b> from Ha Noi to Ho Chi Minh City. Flight: <b>VJ1141</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>15:20 (3:20 PM)</h4><p>Flight Arrival at Ho Chi Minh (T1). Flight: <b>VJ1141</b></p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>19:20 (7:20 PM)</h4><p><b>Connecting Flight Departure</b> from Ho Chi Minh (T2) to Kochi. Flight: <b>VJ1811</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>22:50 (10:50 PM)</h4><p>Flight Arrival at Kochi (T3). Flight: <b>VJ1811</b></p>"
+      },
+      {
+        "icon": "moon",
+        "text": "<h4 class='font-bold'>23:00 (11:00 PM)</h4><p><b>Lounge Stay</b> at 0484 Aero Lounge, Cochin International Airport.</p>"
+      }
+    ]
+  },
+  {
+    "day": 10,
+    "date": "Sunday, October 5, 2025",
+    "items": [
+      {
+        "icon": "arrow-left",
+        "text": "<h4 class='font-bold'>05:00 (5:00 AM)</h4><p>Lounge Check-out from 0484 Aero Lounge.</p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>05:25 (5:25 AM)</h4><p><b>Flight Departure</b> from Kochi (T1) to Bengaluru. Flight: <b>6E 702</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>06:40 (6:40 AM)</h4><p>Flight Arrival at Bengaluru (T1). Flight: <b>6E 702</b></p>"
+      }
+    ]
+  }
+]
