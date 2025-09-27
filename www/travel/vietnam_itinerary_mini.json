@@ -1,0 +1,52 @@
+[
+  {
+    "day": 1,
+    "date": "Saturday, September 27, 2025",
+    "items": [
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>23:50 (11:50 PM)</h4><p><b>Flight Departure</b> from Kochi (T3) to Ho Chi Minh City. Flight: <b>VJ1812</b></p>"
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "date": "Sunday, September 28, 2025",
+    "items": [
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>06:40 (6:40 AM)</h4><p>Flight Arrival at Ho Chi Minh (T2). Flight: <b>VJ1812</b></p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>10:25 (10:25 AM)</h4><p><b>Connecting Flight Departure</b> from Ho Chi Minh (T1) to Ha Noi. Flight: <b>VJ1130</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>12:35 (12:35 PM)</h4><p>Flight Arrival at Ha Noi. Flight: <b>VJ1130</b></p>"
+      }
+    ]
+  },
+  {
+    "day": 8,
+    "date": "Saturday, October 4, 2025",
+    "items": [
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>13:10 (1:10 PM)</h4><p><b>Flight Departure</b> from Ha Noi to Ho Chi Minh City. Flight: <b>VJ1141</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>15:20 (3:20 PM)</h4><p>Flight Arrival at Ho Chi Minh (T1). Flight: <b>VJ1141</b></p>"
+      },
+      {
+        "icon": "send",
+        "text": "<h4 class='font-bold'>19:20 (7:20 PM)</h4><p><b>Connecting Flight Departure</b> from Ho Chi Minh (T2) to Kochi. Flight: <b>VJ1811</b></p>"
+      },
+      {
+        "icon": "anchor",
+        "text": "<h4 class='font-bold'>22:50 (10:50 PM)</h4><p>Flight Arrival at Kochi (T3). Flight: <b>VJ1811</b></p>"
+      }
+    ]
+  }
+]
