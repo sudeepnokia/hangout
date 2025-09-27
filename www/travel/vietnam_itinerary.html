@@ -163,9 +163,7 @@
         <section id="itinerary" class="mb-12">
             <div class="card p-6 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">Daily Itinerary</h2>
-                <div id="tabs-container" class="flex justify-center space-x-2 sm:space-x-4 bg-gray-100 p-2 rounded-full mb-6 overflow-x-auto">
-                    <!-- Tabs will be inserted here -->
-                </div>
+
                 <div id="tab-content">
                     <!-- Content for tabs will be inserted here -->
                 </div>
@@ -223,51 +221,37 @@
     document.addEventListener('DOMContentLoaded', () => {
         feather.replace();
 
-        // Itinerary Tabs
-        const tabsContainer = document.getElementById('tabs-container');
-        const tabContentContainer = document.getElementById('tab-content');
-        if (tabsContainer) {
+        // Itinerary Display
+        const itineraryContainer = document.getElementById('tab-content');
+        if (itineraryContainer) {
             fetch('vietnam_itinerary.json?v=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
                     return response.json();
                 })
                 .then(itineraryData => {
-                    itineraryData.forEach((day, index) => {
-                        const tabButton = document.createElement('button');
-                        tabButton.className = `tab-button font-semibold py-2 px-4 rounded-full text-sm sm:text-base ${index === 0 ? 'active' : ''}`;
-                        tabButton.textContent = `Day ${day.day}`;
-                        tabButton.dataset.day = day.day;
-                        tabsContainer.appendChild(tabButton);
+                    itineraryData.forEach(day => {
+                        const dayContainer = document.createElement('div');
+                        dayContainer.className = 'mb-12';
 
-                        const contentDiv = document.createElement('div');
-                        contentDiv.className = `tab-content-day-${day.day} ${index !== 0 ? 'hidden' : ''}`;
-                        const timelineDiv = document.createElement('div');
-                        timelineDiv.className = 'timeline';
-                        day.items.forEach(item => {
-                            timelineDiv.innerHTML += `
-                                <div class="timeline-item">
-                                    <div class="timeline-icon"><i data-feather="${item.icon}" class="icon-style"></i></div>
-                                    <div class="timeline-content">${item.text}</div>
-                                </div>`;
-                        });
-                        contentDiv.appendChild(timelineDiv);
-                        tabContentContainer.appendChild(contentDiv);
+                        dayContainer.innerHTML = `
+                            <h3 class="text-2xl font-bold mb-4 text-center">${`Day ${day.day}: ${day.date}`}</h3>
+                            <div class="timeline">
+                                ${day.items.map(item => `
+                                    <div class="timeline-item">
+                                        <div class="timeline-icon"><i data-feather="${item.icon}" class="icon-style"></i></div>
+                                        <div class="timeline-content">${item.text}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                        itineraryContainer.appendChild(dayContainer);
                     });
                     feather.replace();
-                    tabsContainer.addEventListener('click', e => {
-                        if(e.target.classList.contains('tab-button')) {
-                            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                            e.target.classList.add('active');
-                            const day = e.target.dataset.day;
-                            document.querySelectorAll('[class^="tab-content-day-"]').forEach(content => content.classList.add('hidden'));
-                            document.querySelector(`.tab-content-day-${day}`).classList.remove('hidden');
-                        }
-                    });
                 })
                 .catch(error => {
                     console.error('Error loading itinerary:', error);
-                    tabContentContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data.</p>`;
+                    itineraryContainer.innerHTML = `<p class="text-center text-red-500">Failed to load itinerary data.</p>`;
                 });
         }
 

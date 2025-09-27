@@ -13,11 +13,11 @@
       },
       {
         "icon": "anchor",
-        "text": "<h4 class='font-bold'>9:00 AM - 2:00 PM</h4><p>Explore Hogenakkal Falls. Enjoy a coracle ride (check availability and safety), see the waterfalls, and have lunch at a local restaurant.</p>"
+        "text": "<h4 class='font-bold'>9:00 AM - 12:00 PM</h4><p>Explore Hogenakkal Falls. Enjoy a coracle ride (check availability and safety), see the waterfalls.</p>"
       },
       {
         "icon": "key",
-        "text": "<h4 class='font-bold'>4:00 PM</h4><p>Check into The Royal Honeychilk Palace. <a href='https://maps.app.goo.gl/dHe4uRDC8FtYHtY19' target='_blank' class='text-indigo-600 hover:underline'>View on map</a>. <a href='https://maps.app.goo.gl/QJokzPHiP5czad237?g_st=ac' target='_blank' class='text-indigo-600 hover:underline'>View driving directions</a></p>"
+        "text": "<h4 class='font-bold'>2:00 PM</h4><p>Leave for The Royal Honeychilk Palace and check in. <a href='https://maps.app.goo.gl/dHe4uRDC8FtYHtY19' target='_blank' class='text-indigo-600 hover:underline'>View on map</a>. <a href='https://maps.app.goo.gl/QJokzPHiP5czad237?g_st=ac' target='_blank' class='text-indigo-600 hover:underline'>View driving directions</a></p>"
       },
       {
         "icon": "moon",
