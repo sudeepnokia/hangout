@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Weekend Luxury Itinerary - June 6–7, 2026</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Styling Base */
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #151c2c;
+            --bg-card-hover: #1e293b;
+            --primary: #0d9488;
+            --primary-light: #14b8a6;
+            --secondary: #d97706;
+            --accent: #ec4899;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --glow-color: rgba(13, 148, 136, 0.2);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Glow effects */
+        .glow-overlay {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1400px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Hero Header */
+        header {
+            position: relative;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .logo-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(13, 148, 136, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f8fafc 30%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-tab {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-tab:hover, .btn-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px var(--glow-color);
+            transform: translateY(-2px);
+        }
+
+        /* General Card Styling */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 10px 40px rgba(13, 148, 136, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .card-icon {
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Flight Dashboard Panel */
+        .flight-container {
+            margin-bottom: 40px;
+        }
+
+        .flight-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            gap: 20px;
+            margin: 24px 0;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .flight-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+        }
+
+        .airport-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .airport-code {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .airport-name {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .flight-time {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .flight-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .flight-path {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .plane-line {
+            width: 100%;
+            height: 2px;
+            background: dashed var(--border-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plane-line::before, .plane-line::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            position: absolute;
+        }
+
+        .plane-line::before { left: 0; }
+        .plane-line::after { right: 0; }
+
+        .plane-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-card);
+            border: 2px solid var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            color: var(--primary-light);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        @media (max-width: 768px) {
+            .plane-line {
+                width: 2px;
+                height: 40px;
+            }
+            .plane-line::before { top: 0; left: -3px; }
+            .plane-line::after { bottom: 0; right: -3px; }
+        }
+
+        .duration-tag {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .layover-panel {
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .layover-icon {
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .layover-details h4 {
+            color: var(--secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .layover-details p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .flight-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .meta-item span {
+            color: var(--text-muted);
+        }
+
+        .meta-item strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Google Maps Button styling */
+        .btn-map {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(13, 148, 136, 0.1);
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            color: var(--primary-light);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-map:hover {
+            background: var(--primary);
+            color: var(--text-main);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px var(--glow-color);
+        }
+
+        .btn-map svg {
+            fill: currentColor;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Timeline Layout */
+        .timeline-section-title {
+            font-size: 2rem;
+            margin: 60px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: -32px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 0 8px var(--glow-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .timeline-item:hover .timeline-badge {
+            transform: scale(1.3);
+            background: var(--primary-light);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 25px rgba(13, 148, 136, 0.1);
+        }
+
+        .timeline-time-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .time-tag {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        /* Food Spotlight tag inside timeline */
+        .food-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .food-badge.veg {
+            background: rgba(13, 148, 136, 0.15);
+            border: 1px solid rgba(13, 148, 136, 0.4);
+            color: #2dd4bf;
+        }
+
+        .food-badge.classic {
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            color: #fbbf24;
+        }
+
+        .menu-list {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 576px) {
+            .menu-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .menu-column h5 {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .menu-column ul {
+            list-style: none;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .menu-column ul li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .menu-column ul li::before {
+            content: '•';
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        .menu-column.veg-column ul li::before {
+            color: #2dd4bf;
+        }
+
+        /* Highlight box for taxi justifications */
+        .taxi-highlight {
+            background: rgba(217, 119, 6, 0.05);
+            border-left: 3px solid var(--secondary);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .taxi-highlight svg {
+            color: var(--secondary);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* Travel Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            height: 100%;
+        }
+
+        .info-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 10px;
+        }
+
+        .info-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .info-card ul li {
+            margin-bottom: 10px;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .info-card ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* SVGs */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .header-bg-art {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.05;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 80px;
+        }
+
+        /* Animation utilities */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-card {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animation-delay-1 { animation-delay: 0.2s; }
+        .animation-delay-2 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <div class="glow-overlay"></div>
+    <div class="header-bg-art"></div>
+
+    <div class="container">
+        
+        <!-- Header Hero Section -->
+        <header>
+            <div class="logo-tag">
+                <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;margin-bottom:-3px;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+                </svg>
+                Taiwan Executive Escape 2026
+            </div>
+            <h1>Premium Weekend Itinerary</h1>
+            <p>A tailored, seamless, and high-comfort exploration of Taipei & Sun Moon Lake, engineered for maximum travel enjoyment and culinary excellence.</p>
+            
+            <div class="quick-nav">
+                <a href="#flights" class="btn-tab">✈️ Flight Logs</a>
+                <a href="#saturday" class="btn-tab">🏮 Sat: Taipei Blitz</a>
+                <a href="#sunday" class="btn-tab">🚣 Sun: Sun Moon Lake</a>
+                <a href="#tips" class="btn-tab">💡 Travel Intelligence</a>
+            </div>
+        </header>
+
+        <!-- FLIGHT LOGS SECTION -->
+        <section id="flights" class="flight-container animated-card">
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <div class="card-icon">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                        </div>
+                        Flight Log: Bengaluru (BLR) to Taipei (TPE)
+                    </h2>
+                    <span class="logo-tag" style="border-color:var(--secondary);color:var(--secondary);box-shadow:none;margin-bottom:0;">Thai Airways</span>
+                </div>
+
+                <!-- Leg 1: BLR to BKK -->
+                <div class="flight-grid">
+                    <div class="airport-block">
+                        <span class="airport-code">BLR</span>
+                        <span class="airport-name">Kempegowda Int'l Airport</span>
+                        <span class="flight-time">12:55 AM</span>
+                        <span class="flight-date">Saturday, June 6</span>
+                        <a href="https://maps.google.com/?q=Kempegowda+International+Airport+Bengaluru" target="_blank" class="btn-map" style="margin-top:12px;align-self:flex-start;">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Airport Map
+                        </a>
+                    </div>
+                    
+                    <div class="flight-path">
+                        <div class="plane-line">
+                            <div class="plane-icon">
+                                <svg style="width:16px;height:16px;fill:currentColor;transform:rotate(90deg);" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                            </div>
+                        </div>
+                        <span class="duration-tag">3h 55m | TG 326</span>
+                    </div>
+
+                    <div class="airport-block" style="text-align: right;">
+                        <span class="airport-code" style="color:var(--secondary)">BKK</span>
+                        <span class="airport-name">Suvarnabhumi Airport</span>
+                        <span class="flight-time">06:20 AM</span>
+                        <span class="flight-date">Saturday, June 6</span>
+                        <a href="https://maps.google.com/?q=Suvarnabhumi+Airport+Bangkok" target="_blank" class="btn-map" style="margin-top:12px;align-self:flex-end;">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Airport Map
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Layover Banner -->
+                <div class="layover-panel">
+                    <div class="layover-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <div class="layover-details">
+                        <h4>2 Hour 5 Minute Connection</h4>
+                        <p>Relax at Suvarnabhumi Transit Lounges (BKK) before boarding the Taipei leg.</p>
+                    </div>
+                </div>
+
+                <!-- Leg 2: BKK to TPE -->
+                <div class="flight-grid">
+                    <div class="airport-block">
+                        <span class="airport-code">BKK</span>
+                        <span class="airport-name">Suvarnabhumi Airport</span>
+                        <span class="flight-time">08:25 AM</span>
+                        <span class="flight-date">Saturday, June 6</span>
+                    </div>
+                    
+                    <div class="flight-path">
+                        <div class="plane-line">
+                            <div class="plane-icon">
+                                <svg style="width:16px;height:16px;fill:currentColor;transform:rotate(90deg);" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                            </div>
+                        </div>
+                        <span class="duration-tag">3h 40m | TG 632</span>
+                    </div>
+
+                    <div class="airport-block" style="text-align: right;">
+                        <span class="airport-code" style="color:var(--primary-light)">TPE</span>
+                        <span class="airport-name">Taoyuan Int'l Airport (T2)</span>
+                        <span class="flight-time">01:05 PM</span>
+                        <span class="flight-date">Saturday, June 6</span>
+                        <a href="https://maps.google.com/?q=Taiwan+Taoyuan+International+Airport" target="_blank" class="btn-map" style="margin-top:12px;align-self:flex-end;">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Airport Map
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Aircraft Details -->
+                <div class="flight-meta">
+                    <div class="meta-item">
+                        <svg style="width:16px;height:16px;fill:var(--primary-light);" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/></svg>
+                        <span>Aircraft:</span> <strong>Airbus A350-900</strong>
+                    </div>
+                    <div class="meta-item">
+                        <svg style="width:16px;height:16px;fill:var(--primary-light);" viewBox="0 0 24 24"><path d="M18.06 23h1.66c.84 0 1.53-.65 1.63-1.47L23 5.05h-5V1h-2v4.05h-8V1H6v4.05H1v16.48C1 22.34 1.66 23 2.48 23h1.66L2 19h18.06l-2 4zM3 17h18v-8H3v8z"/></svg>
+                        <span>Seat Spec:</span> <strong>Economy (31-32" Legroom)</strong>
+                    </div>
+                    <div class="meta-item">
+                        <svg style="width:16px;height:16px;fill:var(--primary-light);" viewBox="0 0 24 24"><path d="M2 6v12h16v-3h2v3h2V6h-2v3h-2V6H2zm14 7H4V9h12v4z"/></svg>
+                        <span>Amenities:</span> <strong>In-seat Power & USB, On-demand Video</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SATURDAY SECTION -->
+        <section id="saturday" class="animated-card animation-delay-1">
+            <div class="timeline-section-title">
+                <span>🏮 Saturday, June 6: Grand Taipei Evening Blitz</span>
+                <span style="font-size:1rem;color:var(--text-muted);font-weight:400;">Base Hotel: Hsinchu</span>
+            </div>
+
+            <div class="timeline">
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">01:05 PM – 02:30 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Arrival</span>
+                        </div>
+                        <h3>Airport Arrival & Entry Setup</h3>
+                        <p>Land at Taoyuan Terminal 2. Complete immigration, collect bags, withdraw local cash (NT$ is essential for markets), and purchase an <strong>EasyCard</strong> at the MRT station entrance to cover your public transit. </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">02:30 PM – 03:50 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;border-color:var(--secondary);color:var(--secondary);">Premium Transit</span>
+                        </div>
+                        <h3>Direct Airport Transfer to Hotel</h3>
+                        <div class="taxi-highlight">
+                            <svg style="width:20px;height:20px;" viewBox="0 0 24 24"><path fill="currentColor" d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.27-3.82c.14-.4.52-.68.96-.68h9.54c.44 0 .82.28.96.68L19 11H5z"/></svg>
+                            <div>
+                                <strong>Direct Taxi Selected:</strong> A shared taxi directly from TPE Airport to the Sheraton Hsinchu Hotel (~NT$1,200–1,500 total) provides a highly comfortable, seamless 40-minute drive. It eliminates dragging luggage through train stations, platform transfers, and bus queues on your arrival day.
+                            </div>
+                        </div>
+                        <p>Arrive at the hotel, check-in, unpack, freshen up, and prepare to travel light for the evening.</p>
+                        <a href="https://maps.google.com/?q=Sheraton+Hsinchu+Hotel" target="_blank" class="btn-map">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Sheraton Hsinchu Hotel Map
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">03:50 PM – 04:35 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">High-Speed Rail</span>
+                        </div>
+                        <h3>HSR Express: Hsinchu to Taipei</h3>
+                        <p>Take a 3-minute taxi to Hsinchu HSR Station. Board the bullet train directly to <strong>Taipei Main Station</strong>. The journey is incredibly fast and quiet, taking exactly 30 minutes.</p>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                            <a href="https://maps.google.com/?q=Hsinchu+HSR+Station" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Hsinchu HSR Station
+                            </a>
+                            <a href="https://maps.google.com/?q=Taipei+Main+Station" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Taipei Main Station
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">04:45 PM – 05:45 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Culture</span>
+                        </div>
+                        <h3>Chiang Kai-shek Memorial Hall & Liberty Square</h3>
+                        <p>Take the MRT Red Line 2 stops south. Stroll through the massive, paved plazas of Liberty Square. Use the convenient elevator access to the upper level of the magnificent white marble hall to witness the solemn and highly synchronized <strong>Changing of the Guard ceremony</strong>.</p>
+                        <a href="https://maps.google.com/?q=Chiang+Kai-shek+Memorial+Hall" target="_blank" class="btn-map">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Chiang Kai-shek Memorial Hall
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">06:00 PM – 08:30 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Dining & Skyline</span>
+                        </div>
+                        <h3>Taipei 101 Observatory & World-Class Dim Sum Feast</h3>
+                        <p>Take the MRT Red Line directly to Taipei 101 Station. Board the world’s fastest pressurized elevator to the <strong>89th Floor Observatory</strong> for sweeping, illuminated 360-degree views of the capital's neon-lit skyline. Head to the lower level for a gourmet dinner.</p>
+                        
+                        <div class="food-badge veg">Vegetarian & Meat-Eater Shared Banquet</div>
+                        <div class="menu-list">
+                            <div class="menu-column veg-column">
+                                <h5>🟢 Vegetarian Masterpieces (Din Tai Fung)</h5>
+                                <ul>
+                                    <li>Steamed Vegetable & Mushroom Dumplings</li>
+                                    <li>House Specialty Spicy Cucumber App</li>
+                                    <li>Crispy Sautéed Taiwanese Cabbage with Garlic</li>
+                                    <li>Fragrant Egg-free Vegetable Fried Rice</li>
+                                    <li>Sweet Red Bean & Taro Dessert Buns</li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h5>🔴 Non-Vegetarian Classics</h5>
+                                <ul>
+                                    <li>Famous Pork Xiaolongbao (Soup Dumplings)</li>
+                                    <li>Shrimp and Pork Shao Mai</li>
+                                    <li>Steamed Shrimp & Pork Dumplings</li>
+                                    <li>Slow-simmered Chicken Noodle Soup</li>
+                                    <li>Crispy Pork Potstickers</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a href="https://maps.google.com/?q=Taipei+101" target="_blank" class="btn-map">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Taipei 101
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">08:30 PM – 10:00 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Street Scene</span>
+                        </div>
+                        <h3>Vibrant Energy of Ximending Pedestrian District</h3>
+                        <p>Take the MRT Blue Line to Ximen Station. Step directly into the paved, level plazas of Ximending, Taipei's premier entertainment district. Take in the dazzling neon displays, street performers, and bustling shopping lanes in a completely flat environment.</p>
+                        
+                        <div class="food-badge classic">Dessert & Drink Feature</div>
+                        <p style="font-size:0.9rem;margin-top:-8px;margin-bottom:12px;"><strong>Taiwanese Bubble Tea:</strong> Grab highly recommended brown sugar milk or traditional green milk tea at <em>Xing Fu Tang</em> or <em>50 Lan</em> (naturally vegetarian).</p>
+
+                        <a href="https://maps.google.com/?q=Ximending" target="_blank" class="btn-map">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Ximending Pedestrian Area
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">10:00 PM – 10:45 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;border-color:var(--secondary);color:var(--secondary);">Transit</span>
+                        </div>
+                        <h3>HSR Return to Sheraton Hsinchu</h3>
+                        <p>Take the MRT back to Taipei Main Station and board the southbound HSR bullet train. Arriving at Hsinchu HSR, take a quick 3-minute taxi to your hotel to wrap up an epic first day.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SUNDAY SECTION -->
+        <section id="sunday" class="animated-card animation-delay-2">
+            <div class="timeline-section-title">
+                <span>🚣 Sunday, June 7: Sun Moon Lake Alpine Cycle & Cruise</span>
+                <span style="font-size:1rem;color:var(--text-muted);font-weight:400;">Central Taiwan Escape</span>
+            </div>
+
+            <div class="timeline">
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">08:00 AM – 09:00 AM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Gastronomy</span>
+                        </div>
+                        <h3>Sheraton Hsinchu Breakfast Buffet</h3>
+                        <p>Fuel up at the Sheraton's outstanding and extensive buffet. Indulge in local specialty noodle stations, high-end pastries, fresh soy milk, and custom omelets before starting your journey south.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">09:00 AM – 10:30 AM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Transit</span>
+                        </div>
+                        <h3>HSR Bullet Train & Nantou Shuttle to Lake</h3>
+                        <p>Take a 3-minute taxi to Hsinchu HSR. Board the southbound bullet train to **Taichung HSR Station** (a lightning-fast 25 minutes, NT$190). Transfer immediately at Exit 5 to the comfortable **Nantou Bus (Taiwan Tourist Shuttle)**, which takes you directly to the lakeside pier (~80 mins, NT$170).</p>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                            <a href="https://maps.google.com/?q=Taichung+HSR+Station" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Taichung HSR Station
+                            </a>
+                            <a href="https://maps.google.com/?q=Sun+Moon+Lake+Shuishe+Pier" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Shuishe Pier (Lake Entrance)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">10:30 AM – 03:30 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;border-color:var(--primary-light);color:var(--primary-light);">Highlighted Activity</span>
+                        </div>
+                        <h3>Spacious Lake Cruise & CNN Electric Canopy Ride</h3>
+                        <p>Enjoy a glorious afternoon at Sun Moon Lake, Taiwan's premier alpine lake, surrounded by gorgeous jade peaks and emerald waters.</p>
+                        
+                        <div class="taxi-highlight">
+                            <svg style="width:20px;height:20px;" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/></svg>
+                            <div>
+                                <strong>Electric Canopy Car Experience:</strong> We have selected premium side-by-side electric canopy cars and three-wheeled electric bikes at Shuishe. These require zero pedaling, allowing you to glide smoothly and effortlessly along the spectacular, flat, and suspended-overwater <strong>Xiangshan Bikeway</strong> (CNN's Top 10 globally) with maximum scenic enjoyment.
+                            </div>
+                        </div>
+
+                        <p><strong>Lakeside Cruise:</strong> Board the spacious hop-on-hop-off cruise ship. Sail to <strong>Ita Thao Indigenous Village</strong>. The docks feature convenient flat ramp access.</p>
+
+                        <div class="food-badge veg">Indigenous Lakeside Cuisine (Ita Thao)</div>
+                        <div class="menu-list">
+                            <div class="menu-column veg-column">
+                                <h5>🟢 Vegetarian Lakeside Bites</h5>
+                                <ul>
+                                    <li>Slow-simmered Assam Black Tea Tofu</li>
+                                    <li>Hakka Wild Ginger Flower Rice Triangles</li>
+                                    <li>Pan-fried Indigenous Cabbage Buns</li>
+                                    <li>Assam Black Tea Soft-serve Ice Cream</li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h5>🔴 Non-Vegetarian Specialties</h5>
+                                <ul>
+                                    <li>Charcoal-grilled Mountain Wild Boar Skewers</li>
+                                    <li>Crispy Deep-fried President Fish</li>
+                                    <li>Savory Wild Boar Sausage</li>
+                                    <li>Traditional Millet-wrapped Rice Dumplings</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                            <a href="https://maps.google.com/?q=Xiangshan+Scenic+Bikeway" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Xiangshan Overwater Bikeway
+                            </a>
+                            <a href="https://maps.google.com/?q=Ita+Thao+Shopping+District" target="_blank" class="btn-map">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                Ita Thao Shopping District
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">03:45 PM – 05:15 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Transit</span>
+                        </div>
+                        <h3>Return Shuttle to Taichung</h3>
+                        <p>Board the comfortable Taiwan Tourist Shuttle back to Taichung HSR Station. Grab a quick taxi directly to the city center for a high-end dinner.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">05:30 PM – 08:00 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;">Gastronomy</span>
+                        </div>
+                        <h3>Luxury Dinner at Historic Miyahara Palace</h3>
+                        <p>Visit the spectacular, heritage red-brick palace of <strong>Miyahara</strong> (a beautifully restored historic clinic). Take the elevator to the exclusive 2nd-floor restaurant, <strong>Zhongshan Hall</strong>, for a premium, private dining experience.</p>
+                        
+                        <div class="food-badge veg">Curated Gourmet Set Menus (Miyahara)</div>
+                        <div class="menu-list">
+                            <div class="menu-column veg-column">
+                                <h5>🟢 High-End Vegetarian Set</h5>
+                                <ul>
+                                    <li>Aromatic Steamed Mushroom Consommé</li>
+                                    <li>Slow-braised Tofu Claypot with Local Herbs</li>
+                                    <li>Seasonal Organic Greens with Goji Berries</li>
+                                    <li>Hakka Salted Turnip Dumplings</li>
+                                    <li>Custom Miyahara Signature Ice Cream Selection</li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h5>🔴 Premium Taiwanese Classic Set</h5>
+                                <ul>
+                                    <li>Double-boiled Chicken Soup with Ginseng</li>
+                                    <li>Pan-fried Local Sea Bass with Ginger</li>
+                                    <li>Miyahara Famous Red Yeast Pork Spareribs</li>
+                                    <li>Signature Taiwanese Braised Beef Noodle</li>
+                                    <li>Miyahara Famous Pineapple Cake Dessert</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a href="https://maps.google.com/?q=Miyahara+Taichung" target="_blank" class="btn-map">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Miyahara (Taichung)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time-row">
+                            <span class="time-tag">08:15 PM – 09:00 PM</span>
+                            <span class="logo-tag" style="margin-bottom:0;border-color:var(--secondary);color:var(--secondary);">Transit</span>
+                        </div>
+                        <h3>HSR Bullet Train Back to Hsinchu</h3>
+                        <p>Take a 15-minute taxi back to Taichung HSR Station and board the bullet train back to Hsinchu (25 mins). You will be relaxing in your room by 09:15 PM, fully refreshed for your business week starting Monday.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TRAVEL INTEL SECTION -->
+        <section id="tips" class="info-grid animated-card">
+            
+            <div class="info-card">
+                <h4>
+                    <svg class="icon" style="color:var(--primary-light)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Travel Intelligence
+                </h4>
+                <ul>
+                    <li><strong>EasyCard is Vital:</strong> Keep your EasyCard topped up. It covers city buses, subways, local trains, and can be used for payments at 7-Eleven, FamilyMart, and Starbucks.</li>
+                    <li><strong>No Tipping Policy:</strong> Tipping is not customary in Taiwan. A 10% service charge is automatically added to high-end dining establishments like hotel restaurants and Miyahara.</li>
+                    <li><strong>Cash is King at Markets:</strong> While hotels, HSR, and large malls accept credit cards, night markets and street food stalls exclusively accept local cash (TWD).</li>
+                    <li><strong>Subway Cleanliness:</strong> Eating, drinking, or chewing gum is strictly prohibited inside the subways and station gates. Violators face heavy fines.</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h4>
+                    <svg class="icon" style="color:#2dd4bf" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Vegetarian Communication
+                </h4>
+                <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;">Taiwan is highly vegetarian-friendly. Show this card on your phone to any local food vendor to guarantee a strictly meat-free dish:</p>
+                <div style="background:rgba(13,148,136,0.15);border:1px solid rgba(13,148,136,0.3);border-radius:8px;padding:16px;text-align:center;font-size:1.15rem;font-weight:700;letter-spacing:0.5px;color:#2dd4bf;line-height:1.4;">
+                    我吃素，不吃肉、魚、海鮮、明膠、豬油。
+                </div>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;text-align:center;">(I am vegetarian; I do not eat meat, fish, seafood, gelatin, or lard.)</p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>Taiwan Weekend Luxury Itinerary © 2026. Handcrafted for a memorable Executive Tour.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
