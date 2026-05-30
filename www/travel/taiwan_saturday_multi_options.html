@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Saturday Executive Tour Selector - Mobile Travel Console</title>
+    <title>Taiwan Weekend Luxury Console - Saturday & Sunday Itinerary Selector</title>
     <!-- Modern Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
-        /* Modern CSS Custom Properties & Base */
+        /* Modern CSS Design System */
         :root {
             --bg-dark: #070a13;
             --bg-card: #0f1524;
@@ -61,7 +61,7 @@
             text-decoration: none;
         }
 
-        /* Background Art */
+        /* Glow effects */
         .glow-overlay {
             position: absolute;
             top: -10%;
@@ -82,7 +82,7 @@
             border-bottom: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             z-index: 10;
         }
 
@@ -108,22 +108,35 @@
             box-shadow: 0 0 10px var(--glow-color);
         }
 
-        .hud-flight-tag {
-            font-size: 0.75rem;
-            color: var(--secondary);
-            background: rgba(217, 119, 6, 0.08);
-            border: 1px solid rgba(217, 119, 6, 0.2);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 600;
+        /* 📅 Day Switcher Tab bar */
+        .day-selector-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: rgba(7, 10, 19, 0.6);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        header h1 {
-            font-size: 1.35rem;
-            background: linear-gradient(135deg, #f8fafc 40%, #14b8a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 4px;
+        .day-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .day-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 2px 10px rgba(15, 118, 110, 0.3);
         }
 
         /* 📊 Timeline Progress bar */
@@ -131,8 +144,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 6px;
-            margin-top: 6px;
-            position: relative;
+            margin-top: 4px;
         }
 
         .step-bubble {
@@ -182,8 +194,14 @@
             padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
             -webkit-overflow-scrolling: touch;
+        }
+
+        .day-console-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
         }
 
         .scene-card {
@@ -240,7 +258,7 @@
             font-weight: 600;
         }
 
-        /* Step 1: Base Setup Styles */
+        /* Timeline Logistics Steps */
         .base-log-item {
             display: flex;
             gap: 12px;
@@ -326,7 +344,7 @@
             color: var(--bg-dark);
         }
 
-        /* Step 2: Option Switcher Styles */
+        /* Option Switcher Panels */
         .option-button-tabs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -344,7 +362,7 @@
             padding: 8px 4px;
             border-radius: 6px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             text-align: center;
             transition: all 0.3s ease;
@@ -364,6 +382,11 @@
 
         .option-content-card.active {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .option-vibe-header {
@@ -417,7 +440,7 @@
             color: var(--text-muted);
         }
 
-        /* Step 3: Evening Anchor & Interactive Menu Flip */
+        /* Dinner Menu Interactive Flip System */
         .diet-switcher-wrap {
             display: flex;
             justify-content: space-between;
@@ -461,7 +484,7 @@
         .menu-flip-container {
             perspective: 1000px;
             width: 100%;
-            height: 180px;
+            height: 190px;
             margin-top: 12px;
         }
 
@@ -539,7 +562,7 @@
         .menu-side-front li::before { color: #fbbf24; }
         .menu-side-back li::before { color: #2dd4bf; }
 
-        /* 📍 Bottom Navigation Hub styling */
+        /* 📍 Bottom Navigation Hub Fixed Panel */
         .bottom-nav-hub {
             background: #090e1a;
             border-top: 1px solid var(--border-color);
@@ -663,7 +686,43 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Swipepan styling for Flowchart */
+        /* Flowchart Modal Tab system */
+        .flow-tab-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: rgba(7, 10, 19, 0.4);
+            padding: 4px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 12px;
+        }
+
+        .flow-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .flow-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+        }
+
+        .flow-content {
+            display: none;
+        }
+
+        .flow-content.active {
+            display: block;
+        }
+
         .mermaid-container {
             width: 100%;
             overflow-x: auto;
@@ -683,7 +742,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Dynamic navigation footer buttons for Console cards */
+        /* Navigation Buttons */
         .scene-nav-row {
             display: flex;
             justify-content: space-between;
@@ -731,29 +790,50 @@
     <header>
         <div class="hud-top">
             <div class="hud-logo">
-                ⚡ Saturday Travel Console
+                ⚡ Weekend Travel Console
             </div>
-            <div class="hud-flight-tag">
-                ✈️ Lands TPE 01:05 PM
+            <!-- Interactive Date Selector Tabs -->
+            <div class="day-selector-tabs" style="width: 170px;">
+                <button class="day-tab-btn active" id="day-tab-sat" onclick="switchDay(1)">📅 Sat</button>
+                <button class="day-tab-btn" id="day-tab-sun" onclick="switchDay(2)">📅 Sun</button>
             </div>
         </div>
-        <h1>Saturday Itinerary Coordinator</h1>
         
-        <!-- Interactive Step bubble progress tracker -->
-        <div class="timeline-tracker">
-            <div class="step-bubble active" onclick="switchScene(1)" id="bubble-1">
+        <!-- SATURDAY Steps Bubbles Tracker -->
+        <div class="timeline-tracker" id="sat-tracker">
+            <div class="step-bubble active" onclick="switchSatScene(1)" id="sat-bubble-1">
                 <div class="bubble-indicator"></div>
                 <span class="bubble-label">Landing</span>
             </div>
-            <div class="step-bubble" onclick="switchScene(2)" id="bubble-2">
+            <div class="step-bubble" onclick="switchSatScene(2)" id="sat-bubble-2">
                 <div class="bubble-indicator"></div>
                 <span class="bubble-label">Decision</span>
             </div>
-            <div class="step-bubble" onclick="switchScene(3)" id="bubble-3">
+            <div class="step-bubble" onclick="switchSatScene(3)" id="sat-bubble-3">
                 <div class="bubble-indicator"></div>
                 <span class="bubble-label">Evening</span>
             </div>
-            <div class="step-bubble" onclick="switchScene(4)" id="bubble-4">
+            <div class="step-bubble" onclick="switchSatScene(4)" id="sat-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">HSR Return</span>
+            </div>
+        </div>
+
+        <!-- SUNDAY Steps Bubbles Tracker -->
+        <div class="timeline-tracker" id="sun-tracker" style="display: none;">
+            <div class="step-bubble active" onclick="switchSunScene(1)" id="sun-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Breakfast</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(2)" id="sun-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Decision</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(3)" id="sun-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Feast</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(4)" id="sun-bubble-4">
                 <div class="bubble-indicator"></div>
                 <span class="bubble-label">HSR Return</span>
             </div>
@@ -763,329 +843,689 @@
     <!-- 🚀 Dynamic Scene Content Stage -->
     <div class="scene-container">
 
-        <!-- SCENE 1: BASE SETUP LOGISTICS -->
-        <div class="scene-card active" id="scene-1">
-            <div class="glass-panel">
-                <div class="panel-header-row">
-                    <h3 class="panel-title">
-                        <span style="color:var(--secondary);">🏨</span> Landing & Hsinchu Base Setup
-                    </h3>
-                    <span class="panel-badge">Constant</span>
-                </div>
-                
-                <div class="base-log-item">
-                    <div class="log-icon-wrap">1</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time">01:05 PM – 02:30 PM</div>
-                        <div class="log-title">Clear TPE Customs & Cash Out</div>
-                        <div class="log-desc">Clear immigration, claim bags, withdraw NT$ cash (vital for street food), and pick up an EasyCard.</div>
+        <!-- ================= SATURDAY CONSOLE WRAPPER ================= -->
+        <div class="day-console-wrapper" id="sat-console">
+
+            <!-- SAT SCENE 1: BASE SETUP LOGISTICS -->
+            <div class="scene-card active" id="sat-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">
+                            <span style="color:var(--secondary);">🏨</span> Sat Landing & Zhubei Sheraton Setup
+                        </h3>
+                        <span class="panel-badge">Constant</span>
+                    </div>
+                    
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">01:05 PM – 02:30 PM</div>
+                            <div class="log-title">Clear TPE Customs & Cash Out</div>
+                            <div class="log-desc">Clear immigration, claim bags, withdraw NT$ cash (night markets are cash-only), and pick up your EasyCard.</div>
+                        </div>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">02:30 PM – 03:15 PM</div>
+                            <div class="log-title">Shared Taxi to Sheraton Zhubei</div>
+                            <div class="log-desc">🚕 Direct taxi from TPE Airport to Zhubei Sheraton Hsinchu (~40 mins, NT$1,200-1,500 total). Seamless comfort for the knee, avoiding train lines.</div>
+                        </div>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">3</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">03:15 PM – 03:35 PM</div>
+                            <div class="log-title">Freshen Up & Bag Drop</div>
+                            <div class="log-desc">Complete Sheraton check-in, leave bags in rooms, and get ready to travel completely light.</div>
+                            <a href="https://maps.google.com/?q=Sheraton+Hsinchu+Hotel" target="_blank" class="map-badge-link">Sheraton Hsinchu Map</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="base-log-item">
-                    <div class="log-icon-wrap">2</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time">02:30 PM – 03:15 PM</div>
-                        <div class="log-title">Direct Taxi to Sheraton Zhubei</div>
-                        <div class="log-desc">🚕 Shared taxi directly from airport lobby to Zhubei Hsinchu (~40 mins, NT$1,200-1,500 total). Seamless door-to-door comfort, saving energy.</div>
-                    </div>
-                </div>
-
-                <div class="base-log-item">
-                    <div class="log-icon-wrap">3</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time">03:15 PM – 03:35 PM</div>
-                        <div class="log-title">Zhubei Sheraton Hotel Drop-Off</div>
-                        <div class="log-desc">Quick check-in at Sheraton Hsinchu Hotel, bag drop, freshen up, and prepare to head out.</div>
-                        <a href="https://maps.google.com/?q=Sheraton+Hsinchu+Hotel" target="_blank" class="map-badge-link">Sheraton Hsinchu Map</a>
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn primary-btn" onclick="switchSatScene(2)">
+                        Group Decision Phase ➔
                     </div>
                 </div>
             </div>
 
-            <div class="scene-nav-row">
-                <div class="console-nav-btn primary-btn" onclick="switchScene(2)">
-                    Group Decision Phase ➔
+            <!-- SAT SCENE 2: DYNAMIC CHOOSE PATH -->
+            <div class="scene-card" id="sat-scene-2">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row" style="margin-bottom: 6px; border-bottom: none;">
+                        <h3 class="panel-title">
+                            <span style="color:var(--primary-light);">🎛️</span> Saturday Afternoon Options
+                        </h3>
+                        <span class="panel-badge" style="color:var(--primary-light); border-color:var(--primary-light);">Select 1 Path</span>
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px; line-height:1.4;">
+                        The entire group stays together as a unit. Tap tabs to compare afternoon schedules:
+                    </p>
+
+                    <!-- Option Switcher Tabs -->
+                    <div class="option-button-tabs">
+                        <button class="opt-tab-btn active" id="sat-btn-opt-1" onclick="switchSatOption(1)">🔬 Option 1</button>
+                        <button class="opt-tab-btn" id="sat-btn-opt-2" onclick="switchSatOption(2)">🎮 Option 2</button>
+                        <button class="opt-tab-btn" id="sat-btn-opt-3" onclick="switchSatOption(3)">🏛️ Option 3</button>
+                    </div>
+                </div>
+
+                <!-- Sat Option 1 Content -->
+                <div class="glass-panel option-content-card active" id="sat-content-opt-1">
+                    <div class="option-vibe-header" style="color:var(--primary-light);">🔬 Option 1: TSMC Tech Museum (Hsinchu)</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">Corporate Legacy & Semiconductors</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Tour the state-of-the-art tech innovation museum of the world's most critical chipmaker, located locally in the Hsinchu Science Park. Fully flat.
+                    </p>
+                    <div style="background: rgba(217, 119, 6, 0.05); border: 1px solid rgba(217, 119, 6, 0.2); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--secondary); margin-bottom:10px; font-weight: 500;">
+                        ⚠️ Requires reservation on tsmcmoi.com by noon the day prior.
+                    </div>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:35 PM – 03:50 PM</div>
+                            <div class="opt-flow-title">Science Park Taxi</div>
+                            <div class="opt-flow-desc">Direct 15-min taxi from the hotel lobby (NT$250).</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:50 PM – 05:00 PM</div>
+                            <div class="opt-flow-title">TSMC Museum Guided Stroll</div>
+                            <div class="opt-flow-desc">Corporate innovation galleries and chip history. 100% barrier-free.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">05:00 PM – 06:00 PM</div>
+                            <div class="opt-flow-title">Bullet Train to Taipei</div>
+                            <div class="opt-flow-desc">Taxi to Hsinchu HSR. Catch southbound 05:30 PM train, arrive in Taipei Main by 6 PM.</div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=TSMC+Museum+of+Innovation" target="_blank" class="map-badge-link" style="margin-top:12px;">TSMC Museum Map</a>
+                </div>
+
+                <!-- Sat Option 2 Content -->
+                <div class="glass-panel option-content-card" id="sat-content-opt-2">
+                    <div class="option-vibe-header" style="color:var(--accent);">🎮 Option 2: Syntrend Tech Dome (Taipei)</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">12-Story Futuristic Gadget Mecca</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Head straight to Taipei on the HSR to tour a massive 12-story high-tech gadget park. Flagship gaming halls, audio setups, and collector statues.
+                    </p>
+                    <div style="background: rgba(20, 184, 166, 0.05); border: 1px solid rgba(20, 184, 166, 0.2); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--primary-light); margin-bottom:10px; font-weight: 500;">
+                        🔓 No booking needed. Fully open, air-conditioned, step-free escalators.
+                    </div>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:35 PM – 04:35 PM</div>
+                            <div class="opt-flow-title">HSR Bullet Train to Taipei</div>
+                            <div class="opt-flow-desc">Bullet train to Taipei Main. Grab a 5-min taxi directly to Syntrend.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">04:45 PM – 06:00 PM</div>
+                            <div class="opt-flow-title">Explore Syntrend Flagships</div>
+                            <div class="opt-flow-desc">Gaming setups, high-fidelity audio gear, and massive Marvel collectible figures.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">06:00 PM – 06:15 PM</div>
+                            <div class="opt-flow-title">Quick Taxi to Taipei 101</div>
+                            <div class="opt-flow-desc">Grab a direct 12-minute taxi from Syntrend to Taipei 101 observatory base.</div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Syntrend+Creative+Park" target="_blank" class="map-badge-link" style="margin-top:12px;">Syntrend Map</a>
+                </div>
+
+                <!-- Sat Option 3 Content -->
+                <div class="glass-panel option-content-card" id="sat-content-opt-3">
+                    <div class="option-vibe-header" style="color:var(--secondary);">🏛️ Option 3: CKS Memorial Guard Ceremony</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">Grand Plazas & Honor Ritual</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Head straight to Taipei to stroll the grand paved plazas of Liberty Square. Witness the final Changing of the Guard ceremony at 5:00 PM.
+                    </p>
+                    <div style="background: rgba(217, 119, 6, 0.05); border: 1px solid rgba(217, 119, 6, 0.25); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--secondary); margin-bottom:10px; font-weight: 500;">
+                        ⚠️ Relocated outdoors to Democracy Boulevard. 100% step-free viewing. (Canceled in heavy rain).
+                    </div>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:35 PM – 04:35 PM</div>
+                            <div class="opt-flow-title">HSR Bullet Train to Taipei</div>
+                            <div class="opt-flow-desc">HSR Hsinchu to Taipei Main. Grab direct 10-minute taxi straight to Liberty Square.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">04:35 PM – 05:15 PM</div>
+                            <div class="opt-flow-title">CKS Plazas & guard ceremony</div>
+                            <div class="opt-flow-desc">Stroll the flat paved boulevard. Watch the Changing of the Guard at 05:00 PM.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">05:15 PM – 05:35 PM</div>
+                            <div class="opt-flow-title">Direct Taxi to Taipei 101</div>
+                            <div class="opt-flow-desc">Direct 12-minute taxi from CKS plazas straight to meet at Taipei 101.</div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Chiang+Kai-shek+Memorial+Hall" target="_blank" class="map-badge-link" style="margin-top:12px;">Liberty Square Map</a>
+                </div>
+
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSatScene(1)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchSatScene(3)">
+                        Taipei 101 Evening ➔
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- SCENE 2: GROUP OPTION CHOOSE-YOUR-OWN-ADVENTURE -->
-        <div class="scene-card" id="scene-2">
-            
-            <div class="glass-panel" style="border-color: var(--primary-light);">
-                <div class="panel-header-row" style="margin-bottom: 6px; border-bottom: none;">
-                    <h3 class="panel-title">
-                        <span style="color:var(--primary-light);">🎛️</span> Saturday Afternoon Options
-                    </h3>
-                    <span class="panel-badge" style="color:var(--primary-light); border-color:var(--primary-light);">Select 1 Path</span>
-                </div>
-                <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px; line-height:1.4;">
-                    The entire group travels together as a cohesive unit. Tap the options below to compare schedules and options:
-                </p>
-
-                <!-- Switcher tabs -->
-                <div class="option-button-tabs">
-                    <button class="opt-tab-btn active" id="btn-opt-1" onclick="switchOption(1)">🔬 Option 1</button>
-                    <button class="opt-tab-btn" id="btn-opt-2" onclick="switchOption(2)">🎮 Option 2</button>
-                    <button class="opt-tab-btn" id="btn-opt-3" onclick="switchOption(3)">🏛️ Option 3</button>
-                </div>
-            </div>
-
-            <!-- Option 1 details -->
-            <div class="glass-panel option-content-card active" id="content-opt-1">
-                <div class="option-vibe-header" style="color:var(--primary-light);">🔬 Option 1: TSMC Museum (Local Hsinchu)</div>
-                <h4 style="font-size:0.95rem; margin-bottom:4px;">Tech Giant Legacy & Semiconductor Walk</h4>
-                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
-                    Tour the holographic semiconductor innovation museum of the world's most critical tech company, located right in Hsinchu Science Park.
-                </p>
-                <div style="background: rgba(217, 119, 6, 0.05); border: 1px solid rgba(217, 119, 6, 0.2); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--secondary); margin-bottom:10px; font-weight: 500;">
-                    ⚠️ Requires advance online booking at tsmcmoi.com by noon on the day prior.
-                </div>
-
-                <div class="opt-flow-timeline">
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">03:35 PM – 03:50 PM</div>
-                        <div class="opt-flow-title">15-min Hotel Taxi</div>
-                        <div class="opt-flow-desc">Direct taxi from hotel lobby straight into the Science Park (NT$250).</div>
+            <!-- SAT SCENE 3: SATURDAY EVENING ANCHOR -->
+            <div class="scene-card" id="sat-scene-3">
+                <div class="glass-panel" style="border-color: #ec4899;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(236, 72, 153, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#f472b6;">
+                            <span>🏮</span> Sat Evening Anchor: Taipei 101 & Ximending
+                        </h3>
+                        <span class="panel-badge" style="color:#ec4899; border-color: rgba(236,72,153,0.3);">Joint</span>
                     </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">03:50 PM – 05:00 PM</div>
-                        <div class="opt-flow-title">TSMC Guided Innovation Tour</div>
-                        <div class="opt-flow-desc">Corporate innovation galleries, microchip walls, and interactive chip history. 100% barrier-free.</div>
-                    </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">05:00 PM – 06:00 PM</div>
-                        <div class="opt-flow-title">Bullet Train to Taipei</div>
-                        <div class="opt-flow-desc">10-min taxi Hsinchu HSR. Board bullet HSR at 05:30 PM, landing in Taipei by 6 PM.</div>
-                    </div>
-                </div>
-                
-                <a href="https://maps.google.com/?q=TSMC+Museum+of+Innovation" target="_blank" class="map-badge-link" style="margin-top:12px;">TSMC Museum Map</a>
-            </div>
 
-            <!-- Option 2 details -->
-            <div class="glass-panel option-content-card" id="content-opt-2">
-                <div class="option-vibe-header" style="color:var(--accent);">🎮 Option 2: Syntrend Tech Dome (Taipei)</div>
-                <h4 style="font-size:0.95rem; margin-bottom:4px;">12-Story Geek & Gadget Paradise</h4>
-                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
-                    Board the HSR train straight into Taipei to tour a massive 12-story high-tech gadget park. Flagship gaming setups, audio rooms, VR, and collectibles.
-                </p>
-                <div style="background: rgba(20, 184, 166, 0.05); border: 1px solid rgba(20, 184, 166, 0.2); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--primary-light); margin-bottom:10px; font-weight: 500;">
-                    🔓 No booking required. Fully open, air-conditioned, with escalators.
-                </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#ec4899;">06:00 PM – 06:30 PM</div>
+                            <div class="log-title">Taipei 101 89F Observatory</div>
+                            <div class="log-desc">Ride the high-speed elevator to the 89th floor observatory. Complete 360-degree flat, step-free night views over the capital's neon-lit skyline.</div>
+                        </div>
+                    </div>
 
-                <div class="opt-flow-timeline">
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">03:35 PM – 04:35 PM</div>
-                        <div class="opt-flow-title">Bullet Train to Taipei</div>
-                        <div class="opt-flow-desc">Board the southbound Hsinchu HSR, land at Taipei station, taxi 5 mins directly to Syntrend.</div>
-                    </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">04:45 PM – 06:00 PM</div>
-                        <div class="opt-flow-title">Explore Syntrend Flagships</div>
-                        <div class="opt-flow-desc">Flagship gaming spaces, high-end audio setups, and collector statues (Marvel & Anime).</div>
-                    </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">06:00 PM – 06:15 PM</div>
-                        <div class="opt-flow-title">Quick Taxi to Taipei 101</div>
-                        <div class="opt-flow-desc">Direct 12-minute taxi from Syntrend straight to the base of Taipei 101.</div>
-                    </div>
-                </div>
-                
-                <a href="https://maps.google.com/?q=Syntrend+Creative+Park" target="_blank" class="map-badge-link" style="margin-top:12px;">Syntrend Map</a>
-            </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#ec4899;">06:30 PM – 08:30 PM</div>
+                            <div class="log-title">Din Tai Fung Dinner Banquet</div>
+                            <div class="log-desc">Sit down for an iconic banquet. Fully knee-accessible. Use the toggle below to flip the menu card!</div>
+                            
+                            <!-- Diet Switcher Toggle -->
+                            <div class="diet-switcher-wrap" style="margin-top: 10px;">
+                                <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted);">MENU STYLE:</span>
+                                <div style="display:flex; gap:6px;">
+                                    <button class="diet-toggle-btn active classic" id="sat-btn-menu-classic" onclick="toggleSatDiet(false)">🔴 Classic</button>
+                                    <button class="diet-toggle-btn veg" id="sat-btn-menu-veg" onclick="toggleSatDiet(true)">🟢 Vegetarian</button>
+                                </div>
+                            </div>
 
-            <!-- Option 3 details -->
-            <div class="glass-panel option-content-card" id="content-opt-3">
-                <div class="option-vibe-header" style="color:var(--secondary);">🏛️ Option 3: CKS Memorial Changing of Guard</div>
-                <h4 style="font-size:0.95rem; margin-bottom:4px;">Grand Plazas & Honor Ceremony</h4>
-                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
-                    Take the bullet train straight to Taipei to stroll the grand paved plazas of Liberty Square and witness the final changing of the guard ceremony at 5:00 PM on Liberty Boulevard.
-                </p>
-                <div style="background: rgba(217, 119, 6, 0.05); border: 1px solid rgba(217, 119, 6, 0.25); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--secondary); margin-bottom:10px; font-weight: 500;">
-                    ⚠️ Ceremony is held outdoor (100% step-free viewing) and is canceled during heavy rain.
-                </div>
+                            <!-- 3D Card Dinner Menu Flip -->
+                            <div class="menu-flip-container" id="sat-menu-flippy">
+                                <div class="menu-flip-card">
+                                    
+                                    <!-- FRONT: Meat-eater -->
+                                    <div class="menu-side menu-side-front">
+                                        <h5>🔴 Din Tai Fung Classics</h5>
+                                        <ul class="menu-items-grid">
+                                            <li>Signature Pork Xiaolongbao (Soup Dumplings)</li>
+                                            <li>Savory Shrimp & Pork Shao Mai</li>
+                                            <li>Steamed Shrimp & Pork Dumplings</li>
+                                            <li>Double-boiled Chicken Soup</li>
+                                            <li>Crispy Golden Pork Potstickers</li>
+                                        </ul>
+                                    </div>
 
-                <div class="opt-flow-timeline">
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">03:35 PM – 04:35 PM</div>
-                        <div class="opt-flow-title">Bullet Train to Taipei</div>
-                        <div class="opt-flow-desc">Taxi to Hsinchu HSR. Bullet HSR to Taipei Main Station. Taxi 10 mins straight to CKS.</div>
-                    </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">04:35 PM – 05:15 PM</div>
-                        <div class="opt-flow-title">Liberty Square Guard Guard Ceremony</div>
-                        <div class="opt-flow-desc">Walk the grand paved boulevard. Experience the highly synchronized Changing of the Guard at 05:00 PM.</div>
-                    </div>
-                    <div class="opt-flow-step">
-                        <div class="opt-flow-time">05:15 PM – 05:35 PM</div>
-                        <div class="opt-flow-title">Direct Taxi to Taipei 101</div>
-                        <div class="opt-flow-desc">Direct 12-minute taxi from CKS Liberty Square straight to Taipei 101 to meet.</div>
-                    </div>
-                </div>
-                
-                <a href="https://maps.google.com/?q=Chiang+Kai-shek+Memorial+Hall" target="_blank" class="map-badge-link" style="margin-top:12px;">CKS Liberty Square Map</a>
-            </div>
+                                    <!-- BACK: Strict Veg -->
+                                    <div class="menu-side menu-side-back">
+                                        <h5>🟢 Dedicated Vegetarian Delights</h5>
+                                        <ul class="menu-items-grid">
+                                            <li>Steamed Vegetable & Mushroom Dumplings</li>
+                                            <li>House Specialty Crunchy Spicy Cucumber</li>
+                                            <li>Sautéed Organic Taiwanese Cabbage with Garlic</li>
+                                            <li>Fragrant Egg-free Vegetable Fried Rice</li>
+                                            <li>Sweet Taro & Red Bean Buns</li>
+                                        </ul>
+                                    </div>
 
-            <div class="scene-nav-row">
-                <div class="console-nav-btn" onclick="switchScene(1)">
-                    ❮ Back
-                </div>
-                <div class="console-nav-btn primary-btn" onclick="switchScene(3)">
-                    Taipei 101 Evening ➔
-                </div>
-            </div>
-        </div>
-
-        <!-- SCENE 3: JOINT EVENING ANCHOR -->
-        <div class="scene-card" id="scene-3">
-            <div class="glass-panel" style="border-color: #ec4899;">
-                <div class="panel-header-row" style="border-bottom: 1px solid rgba(236, 72, 153, 0.1); padding-bottom: 8px;">
-                    <h3 class="panel-title" style="color:#f472b6;">
-                        <span>🏮</span> Joint Evening Anchor
-                    </h3>
-                    <span class="panel-badge" style="color:#ec4899; border-color: rgba(236,72,153,0.3);">Taipei City</span>
-                </div>
-                
-                <div class="base-log-item">
-                    <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">1</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time" style="color:#ec4899;">06:00 PM – 06:30 PM</div>
-                        <div class="log-title">Taipei 101 89F Observatory</div>
-                        <div class="log-desc">Ride the high-speed pressurized elevator to the 89th floor observatory. Complete 360-degree flat, step-free night sunset views over the capital city.</div>
-                    </div>
-                </div>
-
-                <div class="base-log-item">
-                    <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">2</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time" style="color:#ec4899;">06:30 PM – 08:30 PM</div>
-                        <div class="log-title">Din Tai Fung Dinner Banquet</div>
-                        <div class="log-desc">Descend for a world-class banquet. Swipe below to toggle vegetarian or meat menus!</div>
-                        
-                        <!-- 🥗 Interactive Diet Switcher Toggle -->
-                        <div class="diet-switcher-wrap" style="margin-top: 10px;">
-                            <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted);">MENU STYLE:</span>
-                            <div style="display:flex; gap:6px;">
-                                <button class="diet-toggle-btn active classic" id="btn-menu-classic" onclick="toggleDiet(false)">🔴 Classic</button>
-                                <button class="diet-toggle-btn veg" id="btn-menu-veg" onclick="toggleDiet(true)">🟢 Vegetarian</button>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- 3D Card Dinner Menu Flip -->
-                        <div class="menu-flip-container" id="menu-flippy">
-                            <div class="menu-flip-card">
-                                
-                                <!-- FRONT: Meat-eater -->
-                                <div class="menu-side menu-side-front">
-                                    <h5>🔴 Non-Vegetarian Classics</h5>
-                                    <ul class="menu-items-grid">
-                                        <li>World-Famous Pork Xiaolongbao (dumplings)</li>
-                                        <li>Savory Shrimp & Pork Shao Mai</li>
-                                        <li>Steamed Shrimp & Pork Dumplings</li>
-                                        <li>Double-boiled Chicken Soup</li>
-                                        <li>Crispy Golden Pork Potstickers</li>
-                                    </ul>
-                                </div>
-
-                                <!-- BACK: Strict Veg -->
-                                <div class="menu-side menu-side-back">
-                                    <h5>🟢 Vegetarian Delicacies</h5>
-                                    <ul class="menu-items-grid">
-                                        <li>Steamed Vegetable & Mushroom Dumplings</li>
-                                        <li>House Specialty Crunchy Spicy Cucumber</li>
-                                        <li>Sautéed Organic Taiwanese Cabbage with Garlic</li>
-                                        <li>Fragrant Egg-free Vegetable Fried Rice</li>
-                                        <li>Sweet Taro & Red Bean Buns</li>
-                                    </ul>
-                                </div>
-
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">3</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#ec4899;">08:30 PM – 10:00 PM</div>
+                            <div class="log-title">Ximending Pedestrian neon square</div>
+                            <div class="log-desc">MRT Blue Line straight to Ximen. Stroll the flat, smooth streets of Ximending. Billboards, street acts, and authentic Bubble Tea (Xing Fu Tang, 50 Lan).</div>
+                            <div style="display:flex; gap:8px;">
+                                <a href="https://maps.google.com/?q=Taipei+101" target="_blank" class="map-badge-link">Taipei 101 Map</a>
+                                <a href="https://maps.google.com/?q=Ximending" target="_blank" class="map-badge-link">Ximending Map</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <div class="base-log-item">
-                    <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">3</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time" style="color:#ec4899;">08:30 PM – 10:00 PM</div>
-                        <div class="log-title">Ximending Neon Pedestrian Area</div>
-                        <div class="log-desc">MRT Blue Line straight to Ximen. Stroll the flat, smooth streets of Ximending. Billboards, performers, and authentic Taiwanese Bubble Tea (50 Lan, Xing Fu Tang).</div>
-                        <div style="display:flex; gap:8px;">
-                            <a href="https://maps.google.com/?q=Taipei+101" target="_blank" class="map-badge-link">Taipei 101 Map</a>
-                            <a href="https://maps.google.com/?q=Ximending" target="_blank" class="map-badge-link">Ximending Map</a>
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSatScene(2)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchSatScene(4)">
+                        Return Logistics ➔
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAT SCENE 4: SATURDAY HSR RETURN -->
+            <div class="scene-card" id="sat-scene-4">
+                <div class="glass-panel" style="border-color: #3b82f6;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(59, 130, 246, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#60a5fa;">
+                            <span>🚄</span> Southbound HSR Bullet Return
+                        </h3>
+                        <span class="panel-badge" style="color:#3b82f6; border-color: rgba(59,130,246,0.3);">Sheraton Return</span>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#60a5fa;">10:00 PM – 10:35 PM</div>
+                            <div class="log-title">Taipei Station Southbound HSR</div>
+                            <div class="log-desc">Board the southbound HSR back to Hsinchu Station. Quick 30-minute train, comfortable seating with zero knee strain.</div>
+                        </div>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#60a5fa;">10:35 PM – 10:45 PM</div>
+                            <div class="log-title">Taxi to Sheraton Rooms</div>
+                            <div class="log-desc">Quick 3-minute taxi right outside Hsinchu HSR station lobby directly back to Zhubei Sheraton. Conclude Saturday!</div>
                         </div>
                     </div>
                 </div>
 
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSatScene(3)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchDay(2)">
+                        📅 Proceed to Sunday Itinerary ➔
+                    </div>
+                </div>
             </div>
 
-            <div class="scene-nav-row">
-                <div class="console-nav-btn" onclick="switchScene(2)">
-                    ❮ Back
-                </div>
-                <div class="console-nav-btn primary-btn" onclick="switchScene(4)">
-                    Return Logistics ➔
-                </div>
-            </div>
         </div>
 
-        <!-- SCENE 4: JOINT RETURN -->
-        <div class="scene-card" id="scene-4">
-            <div class="glass-panel" style="border-color: #3b82f6;">
-                <div class="panel-header-row" style="border-bottom: 1px solid rgba(59, 130, 246, 0.1); padding-bottom: 8px;">
-                    <h3 class="panel-title" style="color:#60a5fa;">
-                        <span>🚄</span> Southbound HSR Bullet Return
-                    </h3>
-                    <span class="panel-badge" style="color:#3b82f6; border-color: rgba(59,130,246,0.3);">Sheraton Return</span>
-                </div>
 
-                <div class="base-log-item">
-                    <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">1</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time" style="color:#60a5fa;">10:00 PM – 10:35 PM</div>
-                        <div class="log-title">Taipei Station Southbound Bullet HSR</div>
-                        <div class="log-desc">Board the southbound HSR back to Hsinchu Station. Quick 30-minute train, smooth seating.</div>
+        <!-- ================= SUNDAY CONSOLE WRAPPER ================= -->
+        <div class="day-console-wrapper" id="sun-console" style="display: none;">
+
+            <!-- SUN SCENE 1: BREAKFAST & PREP -->
+            <div class="scene-card active" id="sun-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">
+                            <span style="color:var(--secondary);">🏨</span> Sun Morning Breakfast & Base Start
+                        </h3>
+                        <span class="panel-badge">Constant</span>
+                    </div>
+                    
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">07:00 AM – 08:00 AM</div>
+                            <div class="log-title">Sheraton Hotel Breakfast Buffet</div>
+                            <div class="log-desc">Enjoy a relaxing breakfast at the Sheraton. Excellent selection of local foods, healthy options, and custom hot coffee/tea. <strong>Finish breakfast by 08:00 AM</strong> to meet your morning travel connections.</div>
+                        </div>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">08:00 AM</div>
+                            <div class="log-title">Morning Start</div>
+                            <div class="log-desc">Prepare to head out. Keep packing light. Today, the group collectively chooses one of three incredibly creative and step-free travel adventures! Option 1 & 2 depart immediately at 08:00 AM; Option 3 departs for HSR at 09:30 AM.</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="base-log-item">
-                    <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">2</div>
-                    <div class="log-text-wrap">
-                        <div class="log-time" style="color:#60a5fa;">10:35 PM – 10:45 PM</div>
-                        <div class="log-title">Taxi to Sheraton Hsinchu Hotel</div>
-                        <div class="log-desc">Grab a quick 3-minute taxi right outside Hsinchu HSR station lobby straight back to your hotel rooms. Perfect conclusion!</div>
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn primary-btn" onclick="switchSunScene(2)">
+                        Group Decision Phase ➔
                     </div>
                 </div>
             </div>
 
-            <div class="scene-nav-row">
-                <div class="console-nav-btn" onclick="switchScene(3)">
-                    ❮ Back
+            <!-- SUN SCENE 2: THREE PREMIUM PATHS -->
+            <div class="scene-card" id="sun-scene-2">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row" style="margin-bottom: 6px; border-bottom: none;">
+                        <h3 class="panel-title">
+                            <span style="color:var(--primary-light);">🎛️</span> Sunday Day Choices
+                        </h3>
+                        <span class="panel-badge" style="color:var(--primary-light); border-color:var(--primary-light);">Select 1 Path</span>
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px; line-height:1.4;">
+                        Select Sunday's pathway for the group. Tap the buttons to load specific schedules:
+                    </p>
+
+                    <!-- Option Switcher Tabs -->
+                    <div class="option-button-tabs">
+                        <button class="opt-tab-btn active" id="sun-btn-opt-1" onclick="switchSunOption(1)">🌋 Option 1</button>
+                        <button class="opt-tab-btn" id="sun-btn-opt-2" onclick="switchSunOption(2)">🚣 Option 2</button>
+                        <button class="opt-tab-btn" id="sun-btn-opt-3" onclick="switchSunOption(3)">🛕 Option 3</button>
+                    </div>
                 </div>
-                <div class="console-nav-btn primary-btn" onclick="switchScene(1)">
-                    🔄 Return to Start
+
+                <!-- Sun Option 1 Content -->
+                <div class="glass-panel option-content-card active" id="sun-content-opt-1">
+                    <div class="option-vibe-header" style="color:var(--primary-light);">🌋 Option 1: Beitou & Yangmingshan Volcanic Day-Expedition</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">Misty Forest Trail & Roaring Geysers (Knee-Friendly)</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Explore stunning post-volcanic geology and lush mountain trails in Yangmingshan, combined with Beitou's therapeutic hot-spring resorts. Curated for maximum comfort with private transport.
+                    </p>
+                    <div style="background: rgba(20, 184, 166, 0.05); border: 1px solid rgba(20, 184, 166, 0.2); padding: 8px 10px; border-radius: 6px; font-size:0.75rem; color:var(--primary-light); margin-bottom:10px; font-weight: 500;">
+                        🚙 <strong>Private Charter Service:</strong> Pre-arranged car charter from Taipei Station avoids slow mountain buses, provides high-comfort climate control, and handles all navigating directly to sights in high luxury.
+                    </div>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">08:00 AM – 09:45 AM</div>
+                            <div class="opt-flow-title">HSR & Private Charter Departure</div>
+                            <div class="opt-flow-desc">Bullet HSR to Taipei Main (30 mins). Step directly into your pre-arranged private luxury car charter (~NT$3,500–4,000 for the day).</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">09:45 AM – 11:30 AM</div>
+                            <div class="opt-flow-title">Lush Volcanic Valleys: Erziping Forest Trail</div>
+                            <div class="opt-flow-desc">Stroll along the premier paved, level alpine pathway through misty forests, leading to an alpine lake. 100% barrier-free with zero steps.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">11:30 AM – 12:30 PM</div>
+                            <div class="opt-flow-title">Roaring Geysers: Xiaoyoukeng Fumaroles</div>
+                            <div class="opt-flow-desc">Witness massive active steam vents, boiling mud pools, and yellow sulfur crystals. Observation deck sits flat and next to the parking lot.</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <a href="https://maps.google.com/?q=Erziping+Trail" target="_blank" class="map-badge-link">Erziping Trail Map</a>
+                        <a href="https://maps.google.com/?q=Xiaoyoukeng" target="_blank" class="map-badge-link">Xiaoyoukeng Map</a>
+                    </div>
+                </div>
+
+                <!-- Sun Option 2 Content -->
+                <div class="glass-panel option-content-card" id="sun-content-opt-2">
+                    <div class="option-vibe-header" style="color:var(--accent);">🚣 Option 2: Sun Moon Lake Cruise & Canopy Car</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">Alpine Lake Electric Ride & Cruises</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Experience Taiwan's premier alpine lake using battery-powered electric canopy cars and spacious cruise boats with zero knee strain.
+                    </p>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">08:00 AM – 10:30 AM</div>
+                            <div class="opt-flow-title">Bullet Train & Shuttle to SML</div>
+                            <div class="opt-flow-desc">HSR to Taichung (25 mins). Comfortable Nantou Bus SML Shuttle directly to Shuishe Pier docks (80 mins).</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">10:30 AM – 03:30 PM</div>
+                            <div class="opt-flow-title">Lake Cruise & Electric Canopy Car</div>
+                            <div class="opt-flow-desc">Spacious lake cruise boat (ramp access) to Ita Thao Hakka wild food markets. Rent side-by-side electric canopy cars for Xiangshan water-bikeway (no pedaling, flat paved canopy roads).</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:30 PM – 05:00 PM</div>
+                            <div class="opt-flow-title">Shuttle back to Taichung HSR</div>
+                            <div class="opt-flow-desc">Comfortable shuttle bus back to Taichung, ready for a spectacular dinner.</div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Sun+Moon+Lake" target="_blank" class="map-badge-link" style="margin-top:12px;">Sun Moon Lake Map</a>
+                </div>
+
+                <!-- Sun Option 3 Content -->
+                <div class="glass-panel option-content-card" id="sun-content-opt-3">
+                    <div class="option-vibe-header" style="color:var(--secondary);">🛕 Option 3: Lukang Ancient Old Town & Glowing Glass Temple</div>
+                    <h4 style="font-size:0.95rem; margin-bottom:4px;">Preserved Heritage Streets & A Glowing Kaleidoscope Temple</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:10px;">
+                        Journey south to Lukang, one of Taiwan's oldest harbor towns. Stroll completely flat, red-brick old streets, check out traditional lantern carvers, and visit the spectacular, glowing temple constructed entirely of glass.
+                    </p>
+
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">09:30 AM – 10:45 AM</div>
+                            <div class="opt-flow-title">Bullet HSR & Taxi to Lukang</div>
+                            <div class="opt-flow-desc">Board the southbound bullet train to Changhua HSR (35 mins). Take a comfortable, flat taxi directly to Lukang Old Street.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">10:45 AM – 01:00 PM</div>
+                            <div class="opt-flow-title">Lukang Old Street & Tianhou Temple</div>
+                            <div class="opt-flow-desc">Stroll along completely flat, smoothly paved red-brick merchant lanes. Explore historic woodcarving, lantern shops, and the grand, step-free Mazu Temple plaza.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">01:00 PM – 02:45 PM</div>
+                            <div class="opt-flow-title">Courtyard Lunch & Tea Tasting</div>
+                            <div class="opt-flow-desc">Enjoy a step-free Hakka/Taiwanese lunch at a heritage courtyard restaurant (excellent vegetarian selections like herbal tofu and braised mushrooms), followed by local sweet *Phoenix Eye* pastries.</div>
+                        </div>
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:00 PM – 05:00 PM</div>
+                            <div class="opt-flow-title">Glass Maze & The Glowing Glass Temple</div>
+                            <div class="opt-flow-desc">Direct taxi to the Taiwan Glass Gallery. Walk the flat kaleidoscope Golden Tunnel (mirror maze) and step into the **Glass Temple**—built from 70,000 glass sheets—as it begins to glow with LED displays at dusk.</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <a href="https://maps.google.com/?q=Lukang+Old+Street" target="_blank" class="map-badge-link">Lukang Old Street</a>
+                        <a href="https://maps.google.com/?q=Taiwan+Glass+Gallery" target="_blank" class="map-badge-link">Lukang Glass Temple Map</a>
+                    </div>
+                </div>
+
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSunScene(1)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchSunScene(3)">
+                        Sunday Dining Feast ➔
+                    </div>
                 </div>
             </div>
+
+            <!-- SUN SCENE 3: DYNAMIC SUNDAY EVENING DINNER -->
+            <div class="scene-card" id="sun-scene-3">
+                
+                <!-- Option 1 Dinner Details (Active by default) -->
+                <div class="glass-panel option-dinner-card active" id="sun-dinner-opt-1" style="border-color: #ec4899;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(236, 72, 153, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#f472b6;">
+                            <span>🌋</span> Sunday Feast: Beitou Hot-Spring Resort Banquet
+                        </h3>
+                        <span class="panel-badge" style="color:#ec4899; border-color: rgba(236,72,153,0.3);">Option 1 Feast</span>
+                    </div>
+                    <div style="font-size:0.9rem; color:var(--secondary); font-weight:700; margin-bottom:6px;">01:00 PM – 02:45 PM | Luxury Resort Mid-Day Banquet</div>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:12px;">
+                        Since Volcanic Option 1 features an early-evening return to Hsinchu (by 05:30 PM), the primary culinary showcase is an exquisite <strong>Resort Set-Lunch Feast</strong> at **The Gaia Hotel** or **Grand View Resort Beitou** (featuring spacious, fully step-free dining halls), followed by a flat boardwalk stroll around the steaming geothermal waters.
+                    </p>
+
+                    <!-- Diet Switcher Toggle -->
+                    <div class="diet-switcher-wrap" style="margin-top: 10px; margin-bottom: 10px;">
+                        <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted);">MENU STYLE:</span>
+                        <div style="display:flex; gap:6px;">
+                            <button class="diet-toggle-btn active classic" id="sun-resort-menu-classic" onclick="toggleSunResortDiet(false)">🔴 Classic</button>
+                            <button class="diet-toggle-btn veg" id="sun-resort-menu-veg" onclick="toggleSunResortDiet(true)">🟢 Vegetarian</button>
+                        </div>
+                    </div>
+
+                    <!-- 3D Card Dinner Menu Flip -->
+                    <div class="menu-flip-container" id="sun-resort-flippy">
+                        <div class="menu-flip-card">
+                            
+                            <!-- FRONT: Classic Meat-eater -->
+                            <div class="menu-side menu-side-front">
+                                <h5>🔴 Premium Non-Vegetarian Set</h5>
+                                <ul class="menu-items-grid">
+                                    <li>Double-boiled Chicken Soup with Ginseng</li>
+                                    <li>Wok-fried Tender Beef Fillet in Black Pepper</li>
+                                    <li>Premium Steamed Sea Bass in Garlic Soy</li>
+                                    <li>Traditional Savory Taiwanese Braised Rice</li>
+                                    <li>Signature Pastry & Custom Ice Cream</li>
+                                </ul>
+                            </div>
+
+                            <!-- BACK: Strict Veg -->
+                            <div class="menu-side menu-side-back">
+                                <h5>🟢 Hakka Vegetarian Set</h5>
+                                <ul class="menu-items-grid">
+                                    <li>Misty Mountain Matsutake Mushroom Broth</li>
+                                    <li>Pan-fried Organic Tofu with Black Truffle</li>
+                                    <li>Sautéed Mountain Greens with Goji Berries</li>
+                                    <li>Steamed Multigrain Bamboo Cup Rice</li>
+                                    <li>Chilled White Fungus & Sweet Longan Soup</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <a href="https://maps.google.com/?q=The+Gaia+Hotel+Beitou" target="_blank" class="map-badge-link">Beitou Dining Map</a>
+                        <a href="https://maps.google.com/?q=Beitou+Geothermal+Valley" target="_blank" class="map-badge-link">Geothermal Valley Map</a>
+                    </div>
+                </div>
+
+                <!-- Option 2 Dinner Details -->
+                <div class="glass-panel option-dinner-card" id="sun-dinner-opt-2" style="border-color: #ec4899;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(236, 72, 153, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#f472b6;">
+                            <span>🍨</span> Sunday Night: Luxury Dinner at Miyahara
+                        </h3>
+                        <span class="panel-badge" style="color:#ec4899; border-color: rgba(236,72,153,0.3);">Option 2 Feast</span>
+                    </div>
+                    <div style="font-size:0.9rem; color:var(--secondary); font-weight:700; margin-bottom:6px;">05:30 PM – 08:00 PM | Luxury Historic Library Setting</div>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:12px;">
+                        Zhongshan Hall is Miyahara's premium 2nd-floor restaurant (fully step-free elevator service). Use the toggle below to flip the set menu cards!
+                    </p>
+
+                    <!-- Diet Switcher Toggle -->
+                    <div class="diet-switcher-wrap" style="margin-top: 10px; margin-bottom: 10px;">
+                        <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted);">MENU STYLE:</span>
+                        <div style="display:flex; gap:6px;">
+                            <button class="diet-toggle-btn active classic" id="sun-miyahara-menu-classic" onclick="toggleSunMiyaharaDiet(false)">🔴 Classic</button>
+                            <button class="diet-toggle-btn veg" id="sun-miyahara-menu-veg" onclick="toggleSunMiyaharaDiet(true)">🟢 Vegetarian</button>
+                        </div>
+                    </div>
+
+                    <!-- 3D Card Dinner Menu Flip -->
+                    <div class="menu-flip-container" id="sun-miyahara-flippy">
+                        <div class="menu-flip-card">
+                            
+                            <!-- FRONT: Meat-eater -->
+                            <div class="menu-side menu-side-front">
+                                <h5>🔴 Miyahara Meat set dinner</h5>
+                                <ul class="menu-items-grid">
+                                    <li>Taichung Crispy Roasted Duck slices</li>
+                                    <li>Signature Pork Patties in oolong glaze</li>
+                                    <li>Golden deep-fried shrimp rolls</li>
+                                    <li>Authentic local Oolong tea service</li>
+                                    <li>Custom gourmet Miyahara Ice Cream cup</li>
+                                </ul>
+                            </div>
+
+                            <!-- BACK: Strict Veg -->
+                            <div class="menu-side menu-side-back">
+                                <h5>🟢 Premium Vegetarian Set</h5>
+                                <ul class="menu-items-grid">
+                                    <li>Local braised mushrooms and tofu</li>
+                                    <li>Stir-fried Hakka wild vegetables</li>
+                                    <li>Signature golden sweet potato balls</li>
+                                    <li>Aromatic local Oolong tea service</li>
+                                    <li>Custom gourmet Miyahara Ice Cream cup</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Miyahara+Taichung" target="_blank" class="map-badge-link" style="margin-top:12px;">Miyahara Map</a>
+                </div>
+
+                <!-- Option 3 Dinner Details -->
+                <div class="glass-panel option-dinner-card" id="sun-dinner-opt-3" style="border-color: #ec4899;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(236, 72, 153, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#f472b6;">
+                            <span>🍲</span> Sunday Night: Wu Lao Guo Elixir Health Pot
+                        </h3>
+                        <span class="panel-badge" style="color:#ec4899; border-color: rgba(236,72,153,0.3);">Option 3 Feast</span>
+                    </div>
+                    <div style="font-size:0.9rem; color:var(--secondary); font-weight:700; margin-bottom:6px;">06:00 PM – 08:30 PM | Zhubei Premium Hot Pot</div>
+                    <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.4; margin-bottom:12px;">
+                        Wu Lao Guo in Zhubei offers a highly premium, fully accessible table cooking experience. Features their world-famous split Yin-Yang pot.
+                    </p>
+
+                    <div style="display: flex; flex-direction:column; gap: 10px; background: rgba(7, 10, 19, 0.4); border-radius: 8px; padding: 12px; border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-muted);">
+                        <div>
+                            <strong style="color:#2dd4bf;">🟢 The Vegetarian Broth Side:</strong> Aromatic, herbal spicy/mild broth loaded with fresh cabbage, organic mushrooms, local tofu, and traditional wild herbs.
+                        </div>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
+                            <strong style="color:#fbbf24;">🔴 The Non-Vegetarian Broth Side:</strong> Rich collagen bone broth or seafood soup. Cook premium local beef slices, scallops, and seafood right at the table.
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Wu+Lao+Guo+Zhubei" target="_blank" class="map-badge-link" style="margin-top:12px;">Wu Lao Guo Map</a>
+                </div>
+
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSunScene(2)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchSunScene(4)">
+                        Return Logistics ➔
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUN SCENE 4: FINAL HSR RETURN -->
+            <div class="scene-card" id="sun-scene-4">
+                <div class="glass-panel" style="border-color: #3b82f6;">
+                    <div class="panel-header-row" style="border-bottom: 1px solid rgba(59, 130, 246, 0.1); padding-bottom: 8px;">
+                        <h3 class="panel-title" style="color:#60a5fa;">
+                            <span>🚄</span> Southbound HSR Bullet Return
+                        </h3>
+                        <span class="panel-badge" style="color:#3b82f6; border-color: rgba(59,130,246,0.3);">Hotel Return</span>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#60a5fa;" id="sun-return-time-1">04:30 PM – 05:00 PM</div>
+                            <div class="log-title" id="sun-return-title-1">Board the southbound HSR bullet train</div>
+                            <div class="log-desc" id="sun-return-desc-1">Board the HSR bullet train from Taipei Main Station back to Hsinchu (30 mins). Enjoy a fast, quiet ride with comfortable seating and zero knee strain.</div>
+                        </div>
+                    </div>
+
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time" style="color:#60a5fa;" id="sun-return-time-2">05:00 PM – 05:30 PM</div>
+                            <div class="log-title" id="sun-return-title-2">Early Evening Arrival at Sheraton</div>
+                            <div class="log-desc" id="sun-return-desc-2">Grab a quick 3-minute taxi right outside Hsinchu HSR station directly back to Sheraton Zhubei lobby. Arrive early to unpack, unwind, and rest up for your business week starting Monday.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-nav-row">
+                    <div class="console-nav-btn" onclick="switchSunScene(3)">
+                        ❮ Back
+                    </div>
+                    <div class="console-nav-btn primary-btn" onclick="switchDay(1)">
+                        🔄 Saturday Console Start
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
 
-    <!-- 📍 Bottom Action Hub Fixed Panel -->
+    <!-- 📍 Fixed Bottom Action Hub Panel -->
     <div class="bottom-nav-hub">
         <div class="nav-hub-btn" onclick="openSheet('sheet-flights')">
             <span>✈️</span> Flight Logs
         </div>
         <div class="nav-hub-btn" onclick="openSheet('sheet-flow')">
-            <span>📊</span> Flowchart
+            <span>📊</span> Flowcharts
         </div>
         <div class="nav-hub-btn" onclick="openSheet('sheet-intel')">
             <span>💡</span> Travel Intel
         </div>
     </div>
 
-    <!-- ↕️ PREMIUM MODAL BOTTOM SHEETS -->
+    <!-- ↕️ MODAL BOTTOM SHEETS -->
     
     <!-- Modal 1: Flight Logs -->
     <div class="bottom-sheet-overlay" id="overlay-sheet-flights" onclick="closeSheet('sheet-flights')">
@@ -1124,7 +1564,7 @@
                     <div class="log-icon-wrap">✈️</div>
                     <div class="log-text-wrap">
                         <div class="log-time" style="color:var(--primary-light); font-size:0.85rem;">01:05 PM – Lands at TPE</div>
-                        <div class="log-desc">Lands at Taoyuan terminal. Direct shared taxi is coordinated and ready.</div>
+                        <div class="log-desc">Lands at Taoyuan Terminal 2. Direct shared taxi is coordinated and ready.</div>
                     </div>
                 </div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px;">
@@ -1135,18 +1575,27 @@
         </div>
     </div>
 
-    <!-- Modal 2: Mermaid Flowchart -->
+    <!-- Modal 2: Flowcharts (Saturday & Sunday Toggle tabs) -->
     <div class="bottom-sheet-overlay" id="overlay-sheet-flow" onclick="closeSheet('sheet-flow')">
         <div class="bottom-sheet" id="sheet-flow" onclick="event.stopPropagation()">
             <div class="sheet-handle"></div>
             <div class="sheet-header">
-                <span class="sheet-title">📊 Unified Saturday Itinerary Flowchart</span>
+                <span class="sheet-title">📊 Visual Itinerary Flowcharts</span>
                 <button class="sheet-close-btn" onclick="closeSheet('sheet-flow')">✕</button>
             </div>
             <div class="sheet-body">
-                <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">This flowchart visualizes the single-group chronological flow of Saturday. Tapping any afternoon choice selects that block for the whole group:</p>
-                <div class="mermaid-container">
-                    <pre class="mermaid" style="background: transparent; border: none; margin: 0; color: var(--text-main);">
+                
+                <!-- Flowchart switcher tabs -->
+                <div class="flow-tab-header">
+                    <button class="flow-tab-btn active" id="btn-flow-sat" onclick="switchFlowchart(1)">📊 Saturday Flow</button>
+                    <button class="flow-tab-btn" id="btn-flow-sun" onclick="switchFlowchart(2)">📊 Sunday Flow</button>
+                </div>
+
+                <!-- Saturday Flowchart Content -->
+                <div class="flow-content active" id="content-flow-sat">
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Flow of Saturday landing, hotel setup, afternoon choices, and Taipei 101 observatory dimer feasting:</p>
+                    <div class="mermaid-container">
+                        <pre class="mermaid" style="background: transparent; border: none; margin: 0; color: var(--text-main);">
 graph TD
     Start["✈️ Land TPE<br/>01:05 PM"] --> Sheraton["🏨 Taxi to Sheraton<br/>Check-in & bags"]
     Sheraton --> Decision{"🎛️ Group Decision<br/>Choose 1 Path"}
@@ -1176,9 +1625,50 @@ graph TD
     class Decision decision;
     class Taipei101,DTF,Ximen anchor;
     class ReturnHsinchu returnNode;
-                    </pre>
+                        </pre>
+                    </div>
                 </div>
-                <div class="swipe-pan-tip">Swipe left/right to pan diagram ↔</div>
+
+                <!-- Sunday Flowchart Content -->
+                <div class="flow-content" id="content-flow-sun">
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Flow of Sunday day choices (Beitou/Yangmingshan, SML Cycle & Cruise, Lukang Glass Temple) and early/late returns:</p>
+                    <div class="mermaid-container">
+                        <pre class="mermaid" style="background: transparent; border: none; margin: 0; color: var(--text-main);">
+graph TD
+    SunStart["🏨 Sunday Breakfast<br/>Finish by 08.00 AM"] --> SunDecision{"🎛️ Group Decision<br/>Choose 1 Option"}
+    
+    SunDecision -->|"Opt 1"| SunOpt1["🌋 Volcanic Day-Expedition<br/>08.00 AM - 04.30 PM"]
+    SunDecision -->|"Opt 2"| SunOpt2["🚣 Sun Moon Lake Cycle & Cruise<br/>08.00 AM - 08.30 PM"]
+    SunDecision -->|"Opt 3"| SunOpt3["🛕 Lukang Glass Temple Day<br/>09.30 AM - 05.00 PM"]
+
+    SunOpt1 --> SunDinner1["🌋 Beitou Hot-Spring Banquet<br/>01.00 PM - 02.45 PM"]
+    SunOpt2 -->|"Nantou Bus"| SunDinner2["🍨 Miyahara Taichung Dinner<br/>05.30 PM - 08.00 PM"]
+    SunOpt3 -->|"HSR Train"| SunReturn3["🚄 Changhua HSR Return<br/>05.00 PM - 06.00 PM"]
+
+    SunDinner1 --> SunReturn1["🚄 HSR Early Return<br/>04.30 PM - 05.30 PM"]
+    SunDinner2 --> SunReturn2["🚄 HSR Taichung Return<br/>08.15 PM - 09.15 PM"]
+    SunReturn3 --> SunDinner3["🍲 Wu Lao Guo Hot Pot Hsinchu<br/>06.00 PM - 08.30 PM"]
+    
+    SunReturn1 --> SunSheratonReturn["🏨 Sheraton Zhubei Rooms<br/>Conclude Taiwan Trip"]
+    SunReturn2 --> SunSheratonReturn
+    SunDinner3 -->|"Taxi"| SunSheratonReturn
+
+    classDef joint fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef option fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
+    classDef decision fill:#311042,stroke:#d946ef,stroke-width:2px,color:#f8fafc;
+    classDef anchor fill:#111827,stroke:#14b8a6,stroke-width:2px,color:#f8fafc;
+    classDef returnNode fill:#062f22,stroke:#10b981,stroke-width:2px,color:#f8fafc;
+
+    class SunStart,SunReturn1,SunReturn2,SunReturn3 joint;
+    class SunOpt1,SunOpt2,SunOpt3 option;
+    class SunDecision decision;
+    class SunDinner1,SunDinner2,SunDinner3 anchor;
+    class SunSheratonReturn returnNode;
+                        </pre>
+                    </div>
+                </div>
+
+                <div class="swipe-pan-tip">Swipe left/right to pan diagrams ↔</div>
             </div>
         </div>
     </div>
@@ -1206,9 +1696,9 @@ graph TD
                 </div>
 
                 <!-- Survival tips list -->
-                <h4 style="font-size:0.88rem; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px; color:var(--primary-light);">Saturday Survival Intelligence</h4>
+                <h4 style="font-size:0.88rem; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px; color:var(--primary-light);">Taiwan Survival Intelligence</h4>
                 <ul style="font-size: 0.8rem; color:var(--text-muted); padding-left: 14px; line-height: 1.5; display:flex; flex-direction:column; gap:8px;">
-                    <li><strong>EasyCard is Vital:</strong> Keep your EasyCard topped up. It covers city buses, subways, local trains, and can be used for payments at 7-Eleven, FamilyMart, and Starbucks.</li>
+                    <li><strong>EasyCard is Vital:</strong> Keep your EasyCard topped up. It covers city subways, local trains, and can be used for payments at 7-Eleven, FamilyMart, and Starbucks.</li>
                     <li><strong>No Tipping Policy:</strong> Tipping is not customary in Taiwan. A 10% service charge is automatically added to high-end dining establishments like hotel and resort restaurants.</li>
                     <li><strong>Cash is King at Markets:</strong> While hotels, HSR, and large malls accept credit cards, night markets and street food stalls exclusively accept local cash (TWD).</li>
                     <li><strong>Subway Cleanliness:</strong> Eating, drinking, or chewing gum is strictly prohibited inside the subways and station gates. Violators face heavy fines.</li>
@@ -1218,11 +1708,11 @@ graph TD
         </div>
     </div>
 
-    <!-- JavaScript logic for the Mobile Travel Console -->
+    <!-- JavaScript logic for the Weekend console -->
     <script>
-        // Initialize Mermaid Flowcharts
+        // Initialize Mermaid with startOnLoad: false to prevent rendering race conditions
         mermaid.initialize({
-            startOnLoad: true,
+            startOnLoad: false,
             theme: 'dark',
             themeVariables: {
                 background: '#0f1524',
@@ -1234,14 +1724,250 @@ graph TD
             }
         });
 
-        // 🚀 Switch active scenes
-        function switchScene(sceneNumber) {
-            // Deactivate all scenes
-            const scenes = document.querySelectorAll('.scene-card');
+        // 🔧 In-Browser Mermaid Syntax Diagnostics Engine (Validation Only on Load)
+        async function runMermaidDiagnostics() {
+            const mermaids = document.querySelectorAll('pre.mermaid');
+            let hasErrors = false;
+            const errorReports = [];
+
+            for (let i = 0; i < mermaids.length; i++) {
+                const element = mermaids[i];
+                
+                // Cache the pristine code on the element immediately before any compilation
+                let code = element.getAttribute('data-original-code');
+                if (!code) {
+                    code = element.textContent.trim();
+                    element.setAttribute('data-original-code', code);
+                }
+
+                try {
+                    // Try parsing the pristine raw flowchart code block programmatically
+                    await mermaid.parse(code);
+                } catch (err) {
+                    hasErrors = true;
+                    // Find which flow day context this belongs to
+                    const flowContent = element.closest('.flow-content');
+                    const dayTitle = flowContent ? (flowContent.querySelector('p')?.textContent.split(' ')[0] || `Flowchart #${i + 1}`) : `Flowchart #${i + 1}`;
+                    
+                    // Parse line number of the syntax crash from the error message
+                    let errorLine = null;
+                    const errorText = err.message || err.str || err.toString();
+                    const lineMatch = errorText.match(/line (\d+)/i);
+                    if (lineMatch) {
+                        errorLine = parseInt(lineMatch[1], 10);
+                    }
+                    
+                    errorReports.push({
+                        day: dayTitle,
+                        message: errorText,
+                        code: code,
+                        errorLine: errorLine
+                    });
+                }
+            }
+
+            if (hasErrors) {
+                showDiagnosticsHUD(errorReports);
+            }
+        }
+
+        // 🔮 Lazy Renderer: Compiles a flowchart only when its container is visible and has physical layout dimensions
+        async function renderFlowchartIfVisible(flowNum) {
+            const selector = flowNum === 1 ? '#content-flow-sat pre.mermaid' : '#content-flow-sun pre.mermaid';
+            const element = document.querySelector(selector);
+            if (!element) return;
+
+            // If it's already rendered, Mermaid sets data-processed="true" automatically
+            if (element.getAttribute('data-processed') === 'true') return;
+
+            const code = element.getAttribute('data-original-code') || element.textContent.trim();
+
+            try {
+                // Compile and draw only this specific active diagram now that its size is non-zero
+                await mermaid.run({
+                    nodes: [element]
+                });
+            } catch (renderErr) {
+                console.error(`Mermaid layout calculation failed for Flowchart #${flowNum}:`, renderErr);
+            }
+        }
+
+        // Render a high-fidelity glassmorphic syntax debugger overlay
+        function showDiagnosticsHUD(reports) {
+            if (document.getElementById('mermaid-hud')) return;
+
+            // Inject Custom HUD CSS styles into head
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes hudSlideIn {
+                    from { transform: translateY(50px) scale(0.95); opacity: 0; }
+                    to { transform: translateY(0) scale(1); opacity: 1; }
+                }
+                .hud-code-line {
+                    display: flex;
+                    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+                    font-size: 11px;
+                    line-height: 1.5;
+                    white-space: pre;
+                }
+                .hud-line-num {
+                    width: 30px;
+                    color: #64748b;
+                    text-align: right;
+                    margin-right: 12px;
+                    user-select: none;
+                    font-weight: 500;
+                }
+                .hud-line-text {
+                    color: #cbd5e1;
+                }
+                .hud-line-error {
+                    background: rgba(239, 68, 68, 0.2);
+                    border-left: 3px solid #ef4444;
+                    width: 100%;
+                    display: inline-block;
+                }
+                .hud-line-error .hud-line-text {
+                    color: #fca5a5;
+                    font-weight: 700;
+                }
+            `;
+            document.head.appendChild(style);
+
+            const hud = document.createElement('div');
+            hud.id = 'mermaid-hud';
+            hud.style.cssText = `
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                width: 460px;
+                max-width: 90vw;
+                max-height: 80vh;
+                background: rgba(15, 23, 42, 0.96);
+                backdrop-filter: blur(12px);
+                border: 2px solid #ef4444;
+                border-radius: 12px;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 30px rgba(239, 68, 68, 0.25);
+                color: #f8fafc;
+                font-family: system-ui, -apple-system, sans-serif;
+                z-index: 100000;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                animation: hudSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            `;
+
+            let reportsHtml = '';
+            reports.forEach(report => {
+                const codeLines = report.code.split('\n');
+                let formattedCode = '';
+                codeLines.forEach((line, index) => {
+                    const lineNum = index + 1;
+                    const isError = report.errorLine === lineNum;
+                    const errorClass = isError ? 'hud-line-error' : '';
+                    formattedCode += `
+                        <div class="hud-code-line ${errorClass}">
+                            <span class="hud-line-num">${lineNum}</span>
+                            <span class="hud-line-text">${escapeHtml(line)}</span>
+                        </div>
+                    `;
+                });
+
+                reportsHtml += `
+                    <div style="padding: 16px; border-bottom: 1px solid rgba(239, 68, 68, 0.15); overflow-y: auto; max-height: 40vh;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <span style="font-size: 0.82rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Syntax Error in ${report.day} Flow</span>
+                            <button onclick="navigator.clipboard.writeText(\`${report.code.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`); alert('Mermaid code copied to clipboard!')" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239,68,68,0.2)'" onmouseout="this.style.background='rgba(239,68,68,0.1)'">📋 Copy Code</button>
+                        </div>
+                        <div style="background: rgba(239, 68, 68, 0.08); border-radius: 6px; padding: 10px; font-size: 0.75rem; font-family: monospace; color: #fca5a5; margin-bottom: 12px; border-left: 3px solid #ef4444; line-height:1.45; word-break: break-word;">
+                            ${escapeHtml(report.message)}
+                        </div>
+                        <div style="background: #090d16; border-radius: 6px; padding: 8px; border: 1px solid #1e293b; overflow-x: auto; max-height: 180px;">
+                            ${formattedCode}
+                        </div>
+                    </div>
+                `;
+            });
+
+            hud.innerHTML = `
+                <!-- HUD Header -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: rgba(239, 68, 68, 0.15); border-bottom: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.1rem; filter: drop-shadow(0 0 4px #ef4444);">🔧</span>
+                        <span style="font-size: 0.88rem; font-weight: 700; color: #fca5a5; letter-spacing: 0.5px;">MERMAID SYNTAX DEBUGGER</span>
+                    </div>
+                    <button onclick="document.getElementById('mermaid-hud').remove()" style="background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; padding: 0 4px; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#94a3b8'">✕</button>
+                </div>
+                <!-- HUD Body -->
+                <div style="overflow-y: auto; flex: 1;">
+                    ${reportsHtml}
+                </div>
+                <!-- HUD Footer -->
+                <div style="padding: 10px 16px; background: #0b0f19; border-top: 1px solid #1e293b; text-align: center; font-size: 0.7rem; color: #64748b;">
+                    💡 Substitute special characters with plain text and prefix IDs to avoid collisions.
+                </div>
+            `;
+
+            document.body.appendChild(hud);
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Initialize syntax audit on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            runMermaidDiagnostics();
+        });
+
+        // 📅 SWITCH GLOBAL DAYS (Saturday vs Sunday)
+        let currentDay = 1;
+        function switchDay(dayNumber) {
+            currentDay = dayNumber;
+
+            const btnSat = document.getElementById('day-tab-sat');
+            const btnSun = document.getElementById('day-tab-sun');
+            const satConsole = document.getElementById('sat-console');
+            const sunConsole = document.getElementById('sun-console');
+            const satTracker = document.getElementById('sat-tracker');
+            const sunTracker = document.getElementById('sun-tracker');
+
+            if (dayNumber === 1) {
+                btnSat.classList.add('active');
+                btnSun.classList.remove('active');
+                satConsole.style.display = 'flex';
+                sunConsole.style.display = 'none';
+                satTracker.style.display = 'grid';
+                sunTracker.style.display = 'none';
+                // Switch back to Saturday active scene
+                switchSatScene(1);
+            } else {
+                btnSat.classList.remove('active');
+                btnSun.classList.add('active');
+                satConsole.style.display = 'none';
+                sunConsole.style.display = 'flex';
+                satTracker.style.display = 'none';
+                sunTracker.style.display = 'grid';
+                // Switch to Sunday active scene
+                switchSunScene(1);
+            }
+        }
+
+        // ================= SATURDAY HANDLERS =================
+
+        // Switch active Saturday scenes
+        function switchSatScene(sceneNumber) {
+            // Deactivate all Saturday scenes
+            const scenes = document.querySelectorAll('#sat-console .scene-card');
             scenes.forEach(scene => scene.classList.remove('active'));
 
-            // Deactivate all step bubbles
-            const bubbles = document.querySelectorAll('.step-bubble');
+            // Deactivate all Saturday step bubbles
+            const bubbles = document.querySelectorAll('#sat-tracker .step-bubble');
             bubbles.forEach((bubble, idx) => {
                 bubble.classList.remove('active');
                 if (idx + 1 < sceneNumber) {
@@ -1252,33 +1978,30 @@ graph TD
             });
 
             // Activate target scene & bubble
-            document.getElementById(`scene-${sceneNumber}`).classList.add('active');
-            document.getElementById(`bubble-${sceneNumber}`).classList.add('active');
+            document.getElementById(`sat-scene-${sceneNumber}`).classList.add('active');
+            document.getElementById(`sat-bubble-${sceneNumber}`).classList.add('active');
 
             // Scroll container to top
             document.querySelector('.scene-container').scrollTop = 0;
         }
 
-        // 🎛️ Switch active Afternoon Option tabs
-        function switchOption(optionNumber) {
-            // Deactivate all option tab buttons
-            const buttons = document.querySelectorAll('.opt-tab-btn');
+        // Switch Saturday Afternoon option tabs
+        function switchSatOption(optionNumber) {
+            const buttons = document.querySelectorAll('#sat-scene-2 .opt-tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Deactivate all option content cards
-            const contents = document.querySelectorAll('.option-content-card');
+            const contents = document.querySelectorAll('#sat-scene-2 .option-content-card');
             contents.forEach(card => card.classList.remove('active'));
 
-            // Activate target button & content card
-            document.getElementById(`btn-opt-${optionNumber}`).classList.add('active');
-            document.getElementById(`content-opt-${optionNumber}`).classList.add('active');
+            document.getElementById(`sat-btn-opt-${optionNumber}`).classList.add('active');
+            document.getElementById(`sat-content-opt-${optionNumber}`).classList.add('active');
         }
 
-        // 🥟 Toggle Dinner Menu 3D flip card
-        function toggleDiet(isVegetarian) {
-            const menuContainer = document.getElementById('menu-flippy');
-            const btnClassic = document.getElementById('btn-menu-classic');
-            const btnVeg = document.getElementById('btn-menu-veg');
+        // Toggle Din Tai Fung Diet menu card flip
+        function toggleSatDiet(isVegetarian) {
+            const menuContainer = document.getElementById('sat-menu-flippy');
+            const btnClassic = document.getElementById('sat-btn-menu-classic');
+            const btnVeg = document.getElementById('sat-btn-menu-veg');
 
             if (isVegetarian) {
                 menuContainer.classList.add('flipped');
@@ -1291,16 +2014,181 @@ graph TD
             }
         }
 
-        // ↕️ Open bottom sheet modal modals
+
+        // ================= SUNDAY HANDLERS =================
+
+        // Switch active Sunday scenes
+        let activeSunOption = 1;
+        function switchSunScene(sceneNumber) {
+            // Deactivate all Sunday scenes
+            const scenes = document.querySelectorAll('#sun-console .scene-card');
+            scenes.forEach(scene => scene.classList.remove('active'));
+
+            // Deactivate all Sunday step bubbles
+            const bubbles = document.querySelectorAll('#sun-tracker .step-bubble');
+            bubbles.forEach((bubble, idx) => {
+                bubble.classList.remove('active');
+                if (idx + 1 < sceneNumber) {
+                    bubble.classList.add('completed');
+                } else {
+                    bubble.classList.remove('completed');
+                }
+            });
+
+            // Activate target scene & bubble
+            document.getElementById(`sun-scene-${sceneNumber}`).classList.add('active');
+            document.getElementById(`sun-bubble-${sceneNumber}`).classList.add('active');
+
+            // Scroll container to top
+            document.querySelector('.scene-container').scrollTop = 0;
+
+            // DYNAMICALLY RENDER THE CORRESPONDING DINNER highlight in Step 3!
+            if (sceneNumber === 3) {
+                const dinnerCards = document.querySelectorAll('#sun-scene-3 .option-dinner-card');
+                dinnerCards.forEach(card => card.classList.remove('active'));
+                
+                // Show dinner card corresponding to the selected Day Option
+                document.getElementById(`sun-dinner-opt-${activeSunOption}`).classList.add('active');
+            }
+
+            // DYNAMICALLY POPULATE HSR RETURN DETAILS in Step 4!
+            if (sceneNumber === 4) {
+                const time1 = document.getElementById('sun-return-time-1');
+                const title1 = document.getElementById('sun-return-title-1');
+                const desc1 = document.getElementById('sun-return-desc-1');
+                
+                const time2 = document.getElementById('sun-return-time-2');
+                const title2 = document.getElementById('sun-return-title-2');
+                const desc2 = document.getElementById('sun-return-desc-2');
+                
+                if (activeSunOption === 1) {
+                    // Option 1: Volcanic Expedition Early Return
+                    time1.innerText = "04:30 PM – 05:00 PM";
+                    title1.innerHTML = "<span>🚄</span> Bullet Train from Taipei Main";
+                    desc1.innerText = "Board the southbound HSR bullet train back to Hsinchu (30 mins). Enjoy a fast, quiet ride with comfortable seating and zero knee strain.";
+                    
+                    time2.innerText = "05:00 PM – 05:30 PM";
+                    title2.innerHTML = "<span>🏨</span> Early Evening Arrival at Sheraton";
+                    desc2.innerText = "Grab a quick 3-minute taxi right outside Hsinchu HSR station directly back to Sheraton Zhubei. Arrive early to unpack, unwind, and rest up for your business week starting Monday.";
+                } else if (activeSunOption === 2) {
+                    // Option 2: Sun Moon Lake Return
+                    time1.innerText = "08:15 PM – 09:00 PM";
+                    title1.innerHTML = "<span>🚄</span> Bullet Train from Taichung HSR";
+                    desc1.innerText = "Take the HSR from Taichung back to Hsinchu (a rapid 25-minute journey, NT$190) following your luxury dinner at Miyahara.";
+                    
+                    time2.innerText = "09:00 PM – 09:15 PM";
+                    title2.innerHTML = "<span>🏨</span> Sheraton Return & Night Wind-down";
+                    desc2.innerText = "Take a quick 3-minute taxi from Hsinchu HSR station directly back to Sheraton lobby. Wrap up Sunday with plenty of time to unpack and sleep.";
+                } else {
+                    // Option 3: Lukang Glass Temple Return
+                    time1.innerText = "05:00 PM – 06:00 PM";
+                    title1.innerHTML = "<span>🚄</span> Bullet Train from Changhua HSR";
+                    desc1.innerText = "Board the northbound HSR train at Changhua HSR back to Hsinchu (35 mins). Enjoy a fast, quiet ride with comfortable seating and zero knee strain.";
+                    
+                    time2.innerText = "08:30 PM – 08:45 PM";
+                    title2.innerHTML = "<span>🏨</span> Sheraton Return after Wu Lao Guo";
+                    desc2.innerText = "Following your luxurious table-side Wu Lao Guo Hot Pot dinner, take a quick 3-minute local taxi directly back to Sheraton Zhubei lobby to conclude an incredible weekend.";
+                }
+            }
+        }
+
+        // Switch Sunday Day option tabs
+        function switchSunOption(optionNumber) {
+            activeSunOption = optionNumber;
+
+            const buttons = document.querySelectorAll('#sun-scene-2 .opt-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const contents = document.querySelectorAll('#sun-scene-2 .option-content-card');
+            contents.forEach(card => card.classList.remove('active'));
+
+            document.getElementById(`sun-btn-opt-${optionNumber}`).classList.add('active');
+            document.getElementById(`sun-content-opt-${optionNumber}`).classList.add('active');
+        }
+
+        // Toggle Beitou Resort Diet menu card flip (Sunday Option 1)
+        function toggleSunResortDiet(isVegetarian) {
+            const menuContainer = document.getElementById('sun-resort-flippy');
+            const btnClassic = document.getElementById('sun-resort-menu-classic');
+            const btnVeg = document.getElementById('sun-resort-menu-veg');
+
+            if (isVegetarian) {
+                menuContainer.classList.add('flipped');
+                btnVeg.classList.add('active');
+                btnClassic.classList.remove('active');
+            } else {
+                menuContainer.classList.remove('flipped');
+                btnClassic.classList.add('active');
+                btnVeg.classList.remove('active');
+            }
+        }
+
+        // Toggle Miyahara Diet menu card flip (Sunday Option 2)
+        function toggleSunMiyaharaDiet(isVegetarian) {
+            const menuContainer = document.getElementById('sun-miyahara-flippy');
+            const btnClassic = document.getElementById('sun-miyahara-menu-classic');
+            const btnVeg = document.getElementById('sun-miyahara-menu-veg');
+
+            if (isVegetarian) {
+                menuContainer.classList.add('flipped');
+                btnVeg.classList.add('active');
+                btnClassic.classList.remove('active');
+            } else {
+                menuContainer.classList.remove('flipped');
+                btnClassic.classList.add('active');
+                btnVeg.classList.remove('active');
+            }
+        }
+
+
+        // ================= GLOBAL SHEETS =================
+
+        // Open bottom sheets
         function openSheet(sheetId) {
             document.getElementById(`overlay-${sheetId}`).classList.add('active');
             document.getElementById(sheetId).classList.add('active');
+            
+            // If opening the flowchart drawer, lazy-render the active tab's flowchart
+            if (sheetId === 'sheet-flow') {
+                const flowSat = document.getElementById('content-flow-sat');
+                if (flowSat.classList.contains('active')) {
+                    setTimeout(() => renderFlowchartIfVisible(1), 60);
+                } else {
+                    setTimeout(() => renderFlowchartIfVisible(2), 60);
+                }
+            }
         }
 
-        // ✕ Close bottom sheet modal modals
+        // Close bottom sheets
         function closeSheet(sheetId) {
             document.getElementById(`overlay-${sheetId}`).classList.remove('active');
             document.getElementById(sheetId).classList.remove('active');
+        }
+
+        // Switch active flowchart flow tabs inside modal
+        function switchFlowchart(flowNum) {
+            const btnSat = document.getElementById('btn-flow-sat');
+            const btnSun = document.getElementById('btn-flow-sun');
+            const flowSat = document.getElementById('content-flow-sat');
+            const flowSun = document.getElementById('content-flow-sun');
+
+            if (flowNum === 1) {
+                btnSat.classList.add('active');
+                btnSun.classList.remove('active');
+                flowSat.classList.add('active');
+                flowSun.classList.remove('active');
+                
+                // Render Saturday flowchart once container is visible and has layout width/height
+                setTimeout(() => renderFlowchartIfVisible(1), 60);
+            } else {
+                btnSat.classList.remove('active');
+                btnSun.classList.add('active');
+                flowSat.classList.remove('active');
+                flowSun.classList.add('active');
+                
+                // Render Sunday flowchart once container is visible and has layout width/height
+                setTimeout(() => renderFlowchartIfVisible(2), 60);
+            }
         }
     </script>
 </body>
