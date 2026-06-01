@@ -1,0 +1,6 @@
+# Exclude Python bytecode
+__pycache__/
+*.pyc
+
+# Exclude dynamic search history database
+www/code/travel_app/location_history.json

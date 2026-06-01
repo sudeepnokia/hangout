@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangalore Hybrid Transit Route Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Feather Icons for Beautiful Vector Graphics -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Leaflet.js Interactive Mapping CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    
+    <div class="container animate-fade-in">
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i data-feather="navigation"></i>
+                </div>
+                <div>
+                    <h1>Hybrid Route Planner</h1>
+                    <p class="tagline">Optimize public transit commutes with smart driving first/last legs</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid-layout">
+            <!-- Left Panel: Input Controls -->
+            <section class="control-panel glass-card">
+                <h2>Route Parameters</h2>
+                <form id="route-form">
+                    <div class="input-group">
+                        <label for="origin"><i data-feather="map-pin"></i> Origin (A)</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="origin" name="origin" value="Sarjapur Signal, Bangalore" placeholder="Enter starting point" required autocomplete="off">
+                            <button type="button" class="clear-btn hidden" onclick="clearInput('origin')" title="Clear Input">
+                                <i data-feather="x"></i>
+                            </button>
+                            <button type="button" class="action-btn" onclick="populateCurrentLocation('origin')" title="Use Device Location">
+                                <i data-feather="compass"></i>
+                            </button>
+                        </div>
+                        <div id="origin-suggestions" class="suggestions-dropdown hidden"></div>
+                    </div>
+
+                    <!-- Swap Inputs Button -->
+                    <div class="swap-row">
+                        <button type="button" class="swap-btn" onclick="swapLocations()" title="Swap Origin and Destination">
+                            <i data-feather="repeat" class="rotate-90"></i>
+                        </button>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="destination"><i data-feather="flag"></i> Destination (B)</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="destination" name="destination" value="Palace Grounds, Bangalore" placeholder="Enter destination" required autocomplete="off">
+                            <button type="button" class="clear-btn hidden" onclick="clearInput('destination')" title="Clear Input">
+                                <i data-feather="x"></i>
+                            </button>
+                            <button type="button" class="action-btn" onclick="populateCurrentLocation('destination')" title="Use Device Location">
+                                <i data-feather="compass"></i>
+                            </button>
+                        </div>
+                        <div id="destination-suggestions" class="suggestions-dropdown hidden"></div>
+                    </div>
+
+
+
+                    <button type="submit" id="submit-btn" class="primary-btn">
+                        <span>Calculate Optimal Routes</span>
+                        <i data-feather="arrow-right"></i>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Right Panel: Results Area -->
+            <section class="results-panel">
+                <!-- Idle State -->
+                <div id="idle-state" class="glass-card flex-center state-card">
+                    <div class="state-icon pulse">
+                        <i data-feather="map"></i>
+                    </div>
+                    <h3>Ready to Calculate</h3>
+                    <p>Enter your locations and API Key, then click calculate to view the premium hybrid travel timeline and comparisons.</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loading-state" class="glass-card flex-center state-card hidden">
+                    <div class="spinner-container">
+                        <div class="loading-spinner"></div>
+                        <div class="spinner-icon">
+                            <i data-feather="truck" class="spin-bounce"></i>
+                        </div>
+                    </div>
+                    <h3>Recalculating Hybrid Routes...</h3>
+                    <p>Fetching real-time transit paths, filtering metro lines, and computing optimal driving durations for the first and last legs.</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="error-state" class="glass-card flex-center state-card hidden">
+                    <div class="state-icon error-icon">
+                        <i data-feather="alert-triangle"></i>
+                    </div>
+                    <h3 id="error-title">Calculation Failed</h3>
+                    <p id="error-desc">There was an error communicating with the Google Maps API. Please check your credentials and try again.</p>
+                </div>
+
+                <!-- Success State: List of Options -->
+                <div id="success-state" class="hidden">
+                    <div class="results-header">
+                        <h2>Optimal Hybrid Options</h2>
+                        <span id="route-summary-badge" class="badge">6 options found</span>
+                    </div>
+                    
+                    <!-- Interactive Commute Map -->
+                    <div id="map-card" class="glass-card map-card animate-slide-up">
+                        <div id="commute-map"></div>
+                    </div>
+                    
+                    <!-- Quick Comparison Dashboard -->
+                    <div class="summary-dashboard glass-card animate-slide-up">
+                        <div class="dashboard-stat">
+                            <span class="stat-label">🚀 Best Hybrid</span>
+                            <span class="stat-val" id="best-hybrid-val">N/A</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span class="stat-label">🚌 Pure Transit</span>
+                            <span class="stat-val" id="pure-transit-val">N/A</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span class="stat-label">🚗 Full Drive</span>
+                            <span class="stat-val" id="full-drive-val">N/A</span>
+                        </div>
+                    </div>
+                    
+                    <div id="options-container" class="options-list">
+                        <!-- Filled Dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // --- Interactive Map System (Leaflet.js) ---
+        let map = null;
+        let mapLayers = [];
+        let currentOptions = [];
+
+        function initMap() {
+            if (map) {
+                // If map already exists, invalidate size so Leaflet recalculates dimensions correctly
+                map.invalidateSize();
+                return;
+            }
+            
+            // Initialize Leaflet map targeting 'commute-map' element
+            map = L.map('commute-map').setView([12.9716, 77.5946], 12);
+            
+            // Use dark-mode CartoDB tile theme to match the premium dark theme
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+        }
+
+        // Helper to decode Google Maps overview polylines into Lat/Lng coordinate lists
+        function decodePolyline(encoded) {
+            let points = [];
+            let index = 0, len = encoded.length;
+            let lat = 0, lng = 0;
+            while (index < len) {
+                let b, shift = 0, result = 0;
+                do {
+                    b = encoded.charCodeAt(index++) - 63;
+                    result |= (b & 0x1f) << shift;
+                    shift += 5;
+                } while (b >= 0x20);
+                let dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
+                lat += dlat;
+                shift = 0;
+                result = 0;
+                do {
+                    b = encoded.charCodeAt(index++) - 63;
+                    result |= (b & 0x1f) << shift;
+                    shift += 5;
+                } while (b >= 0x20);
+                let dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
+                lng += dlng;
+                points.push([lat / 1e5, lng / 1e5]);
+            }
+            return points;
+        }
+
+        function drawRouteOnMap(opt) {
+            // Remove previous layers
+            mapLayers.forEach(layer => map.removeLayer(layer));
+            mapLayers = [];
+
+            let allCoords = [];
+
+            // 1. Draw Leg 1: Starting Drive (A -> First Metro Station)
+            if (opt.drive_1_polyline) {
+                const coords = decodePolyline(opt.drive_1_polyline);
+                const poly = L.polyline(coords, {
+                    color: '#6366f1',
+                    weight: 5,
+                    opacity: 0.85,
+                    dashArray: '6, 8'
+                }).addTo(map);
+                mapLayers.push(poly);
+                allCoords.push(...coords);
+            }
+
+            // 2. Draw Leg 2: Metro/Train Ride step-by-step
+            opt.metro_lines.forEach(m => {
+                if (m.polyline) {
+                    const coords = decodePolyline(m.polyline);
+                    const poly = L.polyline(coords, {
+                        color: m.color || '#8b5cf6',
+                        weight: 7,
+                        opacity: 0.95
+                    }).addTo(map);
+                    mapLayers.push(poly);
+                    allCoords.push(...coords);
+                }
+            });
+
+            // 3. Draw Leg 3: Ending Drive (Last Metro Station -> B)
+            if (opt.drive_2_polyline) {
+                const coords = decodePolyline(opt.drive_2_polyline);
+                const poly = L.polyline(coords, {
+                    color: '#6366f1',
+                    weight: 5,
+                    opacity: 0.85,
+                    dashArray: '6, 8'
+                }).addTo(map);
+                mapLayers.push(poly);
+                allCoords.push(...coords);
+            }
+
+            // Draw Markers for Start and End Points
+            if (allCoords.length > 0) {
+                const startMarker = L.circleMarker(allCoords[0], {
+                    radius: 8,
+                    color: '#6366f1',
+                    fillColor: '#ffffff',
+                    fillOpacity: 1,
+                    weight: 3
+                }).addTo(map).bindPopup("<b>Origin (A)</b>");
+                
+                const endMarker = L.circleMarker(allCoords[allCoords.length - 1], {
+                    radius: 8,
+                    color: '#f43f5e',
+                    fillColor: '#ffffff',
+                    fillOpacity: 1,
+                    weight: 3
+                }).addTo(map).bindPopup("<b>Destination (B)</b>");
+
+                mapLayers.push(startMarker, endMarker);
+
+                // Auto zoom and pan to fit all route layers nicely with padding
+                map.fitBounds(L.featureGroup(mapLayers).getBounds(), { padding: [40, 40] });
+            }
+        }
+
+        function selectRoute(idx) {
+            // Highlight selected card and dim other cards
+            document.querySelectorAll('.option-card').forEach((card, i) => {
+                if (i === idx) {
+                    card.classList.add('selected-card');
+                } else {
+                    card.classList.remove('selected-card');
+                }
+            });
+            // Draw route polyline layers
+            if (currentOptions[idx]) {
+                drawRouteOnMap(currentOptions[idx]);
+            }
+        }
+
+        function swapLocations() {
+            const originField = document.getElementById('origin');
+            const destField = document.getElementById('destination');
+            const temp = originField.value;
+            originField.value = destField.value;
+            destField.value = temp;
+        }
+
+        async function populateCurrentLocation(targetId) {
+            const inputField = document.getElementById(targetId);
+            const wrapper = inputField.parentElement;
+            const btn = wrapper.querySelector('.action-btn');
+
+            // Set button to loading state
+            btn.classList.add('loading');
+            btn.innerHTML = `<i data-feather="loader" class="spin"></i>`;
+            feather.replace();
+
+            try {
+                const response = await fetch('/api/current_location');
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to fetch current location.');
+                }
+
+                // Populate target input
+                inputField.value = data.address;
+
+            } catch (err) {
+                alert(`Error querying Termux location: ${err.message}`);
+            } finally {
+                // Restore button state
+                btn.classList.remove('loading');
+                btn.innerHTML = `<i data-feather="compass"></i>`;
+                feather.replace();
+            }
+        }
+
+        // --- Persistent Location History Autocomplete System ---
+        let locationHistory = [];
+
+        async function loadLocationHistory() {
+            try {
+                const response = await fetch('/api/location_history?v=' + new Date().getTime());
+                locationHistory = await response.json();
+            } catch (err) {
+                console.error('Error loading location history:', err);
+            }
+        }
+
+        function setupAutocomplete(inputId, dropdownId) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(dropdownId);
+
+            input.addEventListener('input', () => {
+                const value = input.value.trim().toLowerCase();
+                dropdown.innerHTML = '';
+
+                if (!value) {
+                    dropdown.classList.add('hidden');
+                    return;
+                }
+
+                // Filter matching locations
+                const matches = locationHistory.filter(loc => 
+                    loc.toLowerCase().includes(value)
+                );
+
+                if (matches.length === 0) {
+                    dropdown.classList.add('hidden');
+                    return;
+                }
+
+                matches.forEach(match => {
+                    const item = document.createElement('div');
+                    item.className = 'suggestion-item';
+                    item.textContent = match;
+                    item.addEventListener('click', () => {
+                        input.value = match;
+                        dropdown.classList.add('hidden');
+                    });
+                    dropdown.appendChild(item);
+                });
+
+                dropdown.classList.remove('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        function setupSmartPaste(inputId) {
+            const input = document.getElementById(inputId);
+            
+            input.addEventListener('paste', async (e) => {
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text').trim();
+                
+                // If it's a URL, intercept the paste and parse it!
+                if (pastedText.startsWith('http://') || pastedText.startsWith('https://')) {
+                    e.preventDefault();
+                    
+                    const originalValue = input.value;
+                    input.value = "Parsing Google Maps Link...";
+                    input.disabled = true;
+                    
+                    try {
+                        const response = await fetch('/api/resolve_maps_link', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ link: pastedText })
+                        });
+                        
+                        const data = await response.json();
+                        if (!response.ok) {
+                            throw new Error(data.error || 'Failed to parse Google Maps link.');
+                        }
+                        
+                        // Populate BOTH inputs!
+                        document.getElementById('origin').value = data.origin;
+                        document.getElementById('destination').value = data.destination;
+                        
+                    } catch (err) {
+                        alert(`Smart Paste Error: ${err.message}`);
+                        input.value = originalValue;
+                    } finally {
+                        input.disabled = false;
+                        input.focus();
+                    }
+                }
+            });
+        }
+
+        function clearInput(targetId) {
+            const input = document.getElementById(targetId);
+            input.value = '';
+            input.focus();
+            
+            // Dispatch input event to refresh clear button visibility and suggestions dropdown
+            input.dispatchEvent(new Event('input'));
+        }
+
+        function setupClearButton(inputId) {
+            const input = document.getElementById(inputId);
+            const wrapper = input.parentElement;
+            const clearBtn = wrapper.querySelector('.clear-btn');
+
+            const toggleClearBtn = () => {
+                if (input.value.trim()) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+            };
+
+            input.addEventListener('input', toggleClearBtn);
+            
+            // Also listen to custom changes (like when smart-pasting or current location is fetched)
+            input.addEventListener('change', toggleClearBtn);
+            
+            // Check immediately on load
+            toggleClearBtn();
+        }
+
+        // Initialize history and autocompletes on load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadLocationHistory();
+            setupAutocomplete('origin', 'origin-suggestions');
+            setupAutocomplete('destination', 'destination-suggestions');
+            setupSmartPaste('origin');
+            setupSmartPaste('destination');
+            setupClearButton('origin');
+            setupClearButton('destination');
+        });
+
+        const form = document.getElementById('route-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        // States
+        const idleState = document.getElementById('idle-state');
+        const loadingState = document.getElementById('loading-state');
+        const errorState = document.getElementById('error-state');
+        const successState = document.getElementById('success-state');
+        const optionsContainer = document.getElementById('options-container');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Switch to loading
+            idleState.classList.add('hidden');
+            errorState.classList.add('hidden');
+            successState.classList.add('hidden');
+            loadingState.classList.remove('hidden');
+
+            const payload = {
+                origin: document.getElementById('origin').value,
+                destination: document.getElementById('destination').value
+            };
+
+            try {
+                const response = await fetch('/api/calculate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to fetch hybrid route data.');
+                }
+
+                // Render Results
+                renderResults(data);
+                
+                // Refresh local autocomplete history cache with new successfully calculated locations
+                await loadLocationHistory();
+                
+                loadingState.classList.add('hidden');
+                successState.classList.remove('hidden');
+
+            } catch (err) {
+                document.getElementById('error-desc').textContent = err.message;
+                loadingState.classList.add('hidden');
+                errorState.classList.remove('hidden');
+            }
+        });
+
+        function renderResults(data) {
+            optionsContainer.innerHTML = '';
+            document.getElementById('route-summary-badge').textContent = `${data.options.length} hybrid route(s) found`;
+
+            // Stash options for Leaflet interactive mapping updates
+            currentOptions = data.options;
+
+            // Update Dashboard values
+            if (data.options.length > 0) {
+                document.getElementById('best-hybrid-val').textContent = data.options[0].hybrid_total_text;
+                document.getElementById('pure-transit-val').textContent = data.options[0].original_transit_text;
+            } else {
+                document.getElementById('best-hybrid-val').textContent = 'N/A';
+                document.getElementById('pure-transit-val').textContent = 'N/A';
+            }
+            if (data.direct_driving) {
+                document.getElementById('full-drive-val').textContent = `${data.direct_driving.duration_text} (${data.direct_driving.distance_text})`;
+            } else {
+                document.getElementById('full-drive-val').textContent = 'N/A';
+            }
+
+            // Async trigger Leaflet rendering after DOM elements display completely
+            if (data.options.length > 0) {
+                setTimeout(() => {
+                    initMap();
+                    selectRoute(0);
+                }, 150);
+            }
+
+            if (data.options.length === 0) {
+                optionsContainer.innerHTML = `
+                    <div class="glass-card flex-center state-card">
+                        <div class="state-icon warning-icon"><i data-feather="search"></i></div>
+                        <h3>No Metro Routes Found</h3>
+                        <p>No transit options containing a subway/metro leg were found between these coordinates.</p>
+                    </div>`;
+                feather.replace();
+                return;
+            }
+
+            data.options.forEach((opt, idx) => {
+                const isBest = idx === 0;
+                const card = document.createElement('div');
+                card.className = `option-card glass-card ${isBest ? 'best-option' : ''} animate-slide-up`;
+                card.style.animationDelay = `${idx * 0.1}s`;
+                card.setAttribute('onclick', `selectRoute(${idx})`);
+
+                // Build line info
+                let metroLinesHtml = '';
+                opt.metro_lines.forEach(m => {
+                    const timeRange = (m.departure_time && m.arrival_time)
+                        ? `<span class="metro-time"><i data-feather="clock"></i> ${m.departure_time} ➔ ${m.arrival_time}</span>`
+                        : '';
+                    metroLinesHtml += `
+                        <div class="metro-badge" style="border-left: 4px solid ${m.color}">
+                            <div class="metro-badge-header">
+                                <span class="metro-line-name" style="color: ${m.color}">${m.name}</span>
+                                ${timeRange}
+                            </div>
+                            <span class="metro-line-stops">${m.from} ➔ ${m.to} (${m.stops} stops)</span>
+                        </div>
+                    `;
+                });
+
+                // Savings class
+                const savingsBadge = opt.is_faster 
+                    ? `<span class="badge success-badge">🚀 ${opt.time_saved_text} Saved</span>`
+                    : `<span class="badge warning-badge">⚠️ ${opt.time_saved_text} Slower</span>`;
+
+                const firstTimeLabel = (opt.metro_lines && opt.metro_lines.length > 0 && opt.metro_lines[0].departure_time)
+                    ? `<span class="time-label">${opt.metro_lines[0].departure_time}</span>`
+                    : '';
+                const lastTimeLabel = (opt.metro_lines && opt.metro_lines.length > 0 && opt.metro_lines[opt.metro_lines.length - 1].arrival_time)
+                    ? `<span class="time-label">${opt.metro_lines[opt.metro_lines.length - 1].arrival_time}</span>`
+                    : '';
+
+                card.innerHTML = `
+                    ${isBest ? '<div class="recommended-ribbon"><i data-feather="star"></i> Recommended / Fastest</div>' : ''}
+                    
+                    <div class="option-header">
+                        <div class="option-title">
+                            <h3>Option ${idx + 1}: ${opt.summary}</h3>
+                            <div class="badges-row">
+                                ${savingsBadge}
+                                <span class="badge transit-badge"><i data-feather="clock"></i> Original: ${opt.original_transit_text}</span>
+                            </div>
+                        </div>
+                        <div class="option-duration">
+                            <div class="duration-label">Hybrid Travel Time</div>
+                            <div class="duration-val">${opt.hybrid_total_text}</div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline graphic -->
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-icon origin-marker"><i data-feather="map-pin"></i></div>
+                            <div class="timeline-content">
+                                <span class="timeline-title">Origin</span>
+                                <span class="timeline-desc">${data.origin}</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-connector drive-connector">
+                            <div class="connector-label"><i data-feather="navigation"></i> Drive: ${opt.drive_1_text} (${opt.drive_1_dist})</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon station-marker"><i data-feather="circle"></i></div>
+                            <div class="timeline-content">
+                                <span class="timeline-title">${opt.first_station} Station ${firstTimeLabel}</span>
+                                <span class="timeline-desc">First transit boarding station</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-connector metro-connector">
+                            <div class="connector-label"><i data-feather="clock"></i> Metro/Train Ride: ${opt.metro_duration_text}</div>
+                            <div class="metro-details-container">
+                                ${metroLinesHtml}
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon station-marker"><i data-feather="circle"></i></div>
+                            <div class="timeline-content">
+                                <span class="timeline-title">${opt.last_station} Station ${lastTimeLabel}</span>
+                                <span class="timeline-desc">Last transit alighting station</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-connector drive-connector">
+                            <div class="connector-label"><i data-feather="navigation"></i> Drive: ${opt.drive_2_text} (${opt.drive_2_dist})</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon destination-marker"><i data-feather="flag"></i></div>
+                            <div class="timeline-content">
+                                <span class="timeline-title">Destination</span>
+                                <span class="timeline-desc">${data.destination}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                optionsContainer.appendChild(card);
+            });
+
+            feather.replace();
+        }
+    </script>
+</body>
+</html>
