@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da Nang June 17-20 Itinerary - Luxury Console</title>
+    <meta name="description" content="Customized travel itinerary for Da Nang — Wednesday June 17 to Saturday June 20, 2026.">
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern CSS Design System */
+        :root {
+            --bg-dark: #070a13;
+            --bg-card: #0f1524;
+            --bg-card-hover: #172037;
+            --primary: #0ea5e9;
+            --primary-light: #38bdf8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --glow-color: rgba(14, 165, 233, 0.15);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --transition-speed: 0.2s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
+            height: 100vh;
+            height: -webkit-fill-available;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        html {
+            height: -webkit-fill-available;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Glow effects */
+        .glow-overlay {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 350px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HUD Header */
+        header {
+            padding: 16px 16px 12px 16px;
+            background: rgba(15, 21, 36, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hud-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid var(--primary-light);
+            color: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .day-selector-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            background: rgba(7, 10, 19, 0.6);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .day-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 4px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            white-space: nowrap;
+        }
+
+        .day-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        .timeline-tracker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .step-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .bubble-indicator {
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .step-bubble.active .bubble-indicator {
+            background: var(--primary-light);
+            box-shadow: 0 0 8px var(--primary-light);
+        }
+
+        .bubble-label {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .step-bubble.active .bubble-label {
+            color: var(--primary-light);
+            font-weight: 700;
+        }
+
+        /* Stage Content */
+        .scene-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scene-card {
+            display: none;
+            animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 24px;
+        }
+
+        .scene-card.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .panel-badge {
+            font-size: 0.65rem;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .base-log-item {
+            display: flex;
+            gap: 12px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .base-log-item:last-child { padding-bottom: 0; }
+
+        .base-log-item::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .base-log-item:last-child::before { display: none; }
+
+        .log-icon-wrap {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .log-time {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .log-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .log-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .option-button-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            background: rgba(7, 10, 19, 0.5);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .opt-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 4px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .opt-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+        }
+
+        .option-content-card {
+            display: none;
+        }
+
+        .option-content-card.active {
+            display: block;
+        }
+
+        .opt-flow-timeline {
+            margin-top: 12px;
+            padding-left: 12px;
+            border-left: 2px dashed rgba(14, 165, 233, 0.2);
+        }
+
+        .opt-flow-step {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .opt-flow-step::before {
+            content: '';
+            position: absolute;
+            left: -17px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+
+        .opt-flow-time {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .opt-flow-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .opt-flow-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* 3D Menu Flip */
+        .menu-flip-container {
+            perspective: 1000px;
+            width: 100%;
+            height: 160px;
+            margin-top: 12px;
+        }
+
+        .menu-flip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-flip-container.flipped .menu-flip-card {
+            transform: rotateY(180deg);
+        }
+
+        .menu-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-side-front {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .menu-side-back {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            transform: rotateY(180deg);
+        }
+
+        .diet-switcher-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 10, 19, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .diet-toggle-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+
+        .diet-toggle-btn.active.veg { border-color: #10b981; color: #10b981; }
+        .diet-toggle-btn.active.classic { border-color: #f59e0b; color: #f59e0b; }
+
+        /* Bottom Nav */
+        .bottom-nav-hub {
+            background: #090e1a;
+            border-top: 1px solid var(--border-color);
+            padding: 8px 16px calc(8px + var(--safe-bottom)) 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .nav-hub-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .console-nav-btn {
+            flex-grow: 1;
+            background: var(--border-color);
+            color: var(--text-main);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .console-nav-btn.primary-btn {
+            background: var(--primary);
+        }
+
+        /* Modals */
+        .bottom-sheet-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .bottom-sheet-overlay.active { opacity: 1; visibility: visible; }
+
+        .bottom-sheet {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 80%;
+            background: #0f1524;
+            border-top: 1px solid var(--border-color);
+            border-radius: 20px 20px 0 0;
+            z-index: 101;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bottom-sheet.active { transform: translateY(0); }
+
+        .sheet-body { overflow-y: auto; padding: 16px; flex-grow: 1; }
+
+        .map-badge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: var(--primary-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-overlay"></div>
+
+    <!-- HUD Header -->
+    <header>
+        <div class="hud-top">
+            <div class="hud-logo">⚡ Da Nang June 2026</div>
+            <div class="day-selector-tabs" style="width: 220px;">
+                <button class="day-tab-btn active" id="day-tab-thu" onclick="switchDay(1)">📅 Thu 18</button>
+                <button class="day-tab-btn" id="day-tab-fri" onclick="switchDay(2)">📅 Fri 19</button>
+                <button class="day-tab-btn" id="day-tab-sat" onclick="switchDay(3)">📅 Sat 20</button>
+            </div>
+        </div>
+        
+        <!-- THU Progress Tracker -->
+        <div class="timeline-tracker" id="thu-tracker">
+            <div class="step-bubble active" onclick="switchThuScene(1)" id="thu-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Recovery</span>
+            </div>
+            <div class="step-bubble" onclick="switchThuScene(2)" id="thu-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Mountain</span>
+            </div>
+            <div class="step-bubble" onclick="switchThuScene(3)" id="thu-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Beach</span>
+            </div>
+            <div class="step-bubble" onclick="switchThuScene(4)" id="thu-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Dinner</span>
+            </div>
+        </div>
+
+        <!-- FRI Progress Tracker -->
+        <div class="timeline-tracker" id="fri-tracker" style="display: none;">
+            <div class="step-bubble active" onclick="switchFriScene(1)" id="fri-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Day Trip</span>
+            </div>
+            <div class="step-bubble" onclick="switchFriScene(2)" id="fri-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Hoi An</span>
+            </div>
+            <div class="step-bubble" onclick="switchFriScene(3)" id="fri-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Lanterns</span>
+            </div>
+            <div class="step-bubble" onclick="switchFriScene(4)" id="fri-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Return</span>
+            </div>
+        </div>
+
+        <!-- SAT Progress Tracker -->
+        <div class="timeline-tracker" id="sat-tracker" style="display: none;">
+            <div class="step-bubble active" onclick="switchSatScene(1)" id="sat-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Bay</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(2)" id="sat-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Coffee</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(3)" id="sat-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Checkout</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(4)" id="sat-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Depart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Stage -->
+    <main class="scene-container">
+
+        <!-- THURSDAY -->
+        <div class="day-console-wrapper" id="thu-console">
+            
+            <!-- THU 1: RECOVERY -->
+            <div class="scene-card active" id="thu-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🏨 Late Arrival Recovery</h3>
+                        <span class="panel-badge">Wednesday 17 Arrival</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">☕</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">09:30 AM</div>
+                            <div class="log-title">Leisurely Breakfast</div>
+                            <div class="log-desc">Since you arrived late last night, start today slow. Enjoy a coastal breakfast overlooking My Khe beach.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">📍</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">11:00 AM</div>
+                            <div class="log-title">Base Setup</div>
+                            <div class="log-desc">Check out the resort amenities. Ensure you have the Grab app ready for city transfers.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px; margin-top:auto;">
+                    <button class="console-nav-btn primary-btn" onclick="switchThuScene(2)">Marble Mountains ➔</button>
+                </div>
+            </div>
+
+            <!-- THU 2: MARBLE MOUNTAIN -->
+            <div class="scene-card" id="thu-scene-2">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">⛰️ Marble Mountains</h3>
+                        <span class="panel-badge">Avoid Noon Heat</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">02:30 PM</div>
+                            <div class="log-title">Cave & Pagoda Exploration</div>
+                            <div class="log-desc">Take the glass elevator up. Explore Huyen Khong Cave where light beams hit the statues.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">04:00 PM</div>
+                            <div class="log-title">Summit View</div>
+                            <div class="log-desc">Panoramas of Non Nuoc beach and the Da Nang skyline.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchThuScene(1)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchThuScene(3)">Beach Cool Down ➔</button>
+                </div>
+            </div>
+
+            <!-- THU 3: BEACH -->
+            <div class="scene-card" id="thu-scene-3">
+                <div class="glass-panel" style="border-color: var(--accent);">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title" style="color:var(--accent);">🏖️ My Khe Golden Hour</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:var(--accent); color:var(--accent);">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">05:00 PM</div>
+                            <div class="log-title">Ocean Breeze & Spa</div>
+                            <div class="log-desc">Return to the beach. Optional: A 60-min foot massage to recover from the mountain stairs.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchThuScene(2)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchThuScene(4)">Evening Dining ➔</button>
+                </div>
+            </div>
+
+            <!-- THU 4: DINNER -->
+            <div class="scene-card" id="thu-scene-4">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🍽️ Seafood or Modern Vietnamese</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">🍴</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">07:30 PM</div>
+                            <div class="log-title">Dinner at Vo Nguyen Giap St</div>
+                            <div class="log-desc">Choose between high-end seafood at 'Moc' or a refined rooftop experience.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchThuScene(3)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchDay(2)">View Friday ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRIDAY -->
+        <div class="day-console-wrapper" id="fri-console" style="display: none;">
+            
+            <!-- FRI 1: DECISION -->
+            <div class="scene-card active" id="fri-scene-1">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🎛️ Friday Major Choice</h3>
+                    </div>
+                    <div class="option-button-tabs">
+                        <button class="opt-tab-btn active" id="fri-btn-opt-1" onclick="switchFriOption(1)">🏰 Ba Na Hills</button>
+                        <button class="opt-tab-btn" id="fri-btn-opt-2" onclick="switchFriOption(2)">🏺 My Son</button>
+                    </div>
+                </div>
+                
+                <!-- Path 1: Ba Na Hills -->
+                <div class="glass-panel option-content-card active" id="fri-content-opt-1">
+                    <h4 style="color:var(--primary-light);">Option 1: Ba Na Hills & Golden Bridge</h4>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">The iconic 'Hands of God' bridge. Cooler mountain air (24°C).</p>
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">08:00 AM</div>
+                            <div class="opt-flow-title">Early Cable Car Ascent</div>
+                            <div class="opt-flow-desc">Beat the bus tours to the bridge. French Village lunch.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path 2: My Son -->
+                <div class="glass-panel option-content-card" id="fri-content-opt-2">
+                    <h4 style="color:var(--secondary);">Option 2: My Son Sanctuary</h4>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">Ancient Champa ruins (UNESCO). Best for history buffs.</p>
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">08:00 AM</div>
+                            <div class="opt-flow-title">Guided Ruins Tour</div>
+                            <div class="opt-flow-desc">Jungle-surrounded brick temples. Return by 1 PM.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn primary-btn" onclick="switchFriScene(2)">Next: Hoi An Afternoon ➔</button>
+                </div>
+            </div>
+
+            <!-- FRI 2: HOI AN -->
+            <div class="scene-card" id="fri-scene-2">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🏮 Hoi An Transition</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">🚗</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">03:30 PM</div>
+                            <div class="log-title">Transfer to Ancient Town</div>
+                            <div class="log-desc">45-min drive from Da Nang. Afternoon heat is high (36°C); start with an indoor cafe.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchFriScene(1)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchFriScene(3)">Lantern Night ➔</button>
+                </div>
+            </div>
+
+            <!-- FRI 3: LANTERN NIGHT -->
+            <div class="scene-card" id="fri-scene-3">
+                <div class="glass-panel" style="border-color: #ec4899;">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title" style="color:#f472b6;">🛶 River Lanterns & Dinner</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">🏮</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">06:30 PM</div>
+                            <div class="log-title">Riverside Dining</div>
+                            <div class="diet-switcher-wrap">
+                                <span style="font-size:0.7rem;">MENU:</span>
+                                <div style="display:flex; gap:6px;">
+                                    <button class="diet-toggle-btn active classic" id="fri-btn-menu-classic" onclick="toggleFriDiet(false)">🔴 Classic</button>
+                                    <button class="diet-toggle-btn veg" id="fri-btn-menu-veg" onclick="toggleFriDiet(true)">🟢 Veg</button>
+                                </div>
+                            </div>
+                            <div class="menu-flip-container" id="fri-menu-flippy">
+                                <div class="menu-flip-card">
+                                    <div class="menu-side menu-side-front">
+                                        <h5 style="color:#f59e0b; font-size:0.75rem;">🔴 Classic Set</h5>
+                                        <ul style="font-size:0.7rem; color:var(--text-muted); list-style:none;">
+                                            <li>Cao Lau (Pork Noodles)</li>
+                                            <li>White Rose Dumplings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-side menu-side-back">
+                                        <h5 style="color:#10b981; font-size:0.75rem;">🟢 Vegetarian Set</h5>
+                                        <ul style="font-size:0.7rem; color:var(--text-muted); list-style:none;">
+                                            <li>Vegetarian Cao Lau</li>
+                                            <li>Tofu White Rose</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchFriScene(2)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchFriScene(4)">Return to DAD ➔</button>
+                </div>
+            </div>
+
+            <!-- FRI 4: RETURN -->
+            <div class="scene-card" id="fri-scene-4">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🌙 Night Drive Return</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">🏁</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">09:30 PM</div>
+                            <div class="log-title">Grab back to Beach Resort</div>
+                            <div class="log-desc">Relax and prep for your final morning.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchFriScene(3)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchDay(3)">View Saturday ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SATURDAY -->
+        <div class="day-console-wrapper" id="sat-console" style="display: none;">
+            
+            <!-- SAT 1: PENINSULA -->
+            <div class="scene-card active" id="sat-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🗿 Son Tra Peninsula</h3>
+                        <span class="panel-badge">Morning View</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">07:30 AM</div>
+                            <div class="log-title">Linh Ung Pagoda</div>
+                            <div class="log-desc">Visit the Lady Buddha early to catch the ocean breeze before the 37°C heat kicks in.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px; margin-top:auto;">
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(2)">Final Coffee ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 2: COFFEE -->
+            <div class="scene-card" id="sat-scene-2">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">☕ Local Coffee Culture</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">☕</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">09:30 AM</div>
+                            <div class="log-title">Salt Coffee or Egg Coffee</div>
+                            <div class="log-desc">Try 'Ca Phe Muoi' (Salt Coffee) at a local Da Nang spot near the Dragon Bridge.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(1)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(3)">Checkout ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 3: CHECKOUT -->
+            <div class="scene-card" id="sat-scene-3">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🧳 Final Checkout</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">💼</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">11:00 AM</div>
+                            <div class="log-title">Pack & Check-out</div>
+                            <div class="log-desc">Last minute souvenir run at Han Market if time permits.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(2)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(4)">Departure ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 4: DEPARTURE -->
+            <div class="scene-card" id="sat-scene-4">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">✈️ DAD Airport</h3>
+                        <span class="panel-badge">Noon Departure</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">✈️</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">12:15 PM</div>
+                            <div class="log-title">Arrive at Airport</div>
+                            <div class="log-desc">Check-in for your afternoon flight. Safe travels!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(3)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchDay(1)">Restart Thu ➔</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Nav Hub -->
+    <nav class="bottom-nav-hub">
+        <button class="nav-hub-btn" onclick="openSheet('sheet-flights')"><span>✈️</span> Flights</button>
+        <button class="nav-hub-btn" onclick="openSheet('sheet-flow')"><span>📊</span> Flow</button>
+        <button class="nav-hub-btn" onclick="openSheet('sheet-intel')"><span>💡</span> Intel</button>
+    </nav>
+
+    <!-- Modals -->
+    <div class="bottom-sheet-overlay" id="overlay-sheet-flights" onclick="closeSheet('sheet-flights')">
+        <div class="bottom-sheet" id="sheet-flights" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>✈️ Flight Status</h4>
+                <p style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">Arrival: Wed June 17 Late Night | Depart: Sat June 20 Noon</p>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-color); border-radius:8px; padding:10px; margin-top:10px;">
+                    <p style="font-size:0.7rem;">Ensure Grab is booked in advance for the Wed night arrival.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-sheet-overlay" id="overlay-sheet-flow" onclick="closeSheet('sheet-flow')">
+        <div class="bottom-sheet" id="sheet-flow" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>📊 Visual Flow</h4>
+                <div style="background:#070a13; border:1px solid var(--border-color); padding:10px; margin-top:10px; border-radius:8px; font-family:monospace; font-size:0.7rem;">
+                    [Wed Arrival] -> [Thu: Marble Mtn] -> [Fri: Choice/Hoi An] -> [Sat: Son Tra -> Depart]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-sheet-overlay" id="overlay-sheet-intel" onclick="closeSheet('sheet-intel')">
+        <div class="bottom-sheet" id="sheet-intel" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>💡 Intel: June 17-20, 2026</h4>
+                
+                <div style="background:rgba(239, 68, 68, 0.1); border:1px solid #ef4444; border-radius:8px; padding:12px; margin-bottom:12px;">
+                    <h5 style="color:#ef4444; margin-bottom:4px;">⚠️ PEAK HEAT SEASON</h5>
+                    <p style="font-size:0.75rem; line-height:1.4;">
+                        Expect highs of 36°C-38°C. Humidity will be intense. Stick to indoor activities between 11 AM and 3 PM.
+                    </p>
+                </div>
+
+                <div style="background:rgba(14, 165, 233, 0.1); border:1px solid var(--primary); border-radius:8px; padding:12px; margin-bottom:12px;">
+                    <h5 style="color:var(--primary); margin-bottom:4px;">🎆 Post-Festival Traffic</h5>
+                    <p style="font-size:0.75rem; line-height:1.4;">
+                        Even if DIFF isn't on your specific days, the city remains busy. Pre-book your Grab to the airport on Saturday.
+                    </p>
+                </div>
+
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid #10b981; border-radius:8px; padding:12px; text-align:center;">
+                    <p style="color:#10b981; font-weight:700;">Tôi ăn chay</p>
+                    <p style="font-size:0.75rem;">(I am vegetarian)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchDay(day) {
+            document.getElementById('thu-console').style.display = day === 1 ? 'flex' : 'none';
+            document.getElementById('fri-console').style.display = day === 2 ? 'flex' : 'none';
+            document.getElementById('sat-console').style.display = day === 3 ? 'flex' : 'none';
+            
+            document.getElementById('thu-tracker').style.display = day === 1 ? 'grid' : 'none';
+            document.getElementById('fri-tracker').style.display = day === 2 ? 'grid' : 'none';
+            document.getElementById('sat-tracker').style.display = day === 3 ? 'grid' : 'none';
+            
+            document.getElementById('day-tab-thu').classList.toggle('active', day === 1);
+            document.getElementById('day-tab-fri').classList.toggle('active', day === 2);
+            document.getElementById('day-tab-sat').classList.toggle('active', day === 3);
+        }
+
+        function switchThuScene(scene) {
+            document.querySelectorAll('#thu-console .scene-card').forEach((c, i) => c.classList.toggle('active', i === scene-1));
+            document.querySelectorAll('#thu-tracker .step-bubble').forEach((b, i) => b.classList.toggle('active', i === scene-1));
+        }
+
+        function switchFriScene(scene) {
+            document.querySelectorAll('#fri-console .scene-card').forEach((c, i) => c.classList.toggle('active', i === scene-1));
+            document.querySelectorAll('#fri-tracker .step-bubble').forEach((b, i) => b.classList.toggle('active', i === scene-1));
+        }
+
+        function switchSatScene(scene) {
+            document.querySelectorAll('#sat-console .scene-card').forEach((c, i) => c.classList.toggle('active', i === scene-1));
+            document.querySelectorAll('#sat-tracker .step-bubble').forEach((b, i) => b.classList.toggle('active', i === scene-1));
+        }
+
+        function switchFriOption(opt) {
+            document.getElementById('fri-content-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('fri-content-opt-2').classList.toggle('active', opt === 2);
+            document.getElementById('fri-btn-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('fri-btn-opt-2').classList.toggle('active', opt === 2);
+        }
+
+        function toggleFriDiet(isVeg) {
+            document.getElementById('fri-menu-flippy').classList.toggle('flipped', isVeg);
+            document.getElementById('fri-btn-menu-veg').classList.toggle('active', isVeg);
+            document.getElementById('fri-btn-menu-classic').classList.toggle('active', !isVeg);
+        }
+
+        function openSheet(id) {
+            document.getElementById('overlay-' + id).classList.add('active');
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeSheet(id) {
+            document.getElementById('overlay-' + id).classList.remove('active');
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
