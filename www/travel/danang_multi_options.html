@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da Nang Weekend Luxury Console - Multi-Option Itinerary Selector</title>
+    <meta name="description" content="Interactive weekend travel itinerary console for Da Nang — featuring Saturday & Sunday plans with coastal logistics, dining menus, and visual flowcharts.">
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern CSS Design System */
+        :root {
+            --bg-dark: #070a13;
+            --bg-card: #0f1524;
+            --bg-card-hover: #172037;
+            --primary: #0ea5e9;
+            --primary-light: #38bdf8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --glow-color: rgba(14, 165, 233, 0.15);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --transition-speed: 0.2s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
+            height: 100vh;
+            height: -webkit-fill-available;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        html {
+            height: -webkit-fill-available;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Glow effects */
+        .glow-overlay {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 350px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HUD Header */
+        header {
+            padding: 16px 16px 12px 16px;
+            background: rgba(15, 21, 36, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hud-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid var(--primary-light);
+            color: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .day-selector-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: rgba(7, 10, 19, 0.6);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .day-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .day-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        .timeline-tracker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .step-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .bubble-indicator {
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .step-bubble.active .bubble-indicator {
+            background: var(--primary-light);
+            box-shadow: 0 0 8px var(--primary-light);
+        }
+
+        .bubble-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .step-bubble.active .bubble-label {
+            color: var(--primary-light);
+            font-weight: 700;
+        }
+
+        /* Stage Content */
+        .scene-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scene-card {
+            display: none;
+            animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 24px;
+        }
+
+        .scene-card.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .base-log-item {
+            display: flex;
+            gap: 12px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .base-log-item:last-child { padding-bottom: 0; }
+
+        .base-log-item::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .base-log-item:last-child::before { display: none; }
+
+        .log-icon-wrap {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .log-time {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .log-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .log-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .option-button-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            background: rgba(7, 10, 19, 0.5);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .opt-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 4px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .opt-tab-btn.active {
+            background: var(--primary);
+            color: var(--text-main);
+        }
+
+        .option-content-card {
+            display: none;
+        }
+
+        .option-content-card.active {
+            display: block;
+        }
+
+        .opt-flow-timeline {
+            margin-top: 12px;
+            padding-left: 12px;
+            border-left: 2px dashed rgba(14, 165, 233, 0.2);
+        }
+
+        .opt-flow-step {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .opt-flow-step::before {
+            content: '';
+            position: absolute;
+            left: -17px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+
+        /* 3D Menu Flip */
+        .menu-flip-container {
+            perspective: 1000px;
+            width: 100%;
+            height: 200px;
+            margin-top: 12px;
+        }
+
+        .menu-flip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-flip-container.flipped .menu-flip-card {
+            transform: rotateY(180deg);
+        }
+
+        .menu-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-side-front {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .menu-side-back {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            transform: rotateY(180deg);
+        }
+
+        .diet-switcher-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 10, 19, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .diet-toggle-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        .diet-toggle-btn.active.veg { border-color: #10b981; color: #10b981; }
+        .diet-toggle-btn.active.classic { border-color: #f59e0b; color: #f59e0b; }
+
+        /* Bottom Nav */
+        .bottom-nav-hub {
+            background: #090e1a;
+            border-top: 1px solid var(--border-color);
+            padding: 8px 16px calc(8px + var(--safe-bottom)) 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .nav-hub-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .console-nav-btn {
+            flex-grow: 1;
+            background: var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .console-nav-btn.primary-btn {
+            background: var(--primary);
+        }
+
+        /* Modals */
+        .bottom-sheet-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .bottom-sheet-overlay.active { opacity: 1; visibility: visible; }
+
+        .bottom-sheet {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 80%;
+            background: #0f1524;
+            border-top: 1px solid var(--border-color);
+            border-radius: 20px 20px 0 0;
+            z-index: 101;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bottom-sheet.active { transform: translateY(0); }
+
+        .sheet-body { overflow-y: auto; padding: 16px; flex-grow: 1; }
+
+        .map-badge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: var(--primary-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-overlay"></div>
+
+    <!-- HUD Header -->
+    <header>
+        <div class="hud-top">
+            <div class="hud-logo">⚡ Da Nang Console 2026</div>
+            <div class="day-selector-tabs" style="width: 170px;">
+                <button class="day-tab-btn active" id="day-tab-sat" onclick="switchDay(1)">📅 Sat 10</button>
+                <button class="day-tab-btn" id="day-tab-sun" onclick="switchDay(2)">📅 Sun 11</button>
+            </div>
+        </div>
+        
+        <!-- SAT Progress Tracker -->
+        <div class="timeline-tracker" id="sat-tracker">
+            <div class="step-bubble active" onclick="switchSatScene(1)" id="sat-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Arrival</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(2)" id="sat-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Decision</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(3)" id="sat-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Ancient</span>
+            </div>
+            <div class="step-bubble" onclick="switchSatScene(4)" id="sat-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Fireworks</span>
+            </div>
+        </div>
+
+        <!-- SUN Progress Tracker -->
+        <div class="timeline-tracker" id="sun-tracker" style="display: none;">
+            <div class="step-bubble active" onclick="switchSunScene(1)" id="sun-bubble-1">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Peninsula</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(2)" id="sun-bubble-2">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Decision</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(3)" id="sun-bubble-3">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Brunch</span>
+            </div>
+            <div class="step-bubble" onclick="switchSunScene(4)" id="sun-bubble-4">
+                <div class="bubble-indicator"></div>
+                <span class="bubble-label">Depart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Stage -->
+    <main class="scene-container">
+
+        <!-- SATURDAY -->
+        <div class="day-console-wrapper" id="sat-console">
+            
+            <!-- SAT 1: ARRIVAL -->
+            <div class="scene-card active" id="sat-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🏨 Arrival & Beach Base</h3>
+                        <span class="panel-badge">DAD Terminal</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">12:00 PM</div>
+                            <div class="log-title">Touchdown DAD Airport</div>
+                            <div class="log-desc">Clear customs. Saturday is hot (34°C), so a private car to your beach resort is highly recommended.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">01:00 PM</div>
+                            <div class="log-title">Luxury Resort Check-in</div>
+                            <div class="log-desc">Check-in, cool off, and prep for a busy evening of culture and pyrotechnics.</div>
+                            <a href="https://maps.google.com/?q=My+Khe+Beach" target="_blank" class="map-badge-link">📍 My Khe Beach Map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px; margin-top:auto;">
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(2)">Select Afternoon Path ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 2: DECISION -->
+            <div class="scene-card" id="sat-scene-2">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🎛️ Saturday Afternoon Choices</h3>
+                    </div>
+                    <div class="option-button-tabs">
+                        <button class="opt-tab-btn active" id="sat-btn-opt-1" onclick="switchSatOption(1)">⛰️ Peaks</button>
+                        <button class="opt-tab-btn" id="sat-btn-opt-2" onclick="switchSatOption(2)">🏖️ Relax</button>
+                    </div>
+                </div>
+
+                <!-- Path 1: Marble Mountains -->
+                <div class="glass-panel option-content-card active" id="sat-content-opt-1">
+                    <h4 style="color:var(--primary-light);">Option 1: Marble Mountains Trek</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Explore limestone caves. *Note: Avoid the 02:00 PM peak sun; use the glass elevator for safety.*</p>
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">02:30 PM</div>
+                            <div class="opt-flow-title">The Glass Elevator Ascent</div>
+                            <div class="opt-flow-desc">Explore the pagodas. Panoramic views of the coastal plains.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path 2: Beach & Spa -->
+                <div class="glass-panel option-content-card" id="sat-content-opt-2">
+                    <h4 style="color:var(--accent);">Option 2: Beachfront Luxury Spa</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Escape the 34°C heat with a premium indoor spa session.</p>
+                    <div class="opt-flow-timeline">
+                        <div class="opt-flow-step">
+                            <div class="opt-flow-time">03:00 PM</div>
+                            <div class="opt-flow-title">Traditional Vietnamese Massage</div>
+                            <div class="opt-flow-desc">Refined therapy session with herbal scents and high-end comfort.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(1)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(3)">Ancient Town ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 3: ANCIENT TOWN -->
+            <div class="scene-card" id="sat-scene-3">
+                <div class="glass-panel" style="border-color: #ec4899;">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title" style="color:#f472b6;">🏮 Hoi An Early Evening</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">05:00 PM</div>
+                            <div class="log-title">Ancient Town Golden Hour</div>
+                            <div class="log-desc">Arrive early to beat the DIFF crowds. Wander the lantern-lit streets before dinner.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#ec4899; color:#ec4899;">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">06:30 PM</div>
+                            <div class="log-title">Riverside Dinner Feast</div>
+                            <div class="diet-switcher-wrap">
+                                <span style="font-size:0.75rem;">MENU:</span>
+                                <div style="display:flex; gap:6px;">
+                                    <button class="diet-toggle-btn active classic" id="sat-btn-menu-classic" onclick="toggleSatDiet(false)">🔴 Classic</button>
+                                    <button class="diet-toggle-btn veg" id="sat-btn-menu-veg" onclick="toggleSatDiet(true)">🟢 Veg</button>
+                                </div>
+                            </div>
+                            <div class="menu-flip-container" id="sat-menu-flippy">
+                                <div class="menu-flip-card">
+                                    <div class="menu-side menu-side-front">
+                                        <h5 style="color:#f59e0b; margin-bottom:8px;">🔴 Classic Set</h5>
+                                        <ul style="font-size:0.75rem; color:var(--text-muted); list-style:none;">
+                                            <li>Traditional Pork Cao Lau</li>
+                                            <li>White Rose Dumplings</li>
+                                            <li>Chicken Rice (Cơm Gà)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-side menu-side-back">
+                                        <h5 style="color:#10b981; margin-bottom:8px;">🟢 Vegetarian Set</h5>
+                                        <ul style="font-size:0.75rem; color:var(--text-muted); list-style:none;">
+                                            <li>Vegetarian Cao Lau</li>
+                                            <li>Fried Wontons with Tofu</li>
+                                            <li>Sautéed Morning Glory</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(2)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSatScene(4)">Fireworks (DIFF) ➔</button>
+                </div>
+            </div>
+
+            <!-- SAT 4: FIREWORKS -->
+            <div class="scene-card" id="sat-scene-4">
+                <div class="glass-panel" style="border-color: #3b82f6;">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title" style="color:#60a5fa;">🎆 DIFF: Japan vs. Italy</h3>
+                        <span class="panel-badge" style="background:var(--secondary); color:var(--bg-dark);">Major Event</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">08:00 PM – 10:00 PM</div>
+                            <div class="log-title">International Fireworks Festival</div>
+                            <div class="log-desc">Return to Da Nang riverfront. Watch the high-tech pyrotechnics competition between Japan and Italy. Expect massive crowds and high energy.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap" style="border-color:#3b82f6; color:#3b82f6;">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">10:00 PM</div>
+                            <div class="log-title">Dragon Bridge Fire Breath</div>
+                            <div class="log-desc">The steel dragon spits fire to celebrate the festival night. Best viewed from a rooftop lounge.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSatScene(3)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchDay(2)">View Sunday ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUNDAY -->
+        <div class="day-console-wrapper" id="sun-console" style="display: none;">
+            
+            <!-- SUN 1: PENINSULA -->
+            <div class="scene-card active" id="sun-scene-1">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🗿 Son Tra Peninsula</h3>
+                        <span class="panel-badge">Morning Calm</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">08:30 AM</div>
+                            <div class="log-title">Lady Buddha & Pagodas</div>
+                            <div class="log-desc">Visit the Lady Buddha before the 36°C heat peaks. Stunning views of the bay.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px; margin-top:auto;">
+                    <button class="console-nav-btn primary-btn" onclick="switchSunScene(2)">Select Morning Path ➔</button>
+                </div>
+            </div>
+
+            <!-- SUN 2: DECISION -->
+            <div class="scene-card" id="sun-scene-2">
+                <div class="glass-panel" style="border-color: var(--primary-light);">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🎛️ Sunday Morning Choices</h3>
+                    </div>
+                    <div class="option-button-tabs">
+                        <button class="opt-tab-btn active" id="sun-btn-opt-1" onclick="switchSunOption(1)">🏯 Culture</button>
+                        <button class="opt-tab-btn" id="sun-btn-opt-2" onclick="switchSunOption(2)">☕ Coffee</button>
+                    </div>
+                </div>
+                
+                <div class="glass-panel option-content-card active" id="sun-content-opt-1">
+                    <h4 style="color:var(--primary-light);">Option 1: Cham Museum</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Explore the world's largest collection of Champa sculptures in a breezy, open-air colonial building.</p>
+                </div>
+
+                <div class="glass-panel option-content-card" id="sun-content-opt-2">
+                    <h4 style="color:var(--accent);">Option 2: Hidden Coffee Tour</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">Sip Egg Coffee or "Salt Coffee" in a hidden courtyard. Perfect escape from the humidity.</p>
+                </div>
+
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSunScene(1)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSunScene(3)">Leisurely Brunch ➔</button>
+                </div>
+            </div>
+
+            <!-- SUN 3: BRUNCH -->
+            <div class="scene-card" id="sun-scene-3">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">🍽️ Leisurely Sunday Brunch</h3>
+                        <span class="panel-badge">3 PM Departure</span>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">1</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">11:00 AM – 12:30 PM</div>
+                            <div class="log-title">Coastal Brunch Feast</div>
+                            <div class="log-desc">With more time before your flight, enjoy a slow lunch by the sea or at a high-end city bistro.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">2</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">12:30 PM – 01:30 PM</div>
+                            <div class="log-title">Han Market Blitz</div>
+                            <div class="log-desc">Final souvenir run for cashews and coffee. *Check weather: 50% chance of storms.*</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSunScene(2)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchSunScene(4)">Departure ➔</button>
+                </div>
+            </div>
+
+            <!-- SUN 4: RETURN -->
+            <div class="scene-card" id="sun-scene-4">
+                <div class="glass-panel">
+                    <div class="panel-header-row">
+                        <h3 class="panel-title">✈️ Final Return</h3>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">🏁</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">02:15 PM</div>
+                            <div class="log-title">Depart for DAD Airport</div>
+                            <div class="log-desc">Short 15-min transfer. Check-in for your 03:00 PM departure.</div>
+                        </div>
+                    </div>
+                    <div class="base-log-item">
+                        <div class="log-icon-wrap">✈️</div>
+                        <div class="log-text-wrap">
+                            <div class="log-time">03:00 PM</div>
+                            <div class="log-title">Flight Departure</div>
+                            <div class="log-desc">Safe flight home!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-nav-row" style="display:flex; gap:12px;">
+                    <button class="console-nav-btn" onclick="switchSunScene(3)">❮ Back</button>
+                    <button class="console-nav-btn primary-btn" onclick="switchDay(1)">Restart Saturday ➔</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Nav Hub -->
+    <nav class="bottom-nav-hub">
+        <button class="nav-hub-btn" onclick="openSheet('sheet-flights')"><span>✈️</span> Flights</button>
+        <button class="nav-hub-btn" onclick="openSheet('sheet-flow')"><span>📊</span> Flow</button>
+        <button class="nav-hub-btn" onclick="openSheet('sheet-intel')"><span>💡</span> Intel</button>
+    </nav>
+
+    <!-- Modals -->
+    <div class="bottom-sheet-overlay" id="overlay-sheet-flights" onclick="closeSheet('sheet-flights')">
+        <div class="bottom-sheet" id="sheet-flights" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>✈️ Flight Connections</h4>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">Sat Arrival: 12:00 PM | Sun Depart: 03:00 PM</p>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-color); border-radius:8px; padding:10px; margin-top:10px;">
+                    <p style="font-size:0.75rem;">Connecting via BKK/SGN. Check flight status via airline app.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-sheet-overlay" id="overlay-sheet-flow" onclick="closeSheet('sheet-flow')">
+        <div class="bottom-sheet" id="sheet-flow" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>📊 Visual Flowchart</h4>
+                <div style="background:#070a13; border:1px solid var(--border-color); padding:10px; margin-top:10px; border-radius:8px; font-family:monospace; font-size:0.7rem;">
+                    [Itinerary Map: Arrival -> Marble Mtn -> Hoi An -> DIFF Fireworks -> Son Tra -> Departure]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-sheet-overlay" id="overlay-sheet-intel" onclick="closeSheet('sheet-intel')">
+        <div class="bottom-sheet" id="sheet-intel" onclick="event.stopPropagation()">
+            <div class="sheet-body">
+                <h4>💡 Intel: June 13-14, 2026</h4>
+                
+                <!-- Weather Section -->
+                <div style="background:rgba(239, 68, 68, 0.1); border:1px solid #ef4444; border-radius:8px; padding:12px; margin-bottom:12px;">
+                    <h5 style="color:#ef4444; margin-bottom:4px;">⚠️ EXTREME HEAT HAZARD</h5>
+                    <p style="font-size:0.75rem; line-height:1.4;">
+                        <strong>Sat:</strong> H: 38°C (100°F). "RealFeel" up to 43°C. Avoid outdoor activity 11AM–4PM.<br>
+                        <strong>Sun:</strong> H: 39°C (102°F). High risk of afternoon storms (50%) between 1PM–5PM.
+                    </p>
+                </div>
+
+                <!-- Festival Section -->
+                <div style="background:rgba(14, 165, 233, 0.1); border:1px solid var(--primary); border-radius:8px; padding:12px; margin-bottom:12px;">
+                    <h5 style="color:var(--primary); margin-bottom:4px;">🎆 Festival Hub</h5>
+                    <p style="font-size:0.75rem; line-height:1.4;">
+                        <strong>DIFF 2026:</strong> Saturday Night is Japan vs. Italy. The Han Riverfront will be packed. Expect traffic delays; book rooftop seats early.
+                    </p>
+                </div>
+
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid #10b981; border-radius:8px; padding:12px; text-align:center;">
+                    <p style="color:#10b981; font-weight:700;">Tôi ăn chay</p>
+                    <p style="font-size:0.75rem;">(I am vegetarian)</p>
+                </div>
+                
+                <ul style="font-size:0.8rem; margin-top:12px; padding-left:16px; color:var(--text-muted);">
+                    <li>Hydration is critical; drink 3L+ of water daily.</li>
+                    <li>Grab app is vital; prices surge during DIFF.</li>
+                    <li>Storm Poncho: Essential for Sunday afternoon.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchDay(day) {
+            document.getElementById('sat-console').style.display = day === 1 ? 'flex' : 'none';
+            document.getElementById('sun-console').style.display = day === 2 ? 'flex' : 'none';
+            document.getElementById('sat-tracker').style.display = day === 1 ? 'grid' : 'none';
+            document.getElementById('sun-tracker').style.display = day === 2 ? 'grid' : 'none';
+            document.getElementById('day-tab-sat').classList.toggle('active', day === 1);
+            document.getElementById('day-tab-sun').classList.toggle('active', day === 2);
+        }
+
+        function switchSatScene(scene) {
+            document.querySelectorAll('#sat-console .scene-card').forEach((c, i) => c.classList.toggle('active', i === scene-1));
+            document.querySelectorAll('#sat-tracker .step-bubble').forEach((b, i) => b.classList.toggle('active', i === scene-1));
+        }
+
+        function switchSunScene(scene) {
+            document.querySelectorAll('#sun-console .scene-card').forEach((c, i) => c.classList.toggle('active', i === scene-1));
+            document.querySelectorAll('#sun-tracker .step-bubble').forEach((b, i) => b.classList.toggle('active', i === scene-1));
+        }
+
+        function switchSatOption(opt) {
+            document.getElementById('sat-content-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('sat-content-opt-2').classList.toggle('active', opt === 2);
+            document.getElementById('sat-btn-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('sat-btn-opt-2').classList.toggle('active', opt === 2);
+        }
+
+        function switchSunOption(opt) {
+            document.getElementById('sun-content-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('sun-content-opt-2').classList.toggle('active', opt === 2);
+            document.getElementById('sun-btn-opt-1').classList.toggle('active', opt === 1);
+            document.getElementById('sun-btn-opt-2').classList.toggle('active', opt === 2);
+        }
+
+        function toggleSatDiet(isVeg) {
+            document.getElementById('sat-menu-flippy').classList.toggle('flipped', isVeg);
+            document.getElementById('sat-btn-menu-veg').classList.toggle('active', isVeg);
+            document.getElementById('sat-btn-menu-classic').classList.toggle('active', !isVeg);
+        }
+
+        function openSheet(id) {
+            document.getElementById('overlay-' + id).classList.add('active');
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeSheet(id) {
+            document.getElementById('overlay-' + id).classList.remove('active');
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
