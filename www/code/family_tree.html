@@ -154,15 +154,89 @@
         
         /* Mobile responsiveness */
         @media screen and (max-width: 768px) {
+            body {
+                padding: 20px;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            .tree-container {
+                text-align: left;
+                width: 100%;
+            }
+            h1 {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            .tree ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 0;
+                padding-left: 20px;
+            }
+            .tree > ul {
+                padding-left: 0;
+            }
+            .tree li {
+                padding: 15px 0 0 20px;
+                float: none;
+                text-align: left;
+                display: block;
+                width: 100%;
+            }
+            .tree > ul > li {
+                padding-left: 0;
+            }
+            /* Reset old horizontal styles */
+            .tree li::before, .tree li::after, .tree ul ul::before,
+            .tree li:first-child::before, .tree li:last-child::after,
+            .tree li:last-child::before, .tree li:first-child::after,
+            .tree li:only-child::after, .tree li:only-child::before {
+                display: none !important;
+            }
+            
+            /* New vertical tree lines */
+            .tree ul ul li::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-left: 2px solid #6c5ce7;
+                border-bottom: 2px solid #6c5ce7;
+                width: 15px;
+                height: 38px;
+                border-radius: 0 0 0 8px;
+                display: block !important;
+            }
+            
+            /* Vertical line connecting siblings */
+            .tree ul ul li:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-left: 2px solid #6c5ce7;
+                height: 100%;
+                display: block !important;
+            }
+            
+            /* Fix line color on hover for mobile */
+            .tree li a:hover+ul li::before,
+            .tree li a:hover+ul li::after {
+                border-color: #a29bfe !important;
+            }
+
             .tree li a {
-                padding: 10px 15px;
-                min-width: 80px;
+                padding: 12px 15px;
+                width: 220px;
+                display: inline-block;
+                box-sizing: border-box;
             }
             .person-name {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             .person-role {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
             }
         }
     </style>
