@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+            color: #ffffff;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: auto;
+        }
+
+        .tree-container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            font-weight: 600;
+        }
+
+        /* Basic CSS Tree Structure */
+        .tree ul {
+            padding-top: 20px; 
+            position: relative;
+            transition: all 0.5s;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        .tree li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+        }
+
+        /* Connecting lines */
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute; 
+            top: 0; 
+            right: 50%;
+            border-top: 2px solid #6c5ce7;
+            width: 50%; 
+            height: 20px;
+        }
+        .tree li::after {
+            right: auto; 
+            left: 50%;
+            border-left: 2px solid #6c5ce7;
+        }
+
+        /* Remove left-right connectors from elements without siblings */
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+
+        /* Remove space for the "no siblings" elements */
+        .tree li:only-child { 
+            padding-top: 0;
+        }
+
+        /* Remove left connector from first child and right connector from last child */
+        .tree li:first-child::before, .tree li:last-child::after {
+            border: 0 none;
+        }
+
+        /* Adding back the vertical connector to the last nodes */
+        .tree li:last-child::before {
+            border-right: 2px solid #6c5ce7;
+            border-radius: 0 5px 0 0;
+        }
+        .tree li:first-child::after {
+            border-radius: 5px 0 0 0;
+        }
+
+        /* Connectors to children */
+        .tree ul ul::before {
+            content: '';
+            position: absolute; 
+            top: 0; 
+            left: 50%;
+            border-left: 2px solid #6c5ce7;
+            width: 0; 
+            height: 20px;
+        }
+
+        /* The node card */
+        .tree li a {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            display: inline-block;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        /* Hover effects */
+        .tree li a:hover, .tree li a:hover+ul li a {
+            background: #6c5ce7;
+            color: #fff;
+            border: 1px solid #a29bfe;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Hover lines */
+        .tree li a:hover+ul li::after, 
+        .tree li a:hover+ul li::before, 
+        .tree li a:hover+ul::before, 
+        .tree li a:hover+ul ul::before {
+            border-color: #a29bfe;
+        }
+
+        /* Person details styling */
+        .person-name {
+            font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .person-role {
+            font-size: 0.85rem;
+            color: #b2bec3;
+            display: block;
+        }
+        
+        .tree li a:hover .person-role {
+            color: #e0e0e0;
+        }
+        
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            .tree li a {
+                padding: 10px 15px;
+                min-width: 80px;
+            }
+            .person-name {
+                font-size: 0.9rem;
+            }
+            .person-role {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="tree-container">
+    <h1>Our Family Tree</h1>
+    <div class="tree">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="person-name">Grandparent</span>
+                    <span class="person-role">1930 - 2010</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="person-name">Parent 1</span>
+                            <span class="person-role">Born 1955</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="person-name">Child 1</span>
+                                    <span class="person-role">Born 1980</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="person-name">Child 2</span>
+                                    <span class="person-role">Born 1983</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="person-name">Grandchild 1</span>
+                                            <span class="person-role">Born 2010</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="person-name">Parent 2</span>
+                            <span class="person-role">Born 1960</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="person-name">Child 3</span>
+                                    <span class="person-role">Born 1985</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="person-name">Child 4</span>
+                                    <span class="person-role">Born 1988</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
