@@ -12,22 +12,54 @@
             background: linear-gradient(135deg, #1e1e2f, #2a2a40);
             color: #ffffff;
             margin: 0;
-            padding: 50px;
+            padding: 50px 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
             overflow-x: auto;
         }
 
+        .controls {
+            margin-bottom: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #6c5ce7;
+            border-color: #a29bfe;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+        }
+
         .tree-container {
             text-align: center;
+            width: 100%;
         }
 
         h1 {
-            margin-bottom: 50px;
+            margin-bottom: 20px;
             font-size: 2.5rem;
             text-shadow: 0 4px 10px rgba(0,0,0,0.5);
             font-weight: 600;
+            text-align: center;
         }
 
         /* Basic CSS Tree Structure */
@@ -38,6 +70,10 @@
             display: flex;
             justify-content: center;
             padding-left: 0;
+        }
+
+        .tree ul.collapsed {
+            display: none !important;
         }
 
         .tree li {
@@ -107,7 +143,9 @@
             text-decoration: none;
             color: #fff;
             font-size: 16px;
-            display: inline-block;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -115,11 +153,12 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             min-width: 120px;
+            position: relative;
         }
 
         /* Hover effects */
         .tree li a:hover, .tree li a:hover+ul li a {
-            background: #6c5ce7;
+            background: rgba(108, 92, 231, 0.8);
             color: #fff;
             border: 1px solid #a29bfe;
             transform: translateY(-5px);
@@ -135,6 +174,12 @@
         }
 
         /* Person details styling */
+        .person-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .person-name {
             font-weight: 600;
             display: block;
@@ -146,27 +191,62 @@
             font-size: 0.85rem;
             color: #b2bec3;
             display: block;
+            transition: all 0.3s ease;
         }
         
         .tree li a:hover .person-role {
             color: #e0e0e0;
         }
+
+        /* Save Real Estate Toggle */
+        .hide-roles .person-role {
+            display: none !important;
+        }
+        .hide-roles .person-name {
+            margin-bottom: 0;
+        }
+        .hide-roles .tree li a {
+            padding: 10px 20px;
+            min-width: 100px;
+        }
+
+        /* Toggle Icon */
+        .toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+            transition: background 0.3s;
+        }
+
+        .tree li a:hover .toggle-icon {
+            background: rgba(255,255,255,0.4);
+        }
         
         /* Mobile responsiveness */
         @media screen and (max-width: 768px) {
             body {
-                padding: 20px;
-                justify-content: flex-start;
+                padding: 20px 10px;
                 align-items: flex-start;
+            }
+            .controls {
+                width: 100%;
+                justify-content: center;
             }
             .tree-container {
                 text-align: left;
                 width: 100%;
             }
             h1 {
-                text-align: center;
                 font-size: 2rem;
-                margin-bottom: 30px;
+                width: 100%;
             }
             .tree ul {
                 flex-direction: column;
@@ -228,9 +308,19 @@
 
             .tree li a {
                 padding: 12px 15px;
-                width: 220px;
-                display: inline-block;
+                width: 240px;
+                display: inline-flex;
+                flex-direction: row;
+                justify-content: space-between;
                 box-sizing: border-box;
+            }
+            .tree li a .person-info {
+                align-items: flex-start;
+            }
+            .toggle-icon {
+                margin-top: 0;
+                margin-left: 10px;
+                align-self: center;
             }
             .person-name {
                 font-size: 1rem;
@@ -243,38 +333,54 @@
 </head>
 <body>
 
-<div class="tree-container">
-    <h1>Our Family Tree</h1>
+<h1>Our Family Tree</h1>
+<div class="controls">
+    <button id="toggleRolesBtn">Hide Details (Save Space)</button>
+    <button id="expandAllBtn">Expand All</button>
+    <button id="collapseAllBtn">Collapse All</button>
+</div>
+
+<div class="tree-container" id="treeContainer">
     <div class="tree">
         <ul>
             <li>
                 <a href="#">
-                    <span class="person-name">Grandparent</span>
-                    <span class="person-role">1930 - 2010</span>
+                    <div class="person-info">
+                        <span class="person-name">Grandparent</span>
+                        <span class="person-role">1930 - 2010</span>
+                    </div>
                 </a>
                 <ul>
                     <li>
                         <a href="#">
-                            <span class="person-name">Parent 1</span>
-                            <span class="person-role">Born 1955</span>
+                            <div class="person-info">
+                                <span class="person-name">Parent 1</span>
+                                <span class="person-role">Born 1955</span>
+                            </div>
                         </a>
                         <ul>
                             <li>
                                 <a href="#">
-                                    <span class="person-name">Child 1</span>
-                                    <span class="person-role">Born 1980</span>
+                                    <div class="person-info">
+                                        <span class="person-name">Child 1</span>
+                                        <span class="person-role">Born 1980</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="person-name">Child 2</span>
-                                    <span class="person-role">Born 1983</span>
+                                    <div class="person-info">
+                                        <span class="person-name">Child 2</span>
+                                        <span class="person-role">Born 1983</span>
+                                    </div>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <span class="person-name">Grandchild 1</span>
-                                            <span class="person-role">Born 2010</span>
+                                            <div class="person-info">
+                                                <span class="person-name">Grandchild 1</span>
+                                                <span class="person-role">Born 2010</span>
+                                            </div>
                                         </a>
                                     </li>
                                 </ul>
@@ -283,20 +389,26 @@
                     </li>
                     <li>
                         <a href="#">
-                            <span class="person-name">Parent 2</span>
-                            <span class="person-role">Born 1960</span>
+                            <div class="person-info">
+                                <span class="person-name">Parent 2</span>
+                                <span class="person-role">Born 1960</span>
+                            </div>
                         </a>
                         <ul>
                             <li>
                                 <a href="#">
-                                    <span class="person-name">Child 3</span>
-                                    <span class="person-role">Born 1985</span>
+                                    <div class="person-info">
+                                        <span class="person-name">Child 3</span>
+                                        <span class="person-role">Born 1985</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="person-name">Child 4</span>
-                                    <span class="person-role">Born 1988</span>
+                                    <div class="person-info">
+                                        <span class="person-name">Child 4</span>
+                                        <span class="person-role">Born 1988</span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
@@ -306,6 +418,57 @@
         </ul>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Handle expand/collapse for nodes
+        const nodes = document.querySelectorAll('.tree li > a');
+        nodes.forEach(node => {
+            const siblingUl = node.nextElementSibling;
+            if (siblingUl && siblingUl.tagName.toLowerCase() === 'ul') {
+                // Add toggle icon
+                const indicator = document.createElement('div');
+                indicator.className = 'toggle-icon';
+                indicator.innerHTML = '−'; // expanded by default
+                node.appendChild(indicator);
+
+                node.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    siblingUl.classList.toggle('collapsed');
+                    indicator.innerHTML = siblingUl.classList.contains('collapsed') ? '+' : '−';
+                });
+            } else {
+                // No children, just prevent default anchor behavior
+                node.addEventListener('click', (e) => e.preventDefault());
+            }
+        });
+
+        // Toggle Details Button
+        const toggleBtn = document.getElementById('toggleRolesBtn');
+        const container = document.getElementById('treeContainer');
+        toggleBtn.addEventListener('click', () => {
+            container.classList.toggle('hide-roles');
+            if (container.classList.contains('hide-roles')) {
+                toggleBtn.textContent = 'Show Details';
+            } else {
+                toggleBtn.textContent = 'Hide Details (Save Space)';
+            }
+        });
+
+        // Global Expand All
+        document.getElementById('expandAllBtn').addEventListener('click', () => {
+            document.querySelectorAll('.tree ul').forEach(ul => ul.classList.remove('collapsed'));
+            document.querySelectorAll('.toggle-icon').forEach(icon => icon.innerHTML = '−');
+        });
+
+        // Global Collapse All
+        document.getElementById('collapseAllBtn').addEventListener('click', () => {
+            // Collapse all ul elements that are children of an li
+            document.querySelectorAll('.tree > ul > li ul').forEach(ul => ul.classList.add('collapsed'));
+            document.querySelectorAll('.tree > ul > li .toggle-icon').forEach(icon => icon.innerHTML = '+');
+        });
+    });
+</script>
 
 </body>
 </html>
